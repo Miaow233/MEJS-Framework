@@ -17,12 +17,6 @@ import {
   setAnonySwitch,
   setGroupAdmin,
 } from './utils/api.js'
-// let qqLevelInfo = await getQQLevelInfo(1293865264)
-// console.log(qqLevelInfo)
 
-// let sysMsg = await getSysMsg(702333934)
-// console.log(sysMsg)
-// let groupSetting = await getGroupSetting(702333934)
-// console.log(groupSetting)
-let friendInfo = await getFriendInfo(1293865264)
-console.log(friendInfo)
+// 关于本框架的用法请参考 hdic.test.js
+// 阅读 README.txt 可以看到所有接口的说明
