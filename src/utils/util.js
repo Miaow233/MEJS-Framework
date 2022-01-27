@@ -19,7 +19,9 @@ function getCookie(domain) {
 }
 
 async function fetchApi(method, url, data = '') {
-  let domain = url.split('/')[2]
+  let domain = url.split('/')[2].split('.')
+  domain = domain.slice(-3).join('.')
+  console.log(domain)
   let headers = {
     'User-Agent':
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',

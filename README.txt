@@ -11,16 +11,25 @@
   getCSRFToken            获取 bkn
 
 ./utils/api.js
+  addAnnounce             发送群公告
+  getAnnounce             获取群公告
+  getEssence              获取群精华
   getFriend               获取一个好友实例
+  getFriendInfo           获取好友信息
   getFriends              获取好友列表
   getGroup                获取一个群组实例
+  getGroupHonor           获取群荣誉
   getGroupInfo            获取群信息
   getGroupJoinUrl         获取加群链接
   getGroups               获取成员列表
+  getGroupSetting         获取群设置
   getMembersInfo          获取群成员活动信息
+  getQQLevelInfo          获取 QQ 成长信息
+  getSysMsg               获取群操作记录
+  setAnonySwitch          设置群匿名开关
   setGroupAdmin           设置管理员
 
-./utils/database.js
+./utils/database.js(暂未完善)       
   clean                   清理数据库
   get                     获取数据
   has                     键的存在性
