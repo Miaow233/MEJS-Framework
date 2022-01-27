@@ -1,8 +1,5 @@
-# Ignore everything in this directory
+# Ignore these in this directory
 node_modules
 yarn.lock
-test
 
 # Except these files
-!.gitignore
-!README.txt

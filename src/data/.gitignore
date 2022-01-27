@@ -4,3 +4,5 @@
 !.gitignore
 !db
 !font
+!font/*
+!cache
