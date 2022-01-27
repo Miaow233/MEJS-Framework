@@ -1,0 +1,11 @@
+{
+  "name": "MEJS",
+  "version": "1.0.0",
+  "description": "JavaScript Framework for Medic",
+  "main": "hdic.js",
+  "author": "Miaow",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "dependencies": {}
+}
