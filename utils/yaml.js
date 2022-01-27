@@ -1,22 +1,22 @@
-import yaml from "js-yaml";
-import fs from "fs";
-import url from "url";
-import path from "path";
+import yaml from '../lib/js-yaml.mjs'
+// import fs from 'fs'
+// import url from 'url'
+// import path from 'path'
 
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = url.fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 function loadYML(name) {
-  const filename = `${name}.yml`;
-  let filepath = path.resolve(__dirname, "..", "..", "config", filename);
+  const filename = `${name}.yml`
+  let filepath = path.resolve(__dirname, '..', '..', 'config', filename)
 
   try {
-    fs.accessSync(filepath, fs.constants.R_OK);
+    fs.accessSync(filepath, fs.constants.R_OK)
   } catch (e) {
-    filepath = path.resolve(__dirname, "..", "..", "config_defaults", filename);
+    filepath = path.resolve(__dirname, '..', '..', 'config_defaults', filename)
   }
 
-  return yaml.load(fs.readFileSync(filepath, "utf-8"));
+  return yaml.load(fs.readFileSync(filepath, 'utf-8'))
 }
 
-export { loadYML };
+export { loadYML }
