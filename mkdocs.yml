@@ -9,18 +9,73 @@ theme:
   features:
     - navigation.sections
     - navigation.tabs
-markdown_extensions:
-  - toc:
-      permalink: true
-      title: On this page
-  - admonition
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
+  font:
+    text: Noto Sans Simplified Chinese
+    code: JetBrains Mono
+    
+repo_url: https://github.com/Miaow233/MEJS-Framework
+repo_name: MEJS-Framework
+edit_uri: blob/dev/docs/
+
+copyright: Copyright &copy; Medic Project 2020-2022.
+
 extra:
+  social:
+    - icon: fontawesome/brands/qq
+      link: https://jq.qq.com/?_wv=1027&k=K5csid5C
+      name: Medic 交流群
+    - icon: material/compass
+      link: https://jq.qq.com/?_wv=1027&k=K5csid5C
+      name: 开发群
+    - icon: fontawesome/brands/github
+      link: https://github.com/Miaow233/MEJS-Framework
+      name: GitHub 组织
   search:
     language: jp # 不支持中文，改成日文好像能搜到一部分中文了（无语）
+    
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition # 提示块
+  - footnotes  # 脚注
+  - toc:       # 目录, 锚点
+      permalink: true
+      title: 目录
+  - admonition
+  - pymdownx.snippets  
+  - pymdownx.superfences  # 代码嵌套在列表里
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.mark         # 文本高亮
+  - pymdownx.smartsymbols # 符号转换      
+  - pymdownx.details      # 提示块可折叠
+  - pymdownx.inlinehilite # 行内代码高亮
+  - pymdownx.highlight
+  - codehilite:           # 代码高亮, 显示行号
+      guess_lang: false
+      linenums: true  
+  - pymdownx.betterem:    # 对加粗和斜体更好的检测
+      smart_enable: all
+  - pymdownx.magiclink    # 自动识别超链接
+  - pymdownx.tasklist:    # 复选框checklist
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+      
 
 nav:
-  - 主页: index.md
-  - 接口一览: 接口一览.md
+  - 主页:
+    - index.md
+    - quickstart.md
+    - 附录:
+      - changelog.md
+  - Medic 文档:
+    - 快速开始: guide/getting-started.md
+    - 词库:
+      - 词库简介: dic/dic-intro.md
+      - 词库基础: dic/dic-basic.md
+      - 词库信息: dic/dic-info.md
+      - 词库加密: dic/dic-encrypt.md
+    - 参考:
+      - 内置 API 类: reference/api.md
+      - 内置 Toolkit 类: reference/toolkit.md
