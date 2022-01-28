@@ -2,16 +2,11 @@
   "name": "MEJS",
   "version": "1.0.0",
   "description": "JavaScript Framework for Medic",
-  "main": "hdic.js",
+  "main": "src/hdic.js",
   "author": "Miaow",
   "license": "MIT",
   "private": true,
   "type": "module",
   "dependencies": {},
-  "devDependencies": {
-    "clean-webpack-plugin": "^4.0.0",
-    "typescript": "^4.5.5",
-    "webpack": "^5.67.0",
-    "webpack-cli": "^4.9.2"
-  }
+  "devDependencies": {}
 }

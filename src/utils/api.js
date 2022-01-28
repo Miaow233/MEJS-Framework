@@ -158,18 +158,18 @@ function getAnnounce(id) {
  * @param {*} content
  */
 function addAnnounce(id, content) {
-  // pinned            为 0 时不置顶
-  // type              为 1 时为群公告(未知)
-  // is_show_edit_card 为 1 时引导成员编辑昵称
-  // tip_window_type   是否弹窗通知(未知)
-  // confirm_required  为 1 时需要确认收到
+  // pinned       为 0 时不置顶
+  // type         为 1 时为群公告(未知)
+  // is_edit_card 为 1 时引导成员编辑昵称
+  // tip_type     是否弹窗通知(未知)
+  // confirm      为 1 时需要确认收到
   let pinned = 0
   let type = 1
-  let is_show_edit_card = 1
-  let tip_window_type = 1
-  let confirm_required = 1
-  let data = `qid=${id}&bkn=${BKN}&text=${content}&pinned=${pinned}&type=${type}&settings={"is_show_edit_card":${is_show_edit_card},"tip_window_type":${tip_window_type},"confirm_required":${confirm_required}}`
-  let res = fetchApi('POST', `https://web.qun.qq.com/cgi-bin/announce/add_t?bkn=${BKN}&qid=${id}&ft=23&s=-1&n=20`, data)
+  let show_edit_card = 1
+  let tip_type = 1
+  let confirm = 1
+  let data = `qid=${id}&bkn=${BKN}&text=${content}&pinned=${pinned}&type=${type}&settings={"is_show_edit_card":${show_edit_card},"tip_window_type":${tip_type},"confirm_required":${confirm}}`
+  let res = fetchApi('POST', `https://web.qun.qq.com/cgi-bin/announce/add_qun_notice?bkn=${BKN}`, data)
   return res
 }
 

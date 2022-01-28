@@ -1,7 +1,6 @@
 ./hdic.js                 词库主文件
-
-./cache.js
-  getCache                缓存 URL 并获得内容
+./hdic.test.js            测试词库
+./hdic.example.js         示例词库
 
 ./config.js               储存一些常用变量
 
@@ -28,6 +27,9 @@
   getSysMsg               获取群操作记录
   setAnonySwitch          设置群匿名开关
   setGroupAdmin           设置管理员
+
+./utils/cache.js
+  getCache                缓存 URL 并获得内容
 
 ./utils/database.js(暂未完善)       
   clean                   清理数据库
