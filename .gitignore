@@ -1,5 +1,3 @@
-# Ignore these in this directory
+# Packages
 node_modules
-yarn.lock
-
-# Except these files
+/yarn.lock

@@ -1,12 +1,16 @@
 {
   "name": "MEJS",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "JavaScript Framework for Medic",
-  "main": "src/hdic.js",
-  "author": "Miaow",
+  "main": "src/index.ts",
+  "repository": "https://nekohouse.cafe",
+  "author": "Miaow233 <miaow233@qq.com>",
   "license": "MIT",
   "private": true,
-  "type": "module",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "webpack": "^5.67.0"
+  }
 }
