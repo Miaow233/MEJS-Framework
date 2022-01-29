@@ -91,4 +91,5 @@ nav:
           - 使用 JavaScript:
               - 内置 JavaScript 支持库: Medic/reference/libs/javascript.md
               - MEJS2 词库: /
+          - 画图库: Medic/reference/libs/draw.md
           - 自定义 Dex 库函数: Medic/reference/libs/java.md

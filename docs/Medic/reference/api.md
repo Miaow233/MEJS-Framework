@@ -16,7 +16,7 @@
 === "参数列表"
     | 参数  | 类型 | 描述 |
     | :---: | :--: | :--: |
-    | group | long | 群号 |
+    | groupId | long | 群号 |
 === "返回值"
     boolean
 
@@ -34,7 +34,7 @@
 === "参数列表"
 | 参数 | 类型 |      描述      |
 | :--: | :--: | :------------: |
-| msg  |      | 发送的消息内容 |
+| msg  |   String   | 发送的消息内容 |
 === "返回值"
     无
 
@@ -44,7 +44,7 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   id   |      |  群号    |
+    |   id   |   long   |  群号    |
 === "返回值"
     无
 
@@ -54,7 +54,7 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   code   |      |  群代码    |
+    |   code   |   String   |  群代码    |
 === "返回值"
     无
 
@@ -74,7 +74,7 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   text   |   String   |  文本消息内容	    |
+    |   text | String  | 文本消息内容   |
 === "返回值"
     无
 
@@ -84,7 +84,7 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   img   |      |    图片本地路径或网址  |
+    |   img   |   String   |    图片本地路径或网址  |
 === "返回值"
     无
 
@@ -94,7 +94,7 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |    id  |      |  用户QQ    |
+    |    id  |   long   |  用户QQ    |
     |name||用户昵称|
 === "返回值"
     无
@@ -105,7 +105,7 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   json   |      | 消息字符串     |
+    |   json   |   String   | 消息字符串     |
 === "返回值"
     无
 
@@ -115,7 +115,7 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |    xml  |      |   消息字符串   |
+    |    xml  |    String  |   消息字符串   |
 === "返回值"
     无
 
@@ -125,8 +125,8 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |    ptt  |      |    本地语音文件路径或网址  |
-    |time||（参数可选）显示播放时长单位秒	|
+    |    ptt  |   String   |    本地语音文件路径或网址  |
+    |time|int|（参数可选）显示播放时长单位秒	|
 === "返回值"
     无
 
@@ -136,9 +136,10 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |    groupId  |      |  群号    |
-    |mark||消息标记|
-参数都可省略
+    |    groupId  |   long   |  群号    |
+    | mark | String | 消息标记 |
+
+    参数都可省略
 === "返回值"
     无
 
@@ -152,7 +153,7 @@
 
 ## getAcct()
 === "说明"
-    获取当前登录账号，同@robot
+    获取当前登录账号，同 `@robot`
 === "参数列表"
     无
 === "返回值"
@@ -196,7 +197,7 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |    format  |      |    时间格式化文本，y年M月d日H/h时m分s秒  |
+    |    format  |   String  | 时间格式化文本，y年M月d日H/h时m分s秒  |
 === "返回值"
     String
 
@@ -222,15 +223,13 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   index   |   int   |   获取第几个@   |
+    |   index  |   int   |   获取第几个@   |
 === "返回值"
     JsonArray[id,name], index 为第几个@
 
 ## getMachineCode()
 === "说明"
     获取当前设备的信息，需要权限 `手机信息`
-=== "参数列表"
-    无
 === "返回值"
     JsonObject
 
@@ -240,8 +239,8 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |  group    |   long  |  群号    |
-    |title|string|红包标题|
+    |  groupId  |   long  |  群号    |
+    |title|String|红包标题|
     |money|int|红包金额(单位分)|
     |qq|long|允许领取红的用户(可以多人)|
 === "返回值"
@@ -253,10 +252,10 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |  groupid    |      |    群号  |
-    |memberid||用户QQ|
-    |requestid||系统消息ID(请使用@c1)|
-    |agree||是否同意（0/-1）|
+    |  groupId    |  long   |    群号  |
+    |memberId|long|用户QQ|
+    |requestId|  |系统消息ID(请使用@c1)|
+    |agree| int |是否同意（0/-1）|
 === "返回值"
     无
 
@@ -266,19 +265,19 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   group   |      |   群号   |
-    |member||用户QQ|
+    |   groupId   |   long   |   群号   |
+    |memberId|  long  |用户QQ|
 === "返回值"
     无
 
 ## shotup()
 === "说明"
-    	禁言群成员，如果 member 为 -1 则表示群禁言，time=0 时表示解除禁言
+    禁言群成员，如果 member 为 -1 则表示群禁言，time=0 时表示解除禁言
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   group   |    long  | 群号     |
-    |member|long|用户QQ|
+    |   groupId   |  long  | 群号     |
+    |memberId|long|用户QQ|
     |time|int|禁言时间(单位秒)|
 === "返回值"
     无
@@ -289,61 +288,68 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   group   |  long  |  群号    |
-    |member|long|用户QQ|
-    |card|string|群名片|
+    |   groupId   |  long  |  群号    |
+    |memberId|long|用户QQ|
+    |card|String|群名片|
 === "返回值"
     无
 
 ## getSkey()
 === "说明"
     获取 QQSkey，此参数可以用于登录 QQ 空间等
-=== "参数列表"
-    无
 === "返回值"
-    JsonObject
+    String
 
 ## getPSkey()
 === "说明"
     同上
-=== "参数列表"
-    无
 === "返回值"
     JsonObject
+=== "返回示例"
+    ```json
+    {
+        "office.qq.com": "BklfedOwfwpVd0t9Tfw-QnEVJyfRXuLcz8pHWlQ96jk_",
+        "qun.qq.com": "P1KcswP6wOpY6zO29-5cqMMWVEgtWiYUszMRfixYOog_",
+        "gamecenter.qq.com": "*JW*fcXekLLoIIpPZBnR1e6FRE8WjIxz1mCUFAPbTAI_",
+        "docs.qq.com": "gpQseG6U8bM9iuHX-8JF6MZ0*4hsxgEycNJvCAyNE50_",
+        "mail.qq.com": "zrxuT9-TyqSBVdRGvBcWKlET4Cwl06SzbW31DmA61jg_",
+        "ti.qq.com": "4yEDLFqlg9e6G4F8iKO3QUuva24dgLKxwA5q6jC6L6k_",
+        "vip.qq.com": "*N9neS-sAQDUbj7fAH7pg4rFm8IZrQMzHF2ukMbZrQg_",
+        "tenpay.com": "uFwua23XkdMYK2fZllH9HpfG*W3IrXPzmi2WDPd5owA_",
+        "qqweb.qq.com": "lHU3VjJCjU4CIEv5rngffJPQWetcgovxPny4yB*Dhw0_",
+        "qzone.qq.com": "tjLrnSRyRYqHZbpKNayJCkAYGLJiqqmrcnF8zPi4uts_",
+        "mma.qq.com": "j2d3qFltIf52P9-uVOFF5N1vXDHr2qiBU31KINsfpWM_",
+        "game.qq.com": "UV6SQGUBcamDITIzS-QyNAxIVNiDUvvIAOO8BH*x8vg_",
+        "openmobile.qq.com": "qcF9-bJkWHUApdDSUeMjJq6tmtcwNHeOPwLMux6lumo_",
+        "connect.qq.com": "zCgkCk0aLDAgV8izWHE5cScRYRGqfMkmQ3S930W3C7w_"
+    }
+    ```
 
 ## getTextMsg()
 === "说明"
     获取消息中文本内容，对于 xml 和 json 消息，获取的内容例子`[名片分享]你的QQ版本不支持查看该名片分享内容，请下载最新版本。`
-=== "参数列表"
-    无
 === "返回值"
     String
 
 ## getJsonMsg()
 === "说明"
     获取消息中JSON的内容，如果没有则返回空文本
-=== "参数列表"
-    无
 === "返回值"
     String
 
 ## getXmlMsg()
 === "说明"
     获取消息中 xml 的内容，如果没有则返回空文本
-=== "参数列表"
-    无
 === "返回值"
     String
 
 ## getImageMsg()
 === "说明"
     获取消息中图片的文件名，自动通过接口获取图片
-=== "参数列表"
-    无
 === "返回值"
     String
 
-## checkAdmin(uin)
+## checkAdmin()
 === "说明"
     检查超级管理员, 同 UI 界面
 === "参数列表"
@@ -353,7 +359,7 @@
 === "返回值"
     boolean
 
-## setAdmin(uin,isSet=true)
+## setAdmin()
 === "说明"
     设置超级管理员
 === "参数列表"
@@ -386,7 +392,7 @@
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |   groupid  |  long    |   群号   |
+    |   groupId  |  long    |   群号   |
 === "返回值"
     JsonObject
 
@@ -396,9 +402,9 @@
 === "参数列表"
 | 参数 | 类型 | 描述 |
 | :--: | :--: | :--: |
-|    mod  |   string   |  模块名    |
+|    mod  |   String   |  模块名    |
 === "返回值"
-    String	
+    <String\>
 
 ## setContinue()
 === "说明"
@@ -412,21 +418,49 @@
 
 ## putVariable()
 === "说明"
-    设置可变变量
+    设置全局变量
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |key||可变变量|
-    |msg||变量内容	|
+    |key|String|全局变量键|
+    |val|String|变量内容	|
 === "返回值"
     无
 
 ## getVariable()
 === "说明"
-    获取可变变量
+    获取全局变量
 === "参数列表"
     | 参数 | 类型 | 描述 |
     | :--: | :--: | :--: |
-    |key||可变变量	|
+    |key|String|可变变量	|
 === "返回值"
-    String
+    <String\> 全局变量值
+
+## getRunTimes()
+=== "说明"
+    获取运行时间，返回秒
+=== "返回值"
+    <int\> 运行秒数
+
+## getBatteryLevel()
+=== "说明"
+    获取手机电量
+=== "返回值"
+    <int\>
+
+## getBatteryStatus()
+=== "说明"
+    获取手机充电状态
+=== "返回值"
+    <String\>
+
+## pokeAvatar()
+=== "说明"
+    戳一戳
+=== "参数列表"
+    | 参数 | 类型 | 描述 |
+    | :--: | :--: | :--: |
+    |uin|long|被戳用户|
+=== "返回值"
+    无
