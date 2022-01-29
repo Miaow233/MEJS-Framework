@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Botui 内嵌专用页面</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Botui 内嵌专用页面">
+  <meta name="keywords" content="Botui 内嵌专用页面">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./botui.min.css" rel="stylesheet">
+  <link href="./botui-theme-default.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+  <script src="./botui.js"></script>
+</head>
+
+<body>
+    <div id="my-botui-app">
+        <bot-ui>该内容未能正确显示，请刷新页面、更换浏览器或网络环境。</botui>
+      </div>
+<script>
+var botui = new BotUI('my-botui-app');
+botui.message.add({
+  human: true,
+  content: '开机'
+});
+botui.message.add({
+  delay: 600,
+  content: 'Hello World!'
+});
+
+</script>
+</body>
+</html>

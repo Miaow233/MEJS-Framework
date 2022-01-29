@@ -10,6 +10,7 @@ theme:
     - navigation.top
     - navigation.tabs
     - navigation.sections
+    - content.code.annotate # 代码块注释
   font:
     text: Noto Sans Simplified Chinese
     code: JetBrains Mono
@@ -33,6 +34,13 @@ extra:
       name: GitHub 组织
   search:
     language: jp # 不支持中文，改成日文好像能搜到一部分中文了（无语）
+
+# extra_css:
+#   - https://unpkg.com/botui/build/botui.min.css
+#   - https://unpkg.com/botui/build/botui-theme-default.css
+# extra_javascript:
+#   - https://cdn.jsdelivr.net/vue/latest/vue.min.js
+#   - https://unpkg.com/botui/build/botui.min.js
 
 markdown_extensions:
   - attr_list
@@ -68,7 +76,7 @@ nav:
       - 附录:
           - changelog.md
   - Medic 文档:
-      - 介绍: Medic/intro.md
+      - 介绍: Medic/index.md
       - 快速开始: Medic/quickstart.md
       - 基础:
           - 词库介绍: Medic/basic/dic.md
@@ -76,6 +84,7 @@ nav:
           - 常量介绍: Medic/basic/constant.md
           - 模块介绍: Medic/basic/mod.md
           - 变量介绍: Medic/basic/value.md
+          - Medic/basic/system.md
       - 参考:
           - 内置 API 类: Medic/reference/api.md
           - 内置 Toolkit 类: Medic/reference/toolkit.md
