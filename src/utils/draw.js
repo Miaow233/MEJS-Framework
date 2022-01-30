@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * 将位图保存成图片文件
  * @param {Bitmap} bitmap
@@ -66,4 +67,4 @@ function drawPanel(x, y) {
   saveBitmap(img, '/sdcard/DIC/data/cache/temp.png')
 }
 
-drawPanel(4, 4)
+export { saveBitmap, drawPanel }

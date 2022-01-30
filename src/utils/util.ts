@@ -1,11 +1,12 @@
-import { SKEY, PSKEY, BKN } from '../constant.js'
-
+const SKEY = bot.getSkey()
+const PSKEY = bot.getPSkey()
+const BKN = getCSRFToken(SKEY)
 /**
  * bkn计算方法
  * @param {string} skey
  * @returns {number} bkn
  */
-let getCSRFToken = function (skey: any): number {
+function getCSRFToken(skey: any): number {
   let bkn = 5381
   for (let v of skey) bkn = bkn + (bkn << 5) + v
   bkn &= 2147483647
@@ -36,4 +37,4 @@ async function fetchApi(method: string, url: string, data = '') {
   return response.result
 }
 
-export { getCSRFToken, fetchApi }
+export { getCSRFToken, fetchApi, PSKEY, SKEY, BKN }

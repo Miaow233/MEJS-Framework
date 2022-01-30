@@ -1,3 +1,5 @@
+// @ts-nocheck
+import { saveBitmap } from '../utils/draw'
 // 自定义列提示字母
 const COLUMN_NAME = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -33,7 +35,7 @@ class Image {
 }
 
 // 扫雷主体类
-export default class MineSweeper {
+export class MineSweeper {
   constructor(row, column, mines) {
     if (row > 26 || column > 26) throw ValueError('暂不支持这么大的游戏盘')
     if (mines >= row * column || mines == 0) throw ValueError('非法操作')
@@ -118,19 +120,4 @@ export default class MineSweeper {
       }
     }
   }
-}
-
-// 将 Bitmap 保存为图片
-function saveBitmap(bitmap, path) {
-  let File = Java.type('java.io.File')
-  let FileOutputStream = Java.type('java.io.FileOutputStream')
-  let CompressFormat = Java.type('android.graphics.Bitmap$CompressFormat')
-  let file = new File(path)
-  if (file.exists()) {
-    file.delete()
-  }
-  file.createNewFile()
-  let out = new FileOutputStream(file)
-  bitmap.compress(CompressFormat.PNG, 80, out)
-  out.close()
 }

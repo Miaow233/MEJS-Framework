@@ -1,5 +1,4 @@
-import { fetchApi } from './util.js'
-import { BKN } from '../constant.js'
+import { fetchApi, BKN } from './util.js'
 
 /**
  * 获取好友列表
