@@ -1,5 +1,5 @@
 import { fetchApi } from './util.js'
-import { BKN } from '../config.js'
+import { BKN } from '../constant.js'
 
 /**
  * 获取好友列表
@@ -114,7 +114,7 @@ async function getFriendInfo(id: number) {
  * @param {*} id
  * @returns
  */
-function getGroupHonor(id) {
+function getGroupHonor(id: any) {
   let res = fetchApi('GET', `https://qun.qq.com/interactive/qunhonor?gc=${id}`)
   return res
 }
@@ -124,7 +124,7 @@ function getGroupHonor(id) {
  * @param {*} id
  * @returns
  */
-function getEssence(id) {
+function getEssence(id: any) {
   let res = fetchApi('GET', `https://qun.qq.com/essence/index?gc=${id}`)
   return res
 }
@@ -134,14 +134,14 @@ function getEssence(id) {
  * @param {*} id
  * @returns
  */
-function getAnnounce(id) {
+function getAnnounce(id: any) {
   let res = fetchApi('GET', `https://web.qun.qq.com/cgi-bin/announce/get_t_list?bkn=${BKN}&qid=${id}&ft=23&s=-1&n=20`)
   return res
 }
 
 /**
  * 发群公告
- * @param {*} id
+ * @param {number} id
  * @param {*} content
  */
 function addAnnounce(id: number, content: string) {
@@ -162,6 +162,8 @@ function addAnnounce(id: number, content: string) {
 
 /**
  * 获取指定群组信息
+ * @param {number} id
+ * @returns {object}
  */
 async function getGroupInfo(id: number): Promise<object> {
   let res = await fetchApi('POST', `https://qinfo.clt.qq.com/cgi-bin/qun_info/get_group_info_all?gc=${id}&bkn=${BKN}`)
@@ -227,7 +229,7 @@ async function getJoink(id) {
  * @param {number} id
  * @returns {string}
  */
-async function getGroupJoinUrl(id) {
+async function getGroupJoinUrl(id: number): Promise<string> {
   let joinK = await getJoink(id)
   return `https://qm.qq.com/cgi-bin/qm/qr?k=${joinK}&jump_from=webapi`
 }
