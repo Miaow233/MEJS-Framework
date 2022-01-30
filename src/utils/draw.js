@@ -46,7 +46,7 @@ function drawPanel(x, y) {
   let paint = new Paint() // 画笔
   let canva = new Canvas(img) // 画布
 
-  //paint.setStrokewidth(5)
+  paint.setStrokeWidth(5)
   paint.setColor(Color.argb(255, 255, 153, 204)) // 画笔颜色
   canva.drawARGB(255, 255, 255, 255) // 画布背景色
 
