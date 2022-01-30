@@ -1,4 +1,4 @@
-import { SKEY, PSKEY, BKN } from '../config.js'
+import { SKEY, PSKEY, BKN } from '../constant.js'
 
 /**
  * bkn计算方法

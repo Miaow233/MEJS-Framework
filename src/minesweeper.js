@@ -67,6 +67,7 @@ export default class MineSweeper {
     let start = new Date()
     this.img = Bitmap.createBitmap(this.column * 80, this.row * 80, Config.ARGB_8888) // 图片对象
     this.#draw_split_line(this.img)
+    this.#draw_cell_cover(this.img)
     saveBitmap(this.img, '/sdcard/DIC/data/cache/minesweeper.png')
   }
 
@@ -82,11 +83,39 @@ export default class MineSweeper {
     paint.setColor(Color.argb(241, 148, 138, 0.5)) // 画笔颜色
     canva.drawARGB(255, 255, 255, 255) // 画布背景色
 
-    for (let i = 5; i < this.row; i++) {
+    for (let i = 0; i < this.row; i++) {
       canva.drawLine(0, i * 80, this.column * 80, i * 80)
     }
     for (let i = 0; i < this.column; i++) {
       canva.drawLine(i * 80, 0, i * 80, this.row * 80)
+    }
+  }
+  // 绘制标记
+  #draw_cell_cover(img) {
+    for (let i = 0; i < this.row; i++) {
+      for (let j = 0; i < this.column; i++) {
+        cell = self.panel[i][j]
+        if (this.state == GameState.FAIL && cell.is_mine) {
+          draw.rectangle(
+            (j * 80 + 1, i * 80 + 1, (j + 1) * 80 - 1, (i + 1) * 80 - 1),
+            (fill = ImageColor.getrgb('red'))
+          )
+          continue
+        }
+        if (cell.is_marked) {
+          draw.rectangle(
+            (j * 80 + 1, i * 80 + 1, (j + 1) * 80 - 1, (i + 1) * 80 - 1),
+            (fill = ImageColor.getrgb('blue'))
+          )
+          continue
+        }
+        if (!cell.is_mined) {
+          draw.rectangle(
+            (j * 80 + 1, i * 80 + 1, (j + 1) * 80 - 1, (i + 1) * 80 - 1),
+            (fill = ImageColor.getrgb('gray'))
+          )
+        }
+      }
     }
   }
 }

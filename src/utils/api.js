@@ -1,5 +1,5 @@
 import { fetchApi } from './util.js'
-import { BKN } from '../config.js'
+import { BKN } from '../constant.js'
 
 /**
  * 获取一个好友实例

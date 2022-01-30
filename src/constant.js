@@ -4,7 +4,9 @@ let getCSRFToken = function (skey) {
     return 2147483647 & t
   }
 }
+let MASTER = 123456789 // 主人QQ号
+let ADMIN = [123456789, 987654321] // 管理员QQ号
 const SKEY = bot.getSkey()
 const PSKEY = JSON.parse(bot.getPSkey())
 const BKN = getCSRFToken(SKEY)
-export { SKEY, PSKEY, BKN }
+export { MASTER, ADMIN, SKEY, PSKEY, BKN }
