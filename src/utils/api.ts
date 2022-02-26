@@ -246,7 +246,6 @@ export {
   getGroupSetting,
   getMembersInfo,
   getQQLevelInfo,
-  //getSysMsg,
   setAnonySwitch,
   setGroupAdmin,
 }

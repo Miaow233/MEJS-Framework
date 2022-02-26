@@ -1,11 +1,4 @@
-const SKEY = bot.getSkey()
-const PSKEY = bot.getPSkey()
-const BKN = getCSRFToken(SKEY)
-/**
- * bkn计算方法
- * @param {string} skey
- * @returns {number} bkn
- */
+/** bkn计算方法 */
 function getCSRFToken(skey: any): number {
   let bkn = 5381
   for (let v of skey) bkn = bkn + (bkn << 5) + v
@@ -13,13 +6,19 @@ function getCSRFToken(skey: any): number {
   return bkn
 }
 
-function getCookie(domain: string) {
+const SKEY = bot.getSkey()
+const PSKEY = bot.getPSkey()
+const BKN = getCSRFToken(SKEY)
+export { SKEY, PSKEY, BKN }
+
+export function getCookie(domain: string) {
   const cookie = `uin=o${bot.uin}; skey=${SKEY};`
   if (!PSKEY[domain]) return cookie
   return `${cookie} p_uin=o${bot.uin}; p_skey=${PSKEY[domain]};`
 }
 
-async function fetchApi(method: string, url: string, data = '') {
+/** 获取api数据 */
+export async function fetchApi(method: string, url: string, data = '') {
   let domain = url.split('/')[2].split('.').slice(-3).join('.')
   let headers = {
     'User-Agent':
@@ -36,6 +35,7 @@ async function fetchApi(method: string, url: string, data = '') {
   if (response.status != 200) throw Error('Network Error: ' + response.status)
   return response.result
 }
+
 /** xml转义 */
 export function escapeXml(str: string) {
   return str.replace(/[&"><]/g, function (s: string) {
@@ -46,7 +46,7 @@ export function escapeXml(str: string) {
     return ''
   })
 }
+
 export function getGroupImageUrl(md5: string) {
   return `https://gchat.qpic.cn/gchatpic_new/0/0-0-${md5.toUpperCase()}/0`
 }
-export { getCSRFToken, fetchApi, PSKEY, SKEY, BKN }

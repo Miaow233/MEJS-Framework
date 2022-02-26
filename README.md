@@ -1,3 +1,17 @@
+# MEJS-Framework
+
+## 关于本框架
+MEJS Framework 是为 Medic 设计的 JS 词库开发框架. 基于 J2V8, 使用 TS 编写, 提供了丰富的 API 功能.
+
+## 特性
+- 符合直觉的接口
+- 丰富的 API 功能
+- 对常用功能进行了封装, 便于简化操作
+- 使用 ES6 语法
+- 易于开发
+
+## API 参考
+```text
 ./hdic.js                 词库主文件
 
 ./cache.js
@@ -60,3 +74,4 @@
 
 ./utils/yaml.js
   loadYML                 读取 YAML 配置文件
+```
