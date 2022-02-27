@@ -10,7 +10,7 @@ let sqlite = Java.type('android.database.sqlite.SQLiteDatabase')
 // console.log(sqliteVersion)
 
 // 数据库工具类
-class db {
+export class db {
   constructor(dbName) {
     this.dbName = dbName
     this.db = sqlite.openOrCreateDatabase(dbName, null)

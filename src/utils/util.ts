@@ -1,5 +1,5 @@
 /** bkn计算方法 */
-function getCSRFToken(skey: any): number {
+export function getCSRFToken(skey: any): number {
   let bkn = 5381
   for (let v of skey) bkn = bkn + (bkn << 5) + v
   bkn &= 2147483647
@@ -26,7 +26,7 @@ export async function fetchApi(method: string, url: string, data = '') {
     Referer: 'https://' + domain,
     Cookie: getCookie(domain),
   }
-  let response: Response
+  let response: any
   if (method.toUpperCase() === 'POST') {
     response = await compat.access(url, headers, data)
   } else {

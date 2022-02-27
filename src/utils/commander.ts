@@ -1,5 +1,5 @@
 // @ts-nocheck
-// https://github.com/substack/minimist
+// 来自 https://github.com/substack/minimist 的命令解析器
 export default function (args, opts = {}) {
   if (!opts) opts = {}
 

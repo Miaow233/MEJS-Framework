@@ -28,10 +28,10 @@ MEJS Framework 是为 Medic 设计的 JS 词库开发框架. 基于 J2V8, 使用
   addAnnounce             发送群公告
   getAnnounce             获取群公告
   getEssence              获取群精华
-  getFriend               获取一个好友实例
+  getFriend               获取一个好友实例[废弃]
   getFriendInfo           获取好友信息
   getFriends              获取好友列表
-  getGroup                获取一个群组实例
+  getGroup                获取一个群组实例[废弃]
   getGroupHonor           获取群荣誉
   getGroupInfo            获取群信息
   getGroupJoinUrl         获取加群链接
@@ -39,11 +39,11 @@ MEJS Framework 是为 Medic 设计的 JS 词库开发框架. 基于 J2V8, 使用
   getGroupSetting         获取群设置
   getMembersInfo          获取群成员活动信息
   getQQLevelInfo          获取 QQ 成长信息
-  getSysMsg               获取群操作记录
+  getSysMsg               获取群操作记录[废弃]
   setAnonySwitch          设置群匿名开关
   setGroupAdmin           设置管理员
 
-./utils/database.js(暂未完善)       
+./utils/database.js[废弃]      
   clean                   清理数据库
   get                     获取数据
   has                     键的存在性
@@ -55,10 +55,10 @@ MEJS Framework 是为 Medic 设计的 JS 词库开发框架. 基于 J2V8, 使用
   update                  更新数据
   write                   写入数据库
 
-./utils/merge.js
+./utils/merge.js[废弃]
   merge                   合并数据
 
-./utils/tools.js
+./utils/tools.js[废弃]
   filterWordsByRegex      根据正则过滤匹配的子串
   getRandomInt            返回随机整数
   getWordByRegex          根据正则获取匹配的子串
@@ -72,6 +72,6 @@ MEJS Framework 是为 Medic 设计的 JS 词库开发框架. 基于 J2V8, 使用
   similarity              计算两个字符串的相似度
   similarityMaxValue      字符串相似的最大值
 
-./utils/yaml.js
+./utils/yaml.js[废弃]
   loadYML                 读取 YAML 配置文件
 ```
