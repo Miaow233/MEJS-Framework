@@ -17,3 +17,6 @@ export {
 
 // 关于本框架的用法请参考 hdic.test.js
 // 阅读 README.md 可以看到所有接口的说明
+
+bot.deleteMember
+

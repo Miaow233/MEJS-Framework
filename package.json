@@ -7,7 +7,6 @@
   "author": "Miaow233 <miaow233@qq.com>",
   "license": "MIT",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "tsc"
   },
