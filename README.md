@@ -32,6 +32,8 @@ MEJS Framework 是为 Medic 设计的 JS 词库开发框架. 基于 J2V8, 使用
   fetchApi                用于访问 QQ Api 接口
   getCookie               获取 cookie
   getCSRFToken            获取 bkn
+  escapeXml               xml 转义
+  getGroupImageUrl        获取图片链接
 
 ./utils/api.js
   addAnnounce             发送群公告
