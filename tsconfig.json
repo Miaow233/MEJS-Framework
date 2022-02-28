@@ -18,5 +18,5 @@
     "outDir": "dist" // 指定输出目录
   },
   "include": ["src", "src/types/*.d.ts"],
-  "exclude": ["src/test"]
+  "exclude": ["src/test", "src/example"]
 }
