@@ -17,7 +17,16 @@ MEJS Framework 是为 Medic 设计的 JS 词库开发框架. 基于 J2V8, 使用
 ./cache.js
   getCache                缓存 URL 并获得内容
 
-./config.js               储存一些常用变量
+./utils/commander.js      命令解析器
+
+./utils/draw.js           画图示例
+  saveBitmap              保存图片
+  drawPanel               绘制棋盘面板
+
+./utils/sqlite.js         sqlite 数据库操作
+  db.query                执行查询命令
+  db.exec                 执行 sql 语句
+  db.close                保存并关闭数据库
 
 ./utils/util.js
   fetchApi                用于访问 QQ Api 接口

@@ -20,5 +20,5 @@ export { getCSRFToken, getCookie, fetchApi, escapeXml, getGroupImageUrl } from '
 export { saveBitmap, drawPanel } from './utils/draw.js'
 export { default as cli } from './utils/commander.js'
 
-// 关于本框架的用法请参考 hdic.test.js
+// 关于本框架的用法请参考 hdic.example.js
 // 阅读 README.md 可以看到所有接口的说明
