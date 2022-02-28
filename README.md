@@ -10,6 +10,17 @@ MEJS Framework 是为 Medic 设计的 JS 词库开发框架. 基于 J2V8, 使用
 - 使用 ES6 语法
 - 易于开发
 
+## 如何使用
+将本项目所有文件解压到词库目录 `DIC/mejs` 下, 然后在 `hdic.js` 中导入本模块即可.
+```js
+import * as app from './mejs/index.js'
+// Do somethings.
+```
+
+`index.js` 文件默认导入全部模块, 如有需要请逐个导入.
+
+更多示例请参考 `hdic.example.js`.
+
 ## API 参考
 ```text
 ./hdic.js                 词库主文件
