@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { saveBitmap } from '../utils/draw'
+import { saveBitmap } from '../utils/draw.js'
 // 自定义列提示字母
 const COLUMN_NAME = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
