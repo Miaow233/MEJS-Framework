@@ -17,7 +17,7 @@ theme:
 
 repo_url: https://github.com/Miaow233/MEJS-Framework
 repo_name: MEJS-Framework
-edit_uri: blob/dev/docs/
+edit_uri: blob/main/docs/
 
 copyright: Copyright &copy; Medic Project 2020-2022.
 
@@ -72,7 +72,7 @@ nav:
   - 主页:
       - index.md
       - quickstart.md
-      - 接口一览: overview.md
+      - 插件系统: plugin-manager.md
       - 附录:
           - changelog.md
   - Medic 文档:

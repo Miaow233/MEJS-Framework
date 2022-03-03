@@ -1,0 +1,4 @@
+{
+  "master": 123456789,
+  "plugins": ["example-plugin.js", "another-plugin.js"]
+}

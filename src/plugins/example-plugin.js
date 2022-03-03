@@ -11,4 +11,4 @@ let example_plugin = {
     console.log('Hello World!')
   },
 }
-export default example_plugin
+globalThis.plugins.push(example_plugin)
