@@ -1,3 +1,4 @@
+import http from './http.js'
 import { fetchApi, BKN } from './util.js'
 
 /**
@@ -5,8 +6,8 @@ import { fetchApi, BKN } from './util.js'
  * @returns {Array}
  */
 async function getFriends(): Promise<any[]> {
-  let res = await fetchApi('GET', `https://qun.qq.com/cgi-bin/qun_mgr/get_friend_list?&bkn=${BKN}`)
-  let temp = JSON.parse(res)['result']
+  let { result } = await http.get(`https://qun.qq.com/cgi-bin/qun_mgr/get_friend_list?&bkn=${BKN}`)
+  let temp = JSON.parse(result.toString())
   let friends = []
   for (let tag in temp) {
     friends = friends.concat(temp[tag]['mems'])
@@ -18,8 +19,8 @@ async function getFriends(): Promise<any[]> {
  * 获取群组列表
  */
 async function getGroups() {
-  let res = await fetchApi('GET', `https://qun.qq.com/cgi-bin/qun_mgr/get_group_list?&bkn=${BKN}`)
-  let temp = JSON.parse(res.replace('"gc"', '"id"'))
+  let { result } = await http.get(`https://qun.qq.com/cgi-bin/qun_mgr/get_group_list?&bkn=${BKN}`)
+  let temp = JSON.parse(result.toString().replace('"gc"', '"id"'))
   let groups = []
   for (let tag in temp) {
     if (!temp[tag]) continue

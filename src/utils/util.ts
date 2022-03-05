@@ -1,3 +1,5 @@
+import http from './http'
+
 /** bkn计算方法 */
 export function getCSRFToken(skey: any): number {
   let bkn = 5381
@@ -28,9 +30,9 @@ export async function fetchApi(method: string, url: string, data = '') {
   }
   let response: any
   if (method.toUpperCase() === 'POST') {
-    response = await compat.access(url, headers, data)
+    response = await http.post(url, data, headers)
   } else {
-    response = await compat.access(url, headers)
+    response = await http.get(url, headers)
   }
   if (response.status != 200) throw Error('Network Error: ' + response.status)
   return response.result

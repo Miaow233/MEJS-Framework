@@ -69,25 +69,6 @@ export interface VideoElem {
   seconds?: number
 }
 
-/** 地点分享 */
-export interface LocationElem {
-  type: 'location'
-  address: string
-  lat: number
-  lng: number
-  name?: string
-  id?: string
-}
-
-/** 链接分享 */
-export interface ShareElem {
-  type: 'share'
-  url: string
-  title: string
-  content?: string
-  image?: string
-}
-
 /** JSON */
 export interface JsonElem {
   type: 'json'
@@ -166,8 +147,6 @@ export type MessageElem =
   | JsonElem
   | XmlElem
   | PokeElem
-  | LocationElem
-  | ShareElem
   | FileElem
 
 /** 可通过sendMsg发送的类型集合 (字符串、元素对象，或它们的数组) */
@@ -258,33 +237,6 @@ export const segment = {
     return {
       type: 'xml',
       data,
-      id,
-    }
-  },
-  /** 一种特殊消息(官方客户端无法解析) */
-  mirai(data: string): MiraiElem {
-    return {
-      type: 'mirai',
-      data,
-    }
-  },
-  /** 链接分享 */
-  share(url: string, title: string, image?: string, content?: string): ShareElem {
-    return {
-      type: 'share',
-      url,
-      title,
-      image,
-      content,
-    }
-  },
-  /** 位置分享 */
-  location(lat: number, lng: number, address: string, id?: string): LocationElem {
-    return {
-      type: 'location',
-      lat,
-      lng,
-      address,
       id,
     }
   },

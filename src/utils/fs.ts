@@ -1,8 +1,8 @@
-async function writeFile(path, data) {
-  // JavaScript写入文本文件
+/** 写入文件 */
+async function writeFile(path: string, data: any): Promise<void> {
   let File = Java.type('java.io.File')
   let FileWriter = Java.type('java.io.FileWriter')
-  let f = new File(path)
+  let f: File = new File(path)
   if (!f.exists()) {
     f.createNewFile()
   }
@@ -12,24 +12,26 @@ async function writeFile(path, data) {
   writer.close()
 }
 
-async function readFile(path) {
+/** 读取文本文件 */
+async function readFile(path: string): Promise<string> {
   // JavaScript读取文本文件
-  var File = Java.type('java.io.File')
-  var FileReader = Java.type('java.io.FileReader')
-  var Re = new FileReader(path)
-  var D = Re.read()
-  var F = ''
+  let FileReader = Java.type('java.io.FileReader')
+  let Re = new FileReader(path)
+  let D = Re.read()
+  let F = ''
   while (D != -1) {
     F += String.fromCharCode(D)
     D = Re.read()
   }
   Re.close()
+  return F
 }
 
-export function getFileList(path) {
+/** 获取文件夹目录 */
+export function getFileList(path: string) {
   let File = Java.type('java.io.File')
-  let fileDir = new File(path)
-  let fileList = []
+  let fileDir: File = new File(path)
+  let fileList: string[] = []
   fileDir.listFiles().forEach((f) => {
     if (!f.isDirectory()) fileList.push(f.getName())
   })
