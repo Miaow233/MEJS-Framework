@@ -1,4 +1,4 @@
-import http from './http'
+import * as http from './http'
 
 /** bkn计算方法 */
 export function getCSRFToken(skey: any): number {

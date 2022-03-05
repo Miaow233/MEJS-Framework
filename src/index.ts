@@ -1,19 +1,6 @@
-export {
-  addAnnounce,
-  getAnnounce,
-  getEssence,
-  getFriendInfo,
-  getFriends,
-  getGroupHonor,
-  getGroupInfo,
-  getGroupJoinUrl,
-  getGroups,
-  getGroupSetting,
-  getMembersInfo,
-  getQQLevelInfo,
-  setAnonySwitch,
-  setGroupAdmin,
-} from './utils/api.js'
+export * as http from './utils/http.js'
+export * as fs from './utils/fs.js'
+export * as app from './utils/api.js'
 
 export { db } from './utils/sqlite.js'
 export { getCSRFToken, getCookie, fetchApi, escapeXml, getGroupImageUrl } from './utils/util.js'

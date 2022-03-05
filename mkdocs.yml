@@ -73,6 +73,7 @@ nav:
       - index.md
       - quickstart.md
       - 插件系统: plugin-manager.md
+      - 接口一览: type/index.html
       - 附录:
           - changelog.md
   - Medic 文档:

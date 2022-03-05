@@ -51,34 +51,6 @@ bye~
 
 这样，一个最简单的机器人程序就可以使用了
 
-<link href="../botui.min.css" rel="stylesheet">
-<link href="../botui-theme-default.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
-<script src="../botui.js"></script>
-<div id="my-botui-app">
-    <bot-ui>该内容未能正确显示，请刷新页面、更换浏览器或网络环境。</botui>
-</div>
-<script>
-var botui = new BotUI('my-botui-app');
-botui.action.button({ // let the user perform an action
-    delay: 1000,
-    action: [
-      {
-        text: '开始对话',
-      }
-    ]
-  }).then(()=>{
-      botui.message.add({
-      delay: 400,
-      human: true,
-      content: '开机'
-  }).then(()=>{
-      botui.message.add({
-      delay: 600,
-      content: 'Hello World!'
-    })})})
-</script>
-
 ## 更多信息
 - [关于 Medic](#)
 - [软件下载](http://medicxd.top/)
