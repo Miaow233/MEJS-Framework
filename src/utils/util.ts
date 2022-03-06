@@ -1,17 +1,14 @@
-import * as http from '../extension/http'
+import * as http from '../extension/http.js'
 
 /** bkn计算方法 */
-export function getCSRFToken(skey: any): number {
-  let bkn = 5381
-  for (let v of skey) bkn = bkn + (bkn << 5) + v
-  bkn &= 2147483647
-  return bkn
+export function getCSRFToken(str){
+   let hash = 5381;
+   for(let i = 0, len = str.length; i < len; ++i)
+   {
+   hash += (hash << 5) + str.charAt(i).charCodeAt();
+   }
+   return hash & 0x7fffffff;
 }
-
-const SKEY = bot.getSkey()
-const PSKEY = bot.getPSkey()
-const BKN = getCSRFToken(SKEY)
-export { SKEY, PSKEY, BKN }
 
 export function getCookie(domain: string) {
   const cookie = `uin=o${bot.uin}; skey=${SKEY};`

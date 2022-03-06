@@ -4,6 +4,8 @@ declare namespace bot {
   const machineCode: string
   const name: string
   const uin: number
+  const pskey: string
+  const skey: string
   function checkAdmin(group_id: number, qq_id: number): boolean
   function deleteMember(group_id: number, qq_id: number): void
   function getClientKey(): string

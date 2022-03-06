@@ -1,5 +1,5 @@
 import * as http from '../extension/http.js'
-import { fetchApi, BKN } from './util.js'
+import { fetchApi } from './util.js'
 
 /**
  * 获取好友列表

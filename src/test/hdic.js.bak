@@ -1,0 +1,44 @@
+import * as app from './mejs/index.js'
+
+$.on('message.group', async(session) => {
+  if (session.msg == 'list') {
+    let list = ''
+    globalThis.plugins.forEach((p) => {
+      list += `${p.info.name}
+    ${p.info.description}\n`
+    })
+    let client = session.client
+    client.addText(list)
+    bot.send(client)
+  }
+  globalThis.plugins.forEach((p) => {
+    if (p.enable) {
+      try {
+        p.action(session)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  })
+})
+function reply(msg) {
+    let client = session.client;
+    client.addText(msg);
+    bot.send(client);
+}
+async function main(session) {
+  globalThis.session = session
+    reply('Hello World!');
+}
+// @ts-ignore
+$.on('message.group', async (session) => {
+  try {
+    await main(session)
+  } catch(e) {
+    console.log(e)
+  }
+});
+// @ts-ignore
+$.on('message.friend', async (session) => main(session));
+// @ts-ignore
+$.on('message.temp', async (session) => main(session));

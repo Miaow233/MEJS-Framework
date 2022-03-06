@@ -1,0 +1,44 @@
+function reply(msg) {
+    let client = session.client;
+    client.addText(msg);
+    bot.send(client);
+}
+function sendGroupMessage(gid, msg) {
+    let client = session.client;
+    client.group = gid;
+    client.addText(msg);
+    bot.send(client);
+}
+async function main(session) {
+    globalThis.session = session;
+    console.log(JSON.stringify(Object.getOwnPropertyNames(session)))
+    console.log(JSON.stringify(session))
+    //reply('Hello World!');
+    //sendGroupMessage(164725525, 'Hello World!');
+}
+
+// @ts-ignore
+$.on('message.group', async (session) => {
+    try {
+        await main(session);
+        let client = session.client;
+        console.log(JSON.stringify(Object.entries(client)))
+    }
+    catch (e) {
+        console.log(e);
+    }
+});
+// @ts-ignore
+$.on('message.friend', async (session) => main(session));
+// @ts-ignore
+$.on('message.temp', async (session) => main(session));
+
+while(true) {
+  if(bot.skey){
+    $.emit('online', bot)
+    break
+  }
+}
+$.on('online', (bot)=> console.log(bot.uin + ' 已上线'))
+let res = await compat.access('https://nekohouse.cafe')
+console.log(res.result)
