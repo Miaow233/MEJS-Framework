@@ -1,26 +1,19 @@
 import * as app from './index.js'
-
-function reply(msg: string) {
-  let client = session.client
-  client.addText(msg)
-  bot.send(client)
-}
-
-function sendGroupMessage(gid: number, msg: any) {
-  let client = session.client
-  client.group = gid
-  client.addText(msg)
-  bot.send(client)
-}
-
+import { At, Image, Text } from './message.js'
+import { createChain, reply, sendGroupMessage } from './message.js'
 async function main(session: typeof globalThis.session) {
-  globalThis.session = session
-  reply('Hello World!')
-  sendGroupMessage(164725525, 'Hello World!')
+  let client = session.client
+  let group = session.group
+  let sender = session.uin
+  let msg = session.msg
+  //reply('Hello World!')
+  //sendGroupMessage(164725525, 'Hello World!')
+  bot.send(createChain([Image('https://www.baidu.com/img/bd_logo1.png'), Text('file'), At(sender, 'Hello World!')]))
 }
 
 // @ts-ignore
 $.on('message.group', async (session) => {
+  globalThis.session = session
   try {
     await main(session)
   } catch (e) {

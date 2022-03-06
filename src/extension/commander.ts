@@ -1,6 +1,7 @@
 // @ts-nocheck
 // 来自 https://github.com/substack/minimist 的命令解析器
 export default function (args, opts = {}) {
+  args = args.split(' ')
   if (!opts) opts = {}
 
   var flags = { bools: {}, strings: {}, unknownFn: null }

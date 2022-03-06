@@ -14,7 +14,7 @@ declare namespace session {
   // message.nick 获取发送者昵称
   // message.time 获取这条消息的时间戳
   // message.client 用于发送消息的接口
-  let msg: string
+  const msg: string
   let img: string[]
   let xml: string
   let json: string

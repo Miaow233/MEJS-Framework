@@ -1,4 +1,3 @@
-import { Response } from './http'
 declare namespace compat {
   // compat.access(url) GET访问网络，参数为：网址，返回键值对的数组
   function access(url: string): Promise<Response>

@@ -1,4 +1,4 @@
-import * as http from './http.js'
+import * as http from '../extension/http.js'
 import { fetchApi, BKN } from './util.js'
 
 /**
