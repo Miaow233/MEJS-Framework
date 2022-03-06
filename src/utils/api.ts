@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as http from '../extension/http.js'
 import { fetchApi } from './util.js'
 

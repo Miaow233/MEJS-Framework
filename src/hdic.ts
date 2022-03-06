@@ -32,6 +32,7 @@ $.on('online', (bot) => {
   console.log(`${bot.uin} 已上线`)
   globalThis.SKEY = bot.getSkey()
   globalThis.PSKEY = bot.getPSkey()
+  // @ts-ignore
   globalThis.BKN = app.getCSRFToken(SKEY)
   console.log('初始化完成')
 })

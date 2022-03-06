@@ -1,13 +1,16 @@
 export let Image = (url: string) => {
   return { type: 'image', url: url }
 }
+
 export let Text = (text: string) => {
   return { type: 'text', text: text }
 }
+
 export let At = (qq: number, text: string) => {
   return { type: 'at', qq: qq, text: text }
 }
-export function createChain(elem) {
+
+export function createChain(elem: Array<any>): client {
   let client = session.client
   elem.forEach((element) => {
     if (typeof element === 'string' || element.type === 'text') {
@@ -20,6 +23,7 @@ export function createChain(elem) {
   })
   return client
 }
+
 export async function reply(msg: string) {
   client.addText(msg)
   bot.send(client)

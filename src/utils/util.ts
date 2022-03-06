@@ -1,13 +1,13 @@
+// @ts-nocheck
 import * as http from '../extension/http.js'
 
 /** bkn计算方法 */
-export function getCSRFToken(str){
-   let hash = 5381;
-   for(let i = 0, len = str.length; i < len; ++i)
-   {
-   hash += (hash << 5) + str.charAt(i).charCodeAt();
-   }
-   return hash & 0x7fffffff;
+export function getCSRFToken(str) {
+  let hash = 5381
+  for (let i = 0, len = str.length; i < len; ++i) {
+    hash += (hash << 5) + str.charAt(i).charCodeAt()
+  }
+  return hash & 0x7fffffff
 }
 
 export function getCookie(domain: string) {
