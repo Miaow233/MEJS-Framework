@@ -1,14 +1,24 @@
 import * as app from './index.js'
+import * as fs from './extension/fs.js'
 import { At, Image, Text, createChain, reply, sendGroupMessage } from './message.js'
+
+import './plugins/jrrp.js'
 
 async function main(session: typeof globalThis.session) {
   let client = session.client
   let group = session.group
   let sender = session.uin
   let msg = session.msg
-  //reply('Hello World!')
-  //sendGroupMessage(group, 'Hello World!')
-  bot.send(createChain([Image('https://www.baidu.com/img/bd_logo1.png'), Text('file'), At(sender, 'Hello World!')]))
+  //bot.send(createChain([Image('https://www.baidu.com/img/bd_logo1.png'), Text('file'), At(sender, 'Hello World!')]))
+  globalThis.plugins.forEach((p) => {
+    if (p.enable) {
+      try {
+        p.action(session)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  })
 }
 
 // @ts-ignore

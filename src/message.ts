@@ -25,11 +25,13 @@ export function createChain(elem: Array<any>): client {
 }
 
 export async function reply(msg: string) {
+  let client = session.client
   client.addText(msg)
   bot.send(client)
 }
 
 export async function sendGroupMessage(gid: number, msg: any) {
+  let client = session.client
   client.group = gid
   client.addText(msg)
   bot.send(client)
