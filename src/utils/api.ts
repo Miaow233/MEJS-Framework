@@ -7,10 +7,9 @@ import { fetchApi } from './util.js'
  * @returns {Array}
  */
 async function getFriends(): Promise<any[]> {
-  let { result } = await http.get(`https://qun.qq.com/cgi-bin/qun_mgr/get_friend_list?&bkn=${BKN}`)
-  let temp = JSON.parse(result.toString())
+  let result = (await http.get(`https://qun.qq.com/cgi-bin/qun_mgr/get_friend_list?&bkn=${BKN}`)).json()
   let friends = []
-  for (let tag in temp) {
+  for (let tag in result) {
     friends = friends.concat(temp[tag]['mems'])
   }
   return friends
@@ -165,6 +164,14 @@ function addAnnounce(id: number, content: string) {
  * 获取指定群组信息
  * @param {number} id
  * @returns {object}
+ * group_id
+ * group_name
+ * group_memo
+ * group_create_time
+ * group_owner
+ * group_level
+ * member_count
+ * max_member_count
  */
 async function getGroupInfo(id: number): Promise<object> {
   let res = await fetchApi('POST', `https://qinfo.clt.qq.com/cgi-bin/qun_info/get_group_info_all?gc=${id}&bkn=${BKN}`)
