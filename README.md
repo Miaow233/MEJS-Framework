@@ -22,3 +22,4 @@ import * as app from './mejs/index.js'
 
 **使用文档[建设中] [https://docs.nekohouse.cafe](https://docs.nekohouse.cafe)**
 
+**API 参考 [https://docs.nekohouse.cafe/type](https://docs.nekohouse.cafe/type)**
