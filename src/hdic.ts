@@ -27,7 +27,7 @@ $.on('message.group', async (session) => {
   try {
     await main(session)
   } catch (e) {
-    console.log(e)
+    console.warn('MEJS运行失败: ' + e)
   }
 })
 
