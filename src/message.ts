@@ -9,7 +9,9 @@ export let Text = (text: string) => {
 export let At = (qq: number, text: string) => {
   return { type: 'at', qq: qq, text: text }
 }
+
 import { Friend, Group, Temp } from './target.js'
+
 export function createChain(elem: Array<any>): client {
   let client = session.client
   elem.forEach((element) => {

@@ -14,6 +14,8 @@ export interface Group {
   type: 'group'
   target: number
   sendMsg(): void
+  getInfo():Object
+  getMembers():Array<number>
 }
 export const Temp = (target: number) => {
   return { type: 'temp', target: target }

@@ -1,4 +1,5 @@
-export const get = async function (url: string, headers: object = {}): Promise<Response> {
+let http: Http
+http.get = async function (url: string, headers: object = {}): Promise<Response> {
   let response: Response = await compat.access(url, headers)
   response.json = function () {
     return JSON.parse(this.text)
@@ -7,7 +8,7 @@ export const get = async function (url: string, headers: object = {}): Promise<R
   return response
 }
 
-export const post = async function (url: string, data: string | ArrayBuffer, headers: object = {}): Promise<Response> {
+http.post = async function (url: string, data: string | ArrayBuffer, headers: object = {}): Promise<Response> {
   let response: Response = await compat.access(url, headers, data)
   response.json = function () {
     return JSON.parse(this.text)
@@ -15,3 +16,5 @@ export const post = async function (url: string, data: string | ArrayBuffer, hea
   response.text = response.toString()
   return response
 }
+
+export default http

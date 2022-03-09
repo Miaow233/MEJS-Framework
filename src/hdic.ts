@@ -1,5 +1,5 @@
 import * as app from './index.js'
-import * as fs from './extension/fs.js'
+import * as fs from './extensions/fs.js'
 import { At, Image, Text, createChain, reply, sendGroupMessage } from './message.js'
 
 import './plugins/jrrp.js'
