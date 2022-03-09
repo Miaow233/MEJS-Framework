@@ -3,7 +3,7 @@
 
 标准写法 `System`
 
-可以获取的参数：
+可以获取的参数: 
 - @c1=requestId
 - @c2=null|操作人 
 - @c3=null|操作人昵称 

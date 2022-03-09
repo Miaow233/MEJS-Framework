@@ -4,7 +4,7 @@
 
 得益于模块导入系统, 你可以随时开启或关闭这个功能, 也可以将它用于任何地方, 无需依赖 `MEJS-Framework`.
 
-> 注意：本功能极不稳定. 
+> 注意: 本功能极不稳定. 
 >
 > 如果你发现不能正常启动或导入失败, 请清空 `plugin-importer.js` 文件所有内容（不是删除文件）并重新运行 `plugin-manager`, 这样将会自动生成导入清单.
 
@@ -19,14 +19,14 @@ import './plugin-importer.js'
 并将一下内容附加到消息入口函数任意位置
 ```js
 globalThis.plugins.forEach((p) => {
-    if (p.enable) {
-      try {
-        p.action(session)
-      } catch (e) {
-        console.log(e)
-      }
+  if (p.enable) {
+    try {
+      p.action(session)
+    } catch (e) {
+      console.error(e)
     }
-  })
+  }
+})
 ```
 
 这样, 在每次启动时都会根据 `plugins` 文件夹内文件生成导入清单, 并逐一导入所有插件. 
@@ -70,7 +70,7 @@ let example_plugin = {
 };
 export default example_plugin
 ```
-> 注意：每个插件都要有默认导出
+> 注意: 每个插件都要有默认导出
 
 将写好的插件放入 `plugins` 文件夹, 再启动便会自动导入. 所有插件都以 `.js` 结尾.
 
@@ -83,7 +83,7 @@ export default example_plugin
 
 同时, 别忘了在配置文件中填写 `master`. 只有 `master` 才能使用这个功能.
 
-plugin-manager 提供了以下几个子命令：add, remove, enable, disable, list, store, reload
+plugin-manager 提供了以下几个子命令: add, remove, enable, disable, list, store, reload
 
 - add <id\> | -u <url\> | -p <path\>
   <br/>用于添加一个插件，可以是本地文件，也可以是 url或id。

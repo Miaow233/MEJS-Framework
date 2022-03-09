@@ -33,7 +33,7 @@ public class Tool{
 
 将文件编译为 `myTool.dex` 放入 `DIC/libs` 目录
 
- - 例：Lib->myTool.dex|lib.yashiro.Tool|methodName(自定义库测试)
+ - 例: Lib->myTool.dex|lib.yashiro.Tool|methodName(自定义库测试)
 
 反射使用 Toolkit 的 log 方法输出日志
 

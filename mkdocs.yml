@@ -74,8 +74,6 @@ nav:
       - quickstart.md
       - 插件系统: plugin-manager.md
       - 接口一览: type/index.html
-      - 附录:
-          - changelog.md
   - Medic 文档:
       - 介绍: Medic/index.md
       - 快速开始: Medic/quickstart.md
@@ -85,7 +83,7 @@ nav:
           - 常量介绍: Medic/basic/constant.md
           - 模块介绍: Medic/basic/mod.md
           - 变量介绍: Medic/basic/value.md
-          - Medic/basic/system.md
+          - 内置模块 System: Medic/basic/system.md
       - 参考:
           - 内置 API 类: Medic/reference/api.md
           - 内置 Toolkit 类: Medic/reference/toolkit.md

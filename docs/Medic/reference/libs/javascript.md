@@ -3,7 +3,7 @@
 
 在相应的关键字下一行标记 JS 或者 JavaScript 运行 JS 模式
 
-JavaScript 词条交流 QQ 群：`410351186`
+JavaScript 词条交流 QQ 群: `410351186`
 
 相关语法请参考 [MeJS](http://mejs.ceclin.top:9102)
 
@@ -20,9 +20,9 @@ $send();
 - 2.1.0 版本更新了 JS2, 请标记 `JS2` 来运行新版JS
 
 ## MEJS 参考
-JS 函数调用,  例：`Api.send()`, `Toolkit.log()`
+JS 函数调用,  例: `Api.send()`, `Toolkit.log()`
 
-MEJS 内置函数调用, 例：`$send()`
+MEJS 内置函数调用, 例: `$send()`
 
 ## Api
 | js/Medic             | MEJS 内置函数         | 函数说明                                         |
