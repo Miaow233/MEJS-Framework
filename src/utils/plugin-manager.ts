@@ -1,4 +1,4 @@
-import { writeFile } from '../extension/fs.js'
+import { writeFile } from '../extensions/fs.js'
 function generateImpoter(pluginList) {
   let head = `let plugins = []\n\nglobalThis.plugins = []`
   let body = ''
