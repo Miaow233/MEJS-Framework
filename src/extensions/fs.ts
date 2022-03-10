@@ -1,11 +1,9 @@
 /** 写入文件 */
-async function writeFile(path: string, data: any): Promise<void> {
+export async function writeFile(path: string, data: any): Promise<void> {
   let File = Java.type('java.io.File')
   let FileWriter = Java.type('java.io.FileWriter')
   let f: File = new File(path)
-  if (!f.exists()) {
-    f.createNewFile()
-  }
+  if (!f.exists()) f.createNewFile()
   let writer = new FileWriter(f)
   writer.write(data)
   writer.flush()
@@ -13,7 +11,7 @@ async function writeFile(path: string, data: any): Promise<void> {
 }
 
 /** 读取文本文件 */
-async function readFile(path: string): Promise<string> {
+export async function readFile(path: string): Promise<string> {
   // JavaScript读取文本文件
   let FileReader = Java.type('java.io.FileReader')
   let Re = new FileReader(path)
@@ -37,5 +35,3 @@ export function getFileList(path: string) {
   })
   return fileList
 }
-
-export { writeFile, readFile }

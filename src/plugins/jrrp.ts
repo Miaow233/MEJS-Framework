@@ -1,6 +1,6 @@
-import cli from '../extension/commander.js'
+import cli from '../extensions/commander.js'
 import { reply, sendGroupMessage } from '../message.js'
-let example_plugin = {
+const jrrp = {
   info: {
     name: 'jrrp',
     version: '0.1',
@@ -35,4 +35,4 @@ let example_plugin = {
   },
 }
 globalThis.plugins = globalThis.plugins || []
-globalThis.plugins.push(example_plugin)
+globalThis.plugins.push(jrrp)

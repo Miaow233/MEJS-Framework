@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * 将位图保存成图片文件
  * @param {Bitmap} bitmap

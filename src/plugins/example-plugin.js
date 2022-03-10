@@ -1,4 +1,4 @@
-let example_plugin = {
+const example_plugin = {
   info: {
     name: 'example-plugin',
     version: '0.1',
@@ -11,4 +11,5 @@ let example_plugin = {
     console.log('Hello World!')
   },
 }
+globalThis.plugins = globalThis.plugins || []
 globalThis.plugins.push(example_plugin)

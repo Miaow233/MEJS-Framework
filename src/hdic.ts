@@ -1,7 +1,15 @@
 import * as app from './index.js'
-import * as fs from './extensions/fs.js'
+
+// 消息相关，At Image Text 是消息元素
 import { At, Image, Text, createChain, reply, sendGroupMessage } from './message.js'
 
+// 文件扩展
+import * as fs from './extensions/fs.js'
+
+// http 扩展
+import http from './extensions/http.js'
+
+// 导入插件
 import './plugins/jrrp.js'
 
 async function main(session: typeof globalThis.session) {
@@ -42,8 +50,7 @@ $.on('online', (bot) => {
   console.log(`${bot.uin} 已上线`)
   globalThis.SKEY = bot.getSkey()
   globalThis.PSKEY = bot.getPSkey()
-  // @ts-ignore
-  globalThis.BKN = app.getCSRFToken(SKEY)
+  globalThis.BKN = app.getCSRFToken(globalThis.SKEY)
   console.log('初始化完成')
 })
 

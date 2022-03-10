@@ -3,7 +3,7 @@ export let Image = (url: string) => {
 }
 
 export let Text = (text: string) => {
-  return { type: 'text', text: text }
+  return text
 }
 
 export let At = (qq: number, text: string) => {
@@ -15,7 +15,7 @@ import { Friend, Group, Temp } from './target.js'
 export function createChain(elem: Array<any>): client {
   let client = session.client
   elem.forEach((element) => {
-    if (typeof element === 'string' || element.type === 'text') {
+    if (typeof element === 'string') {
       client.addText(element)
     } else if (element.type === 'image') {
       client.addImg(element.url)
