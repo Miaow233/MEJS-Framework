@@ -1,15 +1,14 @@
-const SQLiteDatabase = Java.type('android.database.sqlite.SQLiteDatabase')
-const CursorFactory = SQLiteDatabase.CursorFactory
+const SQLiteDatabase: SQLiteDatabase = Java.type('android.database.sqlite.SQLiteDatabase')
+const CursorFactory: CursorFactory = SQLiteDatabase.CursorFactory
 const SQLiteOpenHelper = Java.type('android.database.sqlite.SQLiteOpenHelper')
-// let query = 'select sqlite_version() AS sqlite_version'
-// let db = sqlite.openOrCreateDatabase('/sdcard/DIC/data/cache/hdic.db', null)
-// let cursor = db.rawQuery(query, null)
-// let sqliteVersion = ''
-// if (cursor.moveToNext()) {
-//   sqliteVersion = cursor.getString(0)
-// }
-
-// console.log(sqliteVersion)
+let query = 'select sqlite_version() AS sqlite_version'
+let db = SQLiteDatabase.openOrCreateDatabase('/sdcard/DIC/data/cache/hdic.db', null)
+let cursor = db.rawQuery(query, null)
+let sqliteVersion: any
+if (cursor.moveToNext()) {
+  sqliteVersion = cursor.getString(0)
+}
+console.log(sqliteVersion)
 
 // 数据库工具类
 class DBOpenHelper extends SQLiteOpenHelper {

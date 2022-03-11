@@ -19,11 +19,16 @@ declare class File {
   mkdirs(): boolean
   mkdir(): boolean
 }
-declare interface Cursor {}
+
+declare interface Cursor {
+  moveToNext(): boolean
+  getString(columns: number): string
+}
 
 declare interface CursorFactory {}
 
 declare interface SQLiteDatabase {
+  CursorFactory: CursorFactory
   execSQL(sql: string): void
   execSQL(sql, bindArgs: Object): void
   create(): SQLiteDatabase
@@ -33,7 +38,7 @@ declare interface SQLiteDatabase {
   getVersion(): number
   insert(table: string, nullColumnHack: string, content: Map<string, any>): number
   openOrCreateDatabase(file: File, factory?: CursorFactory): SQLiteDatabase
-  openOrCreateDatabase(path: string, factory: CursorFactory, errorHandler: any): SQLiteDatabase
+  openOrCreateDatabase(path: string, factory?: CursorFactory, errorHandler?: any): SQLiteDatabase
   query(
     distinct: boolean,
     table: string,
@@ -55,6 +60,7 @@ declare interface SQLiteDatabase {
     orderBy: string,
     limit: string
   ): Cursor
+  rawQuery(sql, u): Cursor
 }
 
 declare interface SQLiteOpenHelper {
