@@ -1,4 +1,6 @@
-let sqlite = Java.type('android.database.sqlite.SQLiteDatabase')
+const SQLiteDatabase = Java.type('android.database.sqlite.SQLiteDatabase')
+const CursorFactory = SQLiteDatabase.CursorFactory
+const SQLiteOpenHelper = Java.type('android.database.sqlite.SQLiteOpenHelper')
 // let query = 'select sqlite_version() AS sqlite_version'
 // let db = sqlite.openOrCreateDatabase('/sdcard/DIC/data/cache/hdic.db', null)
 // let cursor = db.rawQuery(query, null)
@@ -10,38 +12,18 @@ let sqlite = Java.type('android.database.sqlite.SQLiteDatabase')
 // console.log(sqliteVersion)
 
 // 数据库工具类
-export class db {
-  dbName: any
-  db: any
-  constructor(dbName) {
-    this.dbName = dbName
-    this.db = sqlite.openOrCreateDatabase(dbName, null)
+class DBOpenHelper extends SQLiteOpenHelper {
+  constructor(context: string, name: string, factory: CursorFactory, version: number) {
+    super(context, name, factory, version)
+    this.TABLE_NAME = 'test'
   }
-
-  // 查询
-  query(sql, params) {
-    let cursor = this.db.rawQuery(sql, params)
-    let result = []
-    while (cursor.moveToNext()) {
-      let row = {}
-      for (let i = 0; i < cursor.getColumnCount(); i++) {
-        let name = cursor.getColumnName(i)
-        let value = cursor.getString(i)
-        row[name] = value
-      }
-      result.push(row)
-    }
-    cursor.close()
-    return result
+  onCreate(db: SQLiteDatabase) {
+    let sql = `create table ${this.TABLE_NAME} (id integer primary key autoincrement, name text, age integer)`
+    db.execSQL(sql)
   }
-
-  // 执行
-  exec(sql, params) {
-    return this.db.execSQL(sql, params)
-  }
-
-  // 关闭
-  close() {
-    this.db.close()
+  onUpgrade(db: SQLiteDatabase, oldVersion: number, newVersion: number) {
+    let sql = `DROP TABLE IF EXISTS ${this.TABLE_NAME}`
+    db.execSQL(sql)
+    this.onCreate(db)
   }
 }

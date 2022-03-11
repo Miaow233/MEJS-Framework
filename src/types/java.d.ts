@@ -19,3 +19,44 @@ declare class File {
   mkdirs(): boolean
   mkdir(): boolean
 }
+declare interface Cursor {}
+
+declare interface CursorFactory {}
+
+declare interface SQLiteDatabase {
+  execSQL(sql: string): void
+  execSQL(sql, bindArgs: Object): void
+  create(): SQLiteDatabase
+  createInMemory(): SQLiteDatabase
+  delete(table: string, whereClause: string, whereArgs: Array<string>): number
+  deleteDatabase(file: File): boolean
+  getVersion(): number
+  insert(table: string, nullColumnHack: string, content: Map<string, any>): number
+  openOrCreateDatabase(file: File, factory?: CursorFactory): SQLiteDatabase
+  openOrCreateDatabase(path: string, factory: CursorFactory, errorHandler: any): SQLiteDatabase
+  query(
+    distinct: boolean,
+    table: string,
+    columns: Array<string>,
+    selection: string,
+    selectionArgs: Array<string>,
+    groupBy: string,
+    having: string,
+    orderBy: string,
+    limit: string
+  ): Cursor
+  query(
+    table: string,
+    columns: Array<string>,
+    selection: string,
+    selectionArgs: Array<string>,
+    groupBy: string,
+    having: string,
+    orderBy: string,
+    limit: string
+  ): Cursor
+}
+
+declare interface SQLiteOpenHelper {
+  getWritableDatabase(): SQLiteDatabase
+}
