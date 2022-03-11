@@ -6,12 +6,11 @@
 
 注意！！！！！！！
 
-ax\,ay\,bx\,by 分别表示: 起点x，起点y，终点x，终点y
-
+ax\,ay\,bx\,by 分别表示: 起点 x，起点 y，终点 x，终点 y
 
 - ①newBitmap(路径或者链接) 新建图像
-- ②newCanvas(bitmap) 里面的参数就是上面new出来的
-- ③newCanvas(x,y) x为长，y为宽
+- ②newCanvas(bitmap) 里面的参数就是上面 new 出来的
+- ③newCanvas(x,y) x 为长，y 为宽
 - ④newPaint() 新建画笔，后续设置画笔属性需要
 - ⑤newRect(ax\,ay\,bx\,by) 上面有关于参数的介绍
 - ⑥getColor(a\,r\,g\,b)
@@ -20,11 +19,12 @@ ax\,ay\,bx\,by 分别表示: 起点x，起点y，终点x，终点y
 
 > \#默认颜色(黑色，蓝色，青色，深灰，灰色，绿色，浅灰，洋红，红色，透明，白色，黄色)
 
-addImg(canvas或bitmap) 参数为①②③方法创建的任意一个
+addImg(canvas 或 bitmap) 参数为 ①②③ 方法创建的任意一个
 
 接下来的就比较复杂了
 
 ## 对画笔设置颜色
+
 ```java
 setColor(a\,r\,g\,b\,④)
 setColor(r\,g\,b\,④)
@@ -33,17 +33,20 @@ setColor(#默认颜色\,④)
 ```
 
 ## 划线
+
 ```java
 drawLine(②|③\,ax\,ay\,bx\,by\,④)
 drawLine(②|③\,⑤\,④)
 ```
 
 ## 画圆
+
 ```java
 drawCircle(②|③\,x\,y\,半径\,④)
 ```
 
 ## 画图
+
 ```java
 drawBitmap(②|③\,x\,y\,①)
 drawBitmap(②|③\,⑤\,①) ⑤为需要把图片画到的位置
@@ -51,6 +54,7 @@ drawBitmap(②|③\,⑤\,⑤\,①) 第一个⑤为①需要画进去的范围，
 ```
 
 ## 画方
+
 ```java
 drawRect(②|③\,⑤\,④)
 drawRect(②|③\,ax\,ay\,bx\,by\,④)
@@ -58,26 +62,31 @@ drawRect(②|③\,ax\,ay\,bx\,by\,④)
 ```
 
 ## 画点
+
 ```java
 drawPoint(②|③\,x\,y\,④)
 ```
 
 ## 写文本
+
 ```java
 drawText(②|③\,x\,y\,文本\,④)
 ```
 
 ## 设置画笔大小（效果就是文本大小）
+
 ```java
 setSize(大小\,④)
 ```
 
 ## 设置画笔宽度（效果就是各种图形的大小）
+
 ```java
 setWidth(宽度\,④)
 ```
 
 ## 设置画笔风格
+
 ```java
 setStyle(填充|描边|加粗\,④)
 ```

@@ -1,9 +1,11 @@
 # 自定义 Dex 库函数
+
 自定义库是使用 Java 代码编写自己的扩展工具，将 Java 的二进制 .class 文件转为 Android 虚拟机可以识别的 dex 文件.
 
 最终由词库通过 `Lib->路径|完整类名|方法名(参数)` 来调用.
 
 ## Java 代码编写规则
+
 ```java title="Tool.java"
 package lib.yashiro
 public class Tool{
@@ -33,7 +35,7 @@ public class Tool{
 
 将文件编译为 `myTool.dex` 放入 `DIC/libs` 目录
 
- - 例: Lib->myTool.dex|lib.yashiro.Tool|methodName(自定义库测试)
+- 例: Lib->myTool.dex|lib.yashiro.Tool|methodName(自定义库测试)
 
 反射使用 Toolkit 的 log 方法输出日志
 
