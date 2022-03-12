@@ -1,30 +1,27 @@
-// @ts-nocheck
-import * as http from '../extension/http.js'
+import  http from '../extensions/http.js'
 import { fetchApi } from './util.js'
+const BKN = globalThis.BKN
 
 /**
  * 获取好友列表
  * @returns {Array}
  */
-async function getFriends(): Promise<any[]> {
+export async function getFriends(): Promise<any[]> {
   let result = (await http.get(`https://qun.qq.com/cgi-bin/qun_mgr/get_friend_list?&bkn=${BKN}`)).json()
   let friends = []
   for (let tag in result) {
-    friends = friends.concat(temp[tag]['mems'])
+    friends = friends.concat(result[tag]['mems'])
   }
   return friends
 }
 
-/**
- * 获取群组列表
- */
-async function getGroups() {
-  let { result } = await http.get(`https://qun.qq.com/cgi-bin/qun_mgr/get_group_list?&bkn=${BKN}`)
-  let temp = JSON.parse(result.toString().replace('"gc"', '"id"'))
+/** 获取群组列表 */
+export async function getGroups() {
+  let result = (await http.get(`https://qun.qq.com/cgi-bin/qun_mgr/get_group_list?&bkn=${BKN}`)).json()
   let groups = []
-  for (let tag in temp) {
-    if (!temp[tag]) continue
-    groups = groups.concat(temp[tag])
+  for (let tag in result) {
+    if (!result[tag]) continue
+    groups = groups.concat(result[tag])
   }
   return groups
 }
@@ -48,7 +45,7 @@ async function getGroups() {
  * iPCQQOnlineTime     PC QQ 在线时长
  * iTotalActiveDay     总活跃天数
  */
-async function getQQLevelInfo(id: number): Promise<object> {
+export async function getQQLevelInfo(id: number): Promise<object> {
   let res = await fetchApi('GET', `https://club.vip.qq.com/api/vip/getQQLevelInfo?requestBody={"iUin":${id}}`)
   let qqLevelInfo = JSON.parse(res)['data']?.mRes
   return qqLevelInfo
@@ -72,7 +69,7 @@ async function getQQLevelInfo(id: number): Promise<object> {
  *                  all_shutup 是否全员禁言
  *                  me_shutup  自己是否被禁言
  */
-async function getGroupSetting(id: number): Promise<object> {
+export async function getGroupSetting(id: number): Promise<object> {
   let res = await fetchApi('GET', `https://qinfo.clt.qq.com/cgi-bin/qun_info/get_group_setting_v2?gc=${id}&bkn=${BKN}`)
   return JSON.parse(res)
 }
@@ -86,46 +83,26 @@ async function getGroupSetting(id: number): Promise<object> {
 //   return fetchApi('GET', `https://qinfo.clt.qq.com/cgi-bin/qun_info/get_sys_msg?gc=${id}&bkn=${BKN}`)
 // }
 
-/**
- * 开关匿名
- * @param {number} id
- * @param {boolean} isAnony 是否开启匿名
- * @returns
- */
-async function setAnonySwitch(id: number, isAnony: boolean) {
-  let res = fetchApi(
-    'GET',
-    `https://qqweb.qq.com/c/anonymoustalk/set_anony_switch?bkn=${BKN}&value=${isAnony ? 1 : 0}&group_code=${id}`
-  )
+/** 开关匿名 */
+export async function setAnonySwitch(gid: number, isAnony: boolean) {
+  let result = http.get(`https://qqweb.qq.com/c/anonymoustalk/set_anony_switch?bkn=${BKN}&value=${isAnony ? 1 : 0}&group_code=${gid}`)
 }
 
-/**
- * 获取 QQ 资料
- * @param {number} id
- * @returns
- */
-async function getFriendInfo(id: number) {
+/** 获取 QQ 资料 */
+export async function getFriendInfo(id: number) {
   let res = await fetchApi('GET', `https://cgi.find.qq.com/qqfind/buddy/search_v3?keyword=${id}`)
   return JSON.parse(res)
 }
 
-/**
- * 获取群荣誉
- * @param {*} id
- * @returns
- */
-function getGroupHonor(id: any) {
+/** 获取群荣誉 */
+function getGroupHonor(id: number) {
   let res = fetchApi('GET', `https://qun.qq.com/interactive/qunhonor?gc=${id}`)
   return res
 }
 
-/**
- * 获取精华消息
- * @param {*} id
- * @returns
- */
-function getEssence(id: any) {
-  let res = fetchApi('GET', `https://qun.qq.com/essence/index?gc=${id}`)
+/** 获取精华消息 */
+export function getEssence(gid: number) {
+  let res = fetchApi('GET', `https://qun.qq.com/essence/index?gc=${gid}`)
   return res
 }
 
@@ -240,21 +217,4 @@ async function getJoink(id) {
 async function getGroupJoinUrl(id: number): Promise<string> {
   let joinK = await getJoink(id)
   return `https://qm.qq.com/cgi-bin/qm/qr?k=${joinK}&jump_from=webapi`
-}
-
-export {
-  addAnnounce,
-  getAnnounce,
-  getEssence,
-  getFriendInfo,
-  getFriends,
-  getGroupHonor,
-  getGroupInfo,
-  getGroupJoinUrl,
-  getGroups,
-  getGroupSetting,
-  getMembersInfo,
-  getQQLevelInfo,
-  setAnonySwitch,
-  setGroupAdmin,
 }

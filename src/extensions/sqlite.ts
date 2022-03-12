@@ -1,6 +1,5 @@
 const SQLiteDatabase: SQLiteDatabase = Java.type('android.database.sqlite.SQLiteDatabase')
-const CursorFactory: CursorFactory = SQLiteDatabase.CursorFactory
-const SQLiteOpenHelper = Java.type('android.database.sqlite.SQLiteOpenHelper')
+const SQLiteOpenHelper: SQLiteOpenHelper = Java.type('android.database.sqlite.SQLiteOpenHelper')
 let query = 'select sqlite_version() AS sqlite_version'
 let db = SQLiteDatabase.openOrCreateDatabase('/sdcard/DIC/data/cache/hdic.db', null)
 let cursor = db.rawQuery(query, null)
@@ -11,7 +10,8 @@ if (cursor.moveToNext()) {
 console.log(sqliteVersion)
 
 // 数据库工具类
-class DBOpenHelper extends SQLiteOpenHelper {
+export class DBOpenHelper extends SQLiteOpenHelper {
+  TABLE_NAME: string
   constructor(context: string, name: string, factory: CursorFactory, version: number) {
     super(context, name, factory, version)
     this.TABLE_NAME = 'test'

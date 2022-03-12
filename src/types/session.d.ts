@@ -15,18 +15,18 @@ declare namespace session {
   // message.time 获取这条消息的时间戳
   // message.client 用于发送消息的接口
   const msg: string
-  let img: string[]
-  let xml: string
-  let json: string
-  let at: number[]
-  let reply: string
-  let code: number
-  let mark: any
-  let title: string
-  let group: number
-  let groupName: string
-  let uin: number
-  let nick: string
-  let time: number
-  let client: client
+  const img: string[]
+  const xml: string
+  const json: string
+  const at: number[]
+  const reply: string
+  const code: number
+  const mark: any
+  const title: string
+  const group: number
+  const groupName: string
+  const uin: number
+  const nick: string
+  const time: number
+  const client: client
 }

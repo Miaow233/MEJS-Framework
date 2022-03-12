@@ -1,6 +1,6 @@
 # Packages
 node_modules
-/yarn.lock
+yarn.lock
 
 # Docs site
 site

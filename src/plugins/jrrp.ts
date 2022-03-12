@@ -1,6 +1,7 @@
 import cli from '../extensions/commander.js'
 import { reply, sendGroupMessage } from '../message.js'
-const jrrp = {
+import { Plugin } from '../types/plugin.js'
+const jrrp: Plugin = {
   info: {
     name: 'jrrp',
     version: '0.1',
