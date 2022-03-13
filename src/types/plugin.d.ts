@@ -1,10 +1,10 @@
 export interface Plugin {
-  info: {
+  info?: {
     name: string
-    version: string
-    description: string
-    author: string
-    help: string
+    version?: string
+    description?: string
+    author?: string
+    help?: string
   }
   enable: boolean
   action: Function

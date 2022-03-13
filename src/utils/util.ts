@@ -1,6 +1,7 @@
-import http from '../extensions/http.js'
+import http, { Response } from '../extensions/http.js'
 const SKEY = globalThis.SKEY
 const PSKEY = globalThis.PSKEY
+
 /** bkn计算方法 */
 export function getCSRFToken(str) {
   let hash = 5381
@@ -10,6 +11,7 @@ export function getCSRFToken(str) {
   return hash & 0x7fffffff
 }
 
+/** 构造接口所需cookie */
 export function getCookie(domain: string) {
   const cookie = `uin=o${bot.uin}; skey=${SKEY};`
   if (!PSKEY[domain]) return cookie
@@ -25,7 +27,7 @@ export async function fetchApi(method: string, url: string, data = '') {
     Referer: 'https://' + domain,
     Cookie: getCookie(domain),
   }
-  let response: any
+  let response: Response
   if (method.toUpperCase() === 'POST') {
     response = await http.post(url, data, headers)
   } else {
