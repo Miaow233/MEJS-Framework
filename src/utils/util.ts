@@ -1,6 +1,6 @@
-// @ts-nocheck
-import * as http from '../extension/http.js'
-
+import http from '../extensions/http.js'
+const SKEY = globalThis.SKEY
+const PSKEY = globalThis.PSKEY
 /** bkn计算方法 */
 export function getCSRFToken(str) {
   let hash = 5381

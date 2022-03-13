@@ -19,5 +19,3 @@ declare class File {
   mkdirs(): boolean
   mkdir(): boolean
 }
-
-

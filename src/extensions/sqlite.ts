@@ -1,28 +1,48 @@
-const SQLiteDatabase: SQLiteDatabase = Java.type('android.database.sqlite.SQLiteDatabase')
-const SQLiteOpenHelper: SQLiteOpenHelper = Java.type('android.database.sqlite.SQLiteOpenHelper')
-let query = 'select sqlite_version() AS sqlite_version'
-let db = SQLiteDatabase.openOrCreateDatabase('/sdcard/DIC/data/cache/hdic.db', null)
-let cursor = db.rawQuery(query, null)
-let sqliteVersion: any
-if (cursor.moveToNext()) {
-  sqliteVersion = cursor.getString(0)
-}
-console.log(sqliteVersion)
+// example
+//
+// let query = 'select sqlite_version() AS sqlite_version'
+// let db = SQLiteDatabase.openOrCreateDatabase('/sdcard/DIC/data/cache/hdic.db', null)
+// let cursor = db.rawQuery(query, null)
+// let sqliteVersion: any
+// if (cursor.moveToNext()) {
+//   sqliteVersion = cursor.getString(0)
+// }
+// console.log(sqliteVersion)
 
-// 数据库工具类
-export class DBOpenHelper extends SQLiteOpenHelper {
-  TABLE_NAME: string
-  constructor(context: string, name: string, factory: CursorFactory, version: number) {
-    super(context, name, factory, version)
-    this.TABLE_NAME = 'test'
+export class SQLiteDatabase {
+  static openOrCreateDatabase(file: File | string, factory?: CursorFactory): SQLiteDatabase {
+    return Java.type('android.database.sqlite.SQLiteDatabase').openOrCreateDatabase(file, factory)
   }
-  onCreate(db: SQLiteDatabase) {
-    let sql = `create table ${this.TABLE_NAME} (id integer primary key autoincrement, name text, age integer)`
-    db.execSQL(sql)
+
+  static create(): SQLiteDatabase {
+    return Java.type('android.database.sqlite.SQLiteDatabase').create()
   }
-  onUpgrade(db: SQLiteDatabase, oldVersion: number, newVersion: number) {
-    let sql = `DROP TABLE IF EXISTS ${this.TABLE_NAME}`
-    db.execSQL(sql)
-    this.onCreate(db)
+
+  constructor(context: string, name: string, factory: CursorFactory, version: number) {}
+  // createInMemory(): SQLiteDatabase
+  // delete(table: string, whereClause: string, whereArgs: Array<string>): number
+  // deleteDatabase(file: File): boolean
+  execSQL(sql: string): void {
+    this.execSQL(sql)
+  }
+
+  getPath(): string {
+    return this.getPath()
+  }
+
+  getVersion(): number {
+    return this.getVersion()
+  }
+
+  insert(table: string, nullColumnHack: string | null, content: Map<string, any>): number {
+    return this.insert(table, nullColumnHack, content)
+  }
+
+  rawQuery(sql: string, selectionArgs?: Array<string>, cancellationSignal?: string): Cursor {
+    return this.rawQuery(sql, selectionArgs, cancellationSignal)
+  }
+
+  update(table: string, values: Map<string, any>, whereClause: string | null, whereArgs: Array<string>): number {
+    return this.update(table, values, whereClause, whereArgs)
   }
 }

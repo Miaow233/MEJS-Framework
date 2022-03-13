@@ -1,4 +1,4 @@
-declare class client {
+declare interface client {
   group: number
   uin: number
   addText(text: string): void
