@@ -1,3 +1,5 @@
+import { compat } from "../types/compat.js"
+
 export interface Response {
   readonly status: number
   readonly result: string | ArrayBuffer

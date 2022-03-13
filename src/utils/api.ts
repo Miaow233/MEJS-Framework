@@ -47,7 +47,7 @@ export async function getGroups() {
  */
 export async function getQQLevelInfo(id: number): Promise<object> {
   let res = await fetchApi('GET', `https://club.vip.qq.com/api/vip/getQQLevelInfo?requestBody={"iUin":${id}}`)
-  let qqLevelInfo = JSON.parse(res)['data']?.mRes
+  let qqLevelInfo = JSON.parse(res.toString())['data']?.mRes
   return qqLevelInfo
 }
 
@@ -71,7 +71,7 @@ export async function getQQLevelInfo(id: number): Promise<object> {
  */
 export async function getGroupSetting(id: number): Promise<object> {
   let res = await fetchApi('GET', `https://qinfo.clt.qq.com/cgi-bin/qun_info/get_group_setting_v2?gc=${id}&bkn=${BKN}`)
-  return JSON.parse(res)
+  return JSON.parse(res.toString())
 }
 
 /**
@@ -91,7 +91,7 @@ export async function setAnonySwitch(gid: number, isAnony: boolean) {
 /** 获取 QQ 资料 */
 export async function getFriendInfo(id: number) {
   let res = await fetchApi('GET', `https://cgi.find.qq.com/qqfind/buddy/search_v3?keyword=${id}`)
-  return JSON.parse(res)
+  return JSON.parse(res.toString())
 }
 
 /** 获取群荣誉 */
@@ -152,7 +152,7 @@ function addAnnounce(id: number, content: string) {
  */
 async function getGroupInfo(id: number): Promise<object> {
   let res = await fetchApi('POST', `https://qinfo.clt.qq.com/cgi-bin/qun_info/get_group_info_all?gc=${id}&bkn=${BKN}`)
-  let temp = JSON.parse(res)
+  let temp = JSON.parse(res.toString())
   let groupInfo = []
   groupInfo['id'] = id // 群号
   groupInfo['owner'] = temp['gOwner'] // 群主
@@ -178,7 +178,7 @@ async function setGroupAdmin(group_id: number, qq_id: number, is_admin: boolean)
     `https://qun.qq.com/cgi-bin/qun_mgr/set_group_admin`,
     `gc=${group_id}&qq=${qq_id}&op=${is_admin ? 1 : 0}&bkn=${BKN}`
   )
-  return JSON.parse(res)['ec'] === 0
+  return JSON.parse(res.toString())['ec'] === 0
 }
 
 /**
@@ -194,7 +194,7 @@ async function setGroupAdmin(group_id: number, qq_id: number, is_admin: boolean)
  */
 async function getMembersInfo(id) {
   let res = await fetchApi('GET', `https://qinfo.clt.qq.com/cgi-bin/qun_info/get_members_info_v1?gc=${id}&bkn=${BKN}`)
-  return JSON.parse(res)
+  return JSON.parse(res.toString())
 }
 
 /**
@@ -206,7 +206,7 @@ async function getJoink(id) {
     `https://qun.qq.com/proxy/domain/admin.qun.qq.com/cgi-bin/qun_admin/get_join_k`,
     `gc=${id}&bkn=${BKN}`
   )
-  return JSON.parse(res)[`k`]
+  return JSON.parse(res.toString())[`k`]
 }
 
 /**
