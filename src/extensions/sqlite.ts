@@ -9,8 +9,13 @@
 // }
 // console.log(sqliteVersion)
 
+import { exists } from './fs.js'
+import { File } from './java.js'
+
 export class SQLiteDatabase {
-  static openOrCreateDatabase(file: File | string, factory?: CursorFactory): SQLiteDatabase {
+  static openOrCreateDatabase(file: string | File, factory?: CursorFactory): SQLiteDatabase {
+    let path = file.toString().split('/').slice(0, -1).join('/')
+    if (!exists(path)) File.mkdirs(path)
     return Java.type('android.database.sqlite.SQLiteDatabase').openOrCreateDatabase(file, factory)
   }
 
@@ -18,10 +23,19 @@ export class SQLiteDatabase {
     return Java.type('android.database.sqlite.SQLiteDatabase').create()
   }
 
+  static createInMemory(): SQLiteDatabase {
+    return Java.type('android.database.sqlite.SQLiteDatabase').createInMemory()
+  }
+
   constructor(context: string, name: string, factory: CursorFactory, version: number) {}
-  // createInMemory(): SQLiteDatabase
-  // delete(table: string, whereClause: string, whereArgs: Array<string>): number
-  // deleteDatabase(file: File): boolean
+  delete(table: string, whereClause: string, whereArgs: Array<string>): number {
+    return this.delete(table, whereClause, whereArgs)
+  }
+
+  deleteDatabase(file: File): boolean {
+    return this.deleteDatabase(file)
+  }
+
   execSQL(sql: string): void {
     this.execSQL(sql)
   }

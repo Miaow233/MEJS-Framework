@@ -1,4 +1,10 @@
-import { Response } from "../extensions/http";
+declare interface Response {
+  readonly status: number
+  readonly result: string | ArrayBuffer
+  readonly head: string
+  json(): Object
+  text: string
+}
 
 declare namespace compat {
   // compat.access(url) GET访问网络，参数为：网址，返回键值对的数组

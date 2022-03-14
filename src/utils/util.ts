@@ -1,4 +1,4 @@
-import http, { Response } from '../extensions/http.js'
+import http from '../extensions/http.js'
 const SKEY = globalThis.SKEY
 const PSKEY = globalThis.PSKEY
 

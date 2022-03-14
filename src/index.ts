@@ -3,11 +3,12 @@ export * as fs from './extensions/fs.js'
 export * as app from './utils/api.js'
 export * from './message.js'
 export * from './target.js'
-//export { db } from './extensions/sqlite.js'
 export { getCSRFToken, getCookie, fetchApi } from './utils/util.js'
 export { saveBitmap, drawPanel } from './extensions/draw.js'
 export { default as cli } from './extensions/commander.js'
 export { getGroupImageUrl, escapeXml } from './extensions/common.js'
+export { File } from './extensions/java.js'
+export { SQLiteDatabase } from './extensions/sqlite.js'
 // 关于本框架的用法请参考 hdic.example.js
 // 阅读 README.md 可以看到所有接口的说明
 // 文档说明 https://docs.nekohouse.cafe
