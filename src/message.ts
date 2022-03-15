@@ -13,7 +13,7 @@ export let At = (qq: number, text: string) => {
 import { Friend, Group, Temp } from './target.js'
 
 export function createChain(elem: Array<any>): client {
-  let client = session.client
+  let client = globalThis.client
   elem.forEach((element) => {
     if (typeof element === 'string') {
       client.addText(element)
@@ -27,13 +27,13 @@ export function createChain(elem: Array<any>): client {
 }
 
 export async function reply(msg: string) {
-  let client = session.client
+  let client = globalThis.client
   client.addText(msg)
   bot.send(client)
 }
 
 export async function sendGroupMessage(group: number | Group, msg: any) {
-  let client = session.client
+  let client = globalThis.client
   switch (typeof group) {
     case 'number':
       client.group = group
@@ -47,13 +47,27 @@ export async function sendGroupMessage(group: number | Group, msg: any) {
 }
 
 export async function sendFriendMessage(friend: number | Friend, msg: any) {
-  let client = session.client
+  let client = globalThis.client
   switch (typeof friend) {
     case 'number':
       client.uin = friend
       break
     case 'object':
       client.uin = friend.target
+      break
+  }
+  client.addText(msg)
+  bot.send(client)
+}
+
+export async function sendTempMessage(temp: number | Temp, msg: any) {
+  let client = globalThis.client
+  switch (typeof temp) {
+    case 'number':
+      client.uin = temp
+      break
+    case 'object':
+      client.uin = temp.target
       break
   }
   client.addText(msg)

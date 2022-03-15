@@ -26,3 +26,8 @@ declare namespace bot {
   function shutupAll(group_id: number, time: number): void
   function withDrawMsg(group_id: number, qq_id: number): void
 }
+
+declare namespace $ {
+  function on(event: string, callback: (...args: any[]) => void): void
+  function emit(event: string, ...args: any[]): void
+}

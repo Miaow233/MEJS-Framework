@@ -1,4 +1,4 @@
-declare namespace session {
+declare namespace message {
   // message.msg 获取消息
   // message.img 获取图片，注意是个数组哦
   // message.xml 获取xml 没有则为空
