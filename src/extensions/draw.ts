@@ -3,9 +3,81 @@
  * @param {Bitmap} bitmap
  * @param {string} path
  */
-function saveBitmap(bitmap, path) {
-  let File = Java.type('java.io.File')
-  let FileOutputStream = Java.type('java.io.FileOutputStream')
+
+/**  */
+class FileOutputStream {
+  path: string
+  constructor(file: File) {
+    let FileOutputStream = Java.type('java.io.FileOutputStream')
+    return new FileOutputStream(file)
+  }
+  write(data) {
+    let file = new File(this.path)
+    if (file.exists()) {
+      file.delete()
+    }
+    file.createNewFile()
+    let out = new FileOutputStream(file)
+    out.write(data)
+    out.close()
+  }
+  close() {
+    throw new Error('Method not implemented.')
+  }
+}
+
+/**  */
+class Bitmap {
+  static createBitmap: any
+  static Config: any
+  constructor() {
+    let Bitmap = Java.type('android.graphics.Bitmap')
+    return new Bitmap()
+  }
+  compress(format, quality: number, out: FileOutputStream) {
+    throw new Error('Method not implemented.')
+  }
+}
+
+class Paint {
+  setColor(arg0: any) {
+    throw new Error('Method not implemented.')
+  }
+  setStrokeWidth(arg0: number) {
+    throw new Error('Method not implemented.')
+  }
+  constructor() {
+    let Paint = Java.type('android.graphics.Paint')
+    return new Paint()
+  }
+}
+
+class Canvas {
+  drawARGB(arg0: number, arg1: number, arg2: number, arg3: number) {
+    throw new Error('Method not implemented.')
+  }
+  drawLine(boder: number, arg1: number, arg2: number, arg3: number, paint: Paint) {
+    throw new Error('Method not implemented.')
+  }
+  constructor(bitmap: Bitmap) {
+    let Canvas = Java.type('android.graphics.Canvas')
+    return new Canvas(bitmap)
+  }
+}
+
+class Color {
+  static argb(arg0: number, arg1: number, arg2: number, arg3: number): any {
+    throw new Error('Method not implemented.')
+  }
+  constructor() {
+    let Color = Java.type('android.graphics.Color')
+    return new Color()
+  }
+}
+
+import { File } from './java.js'
+function saveBitmap(bitmap: Bitmap, path: string): void {
+  //let FileOutputStream = Java.type('java.io.FileOutputStream')
   let CompressFormat = Java.type('android.graphics.Bitmap$CompressFormat')
   let file = new File(path)
   if (file.exists()) {
@@ -23,7 +95,7 @@ function saveBitmap(bitmap, path) {
  * @param {number} y 列数
  * @returns {object}
  */
-function getSize(x, y) {
+function getSize(x: number, y: number): { width: number; heidth: number; boder; spacing } {
   let boder = 60 // 外留边距
   let spacing = 80 // 行间距
   return {
@@ -34,15 +106,15 @@ function getSize(x, y) {
   }
 }
 
-function drawPanel(x, y) {
+function drawPanel(x: number, y: number) {
   let { width, heidth, boder, spacing } = getSize(x, y)
-  let Bitmap = Java.type('android.graphics.Bitmap')
-  let Paint = Java.type('android.graphics.Paint')
-  let Canvas = Java.type('android.graphics.Canvas')
-  let Color = Java.type('android.graphics.Color')
-  let Config = Java.type('android.graphics.Bitmap$Config')
+  //let Bitmap = Java.type('android.graphics.Bitmap')
+  //let Paint = Java.type('android.graphics.Paint')
+  //let Canvas = Java.type('android.graphics.Canvas')
+  //let Color = Java.type('android.graphics.Color')
+  //let Config = Java.type('android.graphics.Bitmap$Config')
 
-  let img = new Bitmap.createBitmap(width, heidth, Config.ARGB_8888) // 图片对象
+  let img = new Bitmap.createBitmap(width, heidth, Bitmap.Config.ARGB_8888) // 图片对象
   let paint = new Paint() // 画笔
   let canva = new Canvas(img) // 画布
 
