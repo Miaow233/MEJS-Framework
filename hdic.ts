@@ -1,6 +1,6 @@
 import { Bot, Session } from './src/medic.js'
 
-import * as app from './src/index.js'
+import {app} from './src/index.js'
 
 // 消息相关，At Image Text 是消息元素
 import {
@@ -22,9 +22,12 @@ import http from './src/extensions/http.js'
 import { Plugin } from './src/types/plugin.js'
 import './src/plugins/jrrp.js'
 
+import { InnerMode } from './src/utils/helper.js'
 let innerMode = new InnerMode()
 async function main(session: Session) {
   globalThis.client = session.client
+
+  // 消息中断器示例
   innerMode.setMsg(session)
   if (session.msg.includes('test')) {
     innerMode.enter()
@@ -42,6 +45,8 @@ async function main(session: Session) {
       reply('请回答是或否')
     }
   }
+  // 消息中断器示例结束
+
   // 插件系统
   if (globalThis.plugins && globalThis.plugins.length > 0) {
     globalThis.plugins.forEach((p: Plugin) => {
@@ -54,8 +59,9 @@ async function main(session: Session) {
       }
     })
   }
+  // 插件系统结束
 }
-import { InnerMode } from './src/utils/helper.js'
+
 $.on('message.group', async (message) => {
   let session = new Session(message, 'GroupMessage')
   try {
@@ -75,6 +81,7 @@ $.on('message.temp', async (message: typeof globalThis.message) => {
   main(session)
 })
 
+// Bot 上线事件
 $.on('online', (bot: typeof globalThis.bot) => {
   console.log(`${bot.uin} 已上线`)
   try {
@@ -85,6 +92,7 @@ $.on('online', (bot: typeof globalThis.bot) => {
   console.log('初始化完成')
 })
 
+// 循环检测
 while (true) {
   if (bot.uin) {
     $.emit('online', bot)

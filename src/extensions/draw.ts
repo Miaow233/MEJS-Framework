@@ -27,7 +27,7 @@ class FileOutputStream {
 }
 
 /**  */
-class Bitmap {
+export class Bitmap {
   static createBitmap: any
   static Config: any
   constructor() {
@@ -39,7 +39,7 @@ class Bitmap {
   }
 }
 
-class Paint {
+export class Paint {
   setColor(arg0: any) {
     throw new Error('Method not implemented.')
   }
@@ -52,7 +52,7 @@ class Paint {
   }
 }
 
-class Canvas {
+export class Canvas {
   drawARGB(arg0: number, arg1: number, arg2: number, arg3: number) {
     throw new Error('Method not implemented.')
   }
@@ -65,7 +65,7 @@ class Canvas {
   }
 }
 
-class Color {
+export class Color {
   static argb(arg0: number, arg1: number, arg2: number, arg3: number): any {
     throw new Error('Method not implemented.')
   }

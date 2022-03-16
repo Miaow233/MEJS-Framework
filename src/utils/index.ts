@@ -2,7 +2,10 @@
  * 辅助工具
  */
 
-export * as template from './template.js'
+//export * from './api.js'
+export *  from './helper.js'
+export * from './template.js'
+export * from './util.js'
 
 /**
  * 头像尺寸（允许传入的参数）
