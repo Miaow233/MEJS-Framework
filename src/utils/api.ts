@@ -1,8 +1,10 @@
+//TODO: 完善 QQ 接口
 import  http from '../extensions/http.js'
 import { fetchApi } from './util.js'
 const BKN = globalThis.BKN
 
 /**
+ * @description 已有替代
  * 获取好友列表
  * @returns {Array}
  */
@@ -15,7 +17,7 @@ export async function getFriends(): Promise<any[]> {
   return friends
 }
 
-/** 获取群组列表 */
+/** @deprecated 获取群组列表 */
 export async function getGroups() {
   let result = (await http.get(`https://qun.qq.com/cgi-bin/qun_mgr/get_group_list?&bkn=${BKN}`)).json()
   let groups = []

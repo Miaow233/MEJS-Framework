@@ -1,8 +1,7 @@
-import { File } from "./java.js"
+import { File } from './java.js'
 
 /** 写入文件 */
-export async function writeFile(path: string, data: any): Promise<void> {
-
+export function writeFile(path: string, data: any): void {
   let FileWriter = Java.type('java.io.FileWriter')
   let f = new File(path)
   if (!f.exists()) f.createNewFile()
@@ -13,7 +12,7 @@ export async function writeFile(path: string, data: any): Promise<void> {
 }
 
 /** 读取文本文件 */
-export async function readFile(path: string): Promise<string> {
+export function readFile(path: string): string {
   // JavaScript读取文本文件
   let FileReader = Java.type('java.io.FileReader')
   let Re = new FileReader(path)
@@ -39,7 +38,7 @@ export function getFileList(path: string) {
 }
 
 /** 文件或路径是否存在 */
-export function exists(path: string|File): boolean {
+export function exists(path: string | File): boolean {
   //let File = Java.type('java.io.File')
   let f = new File(path.toString())
   return f.exists()

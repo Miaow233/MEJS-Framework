@@ -89,16 +89,28 @@ export class Bot {
 
 export class Session {
   type: string
+  img:Array<string>
+  xml:Array<string>
+  json:Array<string>
   client: client
-  group: number
-sender: number
+  group: any
+  sender: any
   msg: string
+  nick:string
+
   constructor(message: any, type: string) {
     this.type = type
     this.client = message.client
     this.group = message.group
+    //this.group.name = message.groupName
     this.sender = message.uin
+    //this.sender.name = message.nick
     this.msg = message.msg
+    this.nick = message.nick
+    this.img = message.img
+    this.xml = message.xml
+    this.json = message.json
+
   }
 }
 
@@ -107,7 +119,7 @@ export class Message {
   group?: number
   msg: string
   constructor(message: typeof globalThis.message) {
-    this.sender =message.uin
+    this.sender = message.uin
     this.group = message.group
     this.msg = message.msg
   }

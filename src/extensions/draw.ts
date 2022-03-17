@@ -1,10 +1,5 @@
-/**
- * 将位图保存成图片文件
- * @param {Bitmap} bitmap
- * @param {string} path
- */
+import { File } from './java.js'
 
-/**  */
 class FileOutputStream {
   path: string
   constructor(file: File) {
@@ -28,7 +23,10 @@ class FileOutputStream {
 
 /**  */
 export class Bitmap {
-  static createBitmap: any
+  static createBitmap(width: number, height: number, config: any) {
+    let Bitmap = Java.type('android.graphics.Bitmap')
+    return new Bitmap.createBitmap(width, height, config)
+  }
   static Config: any
   constructor() {
     let Bitmap = Java.type('android.graphics.Bitmap')
@@ -56,7 +54,13 @@ export class Canvas {
   drawARGB(arg0: number, arg1: number, arg2: number, arg3: number) {
     throw new Error('Method not implemented.')
   }
-  drawLine(boder: number, arg1: number, arg2: number, arg3: number, paint: Paint) {
+  drawLine(
+    boder: number,
+    arg1: number,
+    arg2: number,
+    arg3: number,
+    paint: Paint
+  ) {
     throw new Error('Method not implemented.')
   }
   constructor(bitmap: Bitmap) {
@@ -75,7 +79,11 @@ export class Color {
   }
 }
 
-import { File } from './java.js'
+/**
+ * 将位图保存成图片文件
+ * @param {Bitmap} bitmap
+ * @param {string} path
+ */
 function saveBitmap(bitmap: Bitmap, path: string): void {
   //let FileOutputStream = Java.type('java.io.FileOutputStream')
   let CompressFormat = Java.type('android.graphics.Bitmap$CompressFormat')
@@ -90,12 +98,15 @@ function saveBitmap(bitmap: Bitmap, path: string): void {
 }
 
 /**
- * 获取画布大小
+ * 生成画布大小
  * @param {number} x 行数
  * @param {number} y 列数
  * @returns {object}
  */
-function getSize(x: number, y: number): { width: number; heidth: number; boder; spacing } {
+function getSize(
+  x: number,
+  y: number
+): { width: number; heidth: number; boder; spacing } {
   let boder = 60 // 外留边距
   let spacing = 80 // 行间距
   return {
@@ -106,15 +117,11 @@ function getSize(x: number, y: number): { width: number; heidth: number; boder; 
   }
 }
 
+/** 绘制扫雷 */
 function drawPanel(x: number, y: number) {
   let { width, heidth, boder, spacing } = getSize(x, y)
-  //let Bitmap = Java.type('android.graphics.Bitmap')
-  //let Paint = Java.type('android.graphics.Paint')
-  //let Canvas = Java.type('android.graphics.Canvas')
-  //let Color = Java.type('android.graphics.Color')
-  //let Config = Java.type('android.graphics.Bitmap$Config')
 
-  let img = new Bitmap.createBitmap(width, heidth, Bitmap.Config.ARGB_8888) // 图片对象
+  let img = Bitmap.createBitmap(width, heidth, Bitmap.Config.ARGB_8888) // 图片对象
   let paint = new Paint() // 画笔
   let canva = new Canvas(img) // 画布
 
@@ -124,10 +131,22 @@ function drawPanel(x: number, y: number) {
 
   // 绘制格子
   for (let i = 1; i < x; i++) {
-    canva.drawLine(boder, boder + spacing * i, width - boder, boder + spacing * i, paint) // x
+    canva.drawLine(
+      boder,
+      boder + spacing * i,
+      width - boder,
+      boder + spacing * i,
+      paint
+    ) // x
   }
   for (let i = 1; i < y; i++) {
-    canva.drawLine(boder + spacing * i, boder, boder + spacing * i, heidth - boder, paint) // y
+    canva.drawLine(
+      boder + spacing * i,
+      boder,
+      boder + spacing * i,
+      heidth - boder,
+      paint
+    ) // y
   }
 
   // 添加边框
@@ -138,4 +157,14 @@ function drawPanel(x: number, y: number) {
   saveBitmap(img, '/sdcard/DIC/data/cache/temp.png')
 }
 
+class ImageWriter {
+  bitmap: Bitmap
+  constructor() {}
+  drawLine(ax: number, ay: number, bx: number, by: number) {}
+  drawCircle(x: number, y: number, r) {}
+  drawRect(ax, ay, bx, by) {}
+  drawBitmap(bitmap, x, y) {}
+  drawText(text, x, y) {}
+  drawPoint(x, y) {}
+}
 export { saveBitmap, drawPanel }

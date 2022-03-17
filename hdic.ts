@@ -1,6 +1,6 @@
 import { Bot, Session } from './src/medic.js'
 
-import {app} from './src/index.js'
+import { app } from './src/index.js'
 
 // 消息相关，At Image Text 是消息元素
 import {
@@ -49,15 +49,28 @@ async function main(session: Session) {
 
   // 插件系统
   if (globalThis.plugins && globalThis.plugins.length > 0) {
-    globalThis.plugins.forEach((p: Plugin) => {
+    globalThis.plugins.forEach(async (p: Plugin) => {
       if (p.enable) {
         try {
-          p.action(session)
+          await p.action(session)
         } catch (e) {
           console.log(e)
         }
       }
     })
+  }
+  if (session.msg === 'help' || session.msg === '菜单') {
+    let menu = ''
+    if (globalThis.plugins && globalThis.plugins.length > 0) {
+      globalThis.plugins.forEach((p: Plugin) => {
+        if (p.enable) {
+          menu += p.info.name + '\n    ' + p.info.description + '\n'
+        }
+      })
+      reply(menu)
+    } else {
+      reply('没有菜单呢')
+    }
   }
   // 插件系统结束
 }

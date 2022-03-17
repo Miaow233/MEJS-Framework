@@ -2,7 +2,6 @@
  * 辅助工具
  */
 
-//export * from './api.js'
 export *  from './helper.js'
 export * from './template.js'
 export * from './util.js'

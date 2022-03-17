@@ -1,20 +1,50 @@
 import cli from '../extensions/commander.js'
+import { File } from '../extensions/java.js'
+import * as fs from '../extensions/fs.js'
+import { Session } from '../medic.js'
 import { reply } from '../message.js'
 import { Plugin } from '../types/plugin.js'
+// 插件信息
 const jrrp: Plugin = {
   info: {
     name: 'jrrp',
     version: '0.1',
-    description: 'jrrp',
+    description: '获取今日人品',
     author: 'Miaow',
     help: 'jrrp',
   },
+  // 是否启用
   enable: true,
-  action: function (session: typeof globalThis.session) {
+  // 插件主函数
+  action: async function (session: Session) {
+    // 命令解析
     let argv = cli(session.msg)
     if (argv['_'][0] === 'jrrp') {
       let levels = []
+      let dataFile = new File('/sdcard/DIC/data/jrrp.json')
+      if (!dataFile.exists()) {
+        File.mkdirs('/sdcard/DIC/data')
+        dataFile.createNewFile()
+      }
+      let cache = await compat.readText(dataFile.getAbsolutePath()) || '{}'
+      if (!(cache.length > 2))
+        cache = '{}'
+      let jrrp = JSON.parse(cache)[String(session.sender)] || {
+        luck: 0,
+        date: '',
+      }
+      cache = JSON.parse(cache)
+      let date = new Date().getDate()
       let luckValue = Math.floor(Math.random() * 100)
+      if (!jrrp.date || jrrp.date !== date) {
+        jrrp.date = date
+        jrrp.luck = luckValue
+        cache[String(session.sender)] = jrrp
+        fs.writeFile('/sdcard/DIC/data/jrrp.json', JSON.stringify(cache))
+      } else {
+        luckValue = jrrp.luck
+      }
+      // 自定义提示文字
       let desc = {
         '100': '买彩票可能会中大奖哦！',
         '80': '出门可能捡到 1 块钱。',
@@ -35,5 +65,6 @@ const jrrp: Plugin = {
     }
   },
 }
+// 导出插件
 globalThis.plugins = globalThis.plugins || []
 globalThis.plugins.push(jrrp)
