@@ -1,26 +1,58 @@
 interface Http {
   get: (url: string, headers?: object) => Promise<Response>
-  post: (url: string, data: string | ArrayBuffer, headers?: object) => Promise<Response>
+  post: (
+    url: string,
+    data: string | ArrayBuffer,
+    headers?: object
+  ) => Promise<Response>
 }
 
-let http: Http = {
-  get: async function (url: string, headers: object = {}): Promise<Response> {
-    let response: Response = await compat.access(url, headers)
-    response.json = function () {
-      return JSON.parse(this.text)
-    }
-    response.text = response.toString()
-    return response
-  },
+class Response implements Response {
+  readonly result: string | ArrayBuffer
+  readonly status: number
+  readonly header: String[]
+  constructor(result: string | ArrayBuffer, status: number, header: String[]) {
+    this.result = result
+    this.status = status
+    this.header = header
+  }
+  get text() {
+    return this.result.toString()
+  }
+  get json() {
+    return JSON.parse(this.text)
+  }
+}
 
-  post: async function (url: string, data: string | ArrayBuffer, headers: object = {}): Promise<Response> {
-    let response: Response = await compat.access(url, headers, data)
-    response.json = function () {
-      return JSON.parse(this.text)
-    }
-    response.text = response.toString()
-    return response
-  },
+namespace http {
+  /**
+   * 获取数据
+   * @param url
+   * @param headers
+   * @returns {Promise<Response>}
+   */
+  export const get = async function (
+    url: string,
+    headers: object = {}
+  ): Promise<Response> {
+    let { result, status, header } = await compat.access(url, headers)
+    return new Response(result, status, header)
+  }
+  /**
+   * 提交数据
+   * @param url
+   * @param data
+   * @param headers
+   * @returns {Promise<Response>}
+   */
+  export const post = async function (
+    url: string,
+    data: string | ArrayBuffer,
+    headers: object = {}
+  ): Promise<Response> {
+    const { result, status, header } = await compat.access(url, headers, data)
+    return new Response(result, status, header)
+  }
 }
 
 export default http

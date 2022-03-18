@@ -7,22 +7,31 @@ class FileOutputStream {
     return new FileOutputStream(file)
   }
   write(data) {
-    let file = new File(this.path)
-    if (file.exists()) {
-      file.delete()
-    }
-    file.createNewFile()
-    let out = new FileOutputStream(file)
-    out.write(data)
-    out.close()
+    this.write(data)
   }
   close() {
-    throw new Error('Method not implemented.')
+    this.close()
   }
 }
+/** 通过文件创建Bitmap */
+function getBitmapFromFile(pathName: string): Bitmap {
+  let BitmapFactory = Java.type('android.graphics.BitmapFactory')
+  return BitmapFactory.decodeFile(pathName);
+}
 
-/**  */
+/** Bitmap */
 export class Bitmap {
+  /**  */
+  static createScaledBitmap(src: Bitmap, width: number, height: number, filter: boolean) {
+    let Bitmap = Java.type('android.graphics.Bitmap')
+    return Bitmap.createScaledBitmap(src, width, height, filter)
+  }
+  /** 以src为原图生成不可变的新图像 */
+  static createBitmapFromSource(src: Bitmap) {
+    let Bitmap = Java.type('android.graphics.Bitmap')
+    return Bitmap.createBitmapFromFile(src)
+  }
+  /**  */
   static createBitmap(width: number, height: number, config: any) {
     let Bitmap = Java.type('android.graphics.Bitmap')
     return new Bitmap.createBitmap(width, height, config)
@@ -33,16 +42,26 @@ export class Bitmap {
     return new Bitmap()
   }
   compress(format, quality: number, out: FileOutputStream) {
-    throw new Error('Method not implemented.')
+    this.compress(format, quality, out)
+  }
+  getWidth() {
+    return this.getWidth()
+  }
+  getHeigth() {
+    return this.getHeigth()
+  }
+  /** 是否可修改 */
+  isMutable() {
+    return this.isMutable()
   }
 }
 
 export class Paint {
-  setColor(arg0: any) {
-    throw new Error('Method not implemented.')
+  setColor(color: any) {
+    this.setColor(color)
   }
-  setStrokeWidth(arg0: number) {
-    throw new Error('Method not implemented.')
+  setStrokeWidth(strokeWidth: number) {
+    this.setStrokeWidth(strokeWidth)
   }
   constructor() {
     let Paint = Java.type('android.graphics.Paint')
@@ -51,17 +70,11 @@ export class Paint {
 }
 
 export class Canvas {
-  drawARGB(arg0: number, arg1: number, arg2: number, arg3: number) {
-    throw new Error('Method not implemented.')
+  drawARGB(a: number, r: number, g: number, b: number) {
+    this.drawARGB(a, r, g, b)
   }
-  drawLine(
-    boder: number,
-    arg1: number,
-    arg2: number,
-    arg3: number,
-    paint: Paint
-  ) {
-    throw new Error('Method not implemented.')
+  drawLine(ax: number, ay: number, bx: number, by: number, paint: Paint) {
+    this.drawLine(ax, ay, bx, by, paint)
   }
   constructor(bitmap: Bitmap) {
     let Canvas = Java.type('android.graphics.Canvas')
@@ -70,8 +83,9 @@ export class Canvas {
 }
 
 export class Color {
-  static argb(arg0: number, arg1: number, arg2: number, arg3: number): any {
-    throw new Error('Method not implemented.')
+  static argb(a: number, r: number, g: number, b: number): Color {
+    let Color = Java.type('android.graphics.Color')
+    return Color.argb(a, r, g, b)
   }
   constructor() {
     let Color = Java.type('android.graphics.Color')
@@ -103,10 +117,7 @@ function saveBitmap(bitmap: Bitmap, path: string): void {
  * @param {number} y 列数
  * @returns {object}
  */
-function getSize(
-  x: number,
-  y: number
-): { width: number; heidth: number; boder; spacing } {
+function getSize(x: number, y: number): { width: number; heidth: number; boder; spacing } {
   let boder = 60 // 外留边距
   let spacing = 80 // 行间距
   return {
@@ -131,22 +142,10 @@ function drawPanel(x: number, y: number) {
 
   // 绘制格子
   for (let i = 1; i < x; i++) {
-    canva.drawLine(
-      boder,
-      boder + spacing * i,
-      width - boder,
-      boder + spacing * i,
-      paint
-    ) // x
+    canva.drawLine(boder, boder + spacing * i, width - boder, boder + spacing * i, paint) // x
   }
   for (let i = 1; i < y; i++) {
-    canva.drawLine(
-      boder + spacing * i,
-      boder,
-      boder + spacing * i,
-      heidth - boder,
-      paint
-    ) // y
+    canva.drawLine(boder + spacing * i, boder, boder + spacing * i, heidth - boder, paint) // y
   }
 
   // 添加边框
@@ -157,7 +156,7 @@ function drawPanel(x: number, y: number) {
   saveBitmap(img, '/sdcard/DIC/data/cache/temp.png')
 }
 
-class ImageWriter {
+export class ImageWriter {
   bitmap: Bitmap
   constructor() {}
   drawLine(ax: number, ay: number, bx: number, by: number) {}

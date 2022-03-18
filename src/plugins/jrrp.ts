@@ -22,13 +22,9 @@ const jrrp: Plugin = {
     if (argv['_'][0] === 'jrrp') {
       let levels = []
       let dataFile = new File('/sdcard/DIC/data/jrrp.json')
-      if (!dataFile.exists()) {
-        File.mkdirs('/sdcard/DIC/data')
-        dataFile.createNewFile()
-      }
-      let cache = await compat.readText(dataFile.getAbsolutePath()) || '{}'
-      if (!(cache.length > 2))
-        cache = '{}'
+      if (!dataFile.exists()) dataFile.createNewFile()
+      let cache = (await compat.readText(dataFile.getAbsolutePath())) || '{}'
+      if (!(cache.length > 2)) cache = '{}'
       let jrrp = JSON.parse(cache)[String(session.sender)] || {
         luck: 0,
         date: '',

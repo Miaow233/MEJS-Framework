@@ -1,7 +1,7 @@
 declare interface Response {
   readonly status: number
   readonly result: string | ArrayBuffer
-  readonly head: string
+  readonly header: String[]
   json(): Object
   text: string
 }

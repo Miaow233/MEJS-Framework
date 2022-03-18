@@ -13,20 +13,23 @@ import { exists } from './fs.js'
 import { File } from './java.js'
 
 export class SQLiteDatabase {
+  /** 打开数据库，如果不存在则创建 */
   static openOrCreateDatabase(file: string | File, factory?: CursorFactory): SQLiteDatabase {
-    let path = file.toString().split('/').slice(0, -1).join('/')
-    if (!exists(path)) File.mkdirs(path)
+    if (typeof file === 'string') {
+      file = new File(file)
+    }
+    if (!file.exists()) file.createNewFile()
     return Java.type('android.database.sqlite.SQLiteDatabase').openOrCreateDatabase(file, factory)
   }
-
+  /** 创建数据库，意义不明 */
   static create(): SQLiteDatabase {
     return Java.type('android.database.sqlite.SQLiteDatabase').create()
   }
-
+  /** 在内存中创建数据库 */
   static createInMemory(): SQLiteDatabase {
     return Java.type('android.database.sqlite.SQLiteDatabase').createInMemory()
   }
-
+  /** 可能用不到构造器 */
   constructor(context: string, name: string, factory: CursorFactory, version: number) {}
   delete(table: string, whereClause: string, whereArgs: Array<string>): number {
     return this.delete(table, whereClause, whereArgs)
@@ -35,7 +38,7 @@ export class SQLiteDatabase {
   deleteDatabase(file: File): boolean {
     return this.deleteDatabase(file)
   }
-
+  /** 执行SQL */
   execSQL(sql: string): void {
     this.execSQL(sql)
   }
