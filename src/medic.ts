@@ -1,4 +1,4 @@
-const odd_bot = bot
+const mebot = bot
 import { getAvatarById } from './utils/index.js'
 import { getCSRFToken } from './utils/util.js'
 
@@ -13,72 +13,72 @@ export class Bot {
   batteryStatus: string
   bkn: number
   constructor() {
-    this.avatar = getAvatarById(this.uin)
-    this.batteryLevel = odd_bot.batteryLevel
-    this.batteryStatus = odd_bot.batteryStatus
-    this.bkn = getCSRFToken(this.skey)
-    this.machineCode = odd_bot.machineCode
-    this.name = odd_bot.name
-    this.pskey = odd_bot.pskey
-    this.skey = odd_bot.skey
-    this.uin = odd_bot.uin
+    this.avatar = getAvatarById(mebot.uin)
+    this.batteryLevel = mebot.batteryLevel
+    this.batteryStatus = mebot.batteryStatus
+    this.bkn = getCSRFToken(mebot.skey)
+    this.machineCode = mebot.machineCode
+    this.name = mebot.name
+    this.pskey = mebot.pskey
+    this.skey = mebot.skey
+    this.uin = mebot.uin
   }
   checkAdmin(group_id: number, qq_id: number): boolean {
-    return odd_bot.checkAdmin(group_id, qq_id)
+    return mebot.checkAdmin(group_id, qq_id)
   }
   deleteMember(group_id: number, qq_id: number): void {
-    odd_bot.deleteMember(group_id, qq_id)
+    mebot.deleteMember(group_id, qq_id)
   }
   getClientKey(): string {
-    return odd_bot.getClientKey()
+    return mebot.getClientKey()
   }
   getPSkey(): string {
-    return odd_bot.getPSkey()
+    return mebot.getPSkey()
   }
   getSkey(): string {
-    return odd_bot.getSkey()
+    return mebot.getSkey()
   }
   getTroopList(): number[] {
-    return odd_bot.getTroopList()
+    return mebot.getTroopList()
   }
   getTroopMemberList(group_id: number | number[]): number[] {
-    return odd_bot.getTroopMemberList(group_id)
+    return mebot.getTroopMemberList(group_id)
   }
   getTroopSwicth(group_id: number): boolean {
-    return odd_bot.getTroopSwicth(group_id)
+    return mebot.getTroopSwicth(group_id)
   }
   pokeAvatar(group_id: number, qq_id: number): void {
-    odd_bot.pokeAvatar(group_id, qq_id)
+    mebot.pokeAvatar(group_id, qq_id)
   }
   reload(): void {
-    odd_bot.reload()
+    mebot.reload()
   }
   send(client: client): void {
-    odd_bot.send(client)
+    mebot.send(client)
   }
   sendRedPacket(group_id: number, title: string, money: number, qq_id: number | number[]): void {
-    odd_bot.sendRedPacket(group_id, title, money, qq_id)
+    mebot.sendRedPacket(group_id, title, money, qq_id)
   }
   setAdmin(group_id: number, qq_id: number, is_admin: boolean): void {
-    odd_bot.setAdmin(group_id, qq_id, is_admin)
+    mebot.setAdmin(group_id, qq_id, is_admin)
   }
   setGroupAdmin(id: number, qq: number, is_admin: boolean): any {
-    return odd_bot.setGroupAdmin(id, qq, is_admin)
+    return mebot.setGroupAdmin(id, qq, is_admin)
   }
   setMemberCard(group_id: number, qq_id: number, card: string): void {
-    odd_bot.setMemberCard(group_id, qq_id, card)
+    mebot.setMemberCard(group_id, qq_id, card)
   }
   setTroopSwicth(group_id: number, iSwitch: boolean): void {
-    odd_bot.setTroopSwicth(group_id, iSwitch)
+    mebot.setTroopSwicth(group_id, iSwitch)
   }
   shutup(group_id: number, qq_id: number, time: number): void {
-    odd_bot.shutup(group_id, qq_id, time)
+    mebot.shutup(group_id, qq_id, time)
   }
   shutupAll(group_id: number, time: number): void {
-    odd_bot.shutupAll(group_id, time)
+    mebot.shutupAll(group_id, time)
   }
   withDrawMsg(group_id: number, mark: number): void {
-    odd_bot.withDrawMsg(group_id, mark)
+    mebot.withDrawMsg(group_id, mark)
   }
 }
 

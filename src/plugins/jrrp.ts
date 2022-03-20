@@ -2,19 +2,19 @@ import cli from '../extensions/commander.js'
 import { File } from '../extensions/java.js'
 import * as fs from '../extensions/fs.js'
 import { Session } from '../medic.js'
-// 插件信息
+
 const jrrp = {
-  info: {
-    name: 'jrrp',
-    version: '0.1',
-    description: '获取今日人品',
-    author: 'Miaow',
-    help: 'jrrp',
-  },
+  // 插件信息
+  name: 'jrrp',
+  version: '0.1',
+  description: '获取今日人品',
+  author: 'Miaow',
+  help: 'jrrp',
   // 是否启用
   enable: true,
   // 插件主函数
 }
+
 globalThis.Event.on('message.group', async (session: Session) => {
   // 命令解析
   let argv = cli(session.msg)
@@ -59,3 +59,4 @@ globalThis.Event.on('message.group', async (session: Session) => {
     session.reply(`${session.nick} 的今日人品是：${luckValue}，${luckText}`)
   }
 })
+export default jrrp

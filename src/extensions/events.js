@@ -1,4 +1,5 @@
 // @ts-nocheck
+// @pittier-ignore
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -54,9 +55,6 @@ var NumberIsNaN = Number.isNaN || function NumberIsNaN(value) {
 function EventEmitter() {
   EventEmitter.init.call(this);
 }
-export default EventEmitter;
-const _once = once;
-export { _once as once };
 
 // Backwards-compat with node 0.10.x
 EventEmitter.EventEmitter = EventEmitter;
@@ -497,3 +495,6 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
     throw new TypeError('The "emitter" argument must be of type EventEmitter. Received type ' + typeof emitter);
   }
 }
+export default EventEmitter;
+export { once };
+globalThis.Event =globalThis.Event || new EventEmitter;
