@@ -13,15 +13,15 @@ export class Bot {
   batteryStatus: string
   bkn: number
   constructor() {
-    this.uin = odd_bot.uin
     this.avatar = getAvatarById(this.uin)
-    this.name = odd_bot.name
-    this.pskey = odd_bot.pskey
-    this.skey = odd_bot.skey
-    this.machineCode = odd_bot.machineCode
     this.batteryLevel = odd_bot.batteryLevel
     this.batteryStatus = odd_bot.batteryStatus
     this.bkn = getCSRFToken(this.skey)
+    this.machineCode = odd_bot.machineCode
+    this.name = odd_bot.name
+    this.pskey = odd_bot.pskey
+    this.skey = odd_bot.skey
+    this.uin = odd_bot.uin
   }
   checkAdmin(group_id: number, qq_id: number): boolean {
     return odd_bot.checkAdmin(group_id, qq_id)
@@ -56,12 +56,7 @@ export class Bot {
   send(client: client): void {
     odd_bot.send(client)
   }
-  sendRedPacket(
-    group_id: number,
-    title: string,
-    money: number,
-    qq_id: number | number[]
-  ): void {
+  sendRedPacket(group_id: number, title: string, money: number, qq_id: number | number[]): void {
     odd_bot.sendRedPacket(group_id, title, money, qq_id)
   }
   setAdmin(group_id: number, qq_id: number, is_admin: boolean): void {
@@ -82,21 +77,21 @@ export class Bot {
   shutupAll(group_id: number, time: number): void {
     odd_bot.shutupAll(group_id, time)
   }
-  withDrawMsg(group_id: number, qq_id: number): void {
-    odd_bot.withDrawMsg(group_id, qq_id)
+  withDrawMsg(group_id: number, mark: number): void {
+    odd_bot.withDrawMsg(group_id, mark)
   }
 }
 
 export class Session {
   type: string
-  img:Array<string>
-  xml:Array<string>
-  json:Array<string>
+  img: Array<string>
+  xml: Array<string>
+  json: Array<string>
   client: client
   group: any
   sender: any
   msg: string
-  nick:string
+  nick: string
 
   constructor(message: any, type: string) {
     this.type = type
@@ -110,7 +105,10 @@ export class Session {
     this.img = message.img
     this.xml = message.xml
     this.json = message.json
-
+  }
+  reply(msg: string) {
+    this.client.addText(msg)
+    bot.send(this.client)
   }
 }
 

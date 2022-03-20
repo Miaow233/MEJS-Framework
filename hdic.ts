@@ -3,14 +3,7 @@ import { Bot, Session } from './src/medic.js'
 import { app } from './src/index.js'
 
 // 消息相关，At Image Text 是消息元素
-import {
-  At,
-  Image,
-  Text,
-  createChain,
-  reply,
-  sendGroupMessage,
-} from './src/message.js'
+import { At, Image, Text, createChain, reply, sendGroupMessage } from './src/message.js'
 
 // 文件扩展
 import * as fs from './src/extensions/fs.js'
@@ -22,9 +15,14 @@ import http from './src/extensions/http.js'
 import { Plugin } from './src/types/plugin.js'
 import './src/plugins/jrrp.js'
 
+// 事件监听器
+import EventEmitter, { once } from './src/extensions/events.js'
+const Event = new EventEmitter()
+globalThis.Event = Event
+
 import { InnerMode } from './src/utils/helper.js'
 let innerMode = new InnerMode()
-async function main(session: Session) {
+async function messageHandler(session: Session) {
   globalThis.client = session.client
 
   // 消息中断器示例
@@ -46,52 +44,24 @@ async function main(session: Session) {
     }
   }
   // 消息中断器示例结束
-
-  // 插件系统
-  if (globalThis.plugins && globalThis.plugins.length > 0) {
-    globalThis.plugins.forEach(async (p: Plugin) => {
-      if (p.enable) {
-        try {
-          await p.action(session)
-        } catch (e) {
-          console.log(e)
-        }
-      }
-    })
-  }
-  if (session.msg === 'help' || session.msg === '菜单') {
-    let menu = ''
-    if (globalThis.plugins && globalThis.plugins.length > 0) {
-      globalThis.plugins.forEach((p: Plugin) => {
-        if (p.enable) {
-          menu += p.info.name + '\n    ' + p.info.description + '\n'
-        }
-      })
-      reply(menu)
-    } else {
-      reply('没有菜单呢')
-    }
-  }
-  // 插件系统结束
 }
 
 $.on('message.group', async (message) => {
   let session = new Session(message, 'GroupMessage')
-  try {
-    await main(session)
-  } catch (e) {
-    console.warn('MEJS运行失败: ' + e)
-  }
+  Event.emit('message', session)
+  Event.emit('message.group', session)
 })
 
-$.on('message.friend', async (message: typeof globalThis.message) => {
+$.on('message.friend', async (message) => {
   let session = new Session(message, 'FriendMessage')
-  main(session)
+  Event.emit('message', session)
+  Event.emit('message.friend', session)
 })
 
-$.on('message.temp', async (message: typeof globalThis.message) => {
+$.on('message.temp', async (message) => {
   let session = new Session(message, 'FriendMessage')
-  main(session)
+  Event.emit('message', session)
+  Event.emit('message.temp', session)
 })
 
 // Bot 上线事件
@@ -99,6 +69,7 @@ $.on('online', (bot: typeof globalThis.bot) => {
   console.log(`${bot.uin} 已上线`)
   try {
     globalThis.bot = new Bot()
+    bot = globalThis.bot
   } catch (e) {
     console.log(e)
   }
@@ -112,3 +83,7 @@ while (true) {
     break
   }
 }
+
+Event.on('message', async (session: Session) => {
+  await messageHandler(session)
+})

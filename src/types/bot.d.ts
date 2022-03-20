@@ -24,7 +24,7 @@ declare namespace bot {
   function setTroopSwicth(group_id: number, iSwitch: boolean): void
   function shutup(group_id: number, qq_id: number, time: number): void
   function shutupAll(group_id: number, time: number): void
-  function withDrawMsg(group_id: number, qq_id: number): void
+  function withDrawMsg(group_id: number, mark: number): void
 }
 
 declare namespace $ {

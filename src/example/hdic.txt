@@ -3,9 +3,9 @@
 权限:手机信息
 作者:Miaow
 版本:α
-图标:https://nekohouse.cafe/Yun.png
+图标:https://nekohouse.cafe/yun.png
 简介:这只是一个演示dic,本文件仅供参考，请勿在未知的情况下随意导入
-官网:https://nekohouse.cafe
+官网:https://docs.nekohouse.cafe
 开机:喵喵起床
 关机:喵喵睡觉
 
