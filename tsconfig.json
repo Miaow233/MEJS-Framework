@@ -17,8 +17,8 @@
     "strictPropertyInitialization": false,
     "alwaysStrict": false,
     "module": "ES6", // 模块类型
-    "outDir": "dist"// 指定输出目录
+    "outDir": "dist" // 指定输出目录
   },
-  "include": ["hdic.ts", "src", "src/types/*.d.ts"],
-  "exclude": ["src/test", "src/example", "lib.dom.d.ts"]
+  "include": ["hdic.ts", "src"],
+  "exclude": ["src/test", "src/example", "lib.dom.d.ts", "extensions/cac.js"]
 }

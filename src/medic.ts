@@ -1,4 +1,5 @@
 const mebot = bot
+import EventEmitter from './extensions/events.js'
 import { getAvatarById } from './utils/index.js'
 import { getCSRFToken } from './utils/util.js'
 
@@ -12,6 +13,9 @@ export class Bot {
   batteryLevel: number
   batteryStatus: string
   bkn: number
+  event: EventEmitter
+  logger: any
+
   constructor() {
     this.avatar = getAvatarById(mebot.uin)
     this.batteryLevel = mebot.batteryLevel
@@ -22,6 +26,7 @@ export class Bot {
     this.pskey = mebot.pskey
     this.skey = mebot.skey
     this.uin = mebot.uin
+    this.event = new EventEmitter()
   }
   checkAdmin(group_id: number, qq_id: number): boolean {
     return mebot.checkAdmin(group_id, qq_id)
@@ -53,7 +58,7 @@ export class Bot {
   reload(): void {
     mebot.reload()
   }
-  send(client: client): void {
+  send(client: any): void {
     mebot.send(client)
   }
   sendRedPacket(group_id: number, title: string, money: number, qq_id: number | number[]): void {
@@ -88,8 +93,8 @@ export class Session {
   xml: Array<string>
   json: Array<string>
   client: client
-  group: any
-  sender: any
+  group: number
+  sender: number
   msg: string
   nick: string
 

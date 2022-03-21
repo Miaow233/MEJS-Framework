@@ -61,7 +61,7 @@ export class MineSweeper {
     this.startTime = new Date()
     this.actions = 0
     this.font = ''
-    //TODO
+    // TODO
     // this.font = ImageFont.truetype("00TT.TTF.", 40)
     // this.panel = [[Cell(False, row=r, column=c) for c in range(column)] for r in range(row)]
     this.panel = new Array(column).fill([])

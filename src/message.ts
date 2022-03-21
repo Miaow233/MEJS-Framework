@@ -11,7 +11,6 @@ export let At = (qq: number, text: string) => {
 }
 
 import { Friend, Group, Temp } from './target.js'
-
 export function createChain(elem: Array<any>): client {
   let client = globalThis.client
   elem.forEach((element) => {
