@@ -23,3 +23,5 @@ import * as app from './mejs/index.js'
 **使用文档[建设中] [https://docs.nekohouse.cafe](https://docs.nekohouse.cafe)**
 
 **API 参考 [https://docs.nekohouse.cafe/type](https://docs.nekohouse.cafe/type)**
+
+![Alt](https://repobeats.axiom.co/api/embed/80476bfcb2be552b6548029824d98780ddd5f7fc.svg "Repobeats analytics image")

@@ -16,7 +16,7 @@
     "strictFunctionTypes": false,
     "strictPropertyInitialization": false,
     "alwaysStrict": false,
-    "module": "ES6", // 模块类型
+    "module": "ES2022", // 模块类型
     "outDir": "dist" // 指定输出目录
   },
   "include": ["hdic.ts", "src"],

@@ -7,6 +7,5 @@
   "editor.formatOnSave": true,
   "files.insertFinalNewline": true,
   "files.simpleDialog.enable": true,
-  "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
 }

@@ -167,12 +167,14 @@ class CAC extends EventEmitter {
    * Parse argv
    */
   parse(
-    argv = [],
+    command: String,
     {
       /** Whether to run the action for matched command */
       run = true,
     } = {}
   ): ParsedArgv {
+    let argv: string[] = []
+    argv = ['','', ...command.split(' ')]
     this.rawArgs = argv
     if (!this.name) {
       this.name = argv[1] ? getFileName(argv[1]) : 'cli'
