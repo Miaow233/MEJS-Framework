@@ -59,6 +59,8 @@ while (true) {
 }
 
 Event.on('message', async (session: Session) => {
+  // 进行下一次解析前请务必取消上一次解析
+  Bot.cli.unsetMatchedCommand()
   try {
     await Bot.cli.parse(session.msg)
   } catch (e) {
