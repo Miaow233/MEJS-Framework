@@ -1,8 +1,9 @@
+import './src/logger.js'
+
 import { Bot, Session } from './src/medic.js'
 
 // 事件监听器
-import './src/extensions/events.js'
-const Event = globalThis.Event
+const Event = Bot.Event
 
 // 消息相关，At Image Text 是消息元素
 import { At, Image, Text, createChain, reply, sendGroupMessage, sendFriendMessage } from './src/message.js'
@@ -17,7 +18,6 @@ import { At, Image, Text, createChain, reply, sendGroupMessage, sendFriendMessag
 import './src/plugins/jrrp.js'
 
 import { InnerMode } from './src/utils/helper.js'
-import { CAC } from './src/extensions/cac.js'
 let innerMode = new InnerMode()
 async function messageHandler(session: Session) {
   globalThis.client = session.client
@@ -45,60 +45,62 @@ async function messageHandler(session: Session) {
 
 $.on('message.group', async (message) => {
   let session = new Session(message, 'GroupMessage')
+  Bot.pushMsg(session)
   Event.emit('message', session)
   Event.emit('message.group', session)
 })
 
 $.on('message.friend', async (message) => {
   let session = new Session(message, 'FriendMessage')
+  Bot.pushMsg(session)
   Event.emit('message', session)
   Event.emit('message.friend', session)
 })
 
 $.on('message.temp', async (message) => {
   let session = new Session(message, 'FriendMessage')
+  Bot.pushMsg(session)
   Event.emit('message', session)
   Event.emit('message.temp', session)
 })
 
-// Bot 上线事件
-Event.on('online', (bot: typeof globalThis.bot) => {
-  console.log(`${bot.uin} 已上线`)
-
-  globalThis.bot = new Bot()
-  bot = globalThis.bot
-
-  console.log('初始化完成')
-})
-
-let cli = new CAC()
-cli.command('测试命令 <text>').action(async (args, ctx) => {
+Bot.cli.command('测试命令 <text>').action(async (args, ctx) => {
   console.log('测试命令')
 })
-
-cli.command('echo <text>').action(async (args) => {
-  reply(args)
+Bot.cli.command('echo <text>').action(async (args) => {
+  let session = Bot.curMsg()
+  session.reply(args)
   console.log(args.text)
 })
-cli.command('send <uin> <text>', '发送消息').action(async (uin: number, text: string) => {
+Bot.cli.command('send <uin> <text>', '发送消息').action(async (uin: number, text: string) => {
   sendFriendMessage(uin, text)
 })
-// 循环检测
+
+// Bot上线事件
 while (true) {
   if (bot.uin) {
-    Event.emit('online', bot)
+    try {
+      console.log(`${bot.uin} 已上线`)
+      globalThis.bot = new Bot()
+      console.log('初始化完成')
+    } catch (e) {
+      //globalThis.bot.updateBkn()
+    }
     break
   }
 }
 
 Event.on('message', async (session: Session) => {
   try {
-    cli.parse(['', '', ...session.msg.split(' ')])
+    Bot.cli.parse(['', '', ...session.msg.split(' ')], { run: false })
+    await Bot.cli.runMatchedCommand()
   } catch (e) {
-    if (String(e).startsWith('CACError: missing required args for command')) {
-      session.reply(e.toString())
+    console.log(e.stack)
+    const missingRequired = 'CACError: missing required args for command'
+    if (String(e).startsWith(missingRequired)) {
+      session.reply(`缺少必要参数：${e.toString().replace(missingRequired, '')}`)
     } else {
-      session.reply(e.toString())
+      session.reply(`未知错误：${e.toString()}`)
     }
   }
   await messageHandler(session)

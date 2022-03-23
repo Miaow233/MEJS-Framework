@@ -1,9 +1,12 @@
-const mebot = bot
+const mebot = globalThis.bot
 import EventEmitter from './extensions/events.js'
 import { getAvatarById } from './utils/index.js'
 import { getCSRFToken } from './utils/util.js'
+import { CAC } from './extensions/cac/index.js'
 
 export class Bot {
+  static cli: CAC = new CAC()
+  static Event: EventEmitter = new EventEmitter()
   uin: number
   avatar: string
   name: string
@@ -13,9 +16,7 @@ export class Bot {
   batteryLevel: number
   batteryStatus: string
   bkn: number
-  event: EventEmitter
-  logger: any
-
+  static msgQueue: Session[] = []
   constructor() {
     this.avatar = getAvatarById(mebot.uin)
     this.batteryLevel = mebot.batteryLevel
@@ -26,7 +27,12 @@ export class Bot {
     this.pskey = mebot.pskey
     this.skey = mebot.skey
     this.uin = mebot.uin
-    this.event = new EventEmitter()
+  }
+  updateBkn(): void {
+    this.bkn = getCSRFToken(this.skey)
+  }
+  static checkAdmin(group_id: number, qq_id: number): boolean {
+    return mebot.checkAdmin(group_id, qq_id)
   }
   checkAdmin(group_id: number, qq_id: number): boolean {
     return mebot.checkAdmin(group_id, qq_id)
@@ -55,6 +61,9 @@ export class Bot {
   pokeAvatar(group_id: number, qq_id: number): void {
     mebot.pokeAvatar(group_id, qq_id)
   }
+  static reload(): void {
+    mebot.reload()
+  }
   reload(): void {
     mebot.reload()
   }
@@ -63,6 +72,9 @@ export class Bot {
   }
   sendRedPacket(group_id: number, title: string, money: number, qq_id: number | number[]): void {
     mebot.sendRedPacket(group_id, title, money, qq_id)
+  }
+  static setAdmin(group_id: number, qq_id: number, is_admin: boolean): void {
+    mebot.setAdmin(group_id, qq_id, is_admin)
   }
   setAdmin(group_id: number, qq_id: number, is_admin: boolean): void {
     mebot.setAdmin(group_id, qq_id, is_admin)
@@ -84,6 +96,18 @@ export class Bot {
   }
   withDrawMsg(group_id: number, mark: number): void {
     mebot.withDrawMsg(group_id, mark)
+  }
+  static curMsg(): Session {
+    return Bot.msgQueue[Bot.msgQueue.length - 1]
+  }
+  static pushMsg(message: Session): void {
+    if (Bot.msgQueue.length > 20) {
+      Bot.msgQueue.shift()
+    }
+    Bot.msgQueue.push(message)
+  }
+  static popMsg(): Session {
+    return Bot.msgQueue.pop()
   }
 }
 

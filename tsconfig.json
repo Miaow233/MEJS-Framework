@@ -20,5 +20,5 @@
     "outDir": "dist" // 指定输出目录
   },
   "include": ["hdic.ts", "src"],
-  "exclude": ["src/test", "src/example", "lib.dom.d.ts", "extensions/cac.js"]
+  "exclude": ["src/__test__", "src/example", "lib.dom.d.ts"]
 }

@@ -72,6 +72,7 @@ nav:
   - 主页:
       - index.md
       - quickstart.md
+      - 指令系统: cac.md
       - 插件系统: plugin-manager.md
       - 接口一览: type/index.html
   - Medic 文档:

@@ -74,6 +74,7 @@ export class MineSweeper {
   }
 
   static #get_count_text_color(count): string {
+    // TODO
     if (count == 1) return //ImageColor.getrgb("green")
     if (count == 2) return //ImageColor.getrgb("orange")
     if (count == 3) return //ImageColor.getrgb("red")
@@ -118,7 +119,7 @@ export class MineSweeper {
     return this.img
   }
 
-  // 内部方法：绘制分割线
+  // 绘制分割线
   #draw_split_line(img) {
     let Paint = Java.type('android.graphics.Paint')
     let Canvas = Java.type('android.graphics.Canvas')
@@ -144,7 +145,7 @@ export class MineSweeper {
       for (let j = 0; i < this.column; i++) {
         let cell = this.panel[i][j]
         if (this.state == GameState.FAIL && cell.is_mine) {
-          //TODO
+          // TODO
           // draw.rectangle(
           //   (j * 80 + 1, i * 80 + 1, (j + 1) * 80 - 1, (i + 1) * 80 - 1),
           //   (fill = ImageColor.getrgb('red'))
@@ -152,7 +153,7 @@ export class MineSweeper {
           continue
         }
         if (cell.is_marked) {
-          //TODO
+          // TODO
           // draw.rectangle(
           //   (j * 80 + 1, i * 80 + 1, (j + 1) * 80 - 1, (i + 1) * 80 - 1),
           //   (fill = ImageColor.getrgb('blue'))
@@ -160,7 +161,7 @@ export class MineSweeper {
           continue
         }
         if (!cell.is_mined) {
-          //TODO
+          // TODO
           // draw.rectangle(
           //   (j * 80 + 1, i * 80 + 1, (j + 1) * 80 - 1, (i + 1) * 80 - 1),
           //   (fill = ImageColor.getrgb('gray'))
@@ -171,21 +172,21 @@ export class MineSweeper {
   }
 
   #draw_cell(img) {
-    //draw = ImageDraw.Draw(img)
+    // draw = ImageDraw.Draw(img)
     for (let i = 0; i < this.row; i++) {
       for (let j = 0; j < this.column; j++) {
         let cell = this.panel[i][j]
         if (!cell.is_mined) {
-          //let font_size = this.font.getsize("AA")
+          // let font_size = this.font.getsize("AA")
           let index = `${COLUMN_NAME[i]}${COLUMN_NAME[j]}`
-          //let center = (80 * (j + 1) - (font_size[0] / 2) - 40, 80 * (i + 1) - 40 - (font_size[1] / 2))
-          //draw.text(center, index, fill=ImageColor.getrgb("black"), font=this.font)
+          // let center = (80 * (j + 1) - (font_size[0] / 2) - 40, 80 * (i + 1) - 40 - (font_size[1] / 2))
+          // draw.text(center, index, fill=ImageColor.getrgb("black"), font=this.font)
         } else {
-          //let count = this.count_around(i, j)
-          //if (count == 0) continue
-          //let font_size = this.font.getsize(String(count))
-          //let center = (80 * (j + 1) - (font_size[0] / 2) - 40, 80 * (i + 1) - 40 - (font_size[1] / 2))
-          //draw.text(center, str(count), fill=this.#get_count_text_color(count), font=this.font)
+          let count = this.count_around(i, j)
+          if (count == 0) continue
+          // let font_size = this.font.getsize(String(count))
+          // let center = (80 * (j + 1) - (font_size[0] / 2) - 40, 80 * (i + 1) - 40 - (font_size[1] / 2))
+          // draw.text(center, str(count), fill=this.#get_count_text_color(count), font=this.font)
         }
       }
     }

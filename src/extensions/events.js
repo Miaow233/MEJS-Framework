@@ -496,5 +496,5 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
   }
 }
 export default EventEmitter;
-export { once };
-globalThis.Event = globalThis.Event || new EventEmitter;
+export { EventEmitter, once };
+// globalThis.Event = globalThis.Event || new EventEmitter;
