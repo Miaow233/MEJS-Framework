@@ -1,4 +1,4 @@
-# MEJS-Framework
+![MEJS-Framework](https://socialify.git.ci/Miaow233/MEJS-Framework/image?description=1&descriptionEditable=JavaScript%20Framework%20for%20Medic.&font=Inter&language=1&owner=1&pattern=Signal&stargazers=1&theme=Light)
 
 ## 关于本框架
 MEJS Framework 是为 Medic 设计的 JS 词库开发框架. 基于 Javet, 使用 TS 编写, 提供了丰富的 API 功能.
