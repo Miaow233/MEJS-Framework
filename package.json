@@ -1,6 +1,6 @@
 {
   "name": "mejs-framework",
-  "version": "1.2.4",
+  "version": "1.2.6",
   "description": "JavaScript Framework for Medic",
   "main": "src/index.ts",
   "repository": "https://github.com/Miaow233/MEJS-Framework",
