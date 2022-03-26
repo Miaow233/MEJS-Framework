@@ -29,6 +29,9 @@ export class Bot {
     this.skey = mebot.skey
     this.uin = mebot.uin
   }
+  static isOnline(): boolean {
+    return Boolean(mebot.skey)
+  }
   updateBkn(): void {
     this.bkn = getCSRFToken(this.skey)
   }

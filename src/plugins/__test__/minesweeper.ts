@@ -1,4 +1,4 @@
-import { saveBitmap } from '../extensions/draw.js'
+import { saveBitmap } from '../../extensions/draw.js'
 // 自定义列提示字母
 const COLUMN_NAME = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 

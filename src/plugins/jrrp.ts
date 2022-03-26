@@ -1,10 +1,16 @@
-import { File } from '../extensions/java.js'
-import * as fs from '../extensions/fs.js'
-import { Bot } from '../medic.js'
+// import { module } from '../plugin.js'
+// @ts-ignore
+const Bot = module.Bot
+// @ts-ignore
+const File = module.File
 
-Bot.cli.command('jrrp','获取今日人品').action(async () => {
+Bot.cli.command('jrrp', '获取今日人品')
+.action(async () => {
   // 当前消息对象
   let session = Bot.curMsg()
+
+  // 防止初始化前调用
+  if (!session) return
 
   let levels = []
   let dataFile = new File('/sdcard/DIC/data/jrrp.json')
@@ -22,7 +28,7 @@ Bot.cli.command('jrrp','获取今日人品').action(async () => {
     jrrp.date = date
     jrrp.luck = luckValue
     cache[String(session.sender)] = jrrp
-    fs.writeFile('/sdcard/DIC/data/jrrp.json', JSON.stringify(cache))
+    compat.writeText('/sdcard/DIC/data/jrrp.json', JSON.stringify(cache))
   } else {
     luckValue = jrrp.luck
   }

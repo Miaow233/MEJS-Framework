@@ -1,10 +1,12 @@
-// Bot是从全局变量中获取的
 // 使用Bot.cli.command()创建命令
-// @ts-nocheck
+// import { module } from "../plugin"
+// @ts-ignore
+let Bot = module.Bot
 Bot.cli.command('test', 'Test command').action(async () => {
   // 获取当前消息
   let session = Bot.curMsg()
+  // 防止初始化前调用
+  if (!session) return
   // 回复
   session.reply('Hello, ' + session.nick + '!')
-  console.log('test')
 })

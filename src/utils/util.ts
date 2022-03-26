@@ -19,6 +19,7 @@ export function getGroupImageUrl(md5: string) {
 
 /** bkn计算方法 */
 export function getCSRFToken(str) {
+  if (!str) return 0
   let hash = 5381
   for (let i = 0, len = str.length; i < len; ++i) {
     hash += (hash << 5) + str.charAt(i).charCodeAt()

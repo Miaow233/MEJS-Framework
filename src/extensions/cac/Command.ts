@@ -144,7 +144,7 @@ class Command {
     ]
 
     sections.push({
-      title: 'Usage',
+      title: '用法',
       body: `  $ ${name} ${this.usageText || this.rawName}`,
     })
 
@@ -156,7 +156,7 @@ class Command {
         commands.map((command) => command.rawName)
       )
       sections.push({
-        title: 'Commands',
+        title: '指令',
         body: commands
           .map((command) => {
             return `  ${padRight(
@@ -167,7 +167,7 @@ class Command {
           .join('\n'),
       })
       sections.push({
-        title: `For more info, run any command with the \`--help\` flag`,
+        title: `获取更多信息，请添加 \`--help\` 标签`,
         body: commands
           .map(
             (command) =>
@@ -190,7 +190,7 @@ class Command {
         options.map((option) => option.rawName)
       )
       sections.push({
-        title: 'Options',
+        title: '可选参数',
         body: options
           .map((option) => {
             return `  ${padRight(option.rawName, longestOptionName.length)}  ${
@@ -198,7 +198,7 @@ class Command {
             } ${
               option.config.default === undefined
                 ? ''
-                : `(default: ${option.config.default})`
+                : `(默认值: ${option.config.default})`
             }`
           })
           .join('\n'),
@@ -207,7 +207,7 @@ class Command {
 
     if (this.examples.length > 0) {
       sections.push({
-        title: 'Examples',
+        title: '示例',
         body: this.examples
           .map((example) => {
             if (typeof example === 'function') {
@@ -247,7 +247,7 @@ class Command {
 
     if (this.cli.args.length < minimalArgsCount) {
       throw new CACError(
-        `missing required args for command \`${this.rawName}\``
+        `缺少必要参数 \`${this.rawName}\``
       )
     }
   }
@@ -268,7 +268,7 @@ class Command {
           !globalCommand.hasOption(name)
         ) {
           throw new CACError(
-            `Unknown option \`${name.length > 1 ? `--${name}` : `-${name}`}\``
+            `未知选项 \`${name.length > 1 ? `--${name}` : `-${name}`}\``
           )
         }
       }
@@ -289,7 +289,7 @@ class Command {
           (o) => o.negated && o.names.includes(option.name)
         )
         if (value === true || (value === false && !hasNegated)) {
-          throw new CACError(`option \`${option.rawName}\` value is missing`)
+          throw new CACError(`缺少参数 \`${option.rawName}\``)
         }
       }
     }

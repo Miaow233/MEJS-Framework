@@ -29,11 +29,11 @@ declare namespace compat {
   function writeText(path: string, text: string): boolean
 
   // compat.readConfig(path,key,val) 读取键值对，参数为：本地全路径，键，默认值；返回字符串
-  function readConfig(path: string, key: string, def?: string): string
+  function readConfig(path: string, key: string, def?: string): Promise<string>
 
   // compat.readData(path) 读取字节数据，参数为：本地全路径；返回字节组
-  function readData(path: string): ArrayBuffer
+  function readData(path: string): Promise<ArrayBuffer>
 
   // compat.readText(path) 读取文本数据，参数为：本地全路径；返回字符串
-  function readText(path: string): string
+  function readText(path: string): Promise<string>
 }

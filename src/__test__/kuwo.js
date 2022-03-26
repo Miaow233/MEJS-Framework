@@ -5,10 +5,9 @@
  */
 
 let { result, status, header } = await compat.access('http://www.kuwo.cn/')
-//console.log(result)
 console.log(status, JSON.stringify(header), header.length)
 
-import * as http from './mejs/utils/http.js'
+import http from '../extensions/http.js'
 import { cli } from './mejs/index.js'
 console.log(JSON.stringify(cli('酷我点歌 ggg')))
 let list_length = 30
@@ -164,7 +163,7 @@ $.on('message', async (session) => {
       console.log('数据获取失败，请重试。')
     }
   }
-  
+
   let args = cli(msg)
   if (args['_'][0] == '酷我点歌') {
     music_name = args['_'][1]
