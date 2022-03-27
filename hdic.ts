@@ -10,11 +10,7 @@ const Event = Bot.Event
 import { At, Image, Text, createChain, reply, sendGroupMessage, sendFriendMessage } from './src/message.js'
 
 // 导入插件
-import './src/plugins/jrrp.js'
 import './src/plugin.js'
-
-/** 消息处理函数 */
-async function msgHandler(session: Session) {}
 
 $.on('message.group', async (message) => {
   let session = new Session(message, 'GroupMessage')
@@ -66,5 +62,4 @@ Event.on('message', async (session: Session) => {
       session.reply(`未知错误：${e.toString()}`)
     }
   }
-  await msgHandler(session)
 })

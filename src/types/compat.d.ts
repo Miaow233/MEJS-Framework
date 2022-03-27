@@ -37,3 +37,5 @@ declare namespace compat {
   // compat.readText(path) 读取文本数据，参数为：本地全路径；返回字符串
   function readText(path: string): Promise<string>
 }
+
+declare function delay(ms:number): Promise<void>

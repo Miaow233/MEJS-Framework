@@ -10,7 +10,10 @@ Bot.cli.command('jrrp', '获取今日人品').action(async () => {
   if (!session) return new Error('请在 Bot 初始化后调用')
 
   let levels = []
+
   let dataFile = new File('/sdcard/DIC/data/jrrp.json')
+  let dataPath =new  File(dataFile.getPath())
+  if (!dataPath.exists()) dataPath.createDirectory()
   if (!dataFile.exists()) dataFile.createNewFile()
   let cache = (await compat.readText(dataFile.getAbsolutePath())) || '{}'
   if (!(cache.length > 2)) cache = '{}'
