@@ -11,6 +11,7 @@ import { At, Image, Text, createChain, reply, sendGroupMessage, sendFriendMessag
 
 // 导入插件
 import './src/plugin.js'
+import { clearInterval, getTimerId, setInterval } from './src/timer.js'
 
 $.on('message.group', async (message) => {
   let session = new Session(message, 'GroupMessage')
@@ -25,28 +26,25 @@ $.on('message.friend', async (message) => {
   Event.emit('message', session)
   Event.emit('message.friend', session)
 })
-;(function loopOnline() {
-  return new Promise<void>((resolve, reject) => {
-    Logger.time('Online')
-    Logger.log('正在检查登录状态... ' + Bot.isOnline())
-    while (true) {
-      // Bot上线事件
-      if (Bot.isOnline()) {
-        try {
-          Logger.log(`${bot.uin} 已上线`)
-          globalThis.bot = new Bot()
-          Logger.log('初始化完成')
-        } catch (e) {
-          reject()
-          Logger.log('啊哦, 出了些问题\n' + e.stack)
-        }
-        resolve()
-        Logger.timeEnd('Online')
-        break
-      }
+let task = getTimerId()
+Logger.time('Online')
+setInterval(() => {
+  Logger.log('正在检查登录状态... ' + Bot.isOnline())
+  // Bot上线事件
+  if (Bot.isOnline()) {
+    try {
+      Logger.log(`${bot.uin} 已上线`)
+      globalThis.bot = new Bot()
+      Logger.log('初始化完成')
+    } catch (e) {
+      Logger.log('啊哦, 出了些问题\n' + e.stack)
     }
-  })
-})()
+    clearInterval(task)
+    Logger.timeEnd('Online')
+  } else {
+    Logger.log('未登录, 3s后重试')
+  }
+}, 3000)
 
 Event.on('message', async (session: Session) => {
   // 进行下一次解析前请务必取消上一次解析
