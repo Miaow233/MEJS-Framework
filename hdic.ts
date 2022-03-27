@@ -29,19 +29,6 @@ $.on('message.friend', async (message) => {
   Event.emit('message', session)
   Event.emit('message.friend', session)
 })
-// 几个测试命令
-Bot.cli.command('ping').action(async () => {
-  let session = Bot.curMsg()
-  session.reply('pong')
-})
-Bot.cli.command('echo <text>').action(async (args) => {
-  let session = Bot.curMsg()
-  session.reply(args)
-  console.log(args.text)
-})
-Bot.cli.command('send <uin> <text>', '发送消息').action(async (uin: number, text: string) => {
-  sendFriendMessage(uin, text)
-})
 ;(function loopOnline() {
   return new Promise<void>((resolve, reject) => {
     Logger.time('Online')
@@ -81,4 +68,3 @@ Event.on('message', async (session: Session) => {
   }
   await msgHandler(session)
 })
-Bot.cli.outputHelp()

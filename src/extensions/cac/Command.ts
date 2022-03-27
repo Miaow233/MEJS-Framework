@@ -129,7 +129,7 @@ class Command {
     })
   }
 
-  outputHelp() {
+  outputHelp(): string {
     const { name, commands } = this.cli
     const {
       versionNumber,
@@ -223,15 +223,15 @@ class Command {
       sections = helpCallback(sections) || sections
     }
 
-    console.log(
-      sections
+    let helpMsg = sections
         .map((section) => {
           return section.title
             ? `${section.title}:\n${section.body}`
             : section.body
         })
         .join('\n\n')
-    )
+    console.log(helpMsg)
+    return helpMsg
   }
 
   outputVersion() {

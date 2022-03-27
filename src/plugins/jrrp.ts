@@ -1,16 +1,13 @@
-// import { module } from '../plugin.js'
-// @ts-ignore
-const Bot = module.Bot
-// @ts-ignore
-const File = module.File
+import { module } from '../plugin.js'
 
-Bot.cli.command('jrrp', '获取今日人品')
-.action(async () => {
+const { Bot, File } = module
+
+Bot.cli.command('jrrp', '获取今日人品').action(async () => {
   // 当前消息对象
   let session = Bot.curMsg()
 
   // 防止初始化前调用
-  if (!session) return
+  if (!session) return new Error('请在 Bot 初始化后调用')
 
   let levels = []
   let dataFile = new File('/sdcard/DIC/data/jrrp.json')

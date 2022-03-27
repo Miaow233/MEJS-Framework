@@ -128,9 +128,9 @@ class CAC extends EventEmitter {
    */
   outputHelp() {
     if (this.matchedCommand) {
-      this.matchedCommand.outputHelp()
+      return this.matchedCommand.outputHelp()
     } else {
-      this.globalCommand.outputHelp()
+      return  this.globalCommand.outputHelp()
     }
   }
 

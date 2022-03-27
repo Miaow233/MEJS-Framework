@@ -16,7 +16,6 @@ export class Bot {
   batteryLevel: number
   batteryStatus: string
   bkn: number
-  static plugins = []
   static msgQueue: Session[] = []
   constructor() {
     this.avatar = getAvatarById(mebot.uin)
