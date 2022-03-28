@@ -35,5 +35,5 @@ Bot.cli.command('help').action(async () => {
   let session = Bot.curMsg()
   Bot.cli.unsetMatchedCommand()
   let helpMsg = Bot.cli.outputHelp()
-  session.reply(helpMsg)
+  session.send(helpMsg)
 })

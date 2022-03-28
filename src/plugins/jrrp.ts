@@ -10,10 +10,11 @@ Bot.cli.command('jrrp', '获取今日人品').action(async () => {
   if (!session) return new Error('请在 Bot 初始化后调用')
 
   let levels = []
-
+  // 数据文件
   let dataFile = new File('/sdcard/DIC/data/jrrp.json')
-  let dataPath =new  File(dataFile.getPath())
-  if (!dataPath.exists()) dataPath.createDirectory()
+  // 如果文件不存在，则创建
+  let dataPath = new File(dataFile.getParent())
+  if (!dataPath.exists()) dataPath.mkdirs()
   if (!dataFile.exists()) dataFile.createNewFile()
   let cache = (await compat.readText(dataFile.getAbsolutePath())) || '{}'
   if (!(cache.length > 2)) cache = '{}'
@@ -49,5 +50,5 @@ Bot.cli.command('jrrp', '获取今日人品').action(async () => {
     else break
   }
   const luckText = desc[descKey]
-  session.reply(`${session.nick} 的今日人品是：${luckValue}，${luckText}`)
+  session.send(`${session.nick} 的今日人品是：${luckValue}，${luckText}`)
 })

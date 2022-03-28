@@ -2,7 +2,7 @@
  * 辅助工具
  */
 
-export *  from './helper.js'
+export * from './helper.js'
 export * from './template.js'
 export * from './util.js'
 
@@ -25,11 +25,7 @@ export type AvatarSize = 1 | 2 | 3 | 4 | 5 | 40 | 100 | 140 | 640
  * - 100: 100*100
  * @returns
  */
-export function getAvatarById(
-  id: number,
-  type: 'friend' | 'group' = 'friend',
-  size: AvatarSize = 640
-): string | null {
+export function getAvatarById(id: number, type: 'friend' | 'group' = 'friend', size: AvatarSize = 640): string | null {
   let url = null
   if (type === 'friend') {
     url = `https://q1.qlogo.cn/g?b=qq&nk=${id}&s=${size}`
@@ -38,5 +34,19 @@ export function getAvatarById(
   }
   return url
 }
-
-
+/** 匹配URL */
+export const getURLParameters = (url: string) =>
+  (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+    (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),
+    {}
+  )
+export const getBaseURL = (url: string) => url.replace(/[?#].*$/, '')
+export const URLJoin = (...args: String[]) =>
+  args
+    .join('/')
+    .replace(/[\/]+/g, '/')
+    .replace(/^(.+):\//, '$1://')
+    .replace(/^file:/, 'file:/')
+    .replace(/\/(\?|&|#[^!])/g, '$1')
+    .replace(/\?/g, '&')
+    .replace('&', '?')

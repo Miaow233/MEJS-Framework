@@ -9,7 +9,6 @@
 // }
 // console.log(sqliteVersion)
 
-import { exists } from './fs.js'
 import { File } from './java.js'
 
 export class SQLiteDatabase {
@@ -34,7 +33,7 @@ export class SQLiteDatabase {
   delete(table: string, whereClause: string, whereArgs: Array<string>): number {
     return this.delete(table, whereClause, whereArgs)
   }
-
+  /** 删除数据库 */
   deleteDatabase(file: File): boolean {
     return this.deleteDatabase(file)
   }
@@ -42,23 +41,23 @@ export class SQLiteDatabase {
   execSQL(sql: string): void {
     this.execSQL(sql)
   }
-
+  /** 数据库路径 */
   getPath(): string {
     return this.getPath()
   }
-
+  /** 数据库表版本 */
   getVersion(): number {
     return this.getVersion()
   }
-
+  /** 插入 */
   insert(table: string, nullColumnHack: string | null, content: Map<string, any>): number {
     return this.insert(table, nullColumnHack, content)
   }
-
+  /** 行查询 */
   rawQuery(sql: string, selectionArgs?: Array<string>, cancellationSignal?: string): Cursor {
     return this.rawQuery(sql, selectionArgs, cancellationSignal)
   }
-
+  /** 更新 */
   update(table: string, values: Map<string, any>, whereClause: string | null, whereArgs: Array<string>): number {
     return this.update(table, values, whereClause, whereArgs)
   }

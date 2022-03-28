@@ -7,7 +7,7 @@ import { Bot, Session } from './src/medic.js'
 const Event = Bot.Event
 
 // 消息相关，At Image Text 是消息元素
-import { At, Image, Text, createChain, reply, sendGroupMessage, sendFriendMessage } from './src/message.js'
+import { At, Image, Text, createChain, sendGroupMessage, sendFriendMessage } from './src/message.js'
 
 // 导入插件
 import './src/plugin.js'
@@ -47,17 +47,31 @@ setInterval(() => {
 }, 3000)
 
 Event.on('message', async (session: Session) => {
+  if (Bot.waitPrompt.get(session.sender)) {
+    Bot.Event.emit('prompt', session.content)
+    return
+  }
   // 进行下一次解析前请务必取消上一次解析
   Bot.cli.unsetMatchedCommand()
   try {
-    Bot.cli.parse(session.msg)
+    Bot.cli.parse(session.content, {run: false})
+    await Bot.cli.runMatchedCommand()
   } catch (e) {
-    console.log(`MEJS发生错误: ${e}`)
+    Logger.log(`MEJS发生错误: ${e}`)
     const missingRequired = 'CACError: missing required args for command'
     if (String(e).startsWith(missingRequired)) {
-      session.reply(`缺少必要参数：${e.toString().replace(missingRequired, '')}`)
+      session.send(`缺少必要参数：${e.toString().replace(missingRequired, '')}`)
     } else {
-      session.reply(`未知错误：${e.toString()}`)
+      session.send(`未知错误：${e.toString()}`)
     }
+  }
+  if (session.content === 'prompt') {
+    session.send('输入用户名')
+    const name = await session.prompt()
+    if (!name) {
+      session.send('输入超时')
+      return
+    }
+    session.send(`你好, ${name}`)
   }
 })

@@ -46,12 +46,14 @@ export class File {
   list(): string[] {
     return this.list()
   }
-  /**  */
+  /** 列出文件夹文件对象 */
   listFiles(): File[] {
     return this.listFiles()
   }
   /** 创建文件 */
   createNewFile(): boolean {
+    const parent = new File(this.getParent())
+    if (!parent.exists()) parent.mkdirs()
     return this.createNewFile()
   }
   /** 创建文件夹 */
@@ -66,8 +68,8 @@ export class File {
   lastModified(): number {
     return this.lastModified()
   }
-  /**  */
+  /** 字符串输出 */
   toString(): string {
-    return this.getAbsolutePath()
+    return `${this.getAbsolutePath()} (${this.isFile() ? 'file' : 'dir'})`
   }
 }

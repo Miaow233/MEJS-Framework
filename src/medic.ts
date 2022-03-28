@@ -3,6 +3,7 @@ import EventEmitter from './extensions/events.js'
 import { getAvatarById } from './utils/index.js'
 import { getCSRFToken } from './utils/util.js'
 import { CAC } from './extensions/cac/index.js'
+import { setTimeout } from './timer.js'
 
 export class Bot {
   static cli: CAC = new CAC()
@@ -16,6 +17,7 @@ export class Bot {
   batteryLevel: number
   batteryStatus: string
   bkn: number
+  static waitPrompt: Map<number, boolean> = new Map()
   static msgQueue: Session[] = []
   constructor() {
     this.avatar = getAvatarById(mebot.uin)
@@ -122,7 +124,7 @@ export class Session {
   client: client
   group: number
   sender: number
-  msg: string
+  content: string
   nick: string
 
   constructor(message: any, type: string) {
@@ -132,15 +134,27 @@ export class Session {
     //this.group.name = message.groupName
     this.sender = message.uin
     //this.sender.name = message.nick
-    this.msg = message.msg
+    this.content = message.msg
     this.nick = message.nick
     this.img = message.img
     this.xml = message.xml
     this.json = message.json
   }
-  reply(msg: string) {
+  send(msg: string) {
     this.client.addText(msg)
     bot.send(this.client)
+  }
+  prompt(ms: number = 1000 * 10): Promise<string> {
+    Bot.waitPrompt.set(this.sender, true)
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('')
+      }, ms)
+      Bot.Event.on('prompt', (msg: string) => {
+        Bot.waitPrompt.delete(this.sender)
+        resolve(msg)
+      })
+    })
   }
 }
 
