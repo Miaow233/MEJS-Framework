@@ -2,6 +2,20 @@
 >
 > Medic 文档：https://docs.nekohouse.cafe/Medic 或 http://medicxd.top
 
+## v1.2.7-update.1
+
+1. 添加 `Logger` 类
+     - Logger.log(...args)
+     - Logger.warn(...args)
+     - Logger.error(...args)
+     - Logger.time(name) // 计时器
+     - Logger.timeEnd(name) // 结束计时
+2. 调整 Java 类文件结构
+3. 添加自定义配置文件
+4. 添加快速读写配置方法
+     - `readConfig()`
+     - `writeConfig()`
+
 ## v1.2.7
 
 1. 添加特性：等待用户输入
