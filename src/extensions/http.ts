@@ -1,12 +1,3 @@
-interface Http {
-  get: (url: string, headers?: object) => Promise<Response>
-  post: (
-    url: string,
-    data: string | ArrayBuffer,
-    headers?: object
-  ) => Promise<Response>
-}
-
 class Response implements Response {
   readonly result: string | ArrayBuffer
   readonly status: number

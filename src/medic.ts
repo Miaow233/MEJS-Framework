@@ -1,9 +1,9 @@
 const mebot = globalThis.bot
-import EventEmitter from './extensions/events.js'
-import { getAvatarById } from './utils/index.js'
-import { getCSRFToken } from './utils/util.js'
 import { CAC } from './extensions/cac/index.js'
+import EventEmitter from './extensions/events.js'
 import { setTimeout } from './timer.js'
+import { getAvatarById } from './utils/index.js'
+import { getCSRFToken } from './utils.js'
 
 export class Bot {
   static cli: CAC = new CAC()

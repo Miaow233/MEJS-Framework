@@ -1,4 +1,4 @@
-export class File {
+export default class File {
   constructor(path: string) {
     let File = Java.type('java.io.File')
     return new File(path)

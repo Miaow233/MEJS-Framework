@@ -9,7 +9,7 @@
 // }
 // console.log(sqliteVersion)
 
-import { File } from './java.js'
+import File from './java/io/File.js'
 
 export class SQLiteDatabase {
   /** 打开数据库，如果不存在则创建 */

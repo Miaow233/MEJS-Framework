@@ -4,7 +4,7 @@
 
 export * from './helper.js'
 export * from './template.js'
-export * from './util.js'
+export * from '../utils.js'
 
 /**
  * 头像尺寸（允许传入的参数）
@@ -34,13 +34,16 @@ export function getAvatarById(id: number, type: 'friend' | 'group' = 'friend', s
   }
   return url
 }
+
 /** 匹配URL */
 export const getURLParameters = (url: string) =>
   (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
     (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),
     {}
   )
+
 export const getBaseURL = (url: string) => url.replace(/[?#].*$/, '')
+
 export const URLJoin = (...args: String[]) =>
   args
     .join('/')

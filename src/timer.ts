@@ -1,13 +1,10 @@
-import { Logger } from './logger.js'
-import { Bot } from './medic.js'
 export async function setTimeout(callback: Function, ms: number) {
   await delay(ms), callback()
 }
 
 export function clearInterval(id?: number) {
   let timerId = id || getTimerId()
-  timerQueue.set(id, false)
-  Logger.log(`清除定时器 ${timerId}`)
+  timerQueue.set(timerId, false)
 }
 
 let timerQueue: Map<number, boolean> = new Map()

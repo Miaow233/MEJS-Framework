@@ -9,9 +9,6 @@ export const LOGO = `
 当前 MEJS 版本: ${VERSION}
 `
 export class Logger {
-  static warn(...args: any) {
-    console.warn(...args)
-  }
   static timeMap = new Map<string, number>()
   static timeEnd(label: string) {
     if (!this.timeMap.has(label)) return
@@ -23,5 +20,13 @@ export class Logger {
   }
   static log(...args: any[]) {
     console.log(...args)
+  }
+  static error(...args: any[]) {
+    let Toolkit = Java.type('app.yashiro.medic.app.dic.Toolkit')
+    Toolkit.log('e', args.toString())
+  }
+  static warn(...args: any[]) {
+    let Toolkit = Java.type('app.yashiro.medic.app.dic.Toolkit')
+    Toolkit.log('w', args.toString())
   }
 }

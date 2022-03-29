@@ -1,6 +1,9 @@
-import http from '../extensions/http.js'
-const SKEY = globalThis.SKEY
-const PSKEY = globalThis.PSKEY
+import http from './extensions/http.js'
+import { Config } from '../.hdic.config.js'
+import File from './extensions/java/io/File.js'
+import { getBaseURL } from './utils/index.js'
+const SKEY = globalThis.bot.skey
+const PSKEY = globalThis.bot.pskey
 
 /** xml转义 */
 export function escapeXml(str: string) {
@@ -36,7 +39,8 @@ export function getCookie(domain: string) {
 
 /** 获取api数据 */
 export async function fetchApi(method: string, url: string, data = '') {
-  let domain = url.split('/')[2].split('.').slice(-3).join('.')
+  //let domain = url.split('/')[2].split('.').slice(-3).join('.')
+  let domain = getBaseURL(url)
   let headers = {
     'User-Agent':
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36',
@@ -51,4 +55,51 @@ export async function fetchApi(method: string, url: string, data = '') {
   }
   if (response.status != 200) throw Error('Network Error: ' + response.status)
   return response.result
+}
+
+/**
+ * Get the sum of the given array of numbers
+ *
+ * @param array
+ * @return sum
+ */
+export function sum(array: number[]): number {
+  return array.reduce((a, b) => a + b)
+}
+
+/**
+ * Read JSON configuration file
+ * <br>
+ * 读取JSON配置文件
+ *
+ * @param file
+ * @return configuration
+ */
+export async function readConfig(file: string): Promise<Config> {
+  return Object.assign(new Config(), (await compat.readText(file)) as string)
+}
+
+/**
+ * Write JSON configuration file
+ * <br>
+ * 写入JSON配置文件
+ *
+ * @param file
+ * @param config
+ */
+export function writeConfig(file: string, config: Config): void {
+  compat.writeText(file, JSON.stringify(config, null, 4))
+  //fs.writeJSONSync(file, config, { spaces: 4 })
+}
+
+/**
+ * Check and make directory
+ *
+ * @param dir
+ */
+export function checkAndMakeDir(dir: string): void {
+  let path = new File(dir)
+  if (!path.exists) {
+    path.mkdirs()
+  }
 }

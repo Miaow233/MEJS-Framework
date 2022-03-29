@@ -1,6 +1,6 @@
 //TODO: 完善 QQ 接口
-import  http from '../extensions/http.js'
-import { fetchApi } from './util.js'
+import http from '../extensions/http.js'
+import { fetchApi } from '../utils.js'
 const BKN = globalThis.BKN
 
 /**

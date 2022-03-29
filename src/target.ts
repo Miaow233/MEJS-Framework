@@ -21,15 +21,3 @@ export interface Group {
   getInfo(): Object
   getMembers(): Array<number>
 }
-
-export const Temp = (target: number) => {
-  return { type: 'temp', target: target }
-}
-
-export interface Temp {
-  type: 'temp'
-  target: number
-  sendMsg(): void
-  getInfo(): Object
-  getAvatar(): string
-}

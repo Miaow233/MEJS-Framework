@@ -1,72 +1,11 @@
-import { File } from './java.js'
-
-class FileOutputStream {
-  path: string
-  constructor(file: File) {
-    let FileOutputStream = Java.type('java.io.FileOutputStream')
-    return new FileOutputStream(file)
-  }
-  write(data) {
-    this.write(data)
-  }
-  close() {
-    this.close()
-  }
-}
+import Bitmap from './android/graphics/Bitmap.js'
+import Paint from './android/graphics/Paint.js'
+import File from './java/io/File.js'
+import FileOutputStream from './java/io/FileOutputStream.js'
 /** 通过文件创建Bitmap */
 function getBitmapFromFile(pathName: string): Bitmap {
   let BitmapFactory = Java.type('android.graphics.BitmapFactory')
-  return BitmapFactory.decodeFile(pathName);
-}
-
-/** Bitmap */
-export class Bitmap {
-  /**  */
-  static createScaledBitmap(src: Bitmap, width: number, height: number, filter: boolean) {
-    let Bitmap = Java.type('android.graphics.Bitmap')
-    return Bitmap.createScaledBitmap(src, width, height, filter)
-  }
-  /** 以src为原图生成不可变的新图像 */
-  static createBitmapFromSource(src: Bitmap) {
-    let Bitmap = Java.type('android.graphics.Bitmap')
-    return Bitmap.createBitmapFromFile(src)
-  }
-  /**  */
-  static createBitmap(width: number, height: number, config: any) {
-    let Bitmap = Java.type('android.graphics.Bitmap')
-    return new Bitmap.createBitmap(width, height, config)
-  }
-  static Config: any
-  constructor() {
-    let Bitmap = Java.type('android.graphics.Bitmap')
-    return new Bitmap()
-  }
-  compress(format, quality: number, out: FileOutputStream) {
-    this.compress(format, quality, out)
-  }
-  getWidth() {
-    return this.getWidth()
-  }
-  getHeigth() {
-    return this.getHeigth()
-  }
-  /** 是否可修改 */
-  isMutable() {
-    return this.isMutable()
-  }
-}
-
-export class Paint {
-  setColor(color: any) {
-    this.setColor(color)
-  }
-  setStrokeWidth(strokeWidth: number) {
-    this.setStrokeWidth(strokeWidth)
-  }
-  constructor() {
-    let Paint = Java.type('android.graphics.Paint')
-    return new Paint()
-  }
+  return BitmapFactory.decodeFile(pathName)
 }
 
 export class Canvas {

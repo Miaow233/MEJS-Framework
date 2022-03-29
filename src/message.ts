@@ -10,7 +10,7 @@ export let At = (qq: number, text: string) => {
   return { type: 'at', qq: qq, text: text }
 }
 
-import { Friend, Group, Temp } from './target.js'
+import { Friend, Group } from './target.js'
 export function createChain(elem: Array<any>): client {
   let client = globalThis.client
   elem.forEach((element) => {
@@ -53,20 +53,6 @@ export async function sendFriendMessage(friend: number | Friend, msg: any) {
       break
     case 'object':
       client.uin = friend.target
-      break
-  }
-  client.addText(msg)
-  bot.send(client)
-}
-
-export async function sendTempMessage(temp: number | Temp, msg: any) {
-  let client = globalThis.client
-  switch (typeof temp) {
-    case 'number':
-      client.uin = temp
-      break
-    case 'object':
-      client.uin = temp.target
       break
   }
   client.addText(msg)

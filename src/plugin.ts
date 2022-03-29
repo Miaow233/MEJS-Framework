@@ -1,8 +1,9 @@
-import { Bot, Session } from './medic.js'
-import { File } from './index.js'
 import http from './extensions/http.js'
-import { InnerMode } from './utils/helper.js'
+import File from './extensions/java/io/File.js'
 import { Logger } from './logger.js'
+import { Bot, Session } from './medic.js'
+import { InnerMode } from './utils/helper.js'
+
 // 由于eval不能传递当前作用域变量，所以将其保存为全局变量
 export const module = {
   Bot,
@@ -29,7 +30,7 @@ for (let file of files) {
     continue
   }
   // 如果成功
-  console.log(`MEJS: load ${file.getName()}`)
+  Logger.log(`MEJS: load ${file.getName()}`)
 }
 Bot.cli.command('help').action(async () => {
   let session = Bot.curMsg()
