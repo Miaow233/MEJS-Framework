@@ -43,6 +43,9 @@ export class Config {
    *
    */
   public extraMax = 5
+
+  /** 6s */
+  public static promptDelay = 1000 * 6
 }
 
 export default Config

@@ -4,6 +4,8 @@ import EventEmitter from './extensions/events.js'
 import { setTimeout } from './timer.js'
 import { getAvatarById } from './utils/index.js'
 import { getCSRFToken } from './utils.js'
+import { Logger } from './logger.js'
+import Config from '../.hdic.config.js'
 
 export class Bot {
   static cli: CAC = new CAC()
@@ -144,11 +146,15 @@ export class Session {
     this.client.addText(msg)
     bot.send(this.client)
   }
-  prompt(ms: number = 1000 * 10): Promise<string> {
+
+  prompt(ms: number = Config.promptDelay): Promise<string> {
     Bot.waitPrompt.set(this.sender, true)
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve('')
+        Bot.waitPrompt.delete(this.sender)
+        try {
+          resolve('')
+        } catch (e) {}
       }, ms)
       Bot.Event.on('prompt', (msg: string) => {
         Bot.waitPrompt.delete(this.sender)
