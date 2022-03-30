@@ -1,5 +1,5 @@
 {
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "onFocusChange",
   "editor.guides.bracketPairs": "active",
   "editor.showFoldingControls": "always",
   "editor.tabCompletion": "on",
@@ -7,5 +7,5 @@
   "editor.formatOnSave": true,
   "files.insertFinalNewline": true,
   "files.simpleDialog.enable": true,
-  "files.trimTrailingWhitespace": true,
+  "files.trimTrailingWhitespace": true
 }

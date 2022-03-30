@@ -5,16 +5,16 @@
 ## v1.2.7-update.1
 
 1. 添加 `Logger` 类
-     - Logger.log(...args)
-     - Logger.warn(...args)
-     - Logger.error(...args)
-     - Logger.time(name) // 计时器
-     - Logger.timeEnd(name) // 结束计时
+   - Logger.log(...args)
+   - Logger.warn(...args)
+   - Logger.error(...args)
+   - Logger.time(name) // 计时器
+   - Logger.timeEnd(name) // 结束计时
 2. 调整 Java 类文件结构
 3. 添加自定义配置文件
 4. 添加快速读写配置方法
-     - `readConfig()`
-     - `writeConfig()`
+   - `readConfig()`
+   - `writeConfig()`
 
 ## v1.2.7
 
@@ -119,7 +119,7 @@ cli.on('command:!', () => {
 
 3. 将插件注册为全局事件
 
-v1.2.4-RC1
+## v1.2.4-RC1
 
 1. 文件或路径不存在时会自动创建
 2. 添加 Response 类

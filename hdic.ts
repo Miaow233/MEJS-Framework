@@ -60,13 +60,4 @@ Event.on('message', async (session: Session) => {
       session.send(`未知错误：${e.toString()}`)
     }
   }
-  if (session.content === 'prompt') {
-    session.send('输入用户名')
-    const name = await session.prompt()
-    if (!name) {
-      session.send('输入超时')
-      return
-    }
-    session.send(`你好, ${name}`)
-  }
 })

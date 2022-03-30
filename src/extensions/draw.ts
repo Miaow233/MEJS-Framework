@@ -1,9 +1,10 @@
-import Bitmap from './android/graphics/Bitmap.js'
-import Paint from './android/graphics/Paint.js'
-import File from './java/io/File.js'
-import FileOutputStream from './java/io/FileOutputStream.js'
+const Bitmap = Packages.android.graphics.Bitmap
+// const Color = Packages.android.graphics.Color
+const File = Packages.java.io.File
+const FileOutputStream = Packages.java.io.FileOutputStream
+const Paint = Packages.android.graphics.Paint
 /** 通过文件创建Bitmap */
-function getBitmapFromFile(pathName: string): Bitmap {
+function getBitmapFromFile(pathName: string): Packages.android.graphics.Bitmap {
   let BitmapFactory = Java.type('android.graphics.BitmapFactory')
   return BitmapFactory.decodeFile(pathName)
 }
@@ -12,10 +13,10 @@ export class Canvas {
   drawARGB(a: number, r: number, g: number, b: number) {
     this.drawARGB(a, r, g, b)
   }
-  drawLine(ax: number, ay: number, bx: number, by: number, paint: Paint) {
+  drawLine(ax: number, ay: number, bx: number, by: number, paint: Packages.android.graphics.Paint) {
     this.drawLine(ax, ay, bx, by, paint)
   }
-  constructor(bitmap: Bitmap) {
+  constructor(bitmap: typeof Bitmap) {
     let Canvas = Java.type('android.graphics.Canvas')
     return new Canvas(bitmap)
   }
@@ -37,7 +38,7 @@ export class Color {
  * @param {Bitmap} bitmap
  * @param {string} path
  */
-function saveBitmap(bitmap: Bitmap, path: string): void {
+function saveBitmap(bitmap: typeof Bitmap, path: string): void {
   //let FileOutputStream = Java.type('java.io.FileOutputStream')
   let CompressFormat = Java.type('android.graphics.Bitmap$CompressFormat')
   let file = new File(path)
@@ -96,7 +97,7 @@ function drawPanel(x: number, y: number) {
 }
 
 export class ImageWriter {
-  bitmap: Bitmap
+  bitmap: typeof Bitmap
   constructor() {}
   drawLine(ax: number, ay: number, bx: number, by: number) {}
   drawCircle(x: number, y: number, r) {}
