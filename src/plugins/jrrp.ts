@@ -1,6 +1,6 @@
 import { module } from '../plugin.js'
 
-const { Bot, File } = module
+const { Bot, File, Files } = module
 
 Bot.cli.command('jrrp', '获取今日人品').action(async () => {
   // 当前消息对象

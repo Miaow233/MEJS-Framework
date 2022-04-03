@@ -26,7 +26,7 @@ export type AvatarSize = 1 | 2 | 3 | 4 | 5 | 40 | 100 | 140 | 640
  * @returns
  */
 export function getAvatarById(id: number, type: 'friend' | 'group' = 'friend', size: AvatarSize = 640): string | null {
-  let url = null
+  let url = ''
   if (type === 'friend') {
     url = `https://q1.qlogo.cn/g?b=qq&nk=${id}&s=${size}`
   } else if (type === 'group') {

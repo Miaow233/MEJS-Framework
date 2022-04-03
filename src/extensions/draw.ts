@@ -74,6 +74,7 @@ function drawPanel(x: number, y: number) {
 
   let img = Bitmap.createBitmap(width, heidth, Bitmap.Config.ARGB_8888) // 图片对象
   let paint = new Paint() // 画笔
+  // @ts-ignore
   let canva = new Canvas(img) // 画布
 
   paint.setStrokeWidth(5)
@@ -93,6 +94,7 @@ function drawPanel(x: number, y: number) {
   canva.drawLine(boder, boder, boder, heidth - boder, paint) // y
   canva.drawLine(boder, heidth - boder, width - boder, heidth - boder, paint) // x
   canva.drawLine(width - boder, boder, width - boder, heidth - boder, paint) // y
+  // @ts-ignore
   saveBitmap(img, '/sdcard/DIC/data/cache/temp.png')
 }
 

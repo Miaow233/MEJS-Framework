@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { EventEmitter } from '../events.js'
 import mri from './mri.js'
 import Command, {

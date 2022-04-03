@@ -87,7 +87,9 @@ export async function getGroupSetting(id: number): Promise<object> {
 
 /** 开关匿名 */
 export async function setAnonySwitch(gid: number, isAnony: boolean) {
-  let result = http.get(`https://qqweb.qq.com/c/anonymoustalk/set_anony_switch?bkn=${BKN}&value=${isAnony ? 1 : 0}&group_code=${gid}`)
+  let result = http.get(
+    `https://qqweb.qq.com/c/anonymoustalk/set_anony_switch?bkn=${BKN}&value=${isAnony ? 1 : 0}&group_code=${gid}`
+  )
 }
 
 /** 获取 QQ 资料 */
@@ -220,3 +222,16 @@ async function getGroupJoinUrl(id: number): Promise<string> {
   let joinK = await getJoink(id)
   return `https://qm.qq.com/cgi-bin/qm/qr?k=${joinK}&jump_from=webapi`
 }
+
+let URL = Packages.java.net.URL
+let HttpURLConnection = Packages.java.net.HttpURLConnection
+let InputStream = Packages.java.io.InputStream
+let InputStreamReader = Packages.java.io.InputStreamReader
+let BufferedReader = Packages.java.io.BufferedReader
+// let StringBuilder = Packages.java.lang.StringBuilder
+let url = new URL(`https://qun.qq.com/cgi-bin/qun_mgr/get_group_list_v2`)
+
+let conn = url.openConnection()
+conn.connect()
+let is = conn.getInputStream()
+let br = new BufferedReader(new InputStreamReader(is))
