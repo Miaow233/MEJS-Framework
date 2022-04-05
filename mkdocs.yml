@@ -69,13 +69,12 @@ markdown_extensions:
       alternate_style: true
 
 nav:
-  - 主页:
-      - index.md
-      - quickstart.md
-      - 指令系统: cac.md
-      - 插件系统: plugin-manager.md
-      - 接口一览: type/index.html
-      - 更新说明: changelog.md
+  - index.md
+  - quickstart.md
+  - 指令系统: cac.md
+  - 插件系统: plugin-manager.md
+  - 接口一览: type/index.html
+  - 更新说明: changelog.md
   - Medic 文档:
       - 介绍: Medic/index.md
       - 快速开始: Medic/quickstart.md

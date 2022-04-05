@@ -12,6 +12,8 @@
 
 ## 简介
 
+![MEJS-Framework](https://socialify.git.ci/Miaow233/MEJS-Framework/image?description=1&language=1&logo=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FMiaow233%2FMEJS-Framework%40main%2Fdocs%2Fassets%2Flogo.png&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Light)
+
 MEJS-Framework 是基于 QQ 机器人程序 `Medic` 的 JS 词库而编写的聊天软件自动化框架. 其丰富而简洁的接口相信可以使开发者能更好的完成业务逻辑.
 
 > 接受当下, 面向未来

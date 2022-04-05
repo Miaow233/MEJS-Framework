@@ -12,7 +12,7 @@ Bot 登录相关事宜, 请移步 `Medic 交流群`
 
 `Medic 2.x` 版本已将 JS 词库分离开来, 若要使用 JS 词库, 请在词库文件夹创建 `hdic.js` 文件并填入以下内容
 
-```javascript
+```js
 $.on('message.group', async (message) => {
   if (message.msg === 'test') {
     console.log('other message') // 向主程序打印log

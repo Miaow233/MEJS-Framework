@@ -1,4 +1,5 @@
 ![MEJS-Framework](https://socialify.git.ci/Miaow233/MEJS-Framework/image?description=1&language=1&logo=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FMiaow233%2FMEJS-Framework%40main%2Fdocs%2Fassets%2Flogo.png&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Light)
+
 ## 关于本框架
 
 MEJS Framework 是为 [Medic](http://docs.nekohouse.cafe/Medic/) 设计的 JS 词库开发框架. 基于 [Javet](https://github.com/caoccao/Javet), 使用 TS 编写, 提供了丰富的 API 功能.

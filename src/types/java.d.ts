@@ -794,6 +794,7 @@ declare namespace Packages {
     namespace graphics {
       /**  */
       class Bitmap {
+        constructor()
         static compress(PNG: any, arg1: number, out: java.io.FileOutputStream): void
         static createBitmap(width: number, heidth: number, ARGB_8888: any): Bitmap
         static Config: any
