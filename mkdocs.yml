@@ -86,7 +86,7 @@ nav:
           - 变量介绍: Medic/basic/value.md
           - 内置模块 System: Medic/basic/system.md
       - 参考:
-          - 内置 API 类: Medic/reference/api.md
+          - 内置 Api 类: Medic/reference/api.md
           - 内置 Toolkit 类: Medic/reference/toolkit.md
           - 使用 JavaScript:
               - 内置 JavaScript 支持库: Medic/reference/libs/javascript.md
