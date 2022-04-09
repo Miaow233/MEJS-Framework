@@ -1,10 +1,12 @@
-class java.lang.Object {
+import { Class } from "./Class.js"
+
+export class Object {
 // Constructors
 public constructor() {
 return new Packages.java.lang.Object()
 }
 // Methods
-private native internalClone(): Object {
+private internalClone(): Object {
 return this.internalClone()
 }
 protected clone(): Object {

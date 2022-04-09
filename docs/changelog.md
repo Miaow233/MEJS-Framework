@@ -1,20 +1,27 @@
-﻿> MEJS 文档：https://docs.nekohouse.cafe 和 https://docs.nekohouse.cafe/types
->
-> Medic 文档：https://docs.nekohouse.cafe/Medic 或 http://medicxd.top
+﻿## v1.2.8
+
+- 已完成 Java 注解，不需要安装 TS 拓展了
+  - java.io.BufferedReader
+  - java.io.File
+  - java.io.FileFilter
+  - java.io.FilenameFilter
+  - java.io.FileOutputStream
+  - java.io.OutputStream
+- 添加 emoji 插件
 
 ## v1.2.7-update.1
 
-1. 添加 `Logger` 类
-   - Logger.log(...args)
-   - Logger.warn(...args)
-   - Logger.error(...args)
-   - Logger.time(name) // 计时器
-   - Logger.timeEnd(name) // 结束计时
-2. 调整 Java 类文件结构
-3. 添加自定义配置文件
-4. 添加快速读写配置方法
-   - `readConfig()`
-   - `writeConfig()`
+- 添加 `Logger` 类
+  - Logger.log(...args)
+  - Logger.warn(...args)
+  - Logger.error(...args)
+  - Logger.time(name) // 计时器
+  - Logger.timeEnd(name) // 结束计时
+- 调整 Java 类文件结构
+- 添加自定义配置文件
+- 添加快速读写配置方法
+  - `readConfig()`
+  - `writeConfig()`
 
 ## v1.2.7
 

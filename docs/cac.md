@@ -157,8 +157,7 @@ cli
 
 在**命令名称**中使用**括号**时，**尖括号表示必选参数**，而**方括号表示可选参数**。
 
-在**选项名称**中使用**括号**时，**尖括号表示必须传入一个字符串/数字值**，而**方括号表示该值也可以是true**。
-
+在**选项名称**中使用**括号**时，**尖括号表示必须传入一个字符串/数字值**，而**方括号表示该值也可以是 true**。
 
 ```js
 const cli = require('cac')()
@@ -190,6 +189,7 @@ cli
   .option('--no-config', 'Disable config file')
   .option('--config <path>', 'Use a custom config file')
 ```
+
 这将让 CAC 将默认值设置 `config` 为 true，您可以使用 `--no-config` 标志将其设置为 `false`。
 
 ### 可变参数
@@ -514,7 +514,7 @@ Basically I made CAC to fulfill my own needs for building CLI apps like [Poi](ht
 
 CAC 与 Commander.js 非常相似，而后者不支持**点嵌套选项**，即类似 `--env.API_SECRET foo` . 此外，您也不能在 Commander.js 中使用**未知选项**。
 
-*也许更多...*
+_也许更多..._
 
 基本上，我开发 CAC 是为了满足我自己构建 CLI 应用程序（如 [Poi](https://poi.js.org) 、 [SAO](https://sao.vercel.app) 和我所有的 CLI 应用程序）的需求。
 
