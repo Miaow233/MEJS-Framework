@@ -1,6 +1,8 @@
+import { File } from '../java/io/File.js'
+
 const Bitmap = Packages.android.graphics.Bitmap
 // const Color = Packages.android.graphics.Color
-const File = Packages.java.io.File
+
 const FileOutputStream = Packages.java.io.FileOutputStream
 const Paint = Packages.android.graphics.Paint
 /** 通过文件创建Bitmap */

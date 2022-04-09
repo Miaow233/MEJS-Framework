@@ -222,16 +222,3 @@ async function getGroupJoinUrl(id: number): Promise<string> {
   let joinK = await getJoink(id)
   return `https://qm.qq.com/cgi-bin/qm/qr?k=${joinK}&jump_from=webapi`
 }
-
-let URL = Packages.java.net.URL
-let HttpURLConnection = Packages.java.net.HttpURLConnection
-let InputStream = Packages.java.io.InputStream
-let InputStreamReader = Packages.java.io.InputStreamReader
-let BufferedReader = Packages.java.io.BufferedReader
-// let StringBuilder = Packages.java.lang.StringBuilder
-let url = new URL(`https://qun.qq.com/cgi-bin/qun_mgr/get_group_list_v2`)
-
-let conn = url.openConnection()
-conn.connect()
-let is = conn.getInputStream()
-let br = new BufferedReader(new InputStreamReader(is))

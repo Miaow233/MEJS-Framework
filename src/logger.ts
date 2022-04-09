@@ -1,4 +1,5 @@
-export const VERSION = 'v1.2.6'
+// @ts-nocheck
+export const VERSION = 'v1.2.7-update.1'
 export const LOGO = `
 // ╔═╗╔═╦═══╗─╔╦═══╗
 // ║║╚╝║║╔══╝─║║╔═╗║

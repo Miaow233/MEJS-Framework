@@ -1,15 +1,13 @@
 import http from './extensions/http.js'
+import { File } from './java/io/File.js'
 import { Logger } from './logger.js'
 import { Bot, Session } from './medic.js'
 import { InnerMode } from './utils/helper.js'
-const File = Packages.java.io.File
-const Files = Packages.java.nio.file.Files
 // 由于eval不能传递当前作用域变量，所以将其保存为全局变量
 export const module = {
   Bot,
   Session,
   File,
-  Files,
   http,
   InnerMode,
   Logger,
@@ -22,6 +20,7 @@ if (!pluginsFolder.isDirectory()) {
 let files = pluginsFolder.listFiles()
 for (let file of files) {
   if (file.isDirectory()) continue
+  if (file.getName().endsWith('.d.js')) continue
   try {
     // @ts-ignore
     let script = await compat.readText(file.getAbsolutePath())
