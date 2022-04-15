@@ -1,5 +1,5 @@
 import { Equation, Expression } from '../extensions/algebra.js/algebra.js'
-import { Arrays, FileReader } from '../extensions/java.js'
+import { Arrays, FileReader, OutputStreamWriter, URL, URLConnection } from '../extensions/java.js'
 
 var expr = new Expression('x')
 expr = expr.subtract(3)
@@ -10,3 +10,4 @@ console.log(expr.toString())
 console.log(eq.toString())
 let filereader = new FileReader('src/math.ts')
 let lines = filereader.read()
+let res = new URL('https://www.google.com').openConnection().getContent()

@@ -17,43 +17,43 @@ export const SocketImpl: SocketImplStatic = Java.type('java.net.SocketImpl')
 interface ArraysStatic {
   readonly class: any
   asList<T>(...arg0: T[]): java.util.List<T>
-  binarySearch(arg0: [int], arg1: int, arg2: int, arg3: int): int
-  binarySearch(arg0: [long], arg1: int, arg2: int, arg3: long): int
   binarySearch(arg0: [int], arg1: int): int
+  binarySearch(arg0: [int], arg1: int, arg2: int, arg3: int): int
+  binarySearch(arg0: [double], arg1: double): int
   binarySearch(arg0: [any /*short*/], arg1: any /*short*/): int
+  binarySearch(arg0: [any /*short*/], arg1: int, arg2: int, arg3: any /*short*/): int
+  binarySearch(arg0: [long], arg1: int, arg2: int, arg3: long): int
+  binarySearch<T>(arg0: [T], arg1: T, arg2: any /*java.util.Comparator*/): int
   binarySearch(arg0: bytearray, arg1: any /*byte*/): int
   binarySearch(arg0: [long], arg1: long): int
   binarySearch(arg0: [any /*java.lang.Object*/], arg1: any /*java.lang.Object*/): int
   binarySearch(arg0: [float], arg1: int, arg2: int, arg3: float): int
-  binarySearch(arg0: [any /*short*/], arg1: int, arg2: int, arg3: any /*short*/): int
-  binarySearch<T>(arg0: [T], arg1: int, arg2: int, arg3: T, arg4: any /*java.util.Comparator*/): int
   binarySearch(arg0: [float], arg1: float): int
+  binarySearch(arg0: [double], arg1: int, arg2: int, arg3: double): int
+  binarySearch<T>(arg0: [T], arg1: int, arg2: int, arg3: T, arg4: any /*java.util.Comparator*/): int
+  binarySearch(arg0: [any /*java.lang.Object*/], arg1: int, arg2: int, arg3: any /*java.lang.Object*/): int
+  binarySearch(arg0: bytearray, arg1: int, arg2: int, arg3: any /*byte*/): int
   binarySearch(arg0: chararray, arg1: any /*char*/): int
   binarySearch(arg0: chararray, arg1: int, arg2: int, arg3: any /*char*/): int
-  binarySearch(arg0: [double], arg1: double): int
-  binarySearch(arg0: [double], arg1: int, arg2: int, arg3: double): int
-  binarySearch(arg0: bytearray, arg1: int, arg2: int, arg3: any /*byte*/): int
-  binarySearch(arg0: [any /*java.lang.Object*/], arg1: int, arg2: int, arg3: any /*java.lang.Object*/): int
-  binarySearch<T>(arg0: [T], arg1: T, arg2: any /*java.util.Comparator*/): int
-  copyOf(arg0: [boolean], arg1: int): [boolean]
   copyOf(arg0: chararray, arg1: int): chararray
   copyOf(arg0: [float], arg1: int): [float]
   copyOf(arg0: [long], arg1: int): [long]
   copyOf(arg0: [double], arg1: int): [double]
+  copyOf(arg0: [int], arg1: int): [int]
+  copyOf(arg0: [boolean], arg1: int): [boolean]
   copyOf<T>(arg0: [T], arg1: int): [T]
   copyOf<T, U>(arg0: [U], arg1: int, arg2: java.lang.Class<[T]>): [T]
   copyOf(arg0: bytearray, arg1: int): bytearray
   copyOf(arg0: [any /*short*/], arg1: int): [any /*short*/]
-  copyOf(arg0: [int], arg1: int): [int]
-  copyOfRange(arg0: [int], arg1: int, arg2: int): [int]
-  copyOfRange(arg0: [any /*short*/], arg1: int, arg2: int): [any /*short*/]
-  copyOfRange(arg0: bytearray, arg1: int, arg2: int): bytearray
   copyOfRange<T, U>(arg0: [U], arg1: int, arg2: int, arg3: java.lang.Class<[T]>): [T]
+  copyOfRange(arg0: bytearray, arg1: int, arg2: int): bytearray
+  copyOfRange(arg0: [any /*short*/], arg1: int, arg2: int): [any /*short*/]
   copyOfRange<T>(arg0: [T], arg1: int, arg2: int): [T]
   copyOfRange(arg0: [boolean], arg1: int, arg2: int): [boolean]
-  copyOfRange(arg0: chararray, arg1: int, arg2: int): chararray
   copyOfRange(arg0: [double], arg1: int, arg2: int): [double]
   copyOfRange(arg0: [float], arg1: int, arg2: int): [float]
+  copyOfRange(arg0: chararray, arg1: int, arg2: int): chararray
+  copyOfRange(arg0: [int], arg1: int, arg2: int): [int]
   copyOfRange(arg0: [long], arg1: int, arg2: int): [long]
   deepEquals(arg0: [any /*java.lang.Object*/], arg1: [any /*java.lang.Object*/]): boolean
   deepHashCode(arg0: [any /*java.lang.Object*/]): int
@@ -67,24 +67,24 @@ interface ArraysStatic {
   equals(arg0: [int], arg1: [int]): boolean
   equals(arg0: [long], arg1: [long]): boolean
   equals(arg0: chararray, arg1: chararray): boolean
+  fill(arg0: [any /*java.lang.Object*/], arg1: any /*java.lang.Object*/): void
   fill(arg0: [double], arg1: int, arg2: int, arg3: double): void
-  fill(arg0: [double], arg1: double): void
-  fill(arg0: [float], arg1: float): void
-  fill(arg0: [int], arg1: int): void
+  fill(arg0: [boolean], arg1: boolean): void
+  fill(arg0: [any /*short*/], arg1: int, arg2: int, arg3: any /*short*/): void
   fill(arg0: [int], arg1: int, arg2: int, arg3: int): void
-  fill(arg0: [any /*short*/], arg1: any /*short*/): void
+  fill(arg0: [float], arg1: float): void
+  fill(arg0: [long], arg1: int, arg2: int, arg3: long): void
+  fill(arg0: [double], arg1: double): void
   fill(arg0: [long], arg1: long): void
-  fill(arg0: bytearray, arg1: int, arg2: int, arg3: any /*byte*/): void
   fill(arg0: [boolean], arg1: int, arg2: int, arg3: boolean): void
   fill(arg0: [any /*java.lang.Object*/], arg1: int, arg2: int, arg3: any /*java.lang.Object*/): void
-  fill(arg0: [long], arg1: int, arg2: int, arg3: long): void
-  fill(arg0: [any /*java.lang.Object*/], arg1: any /*java.lang.Object*/): void
-  fill(arg0: bytearray, arg1: any /*byte*/): void
-  fill(arg0: [any /*short*/], arg1: int, arg2: int, arg3: any /*short*/): void
   fill(arg0: chararray, arg1: int, arg2: int, arg3: any /*char*/): void
+  fill(arg0: bytearray, arg1: int, arg2: int, arg3: any /*byte*/): void
   fill(arg0: [float], arg1: int, arg2: int, arg3: float): void
-  fill(arg0: [boolean], arg1: boolean): void
+  fill(arg0: [any /*short*/], arg1: any /*short*/): void
   fill(arg0: chararray, arg1: any /*char*/): void
+  fill(arg0: bytearray, arg1: any /*byte*/): void
+  fill(arg0: [int], arg1: int): void
   hashCode(arg0: [boolean]): int
   hashCode(arg0: bytearray): int
   hashCode(arg0: [float]): int
@@ -103,49 +103,49 @@ interface ArraysStatic {
   parallelPrefix<T>(arg0: [T], arg1: int, arg2: int, arg3: any /*java.util.function.BinaryOperator*/): void
   parallelPrefix(arg0: [int], arg1: int, arg2: int, arg3: any /*java.util.function.IntBinaryOperator*/): void
   parallelSetAll(arg0: [double], arg1: any /*java.util.function.IntToDoubleFunction*/): void
-  parallelSetAll<T>(arg0: [T], arg1: any /*java.util.function.IntFunction*/): void
   parallelSetAll(arg0: [long], arg1: any /*java.util.function.IntToLongFunction*/): void
   parallelSetAll(arg0: [int], arg1: any /*java.util.function.IntUnaryOperator*/): void
-  parallelSort(arg0: [any /*short*/]): void
+  parallelSetAll<T>(arg0: [T], arg1: any /*java.util.function.IntFunction*/): void
+  parallelSort(arg0: [float]): void
   parallelSort(arg0: [long], arg1: int, arg2: int): void
   parallelSort(arg0: [long]): void
+  parallelSort<T>(arg0: [T], arg1: any /*java.util.Comparator*/): void
   parallelSort(arg0: bytearray): void
   parallelSort(arg0: [int], arg1: int, arg2: int): void
-  parallelSort(arg0: [float]): void
-  parallelSort(arg0: chararray): void
-  parallelSort(arg0: [double], arg1: int, arg2: int): void
   parallelSort(arg0: [float], arg1: int, arg2: int): void
-  parallelSort(arg0: [int]): void
-  parallelSort<T>(arg0: [T], arg1: any /*java.util.Comparator*/): void
-  parallelSort<T>(arg0: [T], arg1: int, arg2: int, arg3: any /*java.util.Comparator*/): void
   parallelSort(arg0: [double]): void
-  parallelSort(arg0: [any /*short*/], arg1: int, arg2: int): void
-  parallelSort<T>(arg0: [T], arg1: int, arg2: int): void
   parallelSort(arg0: bytearray, arg1: int, arg2: int): void
   parallelSort<T>(arg0: [T]): void
+  parallelSort(arg0: [any /*short*/]): void
+  parallelSort<T>(arg0: [T], arg1: int, arg2: int, arg3: any /*java.util.Comparator*/): void
   parallelSort(arg0: chararray, arg1: int, arg2: int): void
+  parallelSort(arg0: [double], arg1: int, arg2: int): void
+  parallelSort(arg0: [any /*short*/], arg1: int, arg2: int): void
+  parallelSort<T>(arg0: [T], arg1: int, arg2: int): void
+  parallelSort(arg0: [int]): void
+  parallelSort(arg0: chararray): void
   setAll(arg0: [double], arg1: any /*java.util.function.IntToDoubleFunction*/): void
   setAll<T>(arg0: [T], arg1: any /*java.util.function.IntFunction*/): void
   setAll(arg0: [long], arg1: any /*java.util.function.IntToLongFunction*/): void
   setAll(arg0: [int], arg1: any /*java.util.function.IntUnaryOperator*/): void
-  sort(arg0: [float]): void
-  sort(arg0: bytearray, arg1: int, arg2: int): void
+  sort(arg0: [any /*short*/]): void
   sort(arg0: [long]): void
   sort(arg0: [long], arg1: int, arg2: int): void
+  sort(arg0: bytearray, arg1: int, arg2: int): void
+  sort(arg0: [float]): void
   sort(arg0: [float], arg1: int, arg2: int): void
-  sort(arg0: bytearray): void
-  sort<T>(arg0: [T], arg1: any /*java.util.Comparator*/): void
-  sort(arg0: chararray): void
-  sort(arg0: [int]): void
-  sort(arg0: [double]): void
-  sort(arg0: chararray, arg1: int, arg2: int): void
-  sort(arg0: [any /*java.lang.Object*/]): void
   sort(arg0: [any /*java.lang.Object*/], arg1: int, arg2: int): void
-  sort(arg0: [any /*short*/], arg1: int, arg2: int): void
+  sort(arg0: [any /*java.lang.Object*/]): void
   sort<T>(arg0: [T], arg1: int, arg2: int, arg3: any /*java.util.Comparator*/): void
   sort(arg0: [double], arg1: int, arg2: int): void
+  sort(arg0: chararray): void
+  sort(arg0: chararray, arg1: int, arg2: int): void
   sort(arg0: [int], arg1: int, arg2: int): void
-  sort(arg0: [any /*short*/]): void
+  sort(arg0: bytearray): void
+  sort(arg0: [any /*short*/], arg1: int, arg2: int): void
+  sort(arg0: [double]): void
+  sort<T>(arg0: [T], arg1: any /*java.util.Comparator*/): void
+  sort(arg0: [int]): void
   spliterator(arg0: [long], arg1: int, arg2: int): any /*java.util.Spliterator$OfLong*/
   spliterator(arg0: [long]): any /*java.util.Spliterator$OfLong*/
   spliterator(arg0: [int], arg1: int, arg2: int): any /*java.util.Spliterator$OfInt*/
@@ -348,12 +348,6 @@ interface SocketPermissionStatic {
 }
 
 export const SocketPermission: SocketPermissionStatic = Java.type('java.net.SocketPermission')
-
-interface PathStatic {
-  readonly class: any
-}
-
-export const Path: PathStatic = Java.type('java.nio.file.Path')
 
 interface PrintWriterStatic {
   readonly class: any
@@ -867,177 +861,6 @@ interface IteratorStatic {
 
 export const Iterator: IteratorStatic = Java.type('java.util.Iterator')
 
-interface FilesStatic {
-  readonly class: any
-  copy(arg0: java.nio.file.Path, arg1: java.io.OutputStream): long
-  copy(arg0: java.io.InputStream, arg1: java.nio.file.Path, ...arg2: any /*java.nio.file.CopyOption*/[]): long
-  copy(
-    arg0: java.nio.file.Path,
-    arg1: java.nio.file.Path,
-    ...arg2: any /*java.nio.file.CopyOption*/[]
-  ): java.nio.file.Path
-  createDirectories(
-    arg0: java.nio.file.Path,
-    ...arg1: any /*java.nio.file.attribute.FileAttribute*/[]
-  ): java.nio.file.Path
-  createDirectory(
-    arg0: java.nio.file.Path,
-    ...arg1: any /*java.nio.file.attribute.FileAttribute*/[]
-  ): java.nio.file.Path
-  createFile(arg0: java.nio.file.Path, ...arg1: any /*java.nio.file.attribute.FileAttribute*/[]): java.nio.file.Path
-  createLink(arg0: java.nio.file.Path, arg1: java.nio.file.Path): java.nio.file.Path
-  createSymbolicLink(
-    arg0: java.nio.file.Path,
-    arg1: java.nio.file.Path,
-    ...arg2: any /*java.nio.file.attribute.FileAttribute*/[]
-  ): java.nio.file.Path
-  createTempDirectory(arg0: string, ...arg1: any /*java.nio.file.attribute.FileAttribute*/[]): java.nio.file.Path
-  createTempDirectory(
-    arg0: java.nio.file.Path,
-    arg1: string,
-    ...arg2: any /*java.nio.file.attribute.FileAttribute*/[]
-  ): java.nio.file.Path
-  createTempFile(
-    arg0: java.nio.file.Path,
-    arg1: string,
-    arg2: string,
-    ...arg3: any /*java.nio.file.attribute.FileAttribute*/[]
-  ): java.nio.file.Path
-  createTempFile(
-    arg0: string,
-    arg1: string,
-    ...arg2: any /*java.nio.file.attribute.FileAttribute*/[]
-  ): java.nio.file.Path
-  delete(arg0: java.nio.file.Path): void
-  deleteIfExists(arg0: java.nio.file.Path): boolean
-  exists(arg0: java.nio.file.Path, ...arg1: any /*java.nio.file.LinkOption*/[]): boolean
-  find(
-    arg0: java.nio.file.Path,
-    arg1: int,
-    arg2: any /*java.util.function.BiPredicate*/,
-    ...arg3: any /*java.nio.file.FileVisitOption*/[]
-  ): java.util.stream.Stream<java.nio.file.Path>
-  getAttribute(
-    arg0: java.nio.file.Path,
-    arg1: string,
-    ...arg2: any /*java.nio.file.LinkOption*/[]
-  ): any /*java.lang.Object*/
-  getFileAttributeView<V>(
-    arg0: java.nio.file.Path,
-    arg1: java.lang.Class<V>,
-    ...arg2: any /*java.nio.file.LinkOption*/[]
-  ): V
-  getFileStore(arg0: java.nio.file.Path): any /*java.nio.file.FileStore*/
-  getLastModifiedTime(
-    arg0: java.nio.file.Path,
-    ...arg1: any /*java.nio.file.LinkOption*/[]
-  ): any /*java.nio.file.attribute.FileTime*/
-  getOwner(
-    arg0: java.nio.file.Path,
-    ...arg1: any /*java.nio.file.LinkOption*/[]
-  ): any /*java.nio.file.attribute.UserPrincipal*/
-  getPosixFilePermissions(
-    arg0: java.nio.file.Path,
-    ...arg1: any /*java.nio.file.LinkOption*/[]
-  ): java.util.Set<any /*java.nio.file.attribute.PosixFilePermission*/>
-  isDirectory(arg0: java.nio.file.Path, ...arg1: any /*java.nio.file.LinkOption*/[]): boolean
-  isExecutable(arg0: java.nio.file.Path): boolean
-  isHidden(arg0: java.nio.file.Path): boolean
-  isReadable(arg0: java.nio.file.Path): boolean
-  isRegularFile(arg0: java.nio.file.Path, ...arg1: any /*java.nio.file.LinkOption*/[]): boolean
-  isSameFile(arg0: java.nio.file.Path, arg1: java.nio.file.Path): boolean
-  isSymbolicLink(arg0: java.nio.file.Path): boolean
-  isWritable(arg0: java.nio.file.Path): boolean
-  lines(arg0: java.nio.file.Path, arg1: any /*java.nio.charset.Charset*/): java.util.stream.Stream<string>
-  lines(arg0: java.nio.file.Path): java.util.stream.Stream<string>
-  list(arg0: java.nio.file.Path): java.util.stream.Stream<java.nio.file.Path>
-  move(
-    arg0: java.nio.file.Path,
-    arg1: java.nio.file.Path,
-    ...arg2: any /*java.nio.file.CopyOption*/[]
-  ): java.nio.file.Path
-  newBufferedReader(arg0: java.nio.file.Path, arg1: any /*java.nio.charset.Charset*/): java.io.BufferedReader
-  newBufferedReader(arg0: java.nio.file.Path): java.io.BufferedReader
-  newBufferedWriter(
-    arg0: java.nio.file.Path,
-    arg1: any /*java.nio.charset.Charset*/,
-    ...arg2: any /*java.nio.file.OpenOption*/[]
-  ): java.io.BufferedWriter
-  newBufferedWriter(arg0: java.nio.file.Path, ...arg1: any /*java.nio.file.OpenOption*/[]): java.io.BufferedWriter
-  newByteChannel(
-    arg0: java.nio.file.Path,
-    ...arg1: any /*java.nio.file.OpenOption*/[]
-  ): any /*java.nio.channels.SeekableByteChannel*/
-  newByteChannel(
-    arg0: java.nio.file.Path,
-    arg1: java.util.Set<any /*java.nio.file.OpenOption*/>,
-    ...arg2: any /*java.nio.file.attribute.FileAttribute*/[]
-  ): any /*java.nio.channels.SeekableByteChannel*/
-  newDirectoryStream(
-    arg0: java.nio.file.Path,
-    arg1: any /*java.nio.file.DirectoryStream$Filter*/
-  ): any /*java.nio.file.DirectoryStream*/
-  newDirectoryStream(arg0: java.nio.file.Path): any /*java.nio.file.DirectoryStream*/
-  newDirectoryStream(arg0: java.nio.file.Path, arg1: string): any /*java.nio.file.DirectoryStream*/
-  newInputStream(arg0: java.nio.file.Path, ...arg1: any /*java.nio.file.OpenOption*/[]): java.io.InputStream
-  newOutputStream(arg0: java.nio.file.Path, ...arg1: any /*java.nio.file.OpenOption*/[]): java.io.OutputStream
-  notExists(arg0: java.nio.file.Path, ...arg1: any /*java.nio.file.LinkOption*/[]): boolean
-  probeContentType(arg0: java.nio.file.Path): string
-  readAllBytes(arg0: java.nio.file.Path): bytearray
-  readAllLines(arg0: java.nio.file.Path, arg1: any /*java.nio.charset.Charset*/): java.util.List<string>
-  readAllLines(arg0: java.nio.file.Path): java.util.List<string>
-  readAttributes(
-    arg0: java.nio.file.Path,
-    arg1: string,
-    ...arg2: any /*java.nio.file.LinkOption*/[]
-  ): java.util.Map<string, any /*java.lang.Object*/>
-  readAttributes<A>(arg0: java.nio.file.Path, arg1: java.lang.Class<A>, ...arg2: any /*java.nio.file.LinkOption*/[]): A
-  readSymbolicLink(arg0: java.nio.file.Path): java.nio.file.Path
-  setAttribute(
-    arg0: java.nio.file.Path,
-    arg1: string,
-    arg2: any /*java.lang.Object*/,
-    ...arg3: any /*java.nio.file.LinkOption*/[]
-  ): java.nio.file.Path
-  setLastModifiedTime(arg0: java.nio.file.Path, arg1: any /*java.nio.file.attribute.FileTime*/): java.nio.file.Path
-  setOwner(arg0: java.nio.file.Path, arg1: any /*java.nio.file.attribute.UserPrincipal*/): java.nio.file.Path
-  setPosixFilePermissions(
-    arg0: java.nio.file.Path,
-    arg1: java.util.Set<any /*java.nio.file.attribute.PosixFilePermission*/>
-  ): java.nio.file.Path
-  size(arg0: java.nio.file.Path): long
-  walk(
-    arg0: java.nio.file.Path,
-    ...arg1: any /*java.nio.file.FileVisitOption*/[]
-  ): java.util.stream.Stream<java.nio.file.Path>
-  walk(
-    arg0: java.nio.file.Path,
-    arg1: int,
-    ...arg2: any /*java.nio.file.FileVisitOption*/[]
-  ): java.util.stream.Stream<java.nio.file.Path>
-  walkFileTree(
-    arg0: java.nio.file.Path,
-    arg1: java.util.Set<any /*java.nio.file.FileVisitOption*/>,
-    arg2: int,
-    arg3: any /*java.nio.file.FileVisitor*/
-  ): java.nio.file.Path
-  walkFileTree(arg0: java.nio.file.Path, arg1: any /*java.nio.file.FileVisitor*/): java.nio.file.Path
-  write(arg0: java.nio.file.Path, arg1: bytearray, ...arg2: any /*java.nio.file.OpenOption*/[]): java.nio.file.Path
-  write(
-    arg0: java.nio.file.Path,
-    arg1: java.lang.Iterable<any /*java.lang.CharSequence*/>,
-    arg2: any /*java.nio.charset.Charset*/,
-    ...arg3: any /*java.nio.file.OpenOption*/[]
-  ): java.nio.file.Path
-  write(
-    arg0: java.nio.file.Path,
-    arg1: java.lang.Iterable<any /*java.lang.CharSequence*/>,
-    ...arg2: any /*java.nio.file.OpenOption*/[]
-  ): java.nio.file.Path
-}
-
-export const Files: FilesStatic = Java.type('java.nio.file.Files')
-
 interface BufferedWriterStatic {
   readonly class: any
   new (arg0: java.io.Writer): java.io.BufferedWriter
@@ -1155,14 +978,6 @@ interface FileFilterStatic {
 }
 
 export const FileFilter: FileFilterStatic = Java.type('java.io.FileFilter')
-
-interface PathsStatic {
-  readonly class: any
-  get(arg0: string, ...arg1: string[]): java.nio.file.Path
-  get(arg0: any /*java.net.URI*/): java.nio.file.Path
-}
-
-export const Paths: PathsStatic = Java.type('java.nio.file.Paths')
 
 interface MulticastSocketStatic {
   readonly class: any

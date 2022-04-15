@@ -3,7 +3,7 @@ import { Bot, Session } from './src/core/medic.js'
 // 导入插件
 import './src/plugin.js'
 import './src/plugins/calc.js'
-import { clearInterval, getTimerId, setInterval } from './src/utils/timer.js'
+import { clearInterval, getTimerId, setInterval, setTimeout } from './src/utils/timer.js'
 
 // 事件监听器
 const Event = Bot.Event
@@ -23,7 +23,7 @@ $.on('message.friend', async (message) => {
 })
 
 // Bot 上线事件
-let task = getTimerId()
+let onlineTask = getTimerId()
 Logger.time('Online')
 setInterval(() => {
   Logger.warn(`正在检查登录状态: ${Bot.isOnline() ? '已登录' : '未登录'}`)
@@ -35,13 +35,16 @@ setInterval(() => {
     } catch (e) {
       Logger.error('啊哦, 出了些问题\n' + e.stack)
     }
-    clearInterval(task)
+    clearInterval(onlineTask)
     Logger.timeEnd('Online')
   } else {
     Logger.log('未登录, 3s后重试')
   }
 }, 3000)
-
+setTimeout(() => {
+  clearInterval(onlineTask)
+  Logger.warn('取消检查登录状态')
+}, 1000 * 120)
 Event.on('message', async (session: Session) => {
   if (Bot.waitPrompt.get(session.sender)) {
     Bot.Event.emit('prompt', session.content)

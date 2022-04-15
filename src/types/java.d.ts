@@ -434,48 +434,6 @@ declare namespace java.net {
   } // end SocketPermission
 } // end namespace java.net
 
-declare namespace java.nio.file {
-  interface Path /* extends java.lang.Comparable<any>, java.lang.Iterable<any>, Watchable*/ {
-    compareTo(arg0: Path): int
-    endsWith(arg0: Path): boolean
-    endsWith(arg0: string): boolean
-    equals(arg0: any /*java.lang.Object*/): boolean
-    forEach(arg0: any /*java.util.function.Consumer*/): void
-    getFileName(): Path
-    getFileSystem(): any /*java.nio.file.FileSystem*/
-    getName(arg0: int): Path
-    getNameCount(): int
-    getParent(): Path
-    getRoot(): Path
-    isAbsolute(): boolean
-    iterator(): java.util.Iterator<Path>
-    normalize(): Path
-    register(
-      arg0: any /*java.nio.file.WatchService*/,
-      ...arg1: any /*java.nio.file.WatchEvent$Kind*/[]
-    ): any /*java.nio.file.WatchKey*/
-    register(
-      arg0: any /*java.nio.file.WatchService*/,
-      arg1: [any /*java.nio.file.WatchEvent$Kind*/],
-      ...arg2: any /*java.nio.file.WatchEvent$Modifier*/[]
-    ): any /*java.nio.file.WatchKey*/
-    relativize(arg0: Path): Path
-    resolve(arg0: Path): Path
-    resolve(arg0: string): Path
-    resolveSibling(arg0: Path): Path
-    resolveSibling(arg0: string): Path
-    spliterator(): any /*java.util.Spliterator*/
-    startsWith(arg0: Path): boolean
-    startsWith(arg0: string): boolean
-    subpath(arg0: int, arg1: int): Path
-    toAbsolutePath(): Path
-    toFile(): java.io.File
-    toRealPath(...arg0: any /*java.nio.file.LinkOption*/[]): Path
-    toString(): string
-    toUri(): any /*java.net.URI*/
-  } // end Path
-} // end namespace java.nio.file
-
 declare namespace java.io {
   class PrintWriter /* extends Writer*/ {
     append(arg0: any /*char*/): PrintWriter
@@ -1457,13 +1415,6 @@ declare namespace java.util {
   } // end Iterator
 } // end namespace java.util
 
-declare namespace java.nio.file {
-  class Files /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
-    toString(): string
-  } // end Files
-} // end namespace java.nio.file
-
 declare namespace java.io {
   class BufferedWriter /* extends Writer*/ {
     append(arg0: any /*char*/): Writer
@@ -1656,7 +1607,7 @@ declare namespace java.io {
     setReadable(arg0: boolean, arg1: boolean): boolean
     setWritable(arg0: boolean): boolean
     setWritable(arg0: boolean, arg1: boolean): boolean
-    toPath(): java.nio.file.Path
+    toPath(): any /*java.nio.file.Path*/
     toString(): string
     toURI(): any /*java.net.URI*/
     toURL(): java.net.URL
@@ -1744,13 +1695,6 @@ declare namespace java.io {
     (arg0: java.io.File): boolean
   } // end FileFilter
 } // end namespace java.io
-
-declare namespace java.nio.file {
-  class Paths /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
-    toString(): string
-  } // end Paths
-} // end namespace java.nio.file
 
 declare namespace java.net {
   class MulticastSocket /* extends DatagramSocket*/ {

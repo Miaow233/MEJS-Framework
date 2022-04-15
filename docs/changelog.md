@@ -1,4 +1,18 @@
-﻿## v1.2.8
+﻿## v1.2.9
+
+1. 添加代数方程库
+
+   官方文档：[http://algebra.js.org](http://algebra.js.org)
+
+2. 更新 Java 接口，支持 Java 8
+
+   详情请查看 `src/extensions/java.js`
+
+3. 添加解方程插件 `calc.js`
+
+4. 修复一些 bug
+
+## v1.2.8
 
 - 已完成 Java 注解，不需要安装 TS 拓展了
   - java.io.BufferedReader
