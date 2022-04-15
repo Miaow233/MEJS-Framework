@@ -4,7 +4,7 @@
 
 export * from './helper.js'
 export * from './template.js'
-export * from '../utils.js'
+export * from './utils.js'
 
 /**
  * 头像尺寸（允许传入的参数）

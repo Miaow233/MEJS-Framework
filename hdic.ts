@@ -1,8 +1,9 @@
-import { Logger, LOGO } from './src/logger.js'
-import { Bot, Session } from './src/medic.js'
+import { Logger, LOGO } from './src/utils/logger.js'
+import { Bot, Session } from './src/core/medic.js'
 // 导入插件
 import './src/plugin.js'
-import { clearInterval, getTimerId, setInterval } from './src/timer.js'
+import './src/plugins/calc.js'
+import { clearInterval, getTimerId, setInterval } from './src/utils/timer.js'
 
 // 事件监听器
 const Event = Bot.Event

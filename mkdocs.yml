@@ -1,7 +1,7 @@
 site_name: MEJS-Framework 使用文档
 theme:
   name: material
-  #custom_dir: overrides
+  # custom_dir: overrides
   language: zh
   palette:
     primary: black
@@ -33,14 +33,10 @@ extra:
       link: https://github.com/Miaow233/MEJS-Framework
       name: GitHub 组织
   search:
-    language: jp # 不支持中文，改成日文好像能搜到一部分中文了（无语）
+    language: jp
 
 # extra_css:
-#   - https://unpkg.com/botui/build/botui.min.css
-#   - https://unpkg.com/botui/build/botui-theme-default.css
 # extra_javascript:
-#   - https://cdn.jsdelivr.net/vue/latest/vue.min.js
-#   - https://unpkg.com/botui/build/botui.min.js
 
 markdown_extensions:
   - attr_list

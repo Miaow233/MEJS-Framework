@@ -13,6 +13,7 @@
     "docs:type": "typedoc"
   },
   "dependencies": {
+    "algebra.js": "^0.2.6",
     "events": "^3.3.0",
     "minimist": "^1.2.5",
     "typescript": "^4.6.3"

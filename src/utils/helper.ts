@@ -1,4 +1,4 @@
-import { Session } from '../medic.js'
+import { Session } from '../core/medic.js'
 /**
  * 判断是否为 URL 链接
  * @param url
