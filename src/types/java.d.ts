@@ -47,12 +47,28 @@ declare namespace Java {
 
   export function from<T>(list: java.util.List<T>): Array<T>
 }
+declare namespace java.net {
+  class SocketImpl /* extends java.lang.Object implements SocketOptions*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getOption(arg0: int): any /*java.lang.Object*/
+    setOption(arg0: int, arg1: any /*java.lang.Object*/): void
+    toString(): string
+  } // end SocketImpl
+} // end namespace java.net
+
 declare namespace java.util {
   class Arrays /* extends java.lang.Object*/ {
     equals(arg0: any /*java.lang.Object*/): boolean
     toString(): string
   } // end Arrays
 } // end namespace java.util
+
+declare namespace java.net {
+  class SocketAddress /* extends java.lang.Object implements java.io.Serializable*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    toString(): string
+  } // end SocketAddress
+} // end namespace java.net
 
 declare namespace java.nio {
   class FloatBuffer /* extends Buffer implements java.lang.Comparable<any>*/ {
@@ -99,6 +115,31 @@ declare namespace java.lang {
     toString(): string
   } // end System
 } // end namespace java.lang
+
+declare namespace java.net {
+  class URL /* extends java.lang.Object implements java.io.Serializable*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getAuthority(): string
+    getContent(): any /*java.lang.Object*/
+    getContent(arg0: [java.lang.Class<any>]): any /*java.lang.Object*/
+    getDefaultPort(): int
+    getFile(): string
+    getHost(): string
+    getPath(): string
+    getPort(): int
+    getProtocol(): string
+    getQuery(): string
+    getRef(): string
+    getUserInfo(): string
+    openConnection(): URLConnection
+    openConnection(arg0: Proxy): URLConnection
+    openStream(): java.io.InputStream
+    sameFile(arg0: URL): boolean
+    toExternalForm(): string
+    toString(): string
+    toURI(): any /*java.net.URI*/
+  } // end URL
+} // end namespace java.net
 
 declare namespace java.lang {
   class ThreadGroup /* extends Object implements Thread$UncaughtExceptionHandler*/ {
@@ -200,6 +241,62 @@ declare namespace java.nio {
   } // end ByteBuffer
 } // end namespace java.nio
 
+declare namespace java.net {
+  class InetAddress /* extends java.lang.Object implements java.io.Serializable*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getAddress(): bytearray
+    getCanonicalHostName(): string
+    getHostAddress(): string
+    getHostName(): string
+    isAnyLocalAddress(): boolean
+    isLinkLocalAddress(): boolean
+    isLoopbackAddress(): boolean
+    isMCGlobal(): boolean
+    isMCLinkLocal(): boolean
+    isMCNodeLocal(): boolean
+    isMCOrgLocal(): boolean
+    isMCSiteLocal(): boolean
+    isMulticastAddress(): boolean
+    isReachable(arg0: NetworkInterface, arg1: int, arg2: int): boolean
+    isReachable(arg0: int): boolean
+    isSiteLocalAddress(): boolean
+    toString(): string
+  } // end InetAddress
+} // end namespace java.net
+
+declare namespace java.net {
+  class ProxySelector /* extends java.lang.Object*/ {
+    connectFailed(arg0: any /*java.net.URI*/, arg1: SocketAddress, arg2: any /*java.io.IOException*/): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    select(arg0: any /*java.net.URI*/): java.util.List<Proxy>
+    toString(): string
+  } // end ProxySelector
+} // end namespace java.net
+
+declare namespace java.net {
+  class ServerSocket /* extends java.lang.Object implements java.io.Closeable*/ {
+    accept(): Socket
+    bind(arg0: SocketAddress): void
+    bind(arg0: SocketAddress, arg1: int): void
+    close(): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getChannel(): any /*java.nio.channels.ServerSocketChannel*/
+    getInetAddress(): InetAddress
+    getLocalPort(): int
+    getLocalSocketAddress(): SocketAddress
+    getReceiveBufferSize(): int
+    getReuseAddress(): boolean
+    getSoTimeout(): int
+    isBound(): boolean
+    isClosed(): boolean
+    setPerformancePreferences(arg0: int, arg1: int, arg2: int): void
+    setReceiveBufferSize(arg0: int): void
+    setReuseAddress(arg0: boolean): void
+    setSoTimeout(arg0: int): void
+    toString(): string
+  } // end ServerSocket
+} // end namespace java.net
+
 declare namespace java.nio {
   class IntBuffer /* extends Buffer implements java.lang.Comparable<any>*/ {
     array(): [int]
@@ -238,6 +335,15 @@ declare namespace java.nio {
     toString(): string
   } // end IntBuffer
 } // end namespace java.nio
+
+declare namespace java.net {
+  class Proxy /* extends java.lang.Object*/ {
+    address(): SocketAddress
+    equals(arg0: any /*java.lang.Object*/): boolean
+    toString(): string
+    type(): any /*java.net.Proxy$Type*/
+  } // end Proxy
+} // end namespace java.net
 
 declare namespace java.io {
   class FilePermission /* extends java.security.Permission implements Serializable*/ {
@@ -315,6 +421,60 @@ declare namespace java.util {
     values(): Collection<V>
   } // end Map
 } // end namespace java.util
+
+declare namespace java.net {
+  class SocketPermission /* extends java.security.Permission implements java.io.Serializable*/ {
+    checkGuard(arg0: any /*java.lang.Object*/): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getActions(): string
+    getName(): string
+    implies(arg0: any /*java.security.Permission*/): boolean
+    newPermissionCollection(): any /*java.security.PermissionCollection*/
+    toString(): string
+  } // end SocketPermission
+} // end namespace java.net
+
+declare namespace java.nio.file {
+  interface Path /* extends java.lang.Comparable<any>, java.lang.Iterable<any>, Watchable*/ {
+    compareTo(arg0: Path): int
+    endsWith(arg0: Path): boolean
+    endsWith(arg0: string): boolean
+    equals(arg0: any /*java.lang.Object*/): boolean
+    forEach(arg0: any /*java.util.function.Consumer*/): void
+    getFileName(): Path
+    getFileSystem(): any /*java.nio.file.FileSystem*/
+    getName(arg0: int): Path
+    getNameCount(): int
+    getParent(): Path
+    getRoot(): Path
+    isAbsolute(): boolean
+    iterator(): java.util.Iterator<Path>
+    normalize(): Path
+    register(
+      arg0: any /*java.nio.file.WatchService*/,
+      ...arg1: any /*java.nio.file.WatchEvent$Kind*/[]
+    ): any /*java.nio.file.WatchKey*/
+    register(
+      arg0: any /*java.nio.file.WatchService*/,
+      arg1: [any /*java.nio.file.WatchEvent$Kind*/],
+      ...arg2: any /*java.nio.file.WatchEvent$Modifier*/[]
+    ): any /*java.nio.file.WatchKey*/
+    relativize(arg0: Path): Path
+    resolve(arg0: Path): Path
+    resolve(arg0: string): Path
+    resolveSibling(arg0: Path): Path
+    resolveSibling(arg0: string): Path
+    spliterator(): any /*java.util.Spliterator*/
+    startsWith(arg0: Path): boolean
+    startsWith(arg0: string): boolean
+    subpath(arg0: int, arg1: int): Path
+    toAbsolutePath(): Path
+    toFile(): java.io.File
+    toRealPath(...arg0: any /*java.nio.file.LinkOption*/[]): Path
+    toString(): string
+    toUri(): any /*java.net.URI*/
+  } // end Path
+} // end namespace java.nio.file
 
 declare namespace java.io {
   class PrintWriter /* extends Writer*/ {
@@ -431,6 +591,13 @@ declare namespace java.nio {
   } // end CharBuffer
 } // end namespace java.nio
 
+declare namespace java.net {
+  class Authenticator /* extends java.lang.Object*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    toString(): string
+  } // end Authenticator
+} // end namespace java.net
+
 declare namespace java.util {
   interface Collection<E> /* extends java.lang.Iterable<E>*/ {
     add(arg0: E): boolean
@@ -455,6 +622,27 @@ declare namespace java.util {
   } // end Collection
 } // end namespace java.util
 
+declare namespace java.net {
+  class NetworkInterface /* extends java.lang.Object*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getDisplayName(): string
+    getHardwareAddress(): bytearray
+    getIndex(): int
+    getInetAddresses(): any /*java.util.Enumeration*/
+    getInterfaceAddresses(): java.util.List<any /*java.net.InterfaceAddress*/>
+    getMTU(): int
+    getName(): string
+    getParent(): NetworkInterface
+    getSubInterfaces(): any /*java.util.Enumeration*/
+    isLoopback(): boolean
+    isPointToPoint(): boolean
+    isUp(): boolean
+    isVirtual(): boolean
+    supportsMulticast(): boolean
+    toString(): string
+  } // end NetworkInterface
+} // end namespace java.net
+
 declare namespace java.util {
   interface Set<E> /* extends Collection<E>*/ {
     add(arg0: E): boolean
@@ -478,6 +666,47 @@ declare namespace java.util {
     toArray<T>(arg0: [T]): [T]
   } // end Set
 } // end namespace java.util
+
+declare namespace java.io {
+  class Reader /* extends java.lang.Object implements java.lang.Readable, Closeable*/ {
+    close(): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    mark(arg0: int): void
+    markSupported(): boolean
+    read(): int
+    read(arg0: chararray): int
+    read(arg0: chararray, arg1: int, arg2: int): int
+    read(arg0: java.nio.CharBuffer): int
+    ready(): boolean
+    reset(): void
+    skip(arg0: long): long
+    toString(): string
+  } // end Reader
+} // end namespace java.io
+
+declare namespace java.net {
+  interface SocketImplFactory {
+    createSocketImpl(): SocketImpl
+  } // end SocketImplFactory
+} // end namespace java.net
+
+declare namespace java.net {
+  interface URLStreamHandlerFactory {
+    createURLStreamHandler(arg0: string): URLStreamHandler
+  } // end URLStreamHandlerFactory
+} // end namespace java.net
+
+declare namespace java.net {
+  class InetSocketAddress /* extends SocketAddress*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getAddress(): InetAddress
+    getHostName(): string
+    getHostString(): string
+    getPort(): int
+    isUnresolved(): boolean
+    toString(): string
+  } // end InetSocketAddress
+} // end namespace java.net
 
 declare namespace java.util.stream {
   class Collectors /* extends java.lang.Object*/ {
@@ -524,6 +753,13 @@ declare namespace java.nio {
     toString(): string
   } // end ByteOrder
 } // end namespace java.nio
+
+declare namespace java.net {
+  class URLStreamHandler /* extends java.lang.Object*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    toString(): string
+  } // end URLStreamHandler
+} // end namespace java.net
 
 declare namespace java.util {
   interface List<E> /* extends Collection<E>*/ {
@@ -610,6 +846,15 @@ declare namespace java.util.stream {
   } // end Stream
 } // end namespace java.util.stream
 
+declare namespace java.net {
+  class CacheRequest /* extends java.lang.Object*/ {
+    abort(): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getBody(): java.io.OutputStream
+    toString(): string
+  } // end CacheRequest
+} // end namespace java.net
+
 declare namespace java.io {
   class Writer /* extends java.lang.Object implements java.lang.Appendable, Closeable, Flushable*/ {
     append(arg0: any /*char*/): Writer
@@ -691,7 +936,7 @@ declare namespace java.lang {
     clearAssertionStatus(): void
     equals(arg0: any /*java.lang.Object*/): boolean
     getParent(): ClassLoader
-    getResource(arg0: string): any /*java.net.URL*/
+    getResource(arg0: string): java.net.URL
     getResourceAsStream(arg0: string): java.io.InputStream
     getResources(arg0: string): any /*java.util.Enumeration*/
     loadClass(arg0: string): Class<any /*java.lang.Object*/>
@@ -701,6 +946,25 @@ declare namespace java.lang {
     toString(): string
   } // end ClassLoader
 } // end namespace java.lang
+
+declare namespace java.net {
+  class DatagramPacket /* extends java.lang.Object*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getAddress(): InetAddress
+    getData(): bytearray
+    getLength(): int
+    getOffset(): int
+    getPort(): int
+    getSocketAddress(): SocketAddress
+    setAddress(arg0: InetAddress): void
+    setData(arg0: bytearray): void
+    setData(arg0: bytearray, arg1: int, arg2: int): void
+    setLength(arg0: int): void
+    setPort(arg0: int): void
+    setSocketAddress(arg0: SocketAddress): void
+    toString(): string
+  } // end DatagramPacket
+} // end namespace java.net
 
 declare namespace java.lang {
   class Throwable /* extends Object implements java.io.Serializable*/ {
@@ -726,6 +990,84 @@ declare namespace java.io {
     (arg0: java.io.File, arg1: string): boolean
   } // end FilenameFilter
 } // end namespace java.io
+
+declare namespace java.net {
+  interface SocketOptions {
+    getOption(arg0: int): any /*java.lang.Object*/
+    setOption(arg0: int, arg1: any /*java.lang.Object*/): void
+  } // end SocketOptions
+} // end namespace java.net
+
+declare namespace java.net {
+  class Socket /* extends java.lang.Object implements java.io.Closeable*/ {
+    bind(arg0: SocketAddress): void
+    close(): void
+    connect(arg0: SocketAddress): void
+    connect(arg0: SocketAddress, arg1: int): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getChannel(): any /*java.nio.channels.SocketChannel*/
+    getInetAddress(): InetAddress
+    getInputStream(): java.io.InputStream
+    getKeepAlive(): boolean
+    getLocalAddress(): InetAddress
+    getLocalPort(): int
+    getLocalSocketAddress(): SocketAddress
+    getOOBInline(): boolean
+    getOutputStream(): java.io.OutputStream
+    getPort(): int
+    getReceiveBufferSize(): int
+    getRemoteSocketAddress(): SocketAddress
+    getReuseAddress(): boolean
+    getSendBufferSize(): int
+    getSoLinger(): int
+    getSoTimeout(): int
+    getTcpNoDelay(): boolean
+    getTrafficClass(): int
+    isBound(): boolean
+    isClosed(): boolean
+    isConnected(): boolean
+    isInputShutdown(): boolean
+    isOutputShutdown(): boolean
+    sendUrgentData(arg0: int): void
+    setKeepAlive(arg0: boolean): void
+    setOOBInline(arg0: boolean): void
+    setPerformancePreferences(arg0: int, arg1: int, arg2: int): void
+    setReceiveBufferSize(arg0: int): void
+    setReuseAddress(arg0: boolean): void
+    setSendBufferSize(arg0: int): void
+    setSoLinger(arg0: boolean, arg1: int): void
+    setSoTimeout(arg0: int): void
+    setTcpNoDelay(arg0: boolean): void
+    setTrafficClass(arg0: int): void
+    shutdownInput(): void
+    shutdownOutput(): void
+    toString(): string
+  } // end Socket
+} // end namespace java.net
+
+declare namespace java.net {
+  class PlainSocketImpl /* extends AbstractPlainSocketImpl*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getOption(arg0: int): any /*java.lang.Object*/
+    getTimeout(): int
+    isClosedOrPending(): boolean
+    isConnectionReset(): boolean
+    isConnectionResetPending(): boolean
+    setConnectionReset(): void
+    setConnectionResetPending(): void
+    setOption(arg0: int, arg1: any /*java.lang.Object*/): void
+    toString(): string
+  } // end PlainSocketImpl
+} // end namespace java.net
+
+declare namespace java.net {
+  class DatagramSocketImpl /* extends java.lang.Object implements SocketOptions*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getOption(arg0: int): any /*java.lang.Object*/
+    setOption(arg0: int, arg1: any /*java.lang.Object*/): void
+    toString(): string
+  } // end DatagramSocketImpl
+} // end namespace java.net
 
 declare namespace java.nio {
   class ShortBuffer /* extends Buffer implements java.lang.Comparable<any>*/ {
@@ -834,6 +1176,54 @@ declare namespace java.util {
   } // end Stack
 } // end namespace java.util
 
+declare namespace java.net {
+  class DatagramSocket /* extends java.lang.Object implements java.io.Closeable*/ {
+    bind(arg0: SocketAddress): void
+    close(): void
+    connect(arg0: InetAddress, arg1: int): void
+    connect(arg0: SocketAddress): void
+    disconnect(): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getBroadcast(): boolean
+    getChannel(): any /*java.nio.channels.DatagramChannel*/
+    getInetAddress(): InetAddress
+    getLocalAddress(): InetAddress
+    getLocalPort(): int
+    getLocalSocketAddress(): SocketAddress
+    getPort(): int
+    getReceiveBufferSize(): int
+    getRemoteSocketAddress(): SocketAddress
+    getReuseAddress(): boolean
+    getSendBufferSize(): int
+    getSoTimeout(): int
+    getTrafficClass(): int
+    isBound(): boolean
+    isClosed(): boolean
+    isConnected(): boolean
+    receive(arg0: DatagramPacket): void
+    send(arg0: DatagramPacket): void
+    setBroadcast(arg0: boolean): void
+    setReceiveBufferSize(arg0: int): void
+    setReuseAddress(arg0: boolean): void
+    setSendBufferSize(arg0: int): void
+    setSoTimeout(arg0: int): void
+    setTrafficClass(arg0: int): void
+    toString(): string
+  } // end DatagramSocket
+} // end namespace java.net
+
+declare namespace java.net {
+  class NetPermission /* extends java.security.BasicPermission*/ {
+    checkGuard(arg0: any /*java.lang.Object*/): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getActions(): string
+    getName(): string
+    implies(arg0: any /*java.security.Permission*/): boolean
+    newPermissionCollection(): any /*java.security.PermissionCollection*/
+    toString(): string
+  } // end NetPermission
+} // end namespace java.net
+
 declare namespace java.lang {
   class StringBuffer /* extends AbstractStringBuilder implements java.io.Serializable, CharSequence*/ {
     append(arg0: StringBuffer): StringBuffer
@@ -891,6 +1281,60 @@ declare namespace java.lang {
     trimToSize(): void
   } // end StringBuffer
 } // end namespace java.lang
+
+declare namespace java.net {
+  interface FileNameMap {
+    getContentTypeFor(arg0: string): string
+  } // end FileNameMap
+} // end namespace java.net
+
+declare namespace java.net {
+  class URLConnection /* extends java.lang.Object*/ {
+    addRequestProperty(arg0: string, arg1: string): void
+    connect(): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getAllowUserInteraction(): boolean
+    getConnectTimeout(): int
+    getContent(): any /*java.lang.Object*/
+    getContent(arg0: [java.lang.Class<any>]): any /*java.lang.Object*/
+    getContentEncoding(): string
+    getContentLength(): int
+    getContentLengthLong(): long
+    getContentType(): string
+    getDate(): long
+    getDefaultUseCaches(): boolean
+    getDoInput(): boolean
+    getDoOutput(): boolean
+    getExpiration(): long
+    getHeaderField(arg0: int): string
+    getHeaderField(arg0: string): string
+    getHeaderFieldDate(arg0: string, arg1: long): long
+    getHeaderFieldInt(arg0: string, arg1: int): int
+    getHeaderFieldKey(arg0: int): string
+    getHeaderFieldLong(arg0: string, arg1: long): long
+    getHeaderFields(): java.util.Map<string, java.util.List<string>>
+    getIfModifiedSince(): long
+    getInputStream(): java.io.InputStream
+    getLastModified(): long
+    getOutputStream(): java.io.OutputStream
+    getPermission(): any /*java.security.Permission*/
+    getReadTimeout(): int
+    getRequestProperties(): java.util.Map<string, java.util.List<string>>
+    getRequestProperty(arg0: string): string
+    getURL(): URL
+    getUseCaches(): boolean
+    setAllowUserInteraction(arg0: boolean): void
+    setConnectTimeout(arg0: int): void
+    setDefaultUseCaches(arg0: boolean): void
+    setDoInput(arg0: boolean): void
+    setDoOutput(arg0: boolean): void
+    setIfModifiedSince(arg0: long): void
+    setReadTimeout(arg0: int): void
+    setRequestProperty(arg0: string, arg1: string): void
+    setUseCaches(arg0: boolean): void
+    toString(): string
+  } // end URLConnection
+} // end namespace java.net
 
 declare namespace java.nio {
   class Buffer /* extends java.lang.Object*/ {
@@ -1012,6 +1456,13 @@ declare namespace java.util {
     remove(): void
   } // end Iterator
 } // end namespace java.util
+
+declare namespace java.nio.file {
+  class Files /* extends java.lang.Object*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    toString(): string
+  } // end Files
+} // end namespace java.nio.file
 
 declare namespace java.io {
   class BufferedWriter /* extends Writer*/ {
@@ -1138,6 +1589,29 @@ declare namespace java.io {
   } // end InputStreamReader
 } // end namespace java.io
 
+declare namespace java.net {
+  class Inet4Address /* extends InetAddress*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getAddress(): bytearray
+    getCanonicalHostName(): string
+    getHostAddress(): string
+    getHostName(): string
+    isAnyLocalAddress(): boolean
+    isLinkLocalAddress(): boolean
+    isLoopbackAddress(): boolean
+    isMCGlobal(): boolean
+    isMCLinkLocal(): boolean
+    isMCNodeLocal(): boolean
+    isMCOrgLocal(): boolean
+    isMCSiteLocal(): boolean
+    isMulticastAddress(): boolean
+    isReachable(arg0: NetworkInterface, arg1: int, arg2: int): boolean
+    isReachable(arg0: int): boolean
+    isSiteLocalAddress(): boolean
+    toString(): string
+  } // end Inet4Address
+} // end namespace java.net
+
 declare namespace java.io {
   class File /* extends java.lang.Object implements Serializable, java.lang.Comparable<any>*/ {
     canExecute(): boolean
@@ -1182,10 +1656,10 @@ declare namespace java.io {
     setReadable(arg0: boolean, arg1: boolean): boolean
     setWritable(arg0: boolean): boolean
     setWritable(arg0: boolean, arg1: boolean): boolean
-    toPath(): any /*java.nio.file.Path*/
+    toPath(): java.nio.file.Path
     toString(): string
     toURI(): any /*java.net.URI*/
-    toURL(): any /*java.net.URL*/
+    toURL(): java.net.URL
   } // end File
 } // end namespace java.io
 
@@ -1204,8 +1678,8 @@ declare namespace java.lang {
     checkLink(arg0: string): void
     checkListen(arg0: int): void
     checkMemberAccess(arg0: Class<any /*java.lang.Object*/>, arg1: int): void
-    checkMulticast(arg0: any /*java.net.InetAddress*/): void
-    checkMulticast(arg0: any /*java.net.InetAddress*/, arg1: any /*byte*/): void
+    checkMulticast(arg0: java.net.InetAddress): void
+    checkMulticast(arg0: java.net.InetAddress, arg1: any /*byte*/): void
     checkPackageAccess(arg0: string): void
     checkPackageDefinition(arg0: string): void
     checkPermission(arg0: any /*java.security.Permission*/): void
@@ -1230,11 +1704,104 @@ declare namespace java.lang {
   } // end SecurityManager
 } // end namespace java.lang
 
+declare namespace java.net {
+  class ContentHandler /* extends java.lang.Object*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getContent(arg0: URLConnection): any /*java.lang.Object*/
+    getContent(arg0: URLConnection, arg1: [java.lang.Class<any>]): any /*java.lang.Object*/
+    toString(): string
+  } // end ContentHandler
+} // end namespace java.net
+
+declare namespace java.net {
+  class Inet6Address /* extends InetAddress*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getAddress(): bytearray
+    getCanonicalHostName(): string
+    getHostAddress(): string
+    getHostName(): string
+    getScopeId(): int
+    getScopedInterface(): NetworkInterface
+    isAnyLocalAddress(): boolean
+    isIPv4CompatibleAddress(): boolean
+    isLinkLocalAddress(): boolean
+    isLoopbackAddress(): boolean
+    isMCGlobal(): boolean
+    isMCLinkLocal(): boolean
+    isMCNodeLocal(): boolean
+    isMCOrgLocal(): boolean
+    isMCSiteLocal(): boolean
+    isMulticastAddress(): boolean
+    isReachable(arg0: NetworkInterface, arg1: int, arg2: int): boolean
+    isReachable(arg0: int): boolean
+    isSiteLocalAddress(): boolean
+    toString(): string
+  } // end Inet6Address
+} // end namespace java.net
+
 declare namespace java.io {
   interface FileFilter {
     (arg0: java.io.File): boolean
   } // end FileFilter
 } // end namespace java.io
+
+declare namespace java.nio.file {
+  class Paths /* extends java.lang.Object*/ {
+    equals(arg0: any /*java.lang.Object*/): boolean
+    toString(): string
+  } // end Paths
+} // end namespace java.nio.file
+
+declare namespace java.net {
+  class MulticastSocket /* extends DatagramSocket*/ {
+    bind(arg0: SocketAddress): void
+    close(): void
+    connect(arg0: InetAddress, arg1: int): void
+    connect(arg0: SocketAddress): void
+    disconnect(): void
+    equals(arg0: any /*java.lang.Object*/): boolean
+    getBroadcast(): boolean
+    getChannel(): any /*java.nio.channels.DatagramChannel*/
+    getInetAddress(): InetAddress
+    getInterface(): InetAddress
+    getLocalAddress(): InetAddress
+    getLocalPort(): int
+    getLocalSocketAddress(): SocketAddress
+    getLoopbackMode(): boolean
+    getNetworkInterface(): NetworkInterface
+    getPort(): int
+    getReceiveBufferSize(): int
+    getRemoteSocketAddress(): SocketAddress
+    getReuseAddress(): boolean
+    getSendBufferSize(): int
+    getSoTimeout(): int
+    getTTL(): any /*byte*/
+    getTimeToLive(): int
+    getTrafficClass(): int
+    isBound(): boolean
+    isClosed(): boolean
+    isConnected(): boolean
+    joinGroup(arg0: InetAddress): void
+    joinGroup(arg0: SocketAddress, arg1: NetworkInterface): void
+    leaveGroup(arg0: InetAddress): void
+    leaveGroup(arg0: SocketAddress, arg1: NetworkInterface): void
+    receive(arg0: DatagramPacket): void
+    send(arg0: DatagramPacket): void
+    send(arg0: DatagramPacket, arg1: any /*byte*/): void
+    setBroadcast(arg0: boolean): void
+    setInterface(arg0: InetAddress): void
+    setLoopbackMode(arg0: boolean): void
+    setNetworkInterface(arg0: NetworkInterface): void
+    setReceiveBufferSize(arg0: int): void
+    setReuseAddress(arg0: boolean): void
+    setSendBufferSize(arg0: int): void
+    setSoTimeout(arg0: int): void
+    setTTL(arg0: any /*byte*/): void
+    setTimeToLive(arg0: int): void
+    setTrafficClass(arg0: int): void
+    toString(): string
+  } // end MulticastSocket
+} // end namespace java.net
 
 declare namespace java.io {
   class FileDescriptor /* extends java.lang.Object*/ {
@@ -1329,7 +1896,7 @@ declare namespace java.lang {
     getName(): string
     getPackage(): any /*java.lang.Package*/
     getProtectionDomain(): any /*java.security.ProtectionDomain*/
-    getResource(arg0: string): any /*java.net.URL*/
+    getResource(arg0: string): java.net.URL
     getResourceAsStream(arg0: string): java.io.InputStream
     getSigners(): [any /*java.lang.Object*/]
     getSimpleName(): string
@@ -1380,7 +1947,7 @@ declare namespace java.io {
 } // end namespace java.io
 
 declare namespace java.io {
-  class FileReader extends InputStreamReader {
+  class FileReader /* extends InputStreamReader*/ {
     close(): void
     equals(arg0: any /*java.lang.Object*/): boolean
     getEncoding(): string
