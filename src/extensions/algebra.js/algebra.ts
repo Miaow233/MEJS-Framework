@@ -1,7 +1,7 @@
-import Equation from './src/equations.js'
-import { Expression } from './src/expressions.js'
-import Fraction from './src/fractions.js'
-import Parser from './src/parser.js'
+import Equation from './equations.js'
+import { Expression } from './expressions.js'
+import Fraction from './fractions.js'
+import Parser from './parser.js'
 
 const parse = function (input) {
   let parser = new Parser()
