@@ -26,12 +26,12 @@ interface ArraysStatic {
   binarySearch<T>(arg0: [T], arg1: T, arg2: any /*java.util.Comparator*/): int
   binarySearch(arg0: bytearray, arg1: any /*byte*/): int
   binarySearch(arg0: [long], arg1: long): int
-  binarySearch(arg0: [any /*java.lang.Object*/], arg1: any /*java.lang.Object*/): int
+  binarySearch(arg0: [java.lang.Object], arg1: java.lang.Object): int
   binarySearch(arg0: [float], arg1: int, arg2: int, arg3: float): int
   binarySearch(arg0: [float], arg1: float): int
   binarySearch(arg0: [double], arg1: int, arg2: int, arg3: double): int
   binarySearch<T>(arg0: [T], arg1: int, arg2: int, arg3: T, arg4: any /*java.util.Comparator*/): int
-  binarySearch(arg0: [any /*java.lang.Object*/], arg1: int, arg2: int, arg3: any /*java.lang.Object*/): int
+  binarySearch(arg0: [java.lang.Object], arg1: int, arg2: int, arg3: java.lang.Object): int
   binarySearch(arg0: bytearray, arg1: int, arg2: int, arg3: any /*byte*/): int
   binarySearch(arg0: chararray, arg1: any /*char*/): int
   binarySearch(arg0: chararray, arg1: int, arg2: int, arg3: any /*char*/): int
@@ -55,19 +55,19 @@ interface ArraysStatic {
   copyOfRange(arg0: chararray, arg1: int, arg2: int): chararray
   copyOfRange(arg0: [int], arg1: int, arg2: int): [int]
   copyOfRange(arg0: [long], arg1: int, arg2: int): [long]
-  deepEquals(arg0: [any /*java.lang.Object*/], arg1: [any /*java.lang.Object*/]): boolean
-  deepHashCode(arg0: [any /*java.lang.Object*/]): int
-  deepToString(arg0: [any /*java.lang.Object*/]): string
+  deepEquals(arg0: [java.lang.Object], arg1: [java.lang.Object]): boolean
+  deepHashCode(arg0: [java.lang.Object]): int
+  deepToString(arg0: [java.lang.Object]): string
   equals(arg0: bytearray, arg1: bytearray): boolean
   equals(arg0: [boolean], arg1: [boolean]): boolean
   equals(arg0: [double], arg1: [double]): boolean
   equals(arg0: [float], arg1: [float]): boolean
-  equals(arg0: [any /*java.lang.Object*/], arg1: [any /*java.lang.Object*/]): boolean
+  equals(arg0: [java.lang.Object], arg1: [java.lang.Object]): boolean
   equals(arg0: [any /*short*/], arg1: [any /*short*/]): boolean
   equals(arg0: [int], arg1: [int]): boolean
   equals(arg0: [long], arg1: [long]): boolean
   equals(arg0: chararray, arg1: chararray): boolean
-  fill(arg0: [any /*java.lang.Object*/], arg1: any /*java.lang.Object*/): void
+  fill(arg0: [java.lang.Object], arg1: java.lang.Object): void
   fill(arg0: [double], arg1: int, arg2: int, arg3: double): void
   fill(arg0: [boolean], arg1: boolean): void
   fill(arg0: [any /*short*/], arg1: int, arg2: int, arg3: any /*short*/): void
@@ -77,7 +77,7 @@ interface ArraysStatic {
   fill(arg0: [double], arg1: double): void
   fill(arg0: [long], arg1: long): void
   fill(arg0: [boolean], arg1: int, arg2: int, arg3: boolean): void
-  fill(arg0: [any /*java.lang.Object*/], arg1: int, arg2: int, arg3: any /*java.lang.Object*/): void
+  fill(arg0: [java.lang.Object], arg1: int, arg2: int, arg3: java.lang.Object): void
   fill(arg0: chararray, arg1: int, arg2: int, arg3: any /*char*/): void
   fill(arg0: bytearray, arg1: int, arg2: int, arg3: any /*byte*/): void
   fill(arg0: [float], arg1: int, arg2: int, arg3: float): void
@@ -93,7 +93,7 @@ interface ArraysStatic {
   hashCode(arg0: [int]): int
   hashCode(arg0: [any /*short*/]): int
   hashCode(arg0: chararray): int
-  hashCode(arg0: [any /*java.lang.Object*/]): int
+  hashCode(arg0: [java.lang.Object]): int
   parallelPrefix(arg0: [double], arg1: any /*java.util.function.DoubleBinaryOperator*/): void
   parallelPrefix(arg0: [double], arg1: int, arg2: int, arg3: any /*java.util.function.DoubleBinaryOperator*/): void
   parallelPrefix(arg0: [int], arg1: any /*java.util.function.IntBinaryOperator*/): void
@@ -134,8 +134,8 @@ interface ArraysStatic {
   sort(arg0: bytearray, arg1: int, arg2: int): void
   sort(arg0: [float]): void
   sort(arg0: [float], arg1: int, arg2: int): void
-  sort(arg0: [any /*java.lang.Object*/], arg1: int, arg2: int): void
-  sort(arg0: [any /*java.lang.Object*/]): void
+  sort(arg0: [java.lang.Object], arg1: int, arg2: int): void
+  sort(arg0: [java.lang.Object]): void
   sort<T>(arg0: [T], arg1: int, arg2: int, arg3: any /*java.util.Comparator*/): void
   sort(arg0: [double], arg1: int, arg2: int): void
   sort(arg0: chararray): void
@@ -170,7 +170,7 @@ interface ArraysStatic {
   toString(arg0: [int]): string
   toString(arg0: [any /*short*/]): string
   toString(arg0: chararray): string
-  toString(arg0: [any /*java.lang.Object*/]): string
+  toString(arg0: [java.lang.Object]): string
 }
 
 export const Arrays: ArraysStatic = Java.type('java.util.Arrays')
@@ -193,7 +193,7 @@ export const FloatBuffer: FloatBufferStatic = Java.type('java.nio.FloatBuffer')
 
 interface SystemStatic {
   readonly class: any
-  arraycopy(arg0: any /*java.lang.Object*/, arg1: int, arg2: any /*java.lang.Object*/, arg3: int, arg4: int): void
+  arraycopy(arg0: java.lang.Object, arg1: int, arg2: java.lang.Object, arg3: int, arg4: int): void
   clearProperty(arg0: string): string
   console(): any /*java.io.Console*/
   currentTimeMillis(): long
@@ -205,7 +205,7 @@ interface SystemStatic {
   getSecurityManager(): java.lang.SecurityManager
   getenv(arg0: string): string
   getenv(): java.util.Map<string, string>
-  identityHashCode(arg0: any /*java.lang.Object*/): int
+  identityHashCode(arg0: java.lang.Object): int
   inheritedChannel(): any /*java.nio.channels.Channel*/
   lineSeparator(): string
   load(arg0: string): void
@@ -326,7 +326,7 @@ interface ThreadStatic {
   enumerate(arg0: [java.lang.Thread]): int
   getAllStackTraces(): java.util.Map<java.lang.Thread, [any /*java.lang.StackTraceElement*/]>
   getDefaultUncaughtExceptionHandler(): any /*java.lang.Thread$UncaughtExceptionHandler*/
-  holdsLock(arg0: any /*java.lang.Object*/): boolean
+  holdsLock(arg0: java.lang.Object): boolean
   interrupted(): boolean
   setDefaultUncaughtExceptionHandler(arg0: any /*java.lang.Thread$UncaughtExceptionHandler*/): void
   sleep(arg0: long, arg1: int): void
@@ -379,8 +379,8 @@ export const ThreadLocal: ThreadLocalStatic = Java.type('java.lang.ThreadLocal')
 
 interface CompilerStatic {
   readonly class: any
-  command(arg0: any /*java.lang.Object*/): any /*java.lang.Object*/
-  compileClass(arg0: java.lang.Class<any /*java.lang.Object*/>): boolean
+  command(arg0: java.lang.Object): java.lang.Object
+  compileClass(arg0: java.lang.Class<java.lang.Object>): boolean
   compileClasses(arg0: string): boolean
   disable(): void
   enable(): void
@@ -831,12 +831,12 @@ interface StringStatic {
   new (arg0: bytearray, arg1: int, arg2: int, arg3: int): string
   copyValueOf(arg0: chararray, arg1: int, arg2: int): string
   copyValueOf(arg0: chararray): string
-  format(arg0: any /*java.util.Locale*/, arg1: string, ...arg2: any /*java.lang.Object*/[]): string
-  format(arg0: string, ...arg1: any /*java.lang.Object*/[]): string
+  format(arg0: any /*java.util.Locale*/, arg1: string, ...arg2: java.lang.Object[]): string
+  format(arg0: string, ...arg1: java.lang.Object[]): string
   join(arg0: any /*java.lang.CharSequence*/, ...arg1: any /*java.lang.CharSequence*/[]): string
   join(arg0: any /*java.lang.CharSequence*/, arg1: java.lang.Iterable<any /*java.lang.CharSequence*/>): string
   valueOf(arg0: any /*char*/): string
-  valueOf(arg0: any /*java.lang.Object*/): string
+  valueOf(arg0: java.lang.Object): string
   valueOf(arg0: boolean): string
   valueOf(arg0: chararray, arg1: int, arg2: int): string
   valueOf(arg0: chararray): string
@@ -1007,8 +1007,8 @@ export const LongBuffer: LongBufferStatic = Java.type('java.nio.LongBuffer')
 
 interface ClassStatic {
   readonly class: any
-  forName(arg0: string): java.lang.Class<any /*java.lang.Object*/>
-  forName(arg0: string, arg1: boolean, arg2: java.lang.ClassLoader): java.lang.Class<any /*java.lang.Object*/>
+  forName(arg0: string): java.lang.Class<java.lang.Object>
+  forName(arg0: string, arg1: boolean, arg2: java.lang.ClassLoader): java.lang.Class<java.lang.Object>
 }
 
 export const Class: ClassStatic = Java.type('java.lang.Class')
@@ -1060,10 +1060,7 @@ interface CollectionsStatic {
   ): any /*java.util.SortedMap*/
   checkedSortedSet<E>(arg0: any /*java.util.SortedSet*/, arg1: java.lang.Class<E>): any /*java.util.SortedSet*/
   copy<T>(arg0: java.util.List<T>, arg1: java.util.List<T>): void
-  disjoint(
-    arg0: java.util.Collection<any /*java.lang.Object*/>,
-    arg1: java.util.Collection<any /*java.lang.Object*/>
-  ): boolean
+  disjoint(arg0: java.util.Collection<java.lang.Object>, arg1: java.util.Collection<java.lang.Object>): boolean
   emptyEnumeration(): any /*java.util.Enumeration*/
   emptyIterator<T>(): java.util.Iterator<T>
   emptyList<T>(): java.util.List<T>
@@ -1076,12 +1073,9 @@ interface CollectionsStatic {
   emptySortedSet(): any /*java.util.SortedSet*/
   enumeration<T>(arg0: java.util.Collection<T>): any /*java.util.Enumeration*/
   fill<T>(arg0: java.util.List<T>, arg1: T): void
-  frequency(arg0: java.util.Collection<any /*java.lang.Object*/>, arg1: any /*java.lang.Object*/): int
-  indexOfSubList(arg0: java.util.List<any /*java.lang.Object*/>, arg1: java.util.List<any /*java.lang.Object*/>): int
-  lastIndexOfSubList(
-    arg0: java.util.List<any /*java.lang.Object*/>,
-    arg1: java.util.List<any /*java.lang.Object*/>
-  ): int
+  frequency(arg0: java.util.Collection<java.lang.Object>, arg1: java.lang.Object): int
+  indexOfSubList(arg0: java.util.List<java.lang.Object>, arg1: java.util.List<java.lang.Object>): int
+  lastIndexOfSubList(arg0: java.util.List<java.lang.Object>, arg1: java.util.List<java.lang.Object>): int
   list(arg0: any /*java.util.Enumeration*/): any /*java.util.ArrayList*/
   max<T>(arg0: java.util.Collection<T>, arg1: any /*java.util.Comparator*/): T
   max<T>(arg0: java.util.Collection<T>): T
@@ -1090,18 +1084,18 @@ interface CollectionsStatic {
   nCopies<T>(arg0: int, arg1: T): java.util.List<T>
   newSetFromMap<E>(arg0: java.util.Map<E, boolean | null>): java.util.Set<E>
   replaceAll<T>(arg0: java.util.List<T>, arg1: T, arg2: T): boolean
-  reverse(arg0: java.util.List<any /*java.lang.Object*/>): void
+  reverse(arg0: java.util.List<java.lang.Object>): void
   reverseOrder(): any /*java.util.Comparator*/
   reverseOrder(arg0: any /*java.util.Comparator*/): any /*java.util.Comparator*/
-  rotate(arg0: java.util.List<any /*java.lang.Object*/>, arg1: int): void
-  shuffle(arg0: java.util.List<any /*java.lang.Object*/>): void
-  shuffle(arg0: java.util.List<any /*java.lang.Object*/>, arg1: any /*java.util.Random*/): void
+  rotate(arg0: java.util.List<java.lang.Object>, arg1: int): void
+  shuffle(arg0: java.util.List<java.lang.Object>): void
+  shuffle(arg0: java.util.List<java.lang.Object>, arg1: any /*java.util.Random*/): void
   singleton<T>(arg0: T): java.util.Set<T>
   singletonList<T>(arg0: T): java.util.List<T>
   singletonMap<K, V>(arg0: K, arg1: V): java.util.Map<K, V>
   sort<T>(arg0: java.util.List<T>, arg1: any /*java.util.Comparator*/): void
   sort<T>(arg0: java.util.List<T>): void
-  swap(arg0: java.util.List<any /*java.lang.Object*/>, arg1: int, arg2: int): void
+  swap(arg0: java.util.List<java.lang.Object>, arg1: int, arg2: int): void
   synchronizedCollection<T>(arg0: java.util.Collection<T>): java.util.Collection<T>
   synchronizedList<T>(arg0: java.util.List<T>): java.util.List<T>
   synchronizedMap<K, V>(arg0: java.util.Map<K, V>): java.util.Map<K, V>
@@ -1138,3 +1132,12 @@ interface MappedByteBufferStatic {
 }
 
 export const MappedByteBuffer: MappedByteBufferStatic = Java.type('java.nio.MappedByteBuffer')
+
+interface ByteArrayOutputStreamStatic {
+  readonly class: any
+  new (): java.io.ByteArrayOutputStream
+  new (arg0: int): java.io.ByteArrayOutputStream
+  nullOutputStream(): java.io.OutputStream
+}
+
+export const ByteArrayOutputStream: ByteArrayOutputStreamStatic = Packages.java.io.ByteArrayOutputStream

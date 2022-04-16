@@ -7,22 +7,29 @@
  *
  */
 
-type int = number
-type long = number
-type float = number
-type double = number
-type byte = number
-type char = string
+declare type int = number
+declare type long = number
+declare type float = number
+declare type double = number
+declare type byte = number
+declare type char = string
 
-type chararray = [byte]
-type bytearray = [char]
+declare type chararray = [byte]
+declare type bytearray = [char]
+
+declare const Packages: any
 
 declare namespace java.lang {
   interface Class<T> {}
   interface AutoCloseable {}
   interface Cloneable {}
 
-  type Object = any
+  class Object {
+    clone(): Object
+    to<T>(type: Class<T>): T
+    equals(obj: Object): boolean
+    toString(): string
+  }
 }
 
 declare namespace java.util {
@@ -44,28 +51,27 @@ declare function load(module: string): void
 
 declare namespace Java {
   export function type<T>(t: string): T
-
-  export function from<T>(list: java.util.List<T>): Array<T>
 }
+
 declare namespace java.net {
   class SocketImpl /* extends java.lang.Object implements SocketOptions*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
-    getOption(arg0: int): any /*java.lang.Object*/
-    setOption(arg0: int, arg1: any /*java.lang.Object*/): void
+    equals(arg0: java.lang.Object): boolean
+    getOption(arg0: int): java.lang.Object
+    setOption(arg0: int, arg1: java.lang.Object): void
     toString(): string
   } // end SocketImpl
 } // end namespace java.net
 
 declare namespace java.util {
-  class Arrays /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class Arrays extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end Arrays
 } // end namespace java.util
 
 declare namespace java.net {
   class SocketAddress /* extends java.lang.Object implements java.io.Serializable*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end SocketAddress
 } // end namespace java.net
@@ -80,7 +86,7 @@ declare namespace java.nio {
     compact(): FloatBuffer
     compareTo(arg0: FloatBuffer): int
     duplicate(): FloatBuffer
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flip(): Buffer
     get(): float
     get(arg0: [float]): FloatBuffer
@@ -110,18 +116,18 @@ declare namespace java.nio {
 } // end namespace java.nio
 
 declare namespace java.lang {
-  class System /* extends Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class System extends Object {
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end System
 } // end namespace java.lang
 
 declare namespace java.net {
   class URL /* extends java.lang.Object implements java.io.Serializable*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getAuthority(): string
-    getContent(): any /*java.lang.Object*/
-    getContent(arg0: [java.lang.Class<any>]): any /*java.lang.Object*/
+    getContent(): java.lang.Object
+    getContent(arg0: [java.lang.Class<any>]): java.lang.Object
     getDefaultPort(): int
     getFile(): string
     getHost(): string
@@ -152,7 +158,7 @@ declare namespace java.lang {
     enumerate(arg0: [ThreadGroup], arg1: boolean): int
     enumerate(arg0: [Thread]): int
     enumerate(arg0: [Thread], arg1: boolean): int
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getMaxPriority(): int
     getName(): string
     getParent(): ThreadGroup
@@ -187,7 +193,7 @@ declare namespace java.nio {
     compact(): ByteBuffer
     compareTo(arg0: ByteBuffer): int
     duplicate(): ByteBuffer
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flip(): Buffer
     get(): any /*byte*/
     get(arg0: bytearray): ByteBuffer
@@ -243,7 +249,7 @@ declare namespace java.nio {
 
 declare namespace java.net {
   class InetAddress /* extends java.lang.Object implements java.io.Serializable*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getAddress(): bytearray
     getCanonicalHostName(): string
     getHostAddress(): string
@@ -265,9 +271,9 @@ declare namespace java.net {
 } // end namespace java.net
 
 declare namespace java.net {
-  class ProxySelector /* extends java.lang.Object*/ {
+  class ProxySelector extends java.lang.Object {
     connectFailed(arg0: any /*java.net.URI*/, arg1: SocketAddress, arg2: any /*java.io.IOException*/): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     select(arg0: any /*java.net.URI*/): java.util.List<Proxy>
     toString(): string
   } // end ProxySelector
@@ -279,7 +285,7 @@ declare namespace java.net {
     bind(arg0: SocketAddress): void
     bind(arg0: SocketAddress, arg1: int): void
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getChannel(): any /*java.nio.channels.ServerSocketChannel*/
     getInetAddress(): InetAddress
     getLocalPort(): int
@@ -307,7 +313,7 @@ declare namespace java.nio {
     compact(): IntBuffer
     compareTo(arg0: IntBuffer): int
     duplicate(): IntBuffer
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flip(): Buffer
     get(): int
     get(arg0: [int]): IntBuffer
@@ -337,9 +343,9 @@ declare namespace java.nio {
 } // end namespace java.nio
 
 declare namespace java.net {
-  class Proxy /* extends java.lang.Object*/ {
+  class Proxy extends java.lang.Object {
     address(): SocketAddress
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     toString(): string
     type(): any /*java.net.Proxy$Type*/
   } // end Proxy
@@ -347,8 +353,8 @@ declare namespace java.net {
 
 declare namespace java.io {
   class FilePermission /* extends java.security.Permission implements Serializable*/ {
-    checkGuard(arg0: any /*java.lang.Object*/): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    checkGuard(arg0: java.lang.Object): void
+    equals(arg0: java.lang.Object): boolean
     getActions(): string
     getName(): string
     implies(arg0: any /*java.security.Permission*/): boolean
@@ -362,7 +368,7 @@ declare namespace java.lang {
     checkAccess(): void
     countStackFrames(): int
     destroy(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getContextClassLoader(): ClassLoader
     getId(): long
     getName(): string
@@ -399,21 +405,21 @@ declare namespace java.util {
     compute(arg0: K, arg1: any /*java.util.function.BiFunction*/): V
     computeIfAbsent(arg0: K, arg1: any /*java.util.function.Function*/): V
     computeIfPresent(arg0: K, arg1: any /*java.util.function.BiFunction*/): V
-    containsKey(arg0: any /*java.lang.Object*/): boolean
-    containsValue(arg0: any /*java.lang.Object*/): boolean
+    containsKey(arg0: java.lang.Object): boolean
+    containsValue(arg0: java.lang.Object): boolean
     entrySet(): Set<any /*java.util.Map$Entry*/>
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     forEach(arg0: any /*java.util.function.BiConsumer*/): void
-    get(arg0: any /*java.lang.Object*/): V
-    getOrDefault(arg0: any /*java.lang.Object*/, arg1: V): V
+    get(arg0: java.lang.Object): V
+    getOrDefault(arg0: java.lang.Object, arg1: V): V
     isEmpty(): boolean
     keySet(): Set<K>
     merge(arg0: K, arg1: V, arg2: any /*java.util.function.BiFunction*/): V
     put(arg0: K, arg1: V): V
     putAll(arg0: Map<K, V>): void
     putIfAbsent(arg0: K, arg1: V): V
-    remove(arg0: any /*java.lang.Object*/): V
-    remove(arg0: any /*java.lang.Object*/, arg1: any /*java.lang.Object*/): boolean
+    remove(arg0: java.lang.Object): V
+    remove(arg0: java.lang.Object, arg1: java.lang.Object): boolean
     replace(arg0: K, arg1: V): V
     replace(arg0: K, arg1: V, arg2: V): boolean
     replaceAll(arg0: any /*java.util.function.BiFunction*/): void
@@ -424,8 +430,8 @@ declare namespace java.util {
 
 declare namespace java.net {
   class SocketPermission /* extends java.security.Permission implements java.io.Serializable*/ {
-    checkGuard(arg0: any /*java.lang.Object*/): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    checkGuard(arg0: java.lang.Object): void
+    equals(arg0: java.lang.Object): boolean
     getActions(): string
     getName(): string
     implies(arg0: any /*java.security.Permission*/): boolean
@@ -435,18 +441,18 @@ declare namespace java.net {
 } // end namespace java.net
 
 declare namespace java.io {
-  class PrintWriter /* extends Writer*/ {
+  class PrintWriter extends Writer {
     append(arg0: any /*char*/): PrintWriter
     append(arg0: any /*java.lang.CharSequence*/): PrintWriter
     append(arg0: any /*java.lang.CharSequence*/, arg1: int, arg2: int): PrintWriter
     checkError(): boolean
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flush(): void
-    format(arg0: any /*java.util.Locale*/, arg1: string, ...arg2: any /*java.lang.Object*/[]): PrintWriter
-    format(arg0: string, ...arg1: any /*java.lang.Object*/[]): PrintWriter
+    format(arg0: any /*java.util.Locale*/, arg1: string, ...arg2: java.lang.Object[]): PrintWriter
+    format(arg0: string, ...arg1: java.lang.Object[]): PrintWriter
     print(arg0: any /*char*/): void
-    print(arg0: any /*java.lang.Object*/): void
+    print(arg0: java.lang.Object): void
     print(arg0: boolean): void
     print(arg0: chararray): void
     print(arg0: double): void
@@ -454,11 +460,11 @@ declare namespace java.io {
     print(arg0: int): void
     print(arg0: long): void
     print(arg0: string): void
-    printf(arg0: any /*java.util.Locale*/, arg1: string, ...arg2: any /*java.lang.Object*/[]): PrintWriter
-    printf(arg0: string, ...arg1: any /*java.lang.Object*/[]): PrintWriter
+    printf(arg0: any /*java.util.Locale*/, arg1: string, ...arg2: java.lang.Object[]): PrintWriter
+    printf(arg0: string, ...arg1: java.lang.Object[]): PrintWriter
     println(): void
     println(arg0: any /*char*/): void
-    println(arg0: any /*java.lang.Object*/): void
+    println(arg0: java.lang.Object): void
     println(arg0: boolean): void
     println(arg0: chararray): void
     println(arg0: double): void
@@ -476,15 +482,15 @@ declare namespace java.io {
 } // end namespace java.io
 
 declare namespace java.lang {
-  class Void /* extends Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class Void extends Object {
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end Void
 } // end namespace java.lang
 
 declare namespace java.lang {
-  class ThreadLocal<T> /* extends Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class ThreadLocal<T> extends Object {
+    equals(arg0: java.lang.Object): boolean
     get(): T
     remove(): void
     set(arg0: T): void
@@ -493,8 +499,8 @@ declare namespace java.lang {
 } // end namespace java.lang
 
 declare namespace java.lang {
-  class Compiler /* extends Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class Compiler extends Object {
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end Compiler
 } // end namespace java.lang
@@ -515,7 +521,7 @@ declare namespace java.nio {
     compact(): CharBuffer
     compareTo(arg0: CharBuffer): int
     duplicate(): CharBuffer
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flip(): Buffer
     get(): any /*char*/
     get(arg0: chararray): CharBuffer
@@ -550,8 +556,8 @@ declare namespace java.nio {
 } // end namespace java.nio
 
 declare namespace java.net {
-  class Authenticator /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class Authenticator extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end Authenticator
 } // end namespace java.net
@@ -561,28 +567,28 @@ declare namespace java.util {
     add(arg0: E): boolean
     addAll(arg0: Collection<E>): boolean
     clear(): void
-    contains(arg0: any /*java.lang.Object*/): boolean
-    containsAll(arg0: Collection<any /*java.lang.Object*/>): boolean
-    equals(arg0: any /*java.lang.Object*/): boolean
+    contains(arg0: java.lang.Object): boolean
+    containsAll(arg0: Collection<java.lang.Object>): boolean
+    equals(arg0: java.lang.Object): boolean
     forEach(arg0: any /*java.util.function.Consumer*/): void
     isEmpty(): boolean
     iterator(): Iterator<E>
     parallelStream(): java.util.stream.Stream<E>
-    remove(arg0: any /*java.lang.Object*/): boolean
-    removeAll(arg0: Collection<any /*java.lang.Object*/>): boolean
+    remove(arg0: java.lang.Object): boolean
+    removeAll(arg0: Collection<java.lang.Object>): boolean
     removeIf(arg0: any /*java.util.function.Predicate*/): boolean
-    retainAll(arg0: Collection<any /*java.lang.Object*/>): boolean
+    retainAll(arg0: Collection<java.lang.Object>): boolean
     size(): int
     spliterator(): any /*java.util.Spliterator*/
     stream(): java.util.stream.Stream<E>
-    toArray(): [any /*java.lang.Object*/]
+    toArray(): [java.lang.Object]
     toArray<T>(arg0: [T]): [T]
   } // end Collection
 } // end namespace java.util
 
 declare namespace java.net {
-  class NetworkInterface /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class NetworkInterface extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     getDisplayName(): string
     getHardwareAddress(): bytearray
     getIndex(): int
@@ -606,21 +612,21 @@ declare namespace java.util {
     add(arg0: E): boolean
     addAll(arg0: Collection<E>): boolean
     clear(): void
-    contains(arg0: any /*java.lang.Object*/): boolean
-    containsAll(arg0: Collection<any /*java.lang.Object*/>): boolean
-    equals(arg0: any /*java.lang.Object*/): boolean
+    contains(arg0: java.lang.Object): boolean
+    containsAll(arg0: Collection<java.lang.Object>): boolean
+    equals(arg0: java.lang.Object): boolean
     forEach(arg0: any /*java.util.function.Consumer*/): void
     isEmpty(): boolean
     iterator(): Iterator<E>
     parallelStream(): java.util.stream.Stream<E>
-    remove(arg0: any /*java.lang.Object*/): boolean
-    removeAll(arg0: Collection<any /*java.lang.Object*/>): boolean
+    remove(arg0: java.lang.Object): boolean
+    removeAll(arg0: Collection<java.lang.Object>): boolean
     removeIf(arg0: any /*java.util.function.Predicate*/): boolean
-    retainAll(arg0: Collection<any /*java.lang.Object*/>): boolean
+    retainAll(arg0: Collection<java.lang.Object>): boolean
     size(): int
     spliterator(): any /*java.util.Spliterator*/
     stream(): java.util.stream.Stream<E>
-    toArray(): [any /*java.lang.Object*/]
+    toArray(): [java.lang.Object]
     toArray<T>(arg0: [T]): [T]
   } // end Set
 } // end namespace java.util
@@ -628,7 +634,7 @@ declare namespace java.util {
 declare namespace java.io {
   class Reader /* extends java.lang.Object implements java.lang.Readable, Closeable*/ {
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     mark(arg0: int): void
     markSupported(): boolean
     read(): int
@@ -656,7 +662,7 @@ declare namespace java.net {
 
 declare namespace java.net {
   class InetSocketAddress /* extends SocketAddress*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getAddress(): InetAddress
     getHostName(): string
     getHostString(): string
@@ -667,21 +673,21 @@ declare namespace java.net {
 } // end namespace java.net
 
 declare namespace java.util.stream {
-  class Collectors /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class Collectors extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end Collectors
 } // end namespace java.util.stream
 
 declare namespace java.io {
-  class FileSystem /* extends java.lang.Object*/ {
+  class FileSystem extends java.lang.Object {
     canonicalize(arg0: string): string
     checkAccess(arg0: File, arg1: int): boolean
     compare(arg0: File, arg1: File): int
     createDirectory(arg0: File): boolean
     createFileExclusively(arg0: string): boolean
     delete(arg0: File): boolean
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     fromURIPath(arg0: string): string
     getBooleanAttributes(arg0: File): int
     getDefaultParent(): string
@@ -706,15 +712,15 @@ declare namespace java.io {
 } // end namespace java.io
 
 declare namespace java.nio {
-  class ByteOrder /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class ByteOrder extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end ByteOrder
 } // end namespace java.nio
 
 declare namespace java.net {
-  class URLStreamHandler /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class URLStreamHandler extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end URLStreamHandler
 } // end namespace java.net
@@ -726,31 +732,31 @@ declare namespace java.util {
     addAll(arg0: Collection<E>): boolean
     addAll(arg0: int, arg1: Collection<E>): boolean
     clear(): void
-    contains(arg0: any /*java.lang.Object*/): boolean
-    containsAll(arg0: Collection<any /*java.lang.Object*/>): boolean
-    equals(arg0: any /*java.lang.Object*/): boolean
+    contains(arg0: java.lang.Object): boolean
+    containsAll(arg0: Collection<java.lang.Object>): boolean
+    equals(arg0: java.lang.Object): boolean
     forEach(arg0: any /*java.util.function.Consumer*/): void
     get(arg0: int): E
-    indexOf(arg0: any /*java.lang.Object*/): int
+    indexOf(arg0: java.lang.Object): int
     isEmpty(): boolean
     iterator(): Iterator<E>
-    lastIndexOf(arg0: any /*java.lang.Object*/): int
+    lastIndexOf(arg0: java.lang.Object): int
     listIterator(): any /*java.util.ListIterator*/
     listIterator(arg0: int): any /*java.util.ListIterator*/
     parallelStream(): java.util.stream.Stream<E>
-    remove(arg0: any /*java.lang.Object*/): boolean
+    remove(arg0: java.lang.Object): boolean
     remove(arg0: int): E
-    removeAll(arg0: Collection<any /*java.lang.Object*/>): boolean
+    removeAll(arg0: Collection<java.lang.Object>): boolean
     removeIf(arg0: any /*java.util.function.Predicate*/): boolean
     replaceAll(arg0: any /*java.util.function.UnaryOperator*/): void
-    retainAll(arg0: Collection<any /*java.lang.Object*/>): boolean
+    retainAll(arg0: Collection<java.lang.Object>): boolean
     set(arg0: int, arg1: E): E
     size(): int
     sort(arg0: any /*java.util.Comparator*/): void
     spliterator(): any /*java.util.Spliterator*/
     stream(): java.util.stream.Stream<E>
     subList(arg0: int, arg1: int): List<E>
-    toArray(): [any /*java.lang.Object*/]
+    toArray(): [java.lang.Object]
     toArray<T>(arg0: [T]): [T]
   } // end List
 } // end namespace java.util
@@ -798,16 +804,16 @@ declare namespace java.util.stream {
     sorted(): Stream<T>
     sorted(arg0: any /*java.util.Comparator*/): Stream<T>
     spliterator(): any /*java.util.Spliterator*/
-    toArray(): [any /*java.lang.Object*/]
+    toArray(): [java.lang.Object]
     toArray<A>(arg0: any /*java.util.function.IntFunction*/): [A]
     unordered<S>(): S
   } // end Stream
 } // end namespace java.util.stream
 
 declare namespace java.net {
-  class CacheRequest /* extends java.lang.Object*/ {
+  class CacheRequest extends java.lang.Object {
     abort(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getBody(): java.io.OutputStream
     toString(): string
   } // end CacheRequest
@@ -819,7 +825,7 @@ declare namespace java.io {
     append(arg0: any /*java.lang.CharSequence*/): Writer
     append(arg0: any /*java.lang.CharSequence*/, arg1: int, arg2: int): Writer
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flush(): void
     toString(): string
     write(arg0: chararray): void
@@ -831,8 +837,8 @@ declare namespace java.io {
 } // end namespace java.io
 
 declare namespace java.util {
-  class Optional<T> /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class Optional<T> extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     filter(arg0: any /*java.util.function.Predicate*/): Optional<T>
     flatMap<U>(arg0: any /*java.util.function.Function*/): Optional<U>
     get(): T
@@ -852,7 +858,7 @@ declare namespace java.lang {
     append(arg0: any /*char*/): StringBuilder
     append(arg0: any /*java.lang.CharSequence*/): StringBuilder
     append(arg0: any /*java.lang.CharSequence*/, arg1: int, arg2: int): StringBuilder
-    append(arg0: any /*java.lang.Object*/): StringBuilder
+    append(arg0: java.lang.Object): StringBuilder
     append(arg0: boolean): StringBuilder
     append(arg0: chararray): StringBuilder
     append(arg0: chararray, arg1: int, arg2: int): StringBuilder
@@ -866,13 +872,13 @@ declare namespace java.lang {
     codePoints(): any /*java.util.stream.IntStream*/
     delete(arg0: int, arg1: int): StringBuilder
     deleteCharAt(arg0: int): StringBuilder
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     indexOf(arg0: string): int
     indexOf(arg0: string, arg1: int): int
     insert(arg0: int, arg1: any /*char*/): StringBuilder
     insert(arg0: int, arg1: any /*java.lang.CharSequence*/): StringBuilder
     insert(arg0: int, arg1: any /*java.lang.CharSequence*/, arg2: int, arg3: int): StringBuilder
-    insert(arg0: int, arg1: any /*java.lang.Object*/): StringBuilder
+    insert(arg0: int, arg1: java.lang.Object): StringBuilder
     insert(arg0: int, arg1: boolean): StringBuilder
     insert(arg0: int, arg1: chararray): StringBuilder
     insert(arg0: int, arg1: chararray, arg2: int, arg3: int): StringBuilder
@@ -890,14 +896,14 @@ declare namespace java.lang {
 } // end namespace java.lang
 
 declare namespace java.lang {
-  class ClassLoader /* extends Object*/ {
+  class ClassLoader extends Object {
     clearAssertionStatus(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getParent(): ClassLoader
     getResource(arg0: string): java.net.URL
     getResourceAsStream(arg0: string): java.io.InputStream
     getResources(arg0: string): any /*java.util.Enumeration*/
-    loadClass(arg0: string): Class<any /*java.lang.Object*/>
+    loadClass(arg0: string): Class<java.lang.Object>
     setClassAssertionStatus(arg0: string, arg1: boolean): void
     setDefaultAssertionStatus(arg0: boolean): void
     setPackageAssertionStatus(arg0: string, arg1: boolean): void
@@ -906,8 +912,8 @@ declare namespace java.lang {
 } // end namespace java.lang
 
 declare namespace java.net {
-  class DatagramPacket /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class DatagramPacket extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     getAddress(): InetAddress
     getData(): bytearray
     getLength(): int
@@ -927,7 +933,7 @@ declare namespace java.net {
 declare namespace java.lang {
   class Throwable /* extends Object implements java.io.Serializable*/ {
     addSuppressed(arg0: Throwable): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     fillInStackTrace(): Throwable
     getCause(): Throwable
     getLocalizedMessage(): string
@@ -951,8 +957,8 @@ declare namespace java.io {
 
 declare namespace java.net {
   interface SocketOptions {
-    getOption(arg0: int): any /*java.lang.Object*/
-    setOption(arg0: int, arg1: any /*java.lang.Object*/): void
+    getOption(arg0: int): java.lang.Object
+    setOption(arg0: int, arg1: java.lang.Object): void
   } // end SocketOptions
 } // end namespace java.net
 
@@ -962,7 +968,7 @@ declare namespace java.net {
     close(): void
     connect(arg0: SocketAddress): void
     connect(arg0: SocketAddress, arg1: int): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getChannel(): any /*java.nio.channels.SocketChannel*/
     getInetAddress(): InetAddress
     getInputStream(): java.io.InputStream
@@ -1005,24 +1011,24 @@ declare namespace java.net {
 
 declare namespace java.net {
   class PlainSocketImpl /* extends AbstractPlainSocketImpl*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
-    getOption(arg0: int): any /*java.lang.Object*/
+    equals(arg0: java.lang.Object): boolean
+    getOption(arg0: int): java.lang.Object
     getTimeout(): int
     isClosedOrPending(): boolean
     isConnectionReset(): boolean
     isConnectionResetPending(): boolean
     setConnectionReset(): void
     setConnectionResetPending(): void
-    setOption(arg0: int, arg1: any /*java.lang.Object*/): void
+    setOption(arg0: int, arg1: java.lang.Object): void
     toString(): string
   } // end PlainSocketImpl
 } // end namespace java.net
 
 declare namespace java.net {
   class DatagramSocketImpl /* extends java.lang.Object implements SocketOptions*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
-    getOption(arg0: int): any /*java.lang.Object*/
-    setOption(arg0: int, arg1: any /*java.lang.Object*/): void
+    equals(arg0: java.lang.Object): boolean
+    getOption(arg0: int): java.lang.Object
+    setOption(arg0: int, arg1: java.lang.Object): void
     toString(): string
   } // end DatagramSocketImpl
 } // end namespace java.net
@@ -1037,7 +1043,7 @@ declare namespace java.nio {
     compact(): ShortBuffer
     compareTo(arg0: ShortBuffer): int
     duplicate(): ShortBuffer
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flip(): Buffer
     get(): any /*short*/
     get(arg0: [any /*short*/]): ShortBuffer
@@ -1083,42 +1089,42 @@ declare namespace java.util {
     addElement(arg0: E): void
     capacity(): int
     clear(): void
-    clone(): any /*java.lang.Object*/
-    contains(arg0: any /*java.lang.Object*/): boolean
-    containsAll(arg0: Collection<any /*java.lang.Object*/>): boolean
-    copyInto(arg0: [any /*java.lang.Object*/]): void
+    clone(): java.lang.Object
+    contains(arg0: java.lang.Object): boolean
+    containsAll(arg0: Collection<java.lang.Object>): boolean
+    copyInto(arg0: [java.lang.Object]): void
     elementAt(arg0: int): E
     elements(): any /*java.util.Enumeration*/
     empty(): boolean
     ensureCapacity(arg0: int): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     firstElement(): E
     forEach(arg0: any /*java.util.function.Consumer*/): void
     get(arg0: int): E
-    indexOf(arg0: any /*java.lang.Object*/): int
-    indexOf(arg0: any /*java.lang.Object*/, arg1: int): int
+    indexOf(arg0: java.lang.Object): int
+    indexOf(arg0: java.lang.Object, arg1: int): int
     insertElementAt(arg0: E, arg1: int): void
     isEmpty(): boolean
     iterator(): Iterator<E>
     lastElement(): E
-    lastIndexOf(arg0: any /*java.lang.Object*/): int
-    lastIndexOf(arg0: any /*java.lang.Object*/, arg1: int): int
+    lastIndexOf(arg0: java.lang.Object): int
+    lastIndexOf(arg0: java.lang.Object, arg1: int): int
     listIterator(): any /*java.util.ListIterator*/
     listIterator(arg0: int): any /*java.util.ListIterator*/
     parallelStream(): java.util.stream.Stream<E>
     peek(): E
     pop(): E
     push(arg0: E): E
-    remove(arg0: any /*java.lang.Object*/): boolean
+    remove(arg0: java.lang.Object): boolean
     remove(arg0: int): E
-    removeAll(arg0: Collection<any /*java.lang.Object*/>): boolean
+    removeAll(arg0: Collection<java.lang.Object>): boolean
     removeAllElements(): void
-    removeElement(arg0: any /*java.lang.Object*/): boolean
+    removeElement(arg0: java.lang.Object): boolean
     removeElementAt(arg0: int): void
     removeIf(arg0: any /*java.util.function.Predicate*/): boolean
     replaceAll(arg0: any /*java.util.function.UnaryOperator*/): void
-    retainAll(arg0: Collection<any /*java.lang.Object*/>): boolean
-    search(arg0: any /*java.lang.Object*/): int
+    retainAll(arg0: Collection<java.lang.Object>): boolean
+    search(arg0: java.lang.Object): int
     set(arg0: int, arg1: E): E
     setElementAt(arg0: E, arg1: int): void
     setSize(arg0: int): void
@@ -1127,7 +1133,7 @@ declare namespace java.util {
     spliterator(): any /*java.util.Spliterator*/
     stream(): java.util.stream.Stream<E>
     subList(arg0: int, arg1: int): List<E>
-    toArray(): [any /*java.lang.Object*/]
+    toArray(): [java.lang.Object]
     toArray<T>(arg0: [T]): [T]
     toString(): string
     trimToSize(): void
@@ -1141,7 +1147,7 @@ declare namespace java.net {
     connect(arg0: InetAddress, arg1: int): void
     connect(arg0: SocketAddress): void
     disconnect(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getBroadcast(): boolean
     getChannel(): any /*java.nio.channels.DatagramChannel*/
     getInetAddress(): InetAddress
@@ -1172,8 +1178,8 @@ declare namespace java.net {
 
 declare namespace java.net {
   class NetPermission /* extends java.security.BasicPermission*/ {
-    checkGuard(arg0: any /*java.lang.Object*/): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    checkGuard(arg0: java.lang.Object): void
+    equals(arg0: java.lang.Object): boolean
     getActions(): string
     getName(): string
     implies(arg0: any /*java.security.Permission*/): boolean
@@ -1188,7 +1194,7 @@ declare namespace java.lang {
     append(arg0: any /*char*/): StringBuffer
     append(arg0: any /*java.lang.CharSequence*/): StringBuffer
     append(arg0: any /*java.lang.CharSequence*/, arg1: int, arg2: int): StringBuffer
-    append(arg0: any /*java.lang.Object*/): StringBuffer
+    append(arg0: java.lang.Object): StringBuffer
     append(arg0: boolean): StringBuffer
     append(arg0: chararray): StringBuffer
     append(arg0: chararray, arg1: int, arg2: int): StringBuffer
@@ -1208,14 +1214,14 @@ declare namespace java.lang {
     delete(arg0: int, arg1: int): StringBuffer
     deleteCharAt(arg0: int): StringBuffer
     ensureCapacity(arg0: int): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getChars(arg0: int, arg1: int, arg2: chararray, arg3: int): void
     indexOf(arg0: string): int
     indexOf(arg0: string, arg1: int): int
     insert(arg0: int, arg1: any /*char*/): StringBuffer
     insert(arg0: int, arg1: any /*java.lang.CharSequence*/): StringBuffer
     insert(arg0: int, arg1: any /*java.lang.CharSequence*/, arg2: int, arg3: int): StringBuffer
-    insert(arg0: int, arg1: any /*java.lang.Object*/): StringBuffer
+    insert(arg0: int, arg1: java.lang.Object): StringBuffer
     insert(arg0: int, arg1: boolean): StringBuffer
     insert(arg0: int, arg1: chararray): StringBuffer
     insert(arg0: int, arg1: chararray, arg2: int, arg3: int): StringBuffer
@@ -1247,14 +1253,14 @@ declare namespace java.net {
 } // end namespace java.net
 
 declare namespace java.net {
-  class URLConnection /* extends java.lang.Object*/ {
+  class URLConnection extends java.lang.Object {
     addRequestProperty(arg0: string, arg1: string): void
     connect(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getAllowUserInteraction(): boolean
     getConnectTimeout(): int
-    getContent(): any /*java.lang.Object*/
-    getContent(arg0: [java.lang.Class<any>]): any /*java.lang.Object*/
+    getContent(): java.lang.Object
+    getContent(arg0: [java.lang.Class<any>]): java.lang.Object
     getContentEncoding(): string
     getContentLength(): int
     getContentLengthLong(): long
@@ -1295,12 +1301,12 @@ declare namespace java.net {
 } // end namespace java.net
 
 declare namespace java.nio {
-  class Buffer /* extends java.lang.Object*/ {
-    array(): any /*java.lang.Object*/
+  class Buffer extends java.lang.Object {
+    array(): java.lang.Object
     arrayOffset(): int
     capacity(): int
     clear(): Buffer
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flip(): Buffer
     hasArray(): boolean
     hasRemaining(): boolean
@@ -1324,7 +1330,7 @@ declare namespace java.io {
     append(arg0: any /*java.lang.CharSequence*/): Writer
     append(arg0: any /*java.lang.CharSequence*/, arg1: int, arg2: int): Writer
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flush(): void
     getEncoding(): string
     toString(): string
@@ -1351,7 +1357,7 @@ declare namespace java.lang {
     contentEquals(arg0: StringBuffer): boolean
     contentEquals(arg0: any /*java.lang.CharSequence*/): boolean
     endsWith(arg0: string): boolean
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     equalsIgnoreCase(arg0: string): boolean
     getBytes(): bytearray
     getBytes(arg0: any /*java.nio.charset.Charset*/): bytearray
@@ -1397,7 +1403,7 @@ declare namespace java.lang {
 declare namespace java.io {
   class OutputStream /* extends java.lang.Object implements Closeable, Flushable*/ {
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flush(): void
     toString(): string
     write(arg0: bytearray): void
@@ -1421,7 +1427,7 @@ declare namespace java.io {
     append(arg0: any /*java.lang.CharSequence*/): Writer
     append(arg0: any /*java.lang.CharSequence*/, arg1: int, arg2: int): Writer
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flush(): void
     newLine(): void
     toString(): string
@@ -1443,7 +1449,7 @@ declare namespace java.nio {
     compact(): DoubleBuffer
     compareTo(arg0: DoubleBuffer): int
     duplicate(): DoubleBuffer
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flip(): Buffer
     get(): double
     get(arg0: [double]): DoubleBuffer
@@ -1478,7 +1484,7 @@ declare namespace java.io {
     append(arg0: any /*java.lang.CharSequence*/): Writer
     append(arg0: any /*java.lang.CharSequence*/, arg1: int, arg2: int): Writer
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flush(): void
     getEncoding(): string
     toString(): string
@@ -1493,7 +1499,7 @@ declare namespace java.io {
 declare namespace java.io {
   class FileOutputStream /* extends OutputStream*/ {
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flush(): void
     getChannel(): any /*java.nio.channels.FileChannel*/
     getFD(): FileDescriptor
@@ -1508,7 +1514,7 @@ declare namespace java.io {
   class FileInputStream /* extends InputStream*/ {
     available(): int
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getChannel(): any /*java.nio.channels.FileChannel*/
     getFD(): FileDescriptor
     mark(arg0: int): void
@@ -1525,7 +1531,7 @@ declare namespace java.io {
 declare namespace java.io {
   class InputStreamReader /* extends Reader*/ {
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getEncoding(): string
     mark(arg0: int): void
     markSupported(): boolean
@@ -1542,7 +1548,7 @@ declare namespace java.io {
 
 declare namespace java.net {
   class Inet4Address /* extends InetAddress*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getAddress(): bytearray
     getCanonicalHostName(): string
     getHostAddress(): string
@@ -1572,7 +1578,7 @@ declare namespace java.io {
     createNewFile(): boolean
     delete(): boolean
     deleteOnExit(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     exists(): boolean
     getAbsoluteFile(): File
     getAbsolutePath(): string
@@ -1615,58 +1621,58 @@ declare namespace java.io {
 } // end namespace java.io
 
 declare namespace java.lang {
-  class SecurityManager /* extends Object*/ {
+  class SecurityManager extends Object {
     checkAccept(arg0: string, arg1: int): void
     checkAccess(arg0: Thread): void
     checkAccess(arg0: ThreadGroup): void
     checkAwtEventQueueAccess(): void
     checkConnect(arg0: string, arg1: int): void
-    checkConnect(arg0: string, arg1: int, arg2: any /*java.lang.Object*/): void
+    checkConnect(arg0: string, arg1: int, arg2: java.lang.Object): void
     checkCreateClassLoader(): void
     checkDelete(arg0: string): void
     checkExec(arg0: string): void
     checkExit(arg0: int): void
     checkLink(arg0: string): void
     checkListen(arg0: int): void
-    checkMemberAccess(arg0: Class<any /*java.lang.Object*/>, arg1: int): void
+    checkMemberAccess(arg0: Class<java.lang.Object>, arg1: int): void
     checkMulticast(arg0: java.net.InetAddress): void
     checkMulticast(arg0: java.net.InetAddress, arg1: any /*byte*/): void
     checkPackageAccess(arg0: string): void
     checkPackageDefinition(arg0: string): void
     checkPermission(arg0: any /*java.security.Permission*/): void
-    checkPermission(arg0: any /*java.security.Permission*/, arg1: any /*java.lang.Object*/): void
+    checkPermission(arg0: any /*java.security.Permission*/, arg1: java.lang.Object): void
     checkPrintJobAccess(): void
     checkPropertiesAccess(): void
     checkPropertyAccess(arg0: string): void
     checkRead(arg0: java.io.FileDescriptor): void
     checkRead(arg0: string): void
-    checkRead(arg0: string, arg1: any /*java.lang.Object*/): void
+    checkRead(arg0: string, arg1: java.lang.Object): void
     checkSecurityAccess(arg0: string): void
     checkSetFactory(): void
     checkSystemClipboardAccess(): void
-    checkTopLevelWindow(arg0: any /*java.lang.Object*/): boolean
+    checkTopLevelWindow(arg0: java.lang.Object): boolean
     checkWrite(arg0: java.io.FileDescriptor): void
     checkWrite(arg0: string): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getInCheck(): boolean
-    getSecurityContext(): any /*java.lang.Object*/
+    getSecurityContext(): java.lang.Object
     getThreadGroup(): ThreadGroup
     toString(): string
   } // end SecurityManager
 } // end namespace java.lang
 
 declare namespace java.net {
-  class ContentHandler /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
-    getContent(arg0: URLConnection): any /*java.lang.Object*/
-    getContent(arg0: URLConnection, arg1: [java.lang.Class<any>]): any /*java.lang.Object*/
+  class ContentHandler extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
+    getContent(arg0: URLConnection): java.lang.Object
+    getContent(arg0: URLConnection, arg1: [java.lang.Class<any>]): java.lang.Object
     toString(): string
   } // end ContentHandler
 } // end namespace java.net
 
 declare namespace java.net {
   class Inet6Address /* extends InetAddress*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getAddress(): bytearray
     getCanonicalHostName(): string
     getHostAddress(): string
@@ -1703,7 +1709,7 @@ declare namespace java.net {
     connect(arg0: InetAddress, arg1: int): void
     connect(arg0: SocketAddress): void
     disconnect(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getBroadcast(): boolean
     getChannel(): any /*java.nio.channels.DatagramChannel*/
     getInetAddress(): InetAddress
@@ -1748,8 +1754,8 @@ declare namespace java.net {
 } // end namespace java.net
 
 declare namespace java.io {
-  class FileDescriptor /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class FileDescriptor extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     sync(): void
     toString(): string
     valid(): boolean
@@ -1766,7 +1772,7 @@ declare namespace java.nio {
     compact(): LongBuffer
     compareTo(arg0: LongBuffer): int
     duplicate(): LongBuffer
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flip(): Buffer
     get(): long
     get(arg0: [long]): LongBuffer
@@ -1800,9 +1806,9 @@ declare namespace java.lang {
     T
   > /* extends Object implements java.io.Serializable, java.lang.reflect.GenericDeclaration, java.lang.reflect.Type, java.lang.reflect.AnnotatedElement*/ {
     asSubclass<U>(arg0: Class<U>): Class<U>
-    cast(arg0: any /*java.lang.Object*/): T
+    cast(arg0: java.lang.Object): T
     desiredAssertionStatus(): boolean
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getAnnotatedInterfaces(): [any /*java.lang.reflect.AnnotatedType*/]
     getAnnotatedSuperclass(): any /*java.lang.reflect.AnnotatedType*/
     getAnnotation<A>(arg0: Class<A>): A
@@ -1810,22 +1816,22 @@ declare namespace java.lang {
     getAnnotationsByType<A>(arg0: Class<A>): [A]
     getCanonicalName(): string
     getClassLoader(): ClassLoader
-    getClasses(): [Class<any /*java.lang.Object*/>]
-    getComponentType(): Class<any /*java.lang.Object*/>
-    getConstructor(...arg0: Class<any /*java.lang.Object*/>[]): any /*java.lang.reflect.Constructor*/
+    getClasses(): [Class<java.lang.Object>]
+    getComponentType(): Class<java.lang.Object>
+    getConstructor(...arg0: Class<java.lang.Object>[]): any /*java.lang.reflect.Constructor*/
     getConstructors(): [any /*java.lang.reflect.Constructor*/]
     getDeclaredAnnotation<A>(arg0: Class<A>): A
     getDeclaredAnnotations(): [any /*java.lang.annotation.Annotation*/]
     getDeclaredAnnotationsByType<A>(arg0: Class<A>): [A]
-    getDeclaredClasses(): [Class<any /*java.lang.Object*/>]
-    getDeclaredConstructor(...arg0: Class<any /*java.lang.Object*/>[]): any /*java.lang.reflect.Constructor*/
+    getDeclaredClasses(): [Class<java.lang.Object>]
+    getDeclaredConstructor(...arg0: Class<java.lang.Object>[]): any /*java.lang.reflect.Constructor*/
     getDeclaredConstructors(): [any /*java.lang.reflect.Constructor*/]
     getDeclaredField(arg0: string): any /*java.lang.reflect.Field*/
     getDeclaredFields(): [any /*java.lang.reflect.Field*/]
-    getDeclaredMethod(arg0: string, ...arg1: Class<any /*java.lang.Object*/>[]): any /*java.lang.reflect.Method*/
+    getDeclaredMethod(arg0: string, ...arg1: Class<java.lang.Object>[]): any /*java.lang.reflect.Method*/
     getDeclaredMethods(): [any /*java.lang.reflect.Method*/]
-    getDeclaringClass(): Class<any /*java.lang.Object*/>
-    getEnclosingClass(): Class<any /*java.lang.Object*/>
+    getDeclaringClass(): Class<java.lang.Object>
+    getEnclosingClass(): Class<java.lang.Object>
     getEnclosingConstructor(): any /*java.lang.reflect.Constructor*/
     getEnclosingMethod(): any /*java.lang.reflect.Method*/
     getEnumConstants(): [T]
@@ -1833,8 +1839,8 @@ declare namespace java.lang {
     getFields(): [any /*java.lang.reflect.Field*/]
     getGenericInterfaces(): [any /*java.lang.reflect.Type*/]
     getGenericSuperclass(): any /*java.lang.reflect.Type*/
-    getInterfaces(): [Class<any /*java.lang.Object*/>]
-    getMethod(arg0: string, ...arg1: Class<any /*java.lang.Object*/>[]): any /*java.lang.reflect.Method*/
+    getInterfaces(): [Class<java.lang.Object>]
+    getMethod(arg0: string, ...arg1: Class<java.lang.Object>[]): any /*java.lang.reflect.Method*/
     getMethods(): [any /*java.lang.reflect.Method*/]
     getModifiers(): int
     getName(): string
@@ -1842,7 +1848,7 @@ declare namespace java.lang {
     getProtectionDomain(): any /*java.security.ProtectionDomain*/
     getResource(arg0: string): java.net.URL
     getResourceAsStream(arg0: string): java.io.InputStream
-    getSigners(): [any /*java.lang.Object*/]
+    getSigners(): [java.lang.Object]
     getSimpleName(): string
     getSuperclass(): Class<T>
     getTypeName(): string
@@ -1851,9 +1857,9 @@ declare namespace java.lang {
     isAnnotationPresent(arg0: Class<any /*java.lang.annotation.Annotation*/>): boolean
     isAnonymousClass(): boolean
     isArray(): boolean
-    isAssignableFrom(arg0: Class<any /*java.lang.Object*/>): boolean
+    isAssignableFrom(arg0: Class<java.lang.Object>): boolean
     isEnum(): boolean
-    isInstance(arg0: any /*java.lang.Object*/): boolean
+    isInstance(arg0: java.lang.Object): boolean
     isInterface(): boolean
     isLocalClass(): boolean
     isMemberClass(): boolean
@@ -1874,7 +1880,7 @@ declare namespace java.lang {
 declare namespace java.io {
   class BufferedReader /* extends Reader*/ {
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     lines(): java.util.stream.Stream<string>
     mark(arg0: int): void
     markSupported(): boolean
@@ -1893,7 +1899,7 @@ declare namespace java.io {
 declare namespace java.io {
   class FileReader /* extends InputStreamReader*/ {
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getEncoding(): string
     mark(arg0: int): void
     markSupported(): boolean
@@ -1909,8 +1915,8 @@ declare namespace java.io {
 } // end namespace java.io
 
 declare namespace java.util {
-  class Collections /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+  class Collections extends java.lang.Object {
+    equals(arg0: java.lang.Object): boolean
     toString(): string
   } // end Collections
 } // end namespace java.util
@@ -1919,7 +1925,7 @@ declare namespace java.io {
   class InputStream /* extends java.lang.Object implements Closeable*/ {
     available(): int
     close(): void
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     mark(arg0: int): void
     markSupported(): boolean
     read(): int
@@ -1947,7 +1953,7 @@ declare namespace java.nio {
     compact(): ByteBuffer
     compareTo(arg0: ByteBuffer): int
     duplicate(): ByteBuffer
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     flip(): Buffer
     force(): MappedByteBuffer
     get(): any /*byte*/
@@ -2003,3 +2009,24 @@ declare namespace java.nio {
     toString(): string
   } // end MappedByteBuffer
 } // end namespace java.nio
+
+declare namespace java.io {
+  class ByteArrayOutputStream extends OutputStream {
+    close(): void
+    equals(arg0: java.lang.Object): boolean
+    flush(): void
+    reset(): void
+    size(): int
+    static nullOutputStream(): java.io.OutputStream
+    toByteArray(): bytearray
+    toString(): string
+    toString(arg0: any /*java.nio.charset.Charset*/): string
+    toString(arg0: int): string
+    toString(arg0: string): string
+    write(arg0: bytearray): void
+    write(arg0: bytearray, arg1: int, arg2: int): void
+    write(arg0: int): void
+    writeBytes(arg0: bytearray): void
+    writeTo(arg0: java.io.OutputStream): void
+  } // end ByteArrayOutputStream
+} // end namespace java.io

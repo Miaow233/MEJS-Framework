@@ -1,5 +1,5 @@
 import { Equation, Expression } from '../extensions/algebra.js/algebra.js'
-import { Arrays, FileReader, OutputStreamWriter, URL, URLConnection } from '../extensions/java.js'
+import { Arrays, FileReader, OutputStreamWriter, URL, URLConnection } from '../packages/java.js'
 
 var expr = new Expression('x')
 expr = expr.subtract(3)

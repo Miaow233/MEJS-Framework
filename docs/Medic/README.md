@@ -1,6 +1,6 @@
 # 介绍
 
-![Logo](../assets/logo.png)
+![Logo](/images/logo.png)
 
 Medic 为安卓版手机 QQ 辅助软件，兼容 5.0 至 10.0 的 Android 版本，软件本身仅提供词库扩展功能，不带任何发言回复的功能，请使用[词库扩展](basic/dic.md)
 

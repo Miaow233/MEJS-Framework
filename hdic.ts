@@ -41,10 +41,13 @@ setInterval(() => {
     Logger.log('未登录, 3s后重试')
   }
 }, 3000)
+
+// 超时取消
 setTimeout(() => {
   clearInterval(onlineTask)
   Logger.warn('取消检查登录状态')
 }, 1000 * 120)
+
 Event.on('message', async (session: Session) => {
   if (Bot.waitPrompt.get(session.sender)) {
     Bot.Event.emit('prompt', session.content)

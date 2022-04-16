@@ -1,38 +1,9 @@
-import { File } from '../java/io/File.js'
+import { Bitmap, BitmapFactory, Canvas, Color, Paint, Rect, RectF } from '../packages/android.js'
+import { File, FileOutputStream } from '../packages/java.js'
 
-const Bitmap = Packages.android.graphics.Bitmap
-// const Color = Packages.android.graphics.Color
-
-const FileOutputStream = Packages.java.io.FileOutputStream
-const Paint = Packages.android.graphics.Paint
 /** 通过文件创建Bitmap */
-function getBitmapFromFile(pathName: string): Packages.android.graphics.Bitmap {
-  let BitmapFactory = Java.type('android.graphics.BitmapFactory')
+function getBitmapFromFile(pathName: string): android.graphics.Bitmap {
   return BitmapFactory.decodeFile(pathName)
-}
-
-export class Canvas {
-  drawARGB(a: number, r: number, g: number, b: number) {
-    this.drawARGB(a, r, g, b)
-  }
-  drawLine(ax: number, ay: number, bx: number, by: number, paint: Packages.android.graphics.Paint) {
-    this.drawLine(ax, ay, bx, by, paint)
-  }
-  constructor(bitmap: typeof Bitmap) {
-    let Canvas = Java.type('android.graphics.Canvas')
-    return new Canvas(bitmap)
-  }
-}
-
-export class Color {
-  static argb(a: number, r: number, g: number, b: number): Color {
-    let Color = Java.type('android.graphics.Color')
-    return Color.argb(a, r, g, b)
-  }
-  constructor() {
-    let Color = Java.type('android.graphics.Color')
-    return new Color()
-  }
 }
 
 /**
@@ -40,8 +11,7 @@ export class Color {
  * @param {Bitmap} bitmap
  * @param {string} path
  */
-function saveBitmap(bitmap: typeof Bitmap, path: string): void {
-  //let FileOutputStream = Java.type('java.io.FileOutputStream')
+function saveBitmap(bitmap: android.graphics.Bitmap, path: string): void {
   let CompressFormat = Java.type('android.graphics.Bitmap$CompressFormat')
   let file = new File(path)
   if (file.exists()) {
@@ -49,8 +19,57 @@ function saveBitmap(bitmap: typeof Bitmap, path: string): void {
   }
   file.createNewFile()
   let out = new FileOutputStream(file)
+  // @ts-ignore
   bitmap.compress(CompressFormat.PNG, 80, out)
   out.close()
+}
+
+/** Bitmap转圆形图片Bitmap */
+function toRoundBitmap(bitmap: android.graphics.Bitmap) {
+  let width = bitmap.getWidth()
+  let height = bitmap.getHeight()
+  let roundPx
+  let left, top, right, bottom, dst_left, dst_top, dst_right, dst_bottom
+  if (width <= height) {
+    roundPx = width / 2
+    top = 0
+    bottom = width
+    left = 0
+    right = width
+    height = width
+    dst_left = 0
+    dst_top = 0
+    dst_right = width
+    dst_bottom = width
+  } else {
+    roundPx = height / 2
+    let clip = (width - height) / 2
+    left = clip
+    right = width - clip
+    top = 0
+    bottom = height
+    width = height
+    dst_left = 0
+    dst_top = 0
+    dst_right = height
+    dst_bottom = height
+  }
+  // @ts-ignore
+  let output = Bitmap.createBitmap(width, height, Config.ARGB_8888)
+  let canvas = new Canvas(output)
+  let color = 0xff424242
+  let paint = new Paint()
+  let src = new Rect(left, top, right, bottom)
+  let dst = new Rect(dst_left, dst_top, dst_right, dst_bottom)
+  let rectF = new RectF(dst)
+  paint.setAntiAlias(true)
+  canvas.drawARGB(0, 0, 0, 0)
+  paint.setColor(color)
+  canvas.drawRoundRect(rectF, roundPx, roundPx, paint)
+  // @ts-ignore
+  paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN))
+  canvas.drawBitmap(bitmap, src, dst, paint)
+  return output
 }
 
 /**
@@ -73,7 +92,7 @@ function getSize(x: number, y: number): { width: number; heidth: number; boder; 
 /** 绘制扫雷 */
 function drawPanel(x: number, y: number) {
   let { width, heidth, boder, spacing } = getSize(x, y)
-
+  // @ts-ignore
   let img = Bitmap.createBitmap(width, heidth, Bitmap.Config.ARGB_8888) // 图片对象
   let paint = new Paint() // 画笔
   // @ts-ignore

@@ -1,7 +1,7 @@
 import http from '../extensions/http.js'
 import { Config } from '../../.hdic.config.js'
 import { getBaseURL } from './index.js'
-import { File } from '../extensions/java.js'
+import { File } from '../packages/java.js'
 
 const SKEY = globalThis.bot.skey
 const PSKEY = globalThis.bot.pskey

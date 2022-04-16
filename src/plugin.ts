@@ -2,7 +2,7 @@ import http from './extensions/http.js'
 import { Logger } from './utils/logger.js'
 import { Bot, Session } from './core/medic.js'
 import { InnerMode } from './utils/helper.js'
-import { File } from './extensions/java.js'
+import { File } from './packages/java.js'
 // 由于eval不能传递当前作用域变量，所以将其保存为全局变量
 export const module = {
   Bot,
