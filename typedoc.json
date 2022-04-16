@@ -1,6 +1,0 @@
-{
-  "name": "MEJS-Framework 参考",
-  "entryPoints": ["src/index.ts"],
-  "out": "site/type",
-  "cleanOutputDir": false
-}
