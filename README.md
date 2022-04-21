@@ -1,4 +1,4 @@
-![MEJS-Framework](https://socialify.git.ci/Miaow233/MEJS-Framework/image?description=1&language=1&logo=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FMiaow233%2FMEJS-Framework%40main%2Fdocs%2Fassets%2Flogo.png&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Light)
+![MEJS-Framework](https://socialify.git.ci/Miaow233/MEJS-Framework/image?description=1&language=1&logo=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FMiaow233%2FMEJS-Framework%40main%2Fdocs%2F.vuepress%2Fpublic%2Fimages%2Flogo.png&name=1&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Light)
 
 ## 关于本框架
 
