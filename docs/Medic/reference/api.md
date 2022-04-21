@@ -2,15 +2,17 @@
 
 ## setTroopSwicth()
 
-=== "说明"
+:::: code-group
+::: 说明
 设置群开关
-=== "参数列表"
+::: 参数列表
 | 参数 | 类型 | 描述 |
 | :--------: | :-----: | :-----------------: |
 | group | long | 群号 |
 | true/false | boolean | true 开启，false 关闭 |
-=== "返回值"
+::: 返回值
 无
+::::
 
 ## getTroopSwicth()
 
