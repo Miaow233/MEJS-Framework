@@ -3,12 +3,14 @@ import { Logger } from './utils/logger.js'
 import { Bot, Session } from './core/medic.js'
 import { InnerMode } from './utils/helper.js'
 import * as java from './packages/java.js'
+
 // 由于eval不能传递当前作用域变量，所以将其保存为全局变量
 const { File } = java
+globalThis.File = File
 export const module = {
   Bot,
   Session,
-  File,
+  //File,
   http,
   InnerMode,
   Logger,

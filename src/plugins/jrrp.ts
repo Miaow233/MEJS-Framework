@@ -1,7 +1,7 @@
 import { module } from '../plugin.js'
 
-const { Bot, File } = module
-
+const { Bot } = module
+const File = globalThis.File
 Bot.cli.command('jrrp', '获取今日人品').action(async () => {
   // 当前消息对象
   let session = Bot.curMsg()

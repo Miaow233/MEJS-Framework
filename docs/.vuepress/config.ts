@@ -26,6 +26,10 @@ const reference = {
       text: '支持库',
       children: ['/reference/libs/cac', '/reference/libs/algebra.js'],
     },
+    {
+      text: 'API文档',
+      link: 'https://docs.nekohouse.cafe/reference/type/index.html',
+    },
   ],
 }
 
@@ -49,6 +53,10 @@ const medic = {
       text: '参考',
       children: ['/medic/reference/api', '/medic/reference/toolkit'],
     },
+    {
+      text: '更新日志',
+      link: '/medic/changelog',
+    },
   ],
 }
 
@@ -57,6 +65,10 @@ const advance = {
   children: ['/guide/plugin/plugin-manager'],
 }
 
+const more = {
+  text: '更多',
+  children: ['/about/history'],
+}
 module.exports = {
   base: '/',
   title: 'MEJS使用文档',
@@ -84,7 +96,7 @@ module.exports = {
       },
     ],
     sidebar: {
-      '/guide/': [guide, advance],
+      '/guide/': [guide, advance, more],
       '/basic/': [guide, advance],
       '/reference/': [reference],
       '/medic/': [medic],
