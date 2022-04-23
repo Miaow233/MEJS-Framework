@@ -1,3 +1,7 @@
+const { execSync } = require('child_process')
+const { resolve } = require('path')
+// const { remove: removeDiacritics } = require('diacritics')
+
 const guide = {
   text: '指南',
   children: [
@@ -47,11 +51,19 @@ const medic = {
   ],
 }
 
+const advance = {
+  text: '高级',
+  children: ['/guide/plugin/plugin-manager'],
+}
+
 module.exports = {
-  lang: 'zh-cn',
+  base: '/',
   title: 'MEJS使用文档',
   description: 'MEJS快速Bot开发框架',
-  base: '/',
+
+  bundler: '@vuepress/vite',
+  // theme: resolve(__dirname, 'theme'),
+
   themeConfig: {
     logo: '/images/logo.png',
     repo: 'Miaow233/MEJS-Framework',
@@ -61,7 +73,6 @@ module.exports = {
     editLinkPattern: ':repo/edit/:branch/:path',
     editLinkText: '编辑此页面',
     lastUpdatedText: '最近更新时间',
-    contributorsText: '贡献者',
     navbar: [
       guide,
       reference,
@@ -72,10 +83,34 @@ module.exports = {
       },
     ],
     sidebar: {
-      '/guide/': [guide],
+      '/guide/': [guide, advance],
+      '/basic/': [guide, advance],
       '/reference/': [reference],
       '/medic/': [medic],
     },
   },
-  plugins: [['vuepress-plugin-clipboard', false]],
+
+  plugins: [
+    ['vuepress-plugin-clipboard'],
+    [
+      'medium-zoom',
+      {
+        selector: '.theme-default-content :not(a) > img:not(.no-zooming)',
+      },
+    ],
+    ['@vuepress/pwa'],
+    ['@vuepress/pwa-popup'],
+    [
+      '@vuepress/container',
+      {
+        type: 'code-group',
+        before: (info) => {
+          const [type] = info.split(' ', 1)
+          const title = info.slice(type.length).trimStart()
+          return `<panel-view class="code" type=${JSON.stringify(type)} title=${JSON.stringify(title)}>`
+        },
+        after: () => '</panel-view>',
+      },
+    ],
+  ],
 }

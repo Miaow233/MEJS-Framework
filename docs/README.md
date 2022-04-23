@@ -16,14 +16,17 @@ features:
     details: 无需繁琐配置
   - title: 快速上手
     details: 10分钟即可上手
-
 footer:  Copyright © 2021-present Medic Project.
 ---
+
+#### 实现"AI"仅需 7 行
 
 ```js
 $.on('message.group', async (message) => {
     let client = message.client
-    client.addText('来自JS2')
+    let rep = message.msg.toString().replace('吗',''):replace('?','!'):replace('？','！')
+    client.setReply()
+    client.addText(rep)
     bot.send(client)
 })
 ```

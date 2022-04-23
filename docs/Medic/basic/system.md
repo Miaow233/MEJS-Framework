@@ -6,15 +6,15 @@
 
 可以获取的参数:
 
-- @c1=requestId
-- @c2=null|操作人
-- @c3=null|操作人昵称
-- @c4=消息类型
-- @group=群 ID
-- @groupName=群名
-- @uin=申请人 ID
-- @uinName=申请人昵称
-- @time=消息时间
+- @c1 = requestId
+- @c2 = null | 操作人
+- @c3 = null | 操作人昵称
+- @c4 = 消息类型
+- @group = 群 ID
+- @groupName = 群名
+- @uin = 申请人 ID
+- @uinName = 申请人昵称
+- @time = 消息时间
 
 需要注意的是，系统并不是实时的，也不是每次只有一条的，System 有可能被多次调用，如机器人不在期间的消息会被一次性的获取到，这往往不是我们希望看到的，所以在词条内部，需要对消息的时间进行过滤
 

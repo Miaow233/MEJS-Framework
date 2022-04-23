@@ -33,9 +33,9 @@
 
 您可以使用 `@变量名` 来调用变量，这种方法在任何情况下都将适用
 
-```
+```java
 $name:小草
-Api-sendMsg(My name is @name)
+Api->sendMsg(My name is @name)
 ```
 
 这样将会输出"My name is 小草"

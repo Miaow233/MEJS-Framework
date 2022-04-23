@@ -23,8 +23,9 @@ MEJS-Framework 是基于 QQ 机器人程序 `Medic` 的 JS 词库而编写的聊
 - 如果你在使用过程中发现任何 bug, 请向开发者报告.
 - 有什么好玩或者想要的的功能, 或者有什么需求, 包括但不限于更多便利操作, API 接口等, 请在下方评论区提出. 我们将认真对待你的每一条评论.
 - 欢迎为本项目提出宝贵的建议, 你的支持就是我们发展的动力.
-- 加入 QQ 讨论群 [410351186](https://jq.qq.com/?_wv=1027&k=K5csid5C) 或联系开发者 [Miaow](http://wpa.qq.com/msgrd?v=3&uin=1293865264&site=qq&menu=yes)
+- 加入 QQ 讨论群 [410351186](https://jq.qq.com/?_wv=1027&k=DkfRxEhn) 或联系开发者 [Miaow](http://wpa.qq.com/msgrd?v=3&uin=1293865264&site=qq&menu=yes)
 
 ## 相关内容
 
 - Medic 文档: [https://docs.nekohouse.cafe/Medic](https://docs.nekohouse.cafe/medic)
+- Medic 下载: [蓝奏(密码 medic)](https://wwi.lanzoui.com/b00os6baf)

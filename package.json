@@ -7,9 +7,7 @@
   "author": "Miaow233 <miaow233@qq.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "docs": "mkdocs build && typedoc",
-    "docs:mkdocs": "mkdocs build"
+    "build": "tsc"
   },
   "dependencies": {
     "algebra.js": "^0.2.6",
