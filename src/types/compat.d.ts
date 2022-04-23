@@ -7,6 +7,8 @@ declare interface Response {
 }
 
 declare namespace compat {
+  const path: string
+
   // compat.access(url) GET访问网络，参数为：网址，返回键值对的数组
   function access(url: string): Promise<Response>
 
@@ -14,10 +16,12 @@ declare namespace compat {
   function access(url: string, headers: object): Promise<Response>
 
   // compat.access(url，param) POST访问网络，参数为：网址，post内容(字符串或字节组)，返回键值对的数组
-  function access(url: string, data: string | ArrayBuffer): Promise<Response>
+  function access(url: string, data: string): Promise<Response>
+  function access(url: string, data: ArrayBuffer): Promise<Response>
 
   // compat.access(url, head，param) POST访问网络，参数为：网址, 请求头（js中键值对的数组），post内容(字符串或字节组)，返回键值对的数组
-  function access(url: string, headers: any, data: string | ArrayBuffer): Promise<Response>
+  function access(url: string, headers: any, data: string): Promise<Response>
+  function access(url: string, headers: any, data: ArrayBuffer): Promise<Response>
 
   // compat.writeConfig(path,key,val) 写入键值对，参数为：本地全路径，键，值；无返回
   function writeConfig(path: string, key: string, val: string): void
@@ -38,4 +42,4 @@ declare namespace compat {
   function readText(path: string): Promise<string>
 }
 
-declare function delay(ms:number): Promise<void>
+declare function delay(ms: number): Promise<void>

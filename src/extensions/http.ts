@@ -13,6 +13,9 @@ class Response implements Response {
   get json() {
     return JSON.parse(this.text)
   }
+  toString(): string {
+    return this.text
+  }
 }
 
 namespace http {
@@ -22,13 +25,11 @@ namespace http {
    * @param headers
    * @returns {Promise<Response>}
    */
-  export const get = async function (
-    url: string,
-    headers: object = {}
-  ): Promise<Response> {
+  export const get = async function (url: string, headers: object = {}): Promise<Response> {
     let { result, status, header } = await compat.access(url, headers)
     return new Response(result, status, header)
   }
+
   /**
    * 提交数据
    * @param url
@@ -41,8 +42,13 @@ namespace http {
     data: string | ArrayBuffer,
     headers: object = {}
   ): Promise<Response> {
-    const { result, status, header } = await compat.access(url, headers, data)
-    return new Response(result, status, header)
+    if (typeof data === 'string') {
+      const { result, status, header } = await compat.access(url, headers, data)
+      return new Response(result, status, header)
+    } else {
+      const { result, status, header } = await compat.access(url, headers, data)
+      return new Response(result, status, header)
+    }
   }
 }
 

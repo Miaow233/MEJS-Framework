@@ -6,7 +6,6 @@ declare namespace bot {
   const pskey: string
   const skey: string
   const uin: number
-  function updateBkn(): void
   function checkAdmin(group_id: number, qq_id: number): boolean
   function deleteMember(group_id: number, qq_id: number): void
   function getClientKey(): string
@@ -18,9 +17,12 @@ declare namespace bot {
   function pokeAvatar(group_id: number, qq_id: number): void
   function reload(): void
   function send(client: client): void
+  function sendJson(json: string): void
+  function sendPtt(group_id: number, ptt: string, time?: number): void
   function sendRedPacket(group_id: number, title: string, money: number, qq_id: number | number[]): void
+  function sendXml(xml: string): void
   function setAdmin(group_id: number, qq_id: number, is_admin: boolean): void
-  function setGroupAdmin(id: number, qq: number, is_admin: boolean): any
+  function setGroupAdmin(id: number, qq: number, is_admin: boolean): void
   function setMemberCard(group_id: number, qq_id: number, card: string): void
   function setTroopSwicth(group_id: number, iSwitch: boolean): void
   function shutup(group_id: number, qq_id: number, time: number): void

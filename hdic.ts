@@ -8,6 +8,20 @@ import { clearInterval, getTimerId, setInterval, setTimeout } from './src/utils/
 // 事件监听器
 const Event = Bot.Event
 Logger.log(LOGO)
+$.on('system.loaded', async (loaded) => {
+  loaded.ON = '开机'
+  loaded.OFF = '关机'
+  loaded.permission = '手机信息,红包支付'
+})
+// 开机事件
+$.on('system.ON', async (message) => {
+  console.log('MEJS Enabled')
+})
+// 关机事件
+$.on('system.OFF', async (message) => {
+  console.log('MEJS Disabled')
+})
+
 $.on('message.group', async (message) => {
   let session = new Session(message, 'GroupMessage')
   Bot.pushMsg(session)
@@ -46,7 +60,7 @@ setInterval(() => {
 setTimeout(() => {
   clearInterval(onlineTask)
   Logger.warn('取消检查登录状态')
-}, 1000 * 120)
+}, 1000 * 60)
 
 Event.on('message', async (session: Session) => {
   if (Bot.waitPrompt.get(session.sender)) {

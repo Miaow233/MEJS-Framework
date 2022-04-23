@@ -1,5 +1,4 @@
-/*
- ** message的所有方法如下：
+/** message的所有方法如下：
  *
  * message.msg 获取消息
  * message.img 获取图片，注意是个数组哦
@@ -16,19 +15,19 @@
  * message.nick 获取发送者昵称
  * message.time 获取这条消息的时间戳
  * message.client 用于发送消息的接口
- * */
+ *
+ */
 
-/*
- ** message.client 的所有方法如下：
+/** message.client 的所有方法如下：
  *
  * client.addText(text) 添加文本，参数为文本
  * client.addImg(img) 添加图片，参数为本地路径或网址；还可以是字节组
  * client.addAt(uin,nick) 添加艾特，参数为QQ号和昵称
  * client.setReply() 添加回复，无参数
- *  */
+ *
+ */
 
-/*
- ** bot的所有参数如下：
+/** bot的所有参数如下：
  *
  * bot.reload() 重载词库
  * bot.batteryStatus 获取电池状态
@@ -49,13 +48,18 @@
  * bot.pokeAvatar(group,uin) 戳一戳，参数为：群号，QQ
  * bot.deleteMember(group,uin) 踢出群员，参数为：群号，QQ
  * await bot.sendRedPacket(group,title,howmuch,uin...) 发送红包，参数为：群号，红包标题，总金额（单位：分），QQ（可以传递最多五个QQ号）,返回结果
- * await bot.getTroopList() 获取群列表，返回json字符串，需自行解析
- * await bot.getTroopMemberList(group...) 获取群成员，参数为：group（可以多个群号）
- * bot.machineCode 获取设备信息，返回json字符串，需自行解析
+ * await bot.getTroopList() 获取群列表，返回键值对
+ * await bot.getTroopMemberList(group...) 获取群成员，参数为：group（可以多个群号），返回键值对
+ * bot.machineCode 获取设备信息，返回键值对
+ *
+ * bot.sendPtt(group,ptt) 发送语音，自动识别时间
+ * bot.sendPtt(group,ptt,time) 发送语音，手动设置时间
+ * bot.sendXml(xml) 发送xml卡片
+ * bot.sendJson(json) 发送json卡片
+ *
  * */
 
-/*
- ** compat 的所有方法如下：
+/** compat 的所有方法如下：
  *
  *  compat.path 获取手机存储根目录
  *
@@ -89,6 +93,25 @@ const io = Packages.java.io
  */
 import qr from 'https://cdn.jsdelivr.net/npm/qrcode@1.5.0/build/qrcode.js#default QRCode'
 
+// ###########警告###########
+
+//这个函数必写，否则只能由词库触发开关机
+$.on('system.loaded', async (loaded) => {
+  //注册开关机和权限的函数，该函数只会在加载该词库时候调用一次
+  //权限和词库是分开的
+  loaded.ON = '开机' //注册开机指令
+  loaded.OFF = '关机' //注册关机指令
+  loaded.permission = '手机信息,红包支付' //注册权限
+})
+
+//这个函数在触发开机指令时执行，message 和 message.group 的 message 一致
+$.on('system.ON', async (message) => {})
+
+//这个函数在触发关机指令时执行，message 和 message.group 的 message 一致
+$.on('system.OFF', async (message) => {})
+
+// ###########警告结束###########
+
 //这个是群消息的处理,入口不可修改
 $.on('message.group', async (message) => {
   //这下面，包裹的内容都可修改
@@ -118,7 +141,3 @@ $.on('message.temp', async (message) => {
 $.on('message.friend', async (message) => {
   //同上
 })
-
-function delay(arg0) {
-  throw new Error('Function not implemented.')
-}
