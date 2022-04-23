@@ -7,6 +7,7 @@ const guide = {
   children: [
     '/guide/introduce',
     '/guide/getting-started',
+    '/basic/',
     {
       text: '基础概念',
       children: ['/basic/bot', '/basic/compat', '/basic/message', '/basic/event'],

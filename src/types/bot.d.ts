@@ -2,7 +2,6 @@ declare namespace bot {
   const batteryLevel: number
   const batteryStatus: string
   const machineCode: string
-  const name: string
   const pskey: string
   const skey: string
   const uin: number

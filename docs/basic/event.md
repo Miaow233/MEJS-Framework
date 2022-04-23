@@ -1,3 +1,3 @@
 ---
-title: Event
+title: 事件（Event）
 ---

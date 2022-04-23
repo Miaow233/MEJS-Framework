@@ -27,7 +27,6 @@ export class Bot {
     this.batteryStatus = mebot.batteryStatus
     this.bkn = getCSRFToken(mebot.skey)
     this.machineCode = mebot.machineCode
-    this.name = mebot.name
     this.pskey = mebot.pskey
     this.skey = mebot.skey
     this.uin = mebot.uin
