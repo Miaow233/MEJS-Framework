@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "yarn docs:build && yarn docs:type",
     "docs:type": "typedoc",
     "docs:build": "vuepress build .",
     "docs:clean-dev": "vuepress dev . --clean-cache",

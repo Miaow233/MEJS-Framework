@@ -1,3 +1,29 @@
+export class Message {
+  mark: any
+}
+class Element {
+  asDisplay(): string {
+    return ''
+  }
+}
+class MessageChain {
+  content: Array<Element>
+  constructor(elements: Array<Element>) {
+    this.content = elements
+  }
+  has(element: Element): boolean {
+    return this.content.includes(element)
+  }
+  asDisplayString(): string {
+    return this.content.map((element) => element.asDisplay()).join('')
+  }
+
+  [Symbol.iterator] = function* () {
+    for (const element of this.content) {
+      yield element
+    }
+  }
+}
 export let Image = (url: string) => {
   return { type: 'image', url: url }
 }

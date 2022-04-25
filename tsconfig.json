@@ -25,7 +25,7 @@
 
     /* Modules */
     "module": "ES2020",
-    "rootDir": "./",
+    "rootDir": ".",
     "moduleResolution": "classic",
     // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
@@ -81,7 +81,7 @@
     // "strictPropertyInitialization": true,             /* Check for class properties that are declared but not set in the constructor. */
     // "noImplicitThis": true,                           /* Enable error reporting when `this` is given the type `any`. */
     // "useUnknownInCatchVariables": true,               /* Type catch clause variables as 'unknown' instead of 'any'. */
-    // "alwaysStrict": true,                             /* Ensure 'use strict' is always emitted. */
+    "alwaysStrict": true,
     // "noUnusedLocals": true,                           /* Enable error reporting when a local variables aren't read. */
     // "noUnusedParameters": true,                       /* Raise an error when a function parameter isn't read */
     // "exactOptionalPropertyTypes": true,               /* Interpret optional property types as written, rather than adding 'undefined'. */
@@ -94,7 +94,7 @@
     // "allowUnreachableCode": true,                     /* Disable error reporting for unreachable code. */
 
     /* Completeness */
-    "skipDefaultLibCheck": false /* Skip type checking .d.ts files that are included with TypeScript. */
+    "skipDefaultLibCheck": false
     //"skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "include": ["hdic.ts", "src"],

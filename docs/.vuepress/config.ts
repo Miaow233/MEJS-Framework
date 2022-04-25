@@ -92,7 +92,7 @@ module.exports = {
       medic,
       {
         text: '参与文档编写',
-        link: 'https://github.com/Miaow233/MEJS-Framework/docs',
+        link: 'https://github.com/Miaow233/MEJS-Framework/tree/main/docs',
       },
     ],
     sidebar: {
