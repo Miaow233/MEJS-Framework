@@ -314,7 +314,7 @@ declare namespace android.graphics {
   } // end Bitmap
 
   class BitmapFactory /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     static decodeByteArray(arg0: bytearray, arg1: int, arg2: int): android.graphics.Bitmap
     static decodeByteArray(
       arg0: bytearray,
@@ -563,7 +563,7 @@ declare namespace android.graphics {
       arg5: int,
       arg6: [int],
       arg7: int,
-      arg8: [any /*short*/],
+      arg8: [short],
       arg9: int,
       arg10: int,
       arg11: android.graphics.Paint
@@ -946,7 +946,7 @@ declare namespace android.graphics {
     alpha(): float
     blue(): float
     convert(arg0: any /*android.graphics.ColorSpace*/): Color
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getColorSpace(): any /*android.graphics.ColorSpace*/
     getComponent(arg0: int): float
     getComponentCount(): int
@@ -1016,7 +1016,7 @@ declare namespace android.graphics {
   } // end Color
 
   class Typeface /* extends java.lang.Object*/ {
-    equals(arg0: any /*java.lang.Object*/): boolean
+    equals(arg0: java.lang.Object): boolean
     getStyle(): int
     getWeight(): int
     isBold(): boolean

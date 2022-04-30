@@ -1,5 +1,5 @@
 import { Bitmap, BitmapFactory, Canvas, Color, Paint, Rect, RectF } from '../packages/android.js'
-import { File, FileOutputStream } from '../packages/java.js'
+import { File, FileOutputStream } from '../packages/java.io.js'
 
 /** 通过文件创建Bitmap */
 function getBitmapFromFile(pathName: string): android.graphics.Bitmap {

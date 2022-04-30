@@ -24,7 +24,7 @@ footer:  Copyright © 2021-present Medic Project.
 ```js
 $.on('message.group', async (message) => {
     let client = message.client
-    let rep = message.msg.toString().replace('吗',''):replace('?','!'):replace('？','！')
+    let rep = message.msg.replace('吗','')。replace('?','!')。replace('？','！')
     client.setReply()
     client.addText(rep)
     bot.send(client)
