@@ -133,7 +133,9 @@ while (index < players.length) {
 }
 
 console.log('玩家初始化完成')
-
+console.group('玩家列表')
+console.log(players.toString())
+console.groupEnd()
 // ########## 分发起始手牌
 for (const p of players) {
   for (let num = 0; num < 4; num++) {

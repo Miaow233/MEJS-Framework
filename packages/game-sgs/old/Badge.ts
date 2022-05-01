@@ -55,13 +55,20 @@ export class BadgeDeck {
   }
 
   randBadge(): void {
-    let badgesCache = Array()
-    while (badgesCache.length != 0) {
-      // 每次随机弹出一个数据，并追加到缓存中
-      badgesCache.push(badgesCache.splice(Math.floor(Math.random() * badgesCache.length), 1)[0])
+    this.badges = this.shuffle(this.badges)
+  }
+
+  shuffle(arr: Array<any>): Array<any> {
+    var l = arr.length
+    var index, temp
+    while (l > 0) {
+      index = Math.floor(Math.random() * l)
+      temp = arr[l - 1]
+      arr[l - 1] = arr[index]
+      arr[index] = temp
+      l--
     }
-    // 循环结束后，把缓存赋值给原牌堆
-    this.badges = badgesCache
+    return arr
   }
 
   toString() {
