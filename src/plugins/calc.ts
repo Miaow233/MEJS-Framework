@@ -2,9 +2,9 @@ import { Bot } from '../core/bot.js'
 import { Session } from '../core/session.js'
 import { Expression, parse } from '../extensions/algebra.js/algebra.js'
 
-Bot.Event.on('message', async (session: Session) => {
+$.on('message', async (session: Session) => {
   if (Bot.waitPrompt.get(session.sender)) {
-    Bot.Event.emit('prompt', session.content)
+    $.emit('prompt', session.content)
     return
   }
   if (session.content.startsWith('解方程')) {

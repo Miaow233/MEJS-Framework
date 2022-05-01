@@ -6,6 +6,7 @@
   "repository": "https://github.com/Miaow233/MEJS-Framework",
   "author": "Miaow233 <miaow233@qq.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "tsc"
   },

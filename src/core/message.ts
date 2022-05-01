@@ -24,6 +24,7 @@ class MessageChain {
     }
   }
 }
+
 export let Image = (url: string) => {
   return { type: 'image', url: url }
 }
@@ -37,7 +38,7 @@ export let At = (qq: number, text: string) => {
 }
 
 import { Friend, Group } from './target.js'
-export function createChain(elem: Array<any>): client {
+export function createChain(elem: Array<any>): MeClient {
   let client = globalThis.client
   elem.forEach((element) => {
     if (typeof element === 'string') {

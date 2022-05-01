@@ -8,7 +8,6 @@ const mebot = globalThis.bot
 
 export class Bot {
   static cli: CAC = new CAC()
-  static Event: EventEmitter = new EventEmitter()
   uin: number
   avatar: string
   name: string

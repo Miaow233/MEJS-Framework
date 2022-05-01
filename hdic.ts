@@ -7,26 +7,28 @@ import { Logger } from './src/utils/logger.js'
 import './src/plugin.js'
 import './src/plugins/calc.js'
 
-// 事件监听器
-const Event = Bot.Event
-
 $.on('system.loaded', async (loaded) => {
-  loaded.ON = '开机'
-  loaded.OFF = '关机'
+  loaded.ON = '喵喵起床'
+  loaded.OFF = '喵喵睡觉'
   loaded.permission = '手机信息,红包支付'
 })
-// 开机事件
-$.on('system.ON', async () => {
+$.on('system.ON', async (message: MeMessage) => {
   console.log('MEJS Enabled')
+  let client = message.client
+  client.addText('喵喵酱已经醒了')
+  bot.send(client)
 })
-// 关机事件
-$.on('system.OFF', async () => {
+$.on('system.OFF', async (message: MeMessage) => {
   console.log('MEJS Disabled')
+  let client = message.client
+  client.addText('喵喵酱已经醒了')
+  bot.send(client)
 })
 
-Event.on('message', async (session: Session) => {
+// 全局消息处理
+$.on('message', async (session: Session) => {
   if (Bot.waitPrompt.get(session.sender)) {
-    Bot.Event.emit('prompt', session.content)
+    $.emit('prompt', session.content)
     return
   }
   // 进行下一次解析前请务必取消上一次解析

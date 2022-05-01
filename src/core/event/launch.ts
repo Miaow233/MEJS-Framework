@@ -2,19 +2,16 @@ import { Logger, LOGO } from '../../utils/logger.js'
 import { clearInterval, getTimerId, setInterval, setTimeout } from '../../utils/timer.js'
 import { Bot } from '../bot.js'
 import { Session } from '../session.js'
-const Event = Bot.Event
 $.on('message.group', async (message) => {
   let session = new Session(message, 'GroupMessage')
   Bot.pushMsg(session)
-  Event.emit('message', session)
-  Event.emit('message.group', session)
+  $.emit('message', session)
 })
 
 $.on('message.friend', async (message) => {
   let session = new Session(message, 'FriendMessage')
   Bot.pushMsg(session)
-  Event.emit('message', session)
-  Event.emit('message.friend', session)
+  $.emit('message', session)
 })
 
 // Bot 上线事件

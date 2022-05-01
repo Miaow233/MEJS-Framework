@@ -7,7 +7,7 @@ export class Session {
   img: Array<string>
   xml: Array<string>
   json: Array<string>
-  client: client
+  client: MeClient
   group: number
   sender: number
   content: string
@@ -17,9 +17,7 @@ export class Session {
     this.type = type
     this.client = message.client
     this.group = message.group
-    //this.group.name = message.groupName
     this.sender = message.uin
-    //this.sender.name = message.nick
     this.content = message.msg
     this.nick = message.nick
     this.img = message.img
@@ -40,7 +38,7 @@ export class Session {
           resolve('')
         } catch (e) {}
       }, ms)
-      Bot.Event.on('prompt', (msg: string) => {
+      $.on('prompt', (msg: string) => {
         Bot.waitPrompt.delete(this.sender)
         resolve(msg)
       })
