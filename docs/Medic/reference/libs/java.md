@@ -18,7 +18,7 @@ public class Tool{
     }
     /*将OBJ强制转*/
     a = (A) obj;
-    return obj; /*必要时通过返回null释放保存的资源*/
+        return obj; /*必要时通过返回null释放保存的资源*/
     }
     /*API函数，非必要可以不写*/
     public static void apiSet(Object api){

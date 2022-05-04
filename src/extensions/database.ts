@@ -17,7 +17,7 @@ import { Logger } from '../utils/logger.js'
 
 let query = 'select sqlite_version() AS sqlite_version'
 let db = SQLiteDatabase.openOrCreateDatabase(':memory:', null)
-let cursor = db.rawQuery(query, null)
+let cursor = db.rawQuery(query)
 let sqliteVersion = ''
 if (cursor.moveToNext()) {
   sqliteVersion = cursor.getString(0)

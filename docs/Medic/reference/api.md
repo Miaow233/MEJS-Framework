@@ -1,162 +1,176 @@
 # Api 参考
 
-## setTroopSwicth()
+### setTroopSwicth()
 
-### 说明
+#### 说明
 
 设置群开关
 
-### 参数列表
+#### 参数列表
 
 |    参数    |  类型   |         描述          |
 | :--------: | :-----: | :-------------------: |
 |   group    |  long   |         群号          |
 | true/false | boolean | true 开启，false 关闭 |
 
-### 返回值
+#### 返回值
 
 无
 
-## getTroopSwicth()
+#### 示例
 
-### 说明
+```java
+// 开启群开关
+Api->setTroopSwitch(group\, true)
+```
+
+### getTroopSwicth()
+
+#### 说明
 
 检查群是否开启
 
-### 参数列表
+#### 参数列表
 
 |  参数   | 类型 | 描述 |
 | :-----: | :--: | :--: |
 | groupId | long | 群号 |
 
-### 返回值
+#### 返回值
 
 boolean
 
-## send()
+#### 示例
 
-### 说明
+```java
+// 检查群是否开启
+Api->getTroopSwitch(groupId)
+```
+
+### send()
+
+#### 说明
 
 发送储存的消息
 
-### 参数列表
+#### 参数列表
 
 无
 
-### 返回值
+#### 返回值
 
 无
 
-## sendMsg()
+### sendMsg()
 
-### 说明
+#### 说明
 
 发送参数中的消息，自动识别 xml,json
 
-### 参数列表
+#### 参数列表
 
 | 参数 |  类型  |      描述      |
 | :--: | :----: | :------------: |
 | msg  | String | 发送的消息内容 |
 
-### 返回值
+#### 返回值
 
 无
 
-## setId()
+### setId()
 
-### 说明
+#### 说明
 
 设置群 ID，非特殊情况(发送消息到别的群)此方法无需调用，默认为消息来源群
 
-### 参数列表
+#### 参数列表
 
 | 参数 | 类型 | 描述 |
 | :--: | :--: | :--: |
 |  id  | long | 群号 |
 
-### 返回值
+#### 返回值
 
 无
 
-## setCode()
+### setCode()
 
-### 说明
+#### 说明
 
 设置群 Code，发送群临时消息给成员时需要设置这个值
 
-### 参数列表
+#### 参数列表
 
 | 参数 |  类型  |  描述  |
 | :--: | :----: | :----: |
 | code | String | 群代码 |
 
-### 返回值
+#### 返回值
 
 无
 
-## setUin()
+### setUin()
 
-### 说明
+#### 说明
 
 设置消息发送目标，发送群临时消息时需要设置这个值
 
-### 参数列表
+#### 参数列表
 
 | 参数 | 类型 |    描述    |
 | :--: | :--: | :--------: |
 | uin  | long | 用户 QQ 号 |
 
-### 返回值
+#### 返回值
 
 无
 
-## addText()
+### addText()
 
-### 说明
+#### 说明
 
 添加文本消息，用于合并不同的消息，不会立即发送，通过调用 send 发送存储的消息
 
-### 参数列表
+#### 参数列表
 
 | 参数 |  类型  |     描述     |
 | :--: | :----: | :----------: |
 | text | String | 文本消息内容 |
 
-### 返回值
+#### 返回值
 
 无
 
-## addImg()
+### addImg()
 
-### 说明
+#### 说明
 
 添加图片消息，用于合并不同的消息，不会立即发送，通过调用 send 发送存储的消息
 
-### 参数列表
+#### 参数列表
 
 | 参数 |  类型  |        描述        |
 | :--: | :----: | :----------------: |
 | img  | String | 图片本地路径或网址 |
 
-### 返回值
+#### 返回值
 
 无
 
-## addAt()
+### addAt()
 
-### 说明
+#### 说明
 
 添加@消息，用于合并不同的消息，不会立即发送，通过调用 send 发送存储的消息
 
-### 参数列表
+#### 参数列表
 
 | 参数 | 类型 |   描述   |
 | :--: | :--: | :------: |
 |  id  | long | 用户 QQ  |
 | name |      | 用户昵称 |
 
-### 返回值
+#### 返回值
 
 无
 
@@ -495,7 +509,24 @@ JsonObject
 
 ### 返回示例
 
-`json { office.qq.com: BklfedOwfwpVd0t9Tfw-QnEVJyfRXuLcz8pHWlQ96jk_, qun.qq.com: P1KcswP6wOpY6zO29-5cqMMWVEgtWiYUszMRfixYOog_, gamecenter.qq.com: *JW*fcXekLLoIIpPZBnR1e6FRE8WjIxz1mCUFAPbTAI_, docs.qq.com: gpQseG6U8bM9iuHX-8JF6MZ0*4hsxgEycNJvCAyNE50_, mail.qq.com: zrxuT9-TyqSBVdRGvBcWKlET4Cwl06SzbW31DmA61jg_, ti.qq.com: 4yEDLFqlg9e6G4F8iKO3QUuva24dgLKxwA5q6jC6L6k_, vip.qq.com: *N9neS-sAQDUbj7fAH7pg4rFm8IZrQMzHF2ukMbZrQg_, tenpay.com: uFwua23XkdMYK2fZllH9HpfG*W3IrXPzmi2WDPd5owA_, qqweb.qq.com: lHU3VjJCjU4CIEv5rngffJPQWetcgovxPny4yB*Dhw0_, qzone.qq.com: tjLrnSRyRYqHZbpKNayJCkAYGLJiqqmrcnF8zPi4uts_, mma.qq.com: j2d3qFltIf52P9-uVOFF5N1vXDHr2qiBU31KINsfpWM_, game.qq.com: UV6SQGUBcamDITIzS-QyNAxIVNiDUvvIAOO8BH*x8vg_, openmobile.qq.com: qcF9-bJkWHUApdDSUeMjJq6tmtcwNHeOPwLMux6lumo_, connect.qq.com: zCgkCk0aLDAgV8izWHE5cScRYRGqfMkmQ3S930W3C7w_ } `
+```json
+{
+    "office.qq.com": "BklfedOwfwpVd0t9Tfw-QnEVJyfRXuLcz8pHWlQ96jk_",
+    "qun.qq.com": "P1KcswP6wOpY6zO29-5cqMMWVEgtWiYUszMRfixYOog_",
+    "gamecenter.qq.com": "*JW*fcXekLLoIIpPZBnR1e6FRE8WjIxz1mCUFAPbTAI_",
+    "docs.qq.com": "gpQseG6U8bM9iuHX-8JF6MZ0*4hsxgEycNJvCAyNE50_",
+    "mail.qq.com": "zrxuT9-TyqSBVdRGvBcWKlET4Cwl06SzbW31DmA61jg_",
+    "ti.qq.com": "4yEDLFqlg9e6G4F8iKO3QUuva24dgLKxwA5q6jC6L6k_",
+    "vip.qq.com": "*N9neS-sAQDUbj7fAH7pg4rFm8IZrQMzHF2ukMbZrQg_",
+    "tenpay.com": "uFwua23XkdMYK2fZllH9HpfG*W3IrXPzmi2WDPd5owA_",
+    "qqweb.qq.com": "lHU3VjJCjU4CIEv5rngffJPQWetcgovxPny4yB*Dhw0_",
+    "qzone.qq.com": "tjLrnSRyRYqHZbpKNayJCkAYGLJiqqmrcnF8zPi4uts_",
+    "mma.qq.com": "j2d3qFltIf52P9-uVOFF5N1vXDHr2qiBU31KINsfpWM_",
+    "game.qq.com": "UV6SQGUBcamDITIzS-QyNAxIVNiDUvvIAOO8BH*x8vg_",
+    "openmobile.qq.com": "qcF9-bJkWHUApdDSUeMjJq6tmtcwNHeOPwLMux6lumo_",
+    "connect.qq.com": "zCgkCk0aLDAgV8izWHE5cScRYRGqfMkmQ3S930W3C7w_"
+}
+```
 
 ## getTextMsg()
 

@@ -5,7 +5,6 @@ title: 词库编写指南
 # 词库编写指南
 
 MEJS 实现了 ECMAScript 6(ES6)规范，同时集成了 Java 环境。
-
 关于 JS 及 ES6 的其它说明，可以参阅以下链接。
 
 - [ECMAScript 6 规范](http://es6.ruanyifeng.com/)

@@ -110,7 +110,7 @@ export class Bot {
     }
     Bot.msgQueue.push(message)
   }
-  static popMsg(): Session {
+  static popMsg(): Session | undefined {
     return Bot.msgQueue.pop()
   }
 }
