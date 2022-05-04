@@ -1,6 +1,6 @@
 {
   "name": "MEJS-Framework 参考",
   "entryPoints": ["../src/index.ts"],
-  "out": "./.vuepress/dist/reference/type",
+  "out": "./.vuepress/dist/mejs2/reference/type",
   "cleanOutputDir": true
 }

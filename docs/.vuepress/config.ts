@@ -1,16 +1,12 @@
-const { execSync } = require('child_process')
-const { resolve } = require('path')
-// const { remove: removeDiacritics } = require('diacritics')
-
 const guide = {
   text: '指南',
   children: [
-    '/guide/introduce',
-    '/guide/getting-started',
-    '/basic/',
+    '/mejs2/guide/introduce',
+    '/mejs2/guide/getting-started',
+    '/mejs2/basic/',
     {
       text: '基础概念',
-      children: ['/basic/bot', '/basic/compat', '/basic/message', '/basic/event'],
+      children: ['/mejs2/basic/bot', '/mejs2/basic/compat', '/mejs2/basic/message', '/mejs2/basic/event'],
     },
   ],
 }
@@ -20,11 +16,11 @@ const reference = {
   children: [
     {
       text: 'MEJS Api',
-      children: ['/reference/bot', '/reference/compat', '/reference/message'],
+      children: ['/mejs2/reference/bot', '/mejs2/reference/compat', '/mejs2/reference/message'],
     },
     {
       text: '支持库',
-      children: ['/reference/libs/cac', '/reference/libs/algebra.js'],
+      children: ['/mejs2/reference/libs/cac', '/mejs2/reference/libs/algebra.js'],
     },
     {
       text: 'API文档',
@@ -32,54 +28,68 @@ const reference = {
     },
   ],
 }
-
+const mejs = {
+  text: 'MEJS',
+  children: [
+    {
+      text: '指南',
+      children: ['/mejs2/guide/introduce', '/mejs2/guide/getting-started', '/mejs2/basic/'],
+    },
+    {
+      text: '基础概念',
+      children: ['/mejs2/basic/bot', '/mejs2/basic/compat', '/mejs2/basic/message', '/mejs2/basic/event'],
+    },
+    {
+      text: 'MEJS参考',
+      children: ['/mejs2/reference/bot', '/mejs2/reference/compat', '/mejs2/reference/message'],
+    },
+    {
+      text: '支持库',
+      children: ['/mejs2/reference/libs/cac', '/mejs2/reference/libs/algebra.js'],
+    },
+    {
+      text: 'API文档',
+      link: 'https://docs.nekohouse.cafe/mejs2/reference/type/index.html',
+    },
+  ],
+}
 const medic = {
   text: 'Medic',
   children: [
-    '/medic/',
-    '/medic/getting-started',
+    '/medic_docs/',
+    '/medic_docs/getting-started',
     {
       text: '基础概念',
       children: [
-        '/medic/basic/dic',
-        '/medic/basic/entry',
-        '/medic/basic/value',
-        '/medic/basic/constant',
-        '/medic/basic/system',
-        '/medic/basic/mod',
+        '/medic_docs/basic/dic',
+        '/medic_docs/basic/entry',
+        '/medic_docs/basic/value',
+        '/medic_docs/basic/constant',
+        '/medic_docs/basic/system',
+        '/medic_docs/basic/mod',
       ],
     },
     {
       text: '参考',
-      children: ['/medic/reference/api', '/medic/reference/toolkit'],
+      children: ['/medic_docs/reference/api', '/medic_docs/reference/toolkit'],
     },
     {
       text: '更新日志',
-      link: '/medic/changelog',
+      link: '/medic_docs/changelog',
     },
   ],
 }
 
-const advance = {
-  text: '高级',
-  children: ['/guide/plugin/plugin-manager'],
-}
-
-const more = {
-  text: '更多',
-  children: ['/about/history'],
-}
 module.exports = {
   base: '/',
-  title: 'MEJS使用文档',
-  description: 'MEJS快速Bot开发框架',
+  title: 'Medic使用文档',
+  description: '快速Bot开发框架',
 
   bundler: '@vuepress/vite',
-  // theme: resolve(__dirname, 'theme'),
 
   themeConfig: {
     logo: '/images/logo.png',
-    repo: 'Miaow233/MEJS-Framework',
+    //repo: 'Miaow233/MEJS-Framework',
     docsRepo: 'https://github.com/Miaow233/MEJS-Framework',
     docsBranch: 'main',
     docsDir: 'docs',
@@ -87,19 +97,18 @@ module.exports = {
     editLinkText: '编辑此页面',
     lastUpdatedText: '最近更新时间',
     navbar: [
-      guide,
-      reference,
+      mejs,
       medic,
       {
-        text: '参与文档编写',
-        link: 'https://github.com/Miaow233/MEJS-Framework/tree/main/docs',
+        text: '旧版文档',
+        link: 'http://medicxd.top/',
       },
     ],
     sidebar: {
-      '/guide/': [guide, advance, more],
-      '/basic/': [guide, advance],
-      '/reference/': [reference],
-      '/medic/': [medic],
+      '/mejs2/guide/': [guide, reference],
+      '/mejs2/basic/': [guide, reference],
+      '/mejs2/reference/': [reference],
+      '/medic_docs/': [medic],
     },
   },
 
@@ -113,17 +122,5 @@ module.exports = {
     ],
     ['@vuepress/pwa'],
     ['@vuepress/pwa-popup'],
-    [
-      '@vuepress/container',
-      {
-        type: 'code-group',
-        before: (info) => {
-          const [type] = info.split(' ', 1)
-          const title = info.slice(type.length).trimStart()
-          return `<panel-view class="code" type=${JSON.stringify(type)} title=${JSON.stringify(title)}>`
-        },
-        after: () => '</panel-view>',
-      },
-    ],
   ],
 }

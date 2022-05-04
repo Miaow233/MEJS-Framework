@@ -1,32 +1,20 @@
 ---
 home: true
-title: MEJS Framework
+title: Medic使用文档
 heroImage: /images/logo.png
 actions:
-  - text: 快速开始
-    link: /guide/introduce.md
+  - text: Medic指南
+    link: /medic_docs/
     type: primary
-  - text: Github
-    link: https://github.com/Miaow233/MEJS-Framework
-    type: secondary
+  - text: MEJS2指南
+    link: /mejs2/
+    type: primary
 features:
-  - title: 简单、轻便
-    details: 几行代码即可实现Bot
-  - title: 零配置
-    details: 无需繁琐配置
-  - title: 快速上手
-    details: 10分钟即可上手
-footer:  Copyright © 2021-present Medic Project.
+  - title: 高灵活度
+    details: 使用机器人无任何限制
+  - title: 高可拓展
+    details: 自由编写词库, 享你所想
+  - title: 丰富的支持库
+    details:  Dex, 画图库, JS... 应有尽有
+footer: Copyright © 2021-present Medic Project.
 ---
-
-#### 实现"AI"仅需 7 行
-
-```js
-$.on('message.group', async (message) => {
-    let client = message.client
-    let rep = message.msg.replace('吗','')。replace('?','!')。replace('？','！')
-    client.setReply()
-    client.addText(rep)
-    bot.send(client)
-})
-```
