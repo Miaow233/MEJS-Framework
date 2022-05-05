@@ -56,6 +56,6 @@ bye~
 
 ## 更多信息
 
-- [关于 Medic](#)
+- [关于 Medic](/medic_docs/)
 - [软件下载](http://medicxd.top/)
-- [加入群聊](https://jq.qq.com/?_wv=1027&k=K5csid5C)
+- [加入群聊](https://jq.qq.com/?_wv=1027&k=LEzbjEB6)

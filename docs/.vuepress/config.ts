@@ -63,7 +63,7 @@ const medic = {
       children: [
         '/medic_docs/basic/dic',
         '/medic_docs/basic/entry',
-        '/medic_docs/basic/value',
+        '/medic_docs/basic/variable',
         '/medic_docs/basic/constant',
         '/medic_docs/basic/system',
         '/medic_docs/basic/mod',
@@ -86,7 +86,10 @@ module.exports = {
   description: '快速Bot开发框架',
 
   bundler: '@vuepress/vite',
-
+  head: [
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+  ],
   themeConfig: {
     logo: '/images/logo.png',
     //repo: 'Miaow233/MEJS-Framework',
@@ -101,7 +104,7 @@ module.exports = {
       medic,
       {
         text: '旧版文档',
-        link: 'http://medicxd.top/',
+        link: '/medic_docs/wiki.html',
       },
     ],
     sidebar: {
@@ -120,7 +123,12 @@ module.exports = {
         selector: '.theme-default-content :not(a) > img:not(.no-zooming)',
       },
     ],
-    ['@vuepress/pwa'],
+    [
+      '@vuepress/pwa',
+      {
+        skipWaiting: true,
+      },
+    ],
     ['@vuepress/pwa-popup'],
   ],
 }

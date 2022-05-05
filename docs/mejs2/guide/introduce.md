@@ -27,5 +27,5 @@ MEJS-Framework 是基于 QQ 机器人程序 `Medic` 的 JS 词库而编写的聊
 
 ## 相关内容
 
-- Medic 文档: [https://docs.nekohouse.cafe/Medic](https://docs.nekohouse.cafe/medic)
-- Medic 下载: [蓝奏(密码 medic)](https://wwi.lanzoui.com/b00os6baf)
+- MEJS 文档: [https://docs.nekohouse.cafe](https://docs.nekohouse.cafe)
+- Medic 下载: [密码 medic](https://wwi.lanzoui.com/b00os6baf)
