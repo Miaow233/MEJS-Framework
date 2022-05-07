@@ -19,13 +19,15 @@
 ```
 [词库信息]
 名称:词库DEMO
-图标:www.dicq.online/1.jpg
+图标:http://medicxd.top/images/logo.png
 作者:小社
 版本:1.0
 简介:这只是一个例子的简介，内容根据自己的词库说明进行修改
 官网:www.dicq.online
 开机:开机
 关机:关机
+
+[常量]
 
 [模块]
 开机

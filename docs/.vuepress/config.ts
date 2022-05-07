@@ -1,4 +1,6 @@
-const guide = {
+import { pwaPlugin } from '@vuepress/plugin-pwa'
+import { defineUserConfig } from 'vuepress'
+export const guide = {
   text: '指南',
   children: [
     '/mejs2/guide/introduce',
@@ -10,8 +12,7 @@ const guide = {
     },
   ],
 }
-
-const reference = {
+export const reference = {
   text: '参考',
   children: [
     {
@@ -28,7 +29,7 @@ const reference = {
     },
   ],
 }
-const mejs = {
+export const mejs = {
   text: 'MEJS',
   children: [
     {
@@ -53,11 +54,11 @@ const mejs = {
     },
   ],
 }
-const medic = {
+export const medic = {
   text: 'Medic',
   children: [
     '/medic_docs/',
-    '/medic_docs/getting-started',
+    '/medic_docs/guide/getting-started',
     {
       text: '基础概念',
       children: [
@@ -71,7 +72,13 @@ const medic = {
     },
     {
       text: '参考',
-      children: ['/medic_docs/reference/api', '/medic_docs/reference/toolkit'],
+      children: [
+        '/medic_docs/reference/api',
+        '/medic_docs/reference/toolkit',
+        '/medic_docs/reference/libs/java',
+        '/medic_docs/reference/libs/javascript',
+        '/medic_docs/reference/libs/draw',
+      ],
     },
     {
       text: '更新日志',
@@ -80,7 +87,7 @@ const medic = {
   ],
 }
 
-module.exports = {
+export default defineUserConfig({
   base: '/',
   title: 'Medic使用文档',
   description: '快速Bot开发框架',
@@ -90,45 +97,13 @@ module.exports = {
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
   ],
-  themeConfig: {
-    logo: '/images/logo.png',
-    //repo: 'Miaow233/MEJS-Framework',
-    docsRepo: 'https://github.com/Miaow233/MEJS-Framework',
-    docsBranch: 'main',
-    docsDir: 'docs',
-    editLinkPattern: ':repo/edit/:branch/:path',
-    editLinkText: '编辑此页面',
-    lastUpdatedText: '最近更新时间',
-    navbar: [
-      mejs,
-      medic,
-      {
-        text: '旧版文档',
-        link: '/medic_docs/wiki.html',
-      },
-    ],
-    sidebar: {
-      '/mejs2/guide/': [guide, reference],
-      '/mejs2/basic/': [guide, reference],
-      '/mejs2/reference/': [reference],
-      '/medic_docs/': [medic],
-    },
-  },
 
   plugins: [
     ['vuepress-plugin-clipboard'],
-    [
-      'medium-zoom',
-      {
-        selector: '.theme-default-content :not(a) > img:not(.no-zooming)',
-      },
-    ],
-    [
-      '@vuepress/pwa',
-      {
-        skipWaiting: true,
-      },
-    ],
+    // @ts-ignore
+    pwaPlugin({
+      skipWaiting: true,
+    }),
     ['@vuepress/pwa-popup'],
   ],
-}
+})
