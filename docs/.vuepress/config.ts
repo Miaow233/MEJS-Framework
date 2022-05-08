@@ -1,5 +1,5 @@
 import { pwaPlugin } from '@vuepress/plugin-pwa'
-import { defineUserConfig } from 'vuepress'
+import { defineUserConfig, viteBundler } from 'vuepress'
 export const guide = {
   text: '指南',
   children: [
@@ -75,7 +75,7 @@ export const medic = {
       children: [
         '/medic_docs/reference/api',
         '/medic_docs/reference/toolkit',
-        '/medic_docs/reference/libs/java',
+        '/medic_docs/reference/libs/dex',
         '/medic_docs/reference/libs/javascript',
         '/medic_docs/reference/libs/draw',
       ],
@@ -86,18 +86,18 @@ export const medic = {
     },
   ],
 }
-
 export default defineUserConfig({
   base: '/',
   title: 'Medic使用文档',
   description: '快速Bot开发框架',
 
-  bundler: '@vuepress/vite',
+  bundler: viteBundler({}),
   head: [
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
   ],
 
+  theme: require('./themeConfig'),
   plugins: [
     ['vuepress-plugin-clipboard'],
     // @ts-ignore
