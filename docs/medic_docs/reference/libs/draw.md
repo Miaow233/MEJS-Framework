@@ -28,7 +28,7 @@ addImg(canvas 或 bitmap) 参数为 ①②③ 方法创建的任意一个
 ```java
 setColor(a\,r\,g\,b\,④)
 setColor(r\,g\,b\,④)
-setColor(⑥|⑦\,④)
+setColor(⑥|⑦|⑧\,④)
 setColor(#默认颜色\,④)
 ```
 

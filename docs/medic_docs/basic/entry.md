@@ -6,7 +6,7 @@
 
 - 关键字
 
-  由[正则表达式](https://www.runoob.com/java/java-regular-expressions.html])构成，详细资料可以参考链接
+  由[正则表达式](https://www.runoob.com/java/java-regular-expressions.html)构成，详细资料可以参考链接
 
 - 伪代码内容
 
@@ -20,7 +20,7 @@
 
 如: 用户输入的内容为: `你好 机器人 AI`
 
-那么: @c0=`你好 机器人 AI` @c1=`机器人` @c2=`AI`
+那么: @c0=`你好 机器人 AI` @c1=`机器人` @c-1=`AI`
 
 例子:
 

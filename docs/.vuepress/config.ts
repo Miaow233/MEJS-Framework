@@ -99,11 +99,8 @@ export default defineUserConfig({
 
   theme: require('./themeConfig'),
   plugins: [
-    ['vuepress-plugin-clipboard'],
-    // @ts-ignore
     pwaPlugin({
       skipWaiting: true,
     }),
-    ['@vuepress/pwa-popup'],
   ],
 })
