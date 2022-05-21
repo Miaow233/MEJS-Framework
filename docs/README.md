@@ -16,5 +16,6 @@ features:
     details: 自由编写词库, 享你所想
   - title: 丰富的支持库
     details:  Dex, 画图库, JS... 应有尽有
-footer: Copyright © 2021-present Medic Project.
+footer: <p>Copyright © 2021-present Medic Project.</p>
+footerHtml: true
 ---

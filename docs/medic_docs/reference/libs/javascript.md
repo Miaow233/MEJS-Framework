@@ -4,6 +4,8 @@
 
 在相应的关键字下一行标记 JS 或者 JavaScript 运行 JS 模式
 
+> 自 2.1.5 版本 JS2 更新为独立的 MEJS，完整说明详见[使用文档](../../../mejs2/README.md)
+
 JavaScript 词条交流 QQ 群: `410351186`
 
 相关语法请参考 [MeJS](http://mejs.ceclin.top:9102)
@@ -17,10 +19,6 @@ JS
 $addText('MEJS消息');
 $send();
 ```
-
-## 更新说明
-
-- 2.1.0 版本更新了 JS2, 请标记 `JS2` 来运行新版 JS
 
 ## MEJS 参考
 

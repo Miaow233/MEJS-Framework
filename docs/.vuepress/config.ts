@@ -1,5 +1,8 @@
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { defineUserConfig, viteBundler } from 'vuepress'
+import { searchPlugin } from '@vuepress/plugin-search'
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+
 export const guide = {
   text: '指南',
   children: [
@@ -101,6 +104,14 @@ export default defineUserConfig({
   plugins: [
     pwaPlugin({
       skipWaiting: true,
+    }),
+    searchPlugin({
+      // 排除首页
+      isSearchable: (page) => page.path !== '/',
+    }),
+    googleAnalyticsPlugin({
+      id: 'G-JELJKYM6YC', // XD
+      // id: 'G-5X9RWSNK51', // OWN
     }),
   ],
 })
