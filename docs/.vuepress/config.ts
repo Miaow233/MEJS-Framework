@@ -1,7 +1,5 @@
-import { pwaPlugin } from '@vuepress/plugin-pwa'
+
 import { defineUserConfig, viteBundler } from 'vuepress'
-import { searchPlugin } from '@vuepress/plugin-search'
-import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
 export const guide = {
   text: '指南',
@@ -78,6 +76,7 @@ export const medic = {
       children: [
         '/medic_docs/reference/api',
         '/medic_docs/reference/toolkit',
+        '/medic_docs/reference/libs/json',
         '/medic_docs/reference/libs/dex',
         '/medic_docs/reference/libs/javascript',
         '/medic_docs/reference/libs/draw',
@@ -89,6 +88,24 @@ export const medic = {
     },
   ],
 }
+import { docsearchPlugin } from  '@vuepress/plugin-docsearch'
+import { pwaPlugin } from '@vuepress/plugin-pwa'
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+
+const plugins = [
+    pwaPlugin({
+      skipWaiting: true,
+    }),
+    googleAnalyticsPlugin({
+      id: 'G-JELJKYM6YC', // XD
+      // id: 'G-5X9RWSNK51', // OWN
+    }),
+    docsearchPlugin({
+apiKey: 'bcd69cca53642b95d65f4ec80a9a8d44',
+appId:'IEXIOYKZY6',
+indexName:'medic',
+    }),
+  ]
 export default defineUserConfig({
   base: '/',
   title: 'Medic使用文档',
@@ -101,17 +118,5 @@ export default defineUserConfig({
   ],
 
   theme: require('./themeConfig'),
-  plugins: [
-    pwaPlugin({
-      skipWaiting: true,
-    }),
-    searchPlugin({
-      // 排除首页
-      isSearchable: (page) => page.path !== '/',
-    }),
-    googleAnalyticsPlugin({
-      id: 'G-JELJKYM6YC', // XD
-      // id: 'G-5X9RWSNK51', // OWN
-    }),
-  ],
+  plugins: plugins,
 })

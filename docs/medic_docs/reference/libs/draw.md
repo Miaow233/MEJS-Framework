@@ -121,8 +121,41 @@ Draw->drawRect(@a\,180\,180\,240\,240\,@p)
 //设置文字大小
 Draw->setSize(25\,@p)
 //写文字
-Draw->drawText(@ca\,180\,180\,测试文本\,@p)
+Draw->drawText(@c\,180\,180\,测试文本\,@p)
 //将图片添加，参数为canvas或bitmap
 Draw->addImg(@a)
+Api->send()
+```
+
+## 制作gif
+```java
+//设置gif每帧的间隔时间, 1 = 10毫秒
+void setGifDelay(10)
+//设置gif重复次数，默认不重复 0代表无限次
+void setGifRepeat(1)
+//设置gif帧率，和上面这个只有其中一个生效
+void setGifFrameRate(24)
+ //设置gif大小
+void setGifSize(String...size)
+```
+
+//例子
+```
+制作gif
+test
+c:Draw->newCanvas(500\,500)
+p:Draw->newPaint()
+Draw->setColor(红色\,@p)
+Draw->setGifDelay(10)
+Draw->addFrame(@c)
+Draw->drawLine(@c\,100\,100\,400\,100\,@p)
+Draw->addFrame(@c)
+Draw->drawLine(@c\,400\,100\,400\,400\,@p)
+Draw->addFrame(@c)
+Draw->drawLine(@c\,400\,400\,100\,400\,@p)
+Draw->addFrame(@c)
+Draw->drawLine(@c\,100\,400\,100\,100\,@p)
+Draw->addFrame(@c)
+Draw->addGif()
 Api->send()
 ```

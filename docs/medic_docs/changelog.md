@@ -1,3 +1,13 @@
+## Medic_2.2.3 更新
+
+1. Draw新增函数getImgBounds(canvas|bitmap) 获取宽高 返回jsonArray 
+2. Draw新增gif的制作（详见压缩包内gif.txt）
+3. 极大缩减安装包体积 
+4. 新增json的制作（详见压缩包内json.txt）
+5. 更新了一些东西，~~具体是啥我忘了呢(Ｔ▽Ｔ)~~
+
+下载链接：https://wwi.lanzoui.com/b00os6baf
+
 ## Medic_2.2.2 更新
 
 1. clac 支持更长的小数位

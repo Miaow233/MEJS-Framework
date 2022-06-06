@@ -603,7 +603,7 @@ JsonObject
 Api->getTroopMemberList(@group)
 ```
 
-### getTroopSwicth()
+### getTroopSwitch()
 
 #### 说明
 

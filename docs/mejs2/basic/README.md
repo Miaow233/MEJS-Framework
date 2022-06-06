@@ -89,7 +89,7 @@ Event.on('message.group', async (message) => {
 - `message`：接收到消息
 - `message.group`：群消息
 - `message.temp`：私聊消息
-- `message.friend`：讨论组消息
+- `message.friend`：好友消息
 - system.loaded：词库完成加载
 - system.ON：机器人开机
 - system.OFF：机器人关机
