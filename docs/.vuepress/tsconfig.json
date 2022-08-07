@@ -10,10 +10,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "strictBindCallApply": true,
+    "strictBindCallApply": false
   },
-  "include": [
-    "components",
-    "layouts",
-  ]
+  "include": ["*.ts"]
 }

@@ -268,6 +268,7 @@ export class MineSweeper {
         return count
       }
     }
+    return count
   }
 }
 

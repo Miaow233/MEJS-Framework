@@ -101,7 +101,7 @@ declare namespace android.database.sqlite {
       arg9: string,
       arg10: any /*android.os.CancellationSignal*/
     ): any /*android.database.Cursor*/
-    rawQuery(arg0: string, arg1: [string]): any /*android.database.Cursor*/
+    rawQuery(arg0: string, arg1?: [string]): any /*android.database.Cursor*/
     rawQuery(arg0: string, arg1: [string], arg2: any /*android.os.CancellationSignal*/): any /*android.database.Cursor*/
     rawQueryWithFactory(
       arg0: any /*android.database.sqlite.SQLiteDatabase$CursorFactory*/,

@@ -9,7 +9,7 @@ Bot.cli.command('jrrp', '获取今日人品').action(async () => {
   // 防止初始化前调用
   if (!session) return new Error('请在 Bot 初始化后调用')
 
-  let levels = []
+  let levels = Array<number>()
   // 数据文件
   let dataFile = new File('/sdcard/DIC/data/jrrp.json')
   // 如果文件不存在，则创建

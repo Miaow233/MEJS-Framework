@@ -1,30 +1,28 @@
-const { execSync } = require('child_process')
-const { resolve } = require('path')
-// const { remove: removeDiacritics } = require('diacritics')
 
-const guide = {
+import { defineUserConfig, viteBundler } from 'vuepress'
+
+export const guide = {
   text: '指南',
   children: [
-    '/guide/introduce',
-    '/guide/getting-started',
-    '/basic/',
+    '/mejs2/guide/introduce',
+    '/mejs2/guide/getting-started',
+    '/mejs2/basic/',
     {
       text: '基础概念',
-      children: ['/basic/bot', '/basic/compat', '/basic/message', '/basic/event'],
+      children: ['/mejs2/basic/bot', '/mejs2/basic/compat', '/mejs2/basic/message', '/mejs2/basic/event'],
     },
   ],
 }
-
-const reference = {
+export const reference = {
   text: '参考',
   children: [
     {
       text: 'MEJS Api',
-      children: ['/reference/bot', '/reference/compat', '/reference/message'],
+      children: ['/mejs2/reference/bot', '/mejs2/reference/compat', '/mejs2/reference/message'],
     },
     {
       text: '支持库',
-      children: ['/reference/libs/cac', '/reference/libs/algebra.js'],
+      children: ['/mejs2/reference/libs/cac', '/mejs2/reference/libs/algebra.js'],
     },
     {
       text: 'API文档',
@@ -32,98 +30,93 @@ const reference = {
     },
   ],
 }
-
-const medic = {
+export const mejs = {
+  text: 'MEJS',
+  children: [
+    {
+      text: '指南',
+      children: ['/mejs2/guide/introduce', '/mejs2/guide/getting-started', '/mejs2/basic/'],
+    },
+    {
+      text: '基础概念',
+      children: ['/mejs2/basic/bot', '/mejs2/basic/compat', '/mejs2/basic/message', '/mejs2/basic/event'],
+    },
+    {
+      text: 'MEJS参考',
+      children: ['/mejs2/reference/bot', '/mejs2/reference/compat', '/mejs2/reference/message'],
+    },
+    {
+      text: '支持库',
+      children: ['/mejs2/reference/libs/cac', '/mejs2/reference/libs/algebra.js'],
+    },
+    {
+      text: 'API文档',
+      link: 'https://docs.nekohouse.cafe/mejs2/reference/type/index.html',
+    },
+  ],
+}
+export const medic = {
   text: 'Medic',
   children: [
-    '/medic/',
-    '/medic/getting-started',
+    '/medic_docs/',
+    '/medic_docs/guide/getting-started',
     {
       text: '基础概念',
       children: [
-        '/medic/basic/dic',
-        '/medic/basic/entry',
-        '/medic/basic/value',
-        '/medic/basic/constant',
-        '/medic/basic/system',
-        '/medic/basic/mod',
+        '/medic_docs/basic/dic',
+        '/medic_docs/basic/entry',
+        '/medic_docs/basic/variable',
+        '/medic_docs/basic/constant',
+        '/medic_docs/basic/system',
+        '/medic_docs/basic/mod',
       ],
     },
     {
       text: '参考',
-      children: ['/medic/reference/api', '/medic/reference/toolkit'],
+      children: [
+        '/medic_docs/reference/api',
+        '/medic_docs/reference/toolkit',
+        '/medic_docs/reference/libs/json',
+        '/medic_docs/reference/libs/dex',
+        '/medic_docs/reference/libs/javascript',
+        '/medic_docs/reference/libs/draw',
+      ],
     },
     {
       text: '更新日志',
-      link: '/medic/changelog',
+      link: '/medic_docs/changelog',
     },
   ],
 }
+import { docsearchPlugin } from  '@vuepress/plugin-docsearch'
+import { pwaPlugin } from '@vuepress/plugin-pwa'
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
-const advance = {
-  text: '高级',
-  children: ['/guide/plugin/plugin-manager'],
-}
-
-const more = {
-  text: '更多',
-  children: ['/about/history'],
-}
-module.exports = {
+const plugins = [
+    pwaPlugin({
+      skipWaiting: true,
+    }),
+    googleAnalyticsPlugin({
+      id: 'G-JELJKYM6YC', // XD
+      // id: 'G-5X9RWSNK51', // OWN
+    }),
+    docsearchPlugin({
+apiKey: 'bcd69cca53642b95d65f4ec80a9a8d44',
+appId:'IEXIOYKZY6',
+indexName:'medic',
+    }),
+  ]
+export default defineUserConfig({
   base: '/',
-  title: 'MEJS使用文档',
-  description: 'MEJS快速Bot开发框架',
+  title: 'Medic使用文档',
+  description: '快速Bot开发框架',
 
-  bundler: '@vuepress/vite',
-  // theme: resolve(__dirname, 'theme'),
-
-  themeConfig: {
-    logo: '/images/logo.png',
-    repo: 'Miaow233/MEJS-Framework',
-    docsRepo: 'https://github.com/Miaow233/MEJS-Framework',
-    docsBranch: 'main',
-    docsDir: 'docs',
-    editLinkPattern: ':repo/edit/:branch/:path',
-    editLinkText: '编辑此页面',
-    lastUpdatedText: '最近更新时间',
-    navbar: [
-      guide,
-      reference,
-      medic,
-      {
-        text: '参与文档编写',
-        link: 'https://github.com/Miaow233/MEJS-Framework/tree/main/docs',
-      },
-    ],
-    sidebar: {
-      '/guide/': [guide, advance, more],
-      '/basic/': [guide, advance],
-      '/reference/': [reference],
-      '/medic/': [medic],
-    },
-  },
-
-  plugins: [
-    ['vuepress-plugin-clipboard'],
-    [
-      'medium-zoom',
-      {
-        selector: '.theme-default-content :not(a) > img:not(.no-zooming)',
-      },
-    ],
-    ['@vuepress/pwa'],
-    ['@vuepress/pwa-popup'],
-    [
-      '@vuepress/container',
-      {
-        type: 'code-group',
-        before: (info) => {
-          const [type] = info.split(' ', 1)
-          const title = info.slice(type.length).trimStart()
-          return `<panel-view class="code" type=${JSON.stringify(type)} title=${JSON.stringify(title)}>`
-        },
-        after: () => '</panel-view>',
-      },
-    ],
+  bundler: viteBundler({}),
+  head: [
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
   ],
-}
+
+  theme: require('./themeConfig'),
+  plugins: plugins,
+})
