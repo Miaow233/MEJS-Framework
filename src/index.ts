@@ -1,9 +1,9 @@
 export { Message } from './core/medic.js'
 export * from './core/target.js'
-export * from './extensions/cac/index.js'
+
 export * as draw from './extensions/draw.js'
 export { default as http } from './extensions/http.js'
-export { default as cli } from './extensions/minimist.js'
+// export { default as cli } from 'minimist'
 export * as api from './utils/api.js'
 export * as utils from './utils/index.js'
 export { Logger } from './utils/logger.js'

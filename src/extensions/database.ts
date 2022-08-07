@@ -5,7 +5,7 @@
  * database.update('diary', {})
  */
 
-import { SQLiteDatabase } from '../packages/android.js'
+let SQLiteDatabase = Packages.android.SQLiteDatabase
 import { Logger } from '../utils/logger.js'
 
 // 获取 schedule 表中 id 为 1234 的数据行，返回一个数组

@@ -1,4 +1,3 @@
-import Config from '../../.hdic.config.js'
 import { setTimeout } from '../utils/timer.js'
 import { Bot } from './bot.js'
 
@@ -29,7 +28,7 @@ export class Session {
     bot.send(this.client)
   }
 
-  prompt(ms: number = Config.promptDelay): Promise<string> {
+  prompt(ms: number = 1000 * 5): Promise<string> {
     Bot.waitPrompt.set(this.sender, true)
     return new Promise((resolve) => {
       setTimeout(() => {

@@ -1,5 +1,4 @@
-import EventEmitter from '../extensions/events.js'
-import { CAC } from '../extensions/cac/index.js'
+import { CAC } from 'cac'
 import { getAvatarById } from '../utils/index.js'
 import { getCSRFToken } from '../utils/utils.js'
 import { Session } from './session.js'

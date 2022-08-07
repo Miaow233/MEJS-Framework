@@ -1,4 +1,5 @@
 import { saveBitmap } from '../../extensions/draw.js'
+// @ts-ignore
 import { Bitmap, Canvas, Color, Paint, Rect, Typeface } from '../../packages/android.js'
 // 自定义列提示字母
 const COLUMN_NAME = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'

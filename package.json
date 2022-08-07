@@ -6,15 +6,22 @@
   "repository": "https://github.com/Miaow233/MEJS-Framework",
   "author": "Miaow233 <miaow233@qq.com>",
   "license": "MIT",
-  "type": "module",
   "scripts": {
     "build": "tsc"
   },
   "dependencies": {
+    "@satorijs/satori": "^1.0.9",
     "algebra.js": "^0.2.6",
     "cac": "^6.7.12",
+    "cordis": "^2.0.6",
+    "cosmokit": "^1.2.1",
     "events": "^3.3.0",
-    "minimist": "^1.2.5",
+    "md5": "^2.3.0",
+    "mejs-util": "^1.0.4",
+    "minimist": "^1.2.6",
     "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/algebra.js": "^0.2.2"
   }
 }

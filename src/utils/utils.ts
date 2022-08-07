@@ -1,7 +1,6 @@
 import http from '../extensions/http.js'
-import { Config } from '../../.hdic.config.js'
 import { getBaseURL } from './index.js'
-import { File } from '../packages/java.io.js'
+let File = Packages.java.io.File
 
 const SKEY = globalThis.bot.skey
 const PSKEY = globalThis.bot.pskey
@@ -66,31 +65,6 @@ export async function fetchApi(method: string, url: string, data = '') {
  */
 export function sum(array: number[]): number {
   return array.reduce((a, b) => a + b)
-}
-
-/**
- * Read JSON configuration file
- * <br>
- * 读取JSON配置文件
- *
- * @param file
- * @return configuration
- */
-export async function readConfig(file: string): Promise<Config> {
-  return Object.assign(new Config(), (await compat.readText(file)) as string)
-}
-
-/**
- * Write JSON configuration file
- * <br>
- * 写入JSON配置文件
- *
- * @param file
- * @param config
- */
-export function writeConfig(file: string, config: Config): void {
-  compat.writeText(file, JSON.stringify(config, null, 4))
-  //fs.writeJSONSync(file, config, { spaces: 4 })
 }
 
 /**

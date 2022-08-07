@@ -1,9 +1,9 @@
 import { Bot } from './core/bot.js'
 import { Session } from './core/session.js'
 import http from './extensions/http.js'
-import { File } from './packages/java.io.js'
 import { InnerMode } from './utils/helper.js'
 import { Logger } from './utils/logger.js'
+let File = Packages.java.io.File
 
 // 由于eval不能传递当前作用域变量，所以将其保存为全局变量
 globalThis.File = File
@@ -39,6 +39,6 @@ for (let file of files) {
 Bot.cli.command('help').action(async () => {
   let session = Bot.curMsg()
   Bot.cli.unsetMatchedCommand()
-  let helpMsg = Bot.cli.outputHelp()
-  session.send(helpMsg)
+  // let helpMsg = Bot.cli.outputHelp()
+  // session.send(helpMsg)
 })

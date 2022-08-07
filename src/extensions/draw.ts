@@ -1,4 +1,6 @@
+// @ts-ignore
 import { Bitmap, BitmapFactory, Canvas, Color, Paint, Rect, RectF } from '../packages/android.js'
+// @ts-ignore
 import { File, FileOutputStream } from '../packages/java.io.js'
 
 /** 通过文件创建Bitmap */

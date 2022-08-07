@@ -1,6 +1,6 @@
-import { Equation, Expression } from '../extensions/algebra.js/algebra.js'
-import { FileReader } from '../packages/java.io.js'
-import { URL } from '../packages/java.net.js'
+let FileReader = Packages.java.io.FileReader
+let URL = Packages.java.io.URL
+import { Equation, Expression } from 'algebra.js'
 
 var expr = new Expression('x')
 expr = expr.subtract(3)
