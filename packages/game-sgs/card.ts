@@ -21,18 +21,17 @@ export abstract class AbstractDeck<T extends AbstractCard> {
     return card
   }
 
-  /** 洗牌 */
-  shuffle(arr: Array<T>): Array<T> {
-    var l = arr.length
-    var index, temp
-    while (l > 0) {
-      index = Math.floor(Math.random() * l)
-      temp = arr[l - 1]
-      arr[l - 1] = arr[index]
-      arr[index] = temp
-      l--
+  // Fisher–Yates shuffle 洗牌算法
+  shuffle(array: Array<T>): Array<T> {
+    let m = array.length
+    let t, i
+    while (m) {
+      i = Math.floor(Math.random() * m--)
+      t = array[m]
+      array[m] = array[i]
+      array[i] = t
     }
-    return arr
+    return array
   }
 
   toString(): string {
