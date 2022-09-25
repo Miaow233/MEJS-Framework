@@ -4,7 +4,7 @@
 
 # MEJS
 
-> Medic JS开发SDK
+> JavaScript SDK for Medic
 
 - 几行代码即可实现Bot
 - 无需繁琐配置
