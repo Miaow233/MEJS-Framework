@@ -18,11 +18,10 @@
 
 //module = (typeof module === 'undefined') ? {} : module;
 
-globalThis.java = Packages.java
-globalThis.NativeRequire = {}
-globalThis.require = {}
-var module = {}
-// globalThis.exports = {};
+let java = Packages.java
+let NativeRequire = {}
+let require = {}
+let module = {}
 
 var System = java.lang.System
 var Scanner = java.util.Scanner
