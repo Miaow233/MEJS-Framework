@@ -29,8 +29,6 @@ function getImage(path, isURl) {
   return outt.toByteArray()
 }
 
-//下面放群消息的处理入口
-
 if (message.msg === 't2') {
   let client = message.client
   let img = getImage(
